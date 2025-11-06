@@ -1,0 +1,1305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="46">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1337111356</ID>
+      <Description>"------------------------------------------------------------------------"</Description>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1337380547</ID>
+      <Description>"Vivid_World_v1.0.2_Steam_20250611_MBRKiNG"</Description>
+      <Options moHideChildren="1"/>
+      <Color>4080FF</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1337111624</ID>
+          <Description>"Unity Engine Speed"</Description>
+          <Options moHideChildren="1" moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1"/>
+          <Color>FF00FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(aob_UES,UnityPlayer.dll,48 ?? ?? ?? ?? ?? ?? F3 ?? ?? ?? ?? ?? ?? ?? C3 48 ?? ?? ?? ?? ?? ?? 0F ?? ?? E9 ?? ?? ?? ?? ?? 48 ?? ?? ?? ?? ?? ?? 8B ?? ?? ?? ?? ?? C3 ?? ?? 48)
+label(UES)
+registersymbol(UES)
+aob_UES+7+(DWORD)[aob_UES+3]:
+UES:
+[DISABLE]
+{$lua}
+writeFloat("[UES]+1AC", 1)
+{$asm}
+unregistersymbol(*)
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>1337321833</ID>
+              <Description>"set Engine Speed --&gt;"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>FFFF00</Color>
+              <VariableType>Float</VariableType>
+              <Address>[UES]+1AC</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>79</ID>
+          <Description>"OP Hero´s 9999 Stats"</Description>
+          <Color>FFFF80</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(hero,GameAssembly.dll,8B ?? ?? 83 ?? ?? ?? ?? ?? ?? 75 ?? E8 ?? ?? ?? ?? 33 ?? 8B ?? 48 ?? ?? ?? 5B E9 ?? ?? ?? ?? 33 ?? 48 ?? ?? ?? 5B C3 ?? ?? ?? ?? ?? ?? ?? 40 ??)
+alloc(newmem,$1000,hero)
+label(code)
+label(return)
+newmem:
+  mov [rbx+34],#9999//MaxHp
+  mov [rbx+38],#9999//CurrentHp
+  mov [rbx+3C],#9999//Attack
+  mov [rbx+40],#9999//Defence
+  mov [rbx+44],#9999//MagicDefence
+  mov [rbx+48],#9999//Speed
+  mov [rbx+4C],#9999//Price
+code:
+  mov ebx,[rbx+30]
+  cmp dword ptr [rcx+000000E4],00
+  jmp return
+hero:
+  jmp newmem
+  nop 5
+return:
+registersymbol(hero)
+[DISABLE]
+hero:
+  db 8B 5B 30 83 B9 E4 00 00 00 00
+unregistersymbol(hero)
+dealloc(newmem)
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>82</ID>
+          <Description>"Ignore Mana"</Description>
+          <Color>00FF00</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(infmana,GameAssembly.dll,74 ?? 8B ?? ?? ?? ?? ?? 45 ?? ?? 48 ?? ?? 44 ?? ?? ?? 48 ?? ?? ?? ?? 48 ?? ?? ?? ?? 48 ?? ?? ??)
+infmana:
+  db EB
+registersymbol(infmana)
+[DISABLE]
+infmana:
+  db 74
+unregistersymbol(*)
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>111</ID>
+          <Description>"Ignore Dungeon Key"</Description>
+          <Color>00FF00</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(dungeonkey,GameAssembly.dll,0F ?? ?? ?? ?? ?? 48 ?? ?? ?? ?? ?? ?? 83 ?? ?? ?? ?? ?? ?? 75 ?? E8 ?? ?? ?? ?? 33 ?? E8 ?? ?? ?? ?? 48 ?? ?? 0F ?? ?? ?? ?? ?? 80 ?? ?? ?? ?? ?? ?? 74 ??)
+dungeonkey:
+  db 90 E9
+registersymbol(dungeonkey)
+[DISABLE]
+dungeonkey:
+  db 0F 84
+unregistersymbol(*)
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337321900</ID>
+          <Description>"Ignore Spirit (Upgrade Dungeons)"</Description>
+          <Color>00FF00</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(ignorespirit,GameAssembly.dll,0F ?? ?? 88 ?? ?? 48 ?? ?? ?? ?? 48 ?? ?? ?? 5B C3 33 ?? 48 ?? ?? ?? ?? 88 ?? ?? 48 ?? ?? ?? 5B C3 E8 ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? 48 ?? ?? ?? ??)
+ignorespirit+1:
+  db 92
+registersymbol(ignorespirit)
+[DISABLE]
+ignorespirit+1:
+  db 9D
+unregistersymbol(*)
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337321904</ID>
+          <Description>"Ignore Shining Dewdrop (Jewelry Perfume)"</Description>
+          <Color>00FF00</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(ignoreshine,GameAssembly.dll,7D ?? 32 ?? 48 ?? ?? ?? ?? 48 ?? ?? ?? ?? 48 ?? ?? ?? 5F C3 33 ??)
+ignoreshine:
+  db EB
+registersymbol(ignoreshine)
+aobscanmodule(reloadbutton1,GameAssembly.dll,0F ?? ?? 45 ?? ?? 48 ?? ?? ?? ?? 48 ?? ?? ?? ?? 48 ?? ?? ?? 5F E9 ?? ?? ?? ?? E8 ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? 48 ?? ?? ??)
+reloadbutton1+1:
+  db 92
+registersymbol(reloadbutton1)
+aobscanmodule(reloadbutton2,GameAssembly.dll,0F ?? ?? ?? ?? ?? 48 ?? ?? ?? ?? ?? ?? E8 ?? ?? ?? ?? 48 ?? ?? 0F ?? ?? ?? ?? ?? 45 ?? ?? 48 ?? ?? 41 ?? ?? ?? E8 ?? ?? ?? ?? 48 ?? ?? ?? ?? ?? ?? 83 ?? ?? ?? ?? ?? ?? 75 ?? E8 ?? ?? ?? ?? 33 ?? E8 ?? ?? ?? ?? 48 ?? ?? 48 ?? ??)
+reloadbutton2:
+  nop 6
+registersymbol(reloadbutton2)
+[DISABLE]
+ignoreshine:
+  db 7D
+reloadbutton1+1:
+  db 94
+reloadbutton2:
+  db 0F 84 49 01 00 00
+unregistersymbol(*)
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337321907</ID>
+          <Description>"Ignore Star Fragments (Stickers)"</Description>
+          <Color>00FF00</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(ignostarfrag,GameAssembly.dll,0F ?? ?? C3 ?? ?? ?? ?? ?? ?? ?? ?? ?? BA ?? ?? ?? ?? 2B ?? ??)
+ignostarfrag:
+  db B0 01 90
+registersymbol(ignostarfrag)
+[DISABLE]
+ignostarfrag:
+  db 0F 9E C0
+unregistersymbol(*)
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>84</ID>
+          <Description>"Room Currency Hero Data"</Description>
+          <Options moHideChildren="1"/>
+          <Color>FF80FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(roomdata,GameAssembly.dll,83 ?? ?? ?? ?? ?? ?? 0F ?? ?? 88 ?? ?? 48 ?? ?? ?? ?? ?? ?? 83 ?? ?? ?? ?? ?? ??)
+alloc(newmem,$1000,roomdata)
+label(code)
+label(return)
+label(data)
+newmem:
+code:
+  cmp dword ptr [rax+000000B0],00
+  mov [data],rax
+  jmp return
+data:
+roomdata:
+  jmp newmem
+  nop 2
+return:
+registersymbol(roomdata data)
+[DISABLE]
+roomdata:
+  db 83 B8 B0 00 00 00 00
+unregistersymbol(*)
+dealloc(*)
+
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>90</ID>
+              <Description>"Currency"</Description>
+              <Options moHideChildren="1"/>
+              <Color>C08080</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>89</ID>
+                  <Description>"Current Anima"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>[data]+B8</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>85</ID>
+                  <Description>"Current Materials"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>[data]+50</Address>
+                  <Offsets>
+                    <Offset>20</Offset>
+                    <Offset>10</Offset>
+                    <Offset>20</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>86</ID>
+                  <Description>"Current Carats"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>[data]+AC</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>93</ID>
+              <Description>"Mana"</Description>
+              <Options moHideChildren="1"/>
+              <Color>C08080</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>87</ID>
+                  <Description>"Current Mana"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>[data]+B0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>88</ID>
+                  <Description>"Max Mana"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>[data]+B4</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>94</ID>
+              <Description>"Hero Data Editor"</Description>
+              <Options moHideChildren="1"/>
+              <Color>C08080</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>92</ID>
+                  <Description>"Hero Slot 1"</Description>
+                  <Options moHideChildren="1"/>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>1337321849</ID>
+                      <Description>"UnitId"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[data]+20</Address>
+                      <Offsets>
+                        <Offset>30</Offset>
+                        <Offset>20</Offset>
+                        <Offset>10</Offset>
+                        <Offset>28</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321850</ID>
+                      <Description>"MaxHp"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[data]+20</Address>
+                      <Offsets>
+                        <Offset>34</Offset>
+                        <Offset>20</Offset>
+                        <Offset>10</Offset>
+                        <Offset>28</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321851</ID>
+                      <Description>"CurrentHp"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[data]+20</Address>
+                      <Offsets>
+                        <Offset>38</Offset>
+                        <Offset>20</Offset>
+                        <Offset>10</Offset>
+                        <Offset>28</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321852</ID>
+                      <Description>"Attack"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[data]+20</Address>
+                      <Offsets>
+                        <Offset>3C</Offset>
+                        <Offset>20</Offset>
+                        <Offset>10</Offset>
+                        <Offset>28</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321853</ID>
+                      <Description>"Defence"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[data]+20</Address>
+                      <Offsets>
+                        <Offset>40</Offset>
+                        <Offset>20</Offset>
+                        <Offset>10</Offset>
+                        <Offset>28</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321854</ID>
+                      <Description>"MagicDefence"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[data]+20</Address>
+                      <Offsets>
+                        <Offset>44</Offset>
+                        <Offset>20</Offset>
+                        <Offset>10</Offset>
+                        <Offset>28</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321855</ID>
+                      <Description>"Speed"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[data]+20</Address>
+                      <Offsets>
+                        <Offset>48</Offset>
+                        <Offset>20</Offset>
+                        <Offset>10</Offset>
+                        <Offset>28</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321856</ID>
+                      <Description>"Price"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[data]+20</Address>
+                      <Offsets>
+                        <Offset>4C</Offset>
+                        <Offset>20</Offset>
+                        <Offset>10</Offset>
+                        <Offset>28</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>91</ID>
+                  <Description>"Hero Slot 2"</Description>
+                  <Options moHideChildren="1"/>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>1337321857</ID>
+                      <Description>"UnitId"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[data]+20</Address>
+                      <Offsets>
+                        <Offset>30</Offset>
+                        <Offset>28</Offset>
+                        <Offset>10</Offset>
+                        <Offset>28</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321858</ID>
+                      <Description>"MaxHp"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[data]+20</Address>
+                      <Offsets>
+                        <Offset>34</Offset>
+                        <Offset>28</Offset>
+                        <Offset>10</Offset>
+                        <Offset>28</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321859</ID>
+                      <Description>"CurrentHp"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[data]+20</Address>
+                      <Offsets>
+                        <Offset>38</Offset>
+                        <Offset>28</Offset>
+                        <Offset>10</Offset>
+                        <Offset>28</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321860</ID>
+                      <Description>"Attack"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[data]+20</Address>
+                      <Offsets>
+                        <Offset>3C</Offset>
+                        <Offset>28</Offset>
+                        <Offset>10</Offset>
+                        <Offset>28</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321861</ID>
+                      <Description>"Defence"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[data]+20</Address>
+                      <Offsets>
+                        <Offset>40</Offset>
+                        <Offset>28</Offset>
+                        <Offset>10</Offset>
+                        <Offset>28</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321862</ID>
+                      <Description>"MagicDefence"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[data]+20</Address>
+                      <Offsets>
+                        <Offset>44</Offset>
+                        <Offset>28</Offset>
+                        <Offset>10</Offset>
+                        <Offset>28</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321863</ID>
+                      <Description>"Speed"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[data]+20</Address>
+                      <Offsets>
+                        <Offset>48</Offset>
+                        <Offset>28</Offset>
+                        <Offset>10</Offset>
+                        <Offset>28</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321864</ID>
+                      <Description>"Price"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[data]+20</Address>
+                      <Offsets>
+                        <Offset>4C</Offset>
+                        <Offset>28</Offset>
+                        <Offset>10</Offset>
+                        <Offset>28</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>95</ID>
+                  <Description>"Hero Slot 3"</Description>
+                  <Options moHideChildren="1"/>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>1337321865</ID>
+                      <Description>"UnitId"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[data]+20</Address>
+                      <Offsets>
+                        <Offset>30</Offset>
+                        <Offset>30</Offset>
+                        <Offset>10</Offset>
+                        <Offset>28</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321866</ID>
+                      <Description>"MaxHp"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[data]+20</Address>
+                      <Offsets>
+                        <Offset>34</Offset>
+                        <Offset>30</Offset>
+                        <Offset>10</Offset>
+                        <Offset>28</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321867</ID>
+                      <Description>"CurrentHp"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[data]+20</Address>
+                      <Offsets>
+                        <Offset>38</Offset>
+                        <Offset>30</Offset>
+                        <Offset>10</Offset>
+                        <Offset>28</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321868</ID>
+                      <Description>"Attack"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[data]+20</Address>
+                      <Offsets>
+                        <Offset>3C</Offset>
+                        <Offset>30</Offset>
+                        <Offset>10</Offset>
+                        <Offset>28</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321869</ID>
+                      <Description>"Defence"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[data]+20</Address>
+                      <Offsets>
+                        <Offset>40</Offset>
+                        <Offset>30</Offset>
+                        <Offset>10</Offset>
+                        <Offset>28</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321870</ID>
+                      <Description>"MagicDefence"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[data]+20</Address>
+                      <Offsets>
+                        <Offset>44</Offset>
+                        <Offset>30</Offset>
+                        <Offset>10</Offset>
+                        <Offset>28</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321871</ID>
+                      <Description>"Speed"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[data]+20</Address>
+                      <Offsets>
+                        <Offset>48</Offset>
+                        <Offset>30</Offset>
+                        <Offset>10</Offset>
+                        <Offset>28</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321872</ID>
+                      <Description>"Price"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[data]+20</Address>
+                      <Offsets>
+                        <Offset>4C</Offset>
+                        <Offset>30</Offset>
+                        <Offset>10</Offset>
+                        <Offset>28</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>96</ID>
+                  <Description>"Hero Slot 4"</Description>
+                  <Options moHideChildren="1"/>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>1337321873</ID>
+                      <Description>"UnitId"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[data]+20</Address>
+                      <Offsets>
+                        <Offset>30</Offset>
+                        <Offset>38</Offset>
+                        <Offset>10</Offset>
+                        <Offset>28</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321874</ID>
+                      <Description>"MaxHp"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[data]+20</Address>
+                      <Offsets>
+                        <Offset>34</Offset>
+                        <Offset>38</Offset>
+                        <Offset>10</Offset>
+                        <Offset>28</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321875</ID>
+                      <Description>"CurrentHp"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[data]+20</Address>
+                      <Offsets>
+                        <Offset>38</Offset>
+                        <Offset>38</Offset>
+                        <Offset>10</Offset>
+                        <Offset>28</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321876</ID>
+                      <Description>"Attack"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[data]+20</Address>
+                      <Offsets>
+                        <Offset>3C</Offset>
+                        <Offset>38</Offset>
+                        <Offset>10</Offset>
+                        <Offset>28</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321877</ID>
+                      <Description>"Defence"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[data]+20</Address>
+                      <Offsets>
+                        <Offset>40</Offset>
+                        <Offset>38</Offset>
+                        <Offset>10</Offset>
+                        <Offset>28</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321878</ID>
+                      <Description>"MagicDefence"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[data]+20</Address>
+                      <Offsets>
+                        <Offset>44</Offset>
+                        <Offset>38</Offset>
+                        <Offset>10</Offset>
+                        <Offset>28</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321879</ID>
+                      <Description>"Speed"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[data]+20</Address>
+                      <Offsets>
+                        <Offset>48</Offset>
+                        <Offset>38</Offset>
+                        <Offset>10</Offset>
+                        <Offset>28</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321880</ID>
+                      <Description>"Price"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[data]+20</Address>
+                      <Offsets>
+                        <Offset>4C</Offset>
+                        <Offset>38</Offset>
+                        <Offset>10</Offset>
+                        <Offset>28</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>97</ID>
+                  <Description>"Hero Slot 5"</Description>
+                  <Options moHideChildren="1"/>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>1337321881</ID>
+                      <Description>"UnitId"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[data]+20</Address>
+                      <Offsets>
+                        <Offset>30</Offset>
+                        <Offset>40</Offset>
+                        <Offset>10</Offset>
+                        <Offset>28</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321882</ID>
+                      <Description>"MaxHp"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[data]+20</Address>
+                      <Offsets>
+                        <Offset>34</Offset>
+                        <Offset>40</Offset>
+                        <Offset>10</Offset>
+                        <Offset>28</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321883</ID>
+                      <Description>"CurrentHp"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[data]+20</Address>
+                      <Offsets>
+                        <Offset>38</Offset>
+                        <Offset>40</Offset>
+                        <Offset>10</Offset>
+                        <Offset>28</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321884</ID>
+                      <Description>"Attack"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[data]+20</Address>
+                      <Offsets>
+                        <Offset>3C</Offset>
+                        <Offset>40</Offset>
+                        <Offset>10</Offset>
+                        <Offset>28</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321885</ID>
+                      <Description>"Defence"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[data]+20</Address>
+                      <Offsets>
+                        <Offset>40</Offset>
+                        <Offset>40</Offset>
+                        <Offset>10</Offset>
+                        <Offset>28</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321886</ID>
+                      <Description>"MagicDefence"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[data]+20</Address>
+                      <Offsets>
+                        <Offset>44</Offset>
+                        <Offset>40</Offset>
+                        <Offset>10</Offset>
+                        <Offset>28</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321887</ID>
+                      <Description>"Speed"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[data]+20</Address>
+                      <Offsets>
+                        <Offset>48</Offset>
+                        <Offset>40</Offset>
+                        <Offset>10</Offset>
+                        <Offset>28</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321888</ID>
+                      <Description>"Price"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[data]+20</Address>
+                      <Offsets>
+                        <Offset>4C</Offset>
+                        <Offset>40</Offset>
+                        <Offset>10</Offset>
+                        <Offset>28</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>98</ID>
+                  <Description>"Hero Slot 6"</Description>
+                  <Options moHideChildren="1"/>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>1337321889</ID>
+                      <Description>"UnitId"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[data]+20</Address>
+                      <Offsets>
+                        <Offset>30</Offset>
+                        <Offset>48</Offset>
+                        <Offset>10</Offset>
+                        <Offset>28</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321890</ID>
+                      <Description>"MaxHp"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[data]+20</Address>
+                      <Offsets>
+                        <Offset>34</Offset>
+                        <Offset>48</Offset>
+                        <Offset>10</Offset>
+                        <Offset>28</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321891</ID>
+                      <Description>"CurrentHp"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[data]+20</Address>
+                      <Offsets>
+                        <Offset>38</Offset>
+                        <Offset>48</Offset>
+                        <Offset>10</Offset>
+                        <Offset>28</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321892</ID>
+                      <Description>"Attack"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[data]+20</Address>
+                      <Offsets>
+                        <Offset>3C</Offset>
+                        <Offset>48</Offset>
+                        <Offset>10</Offset>
+                        <Offset>28</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321893</ID>
+                      <Description>"Defence"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[data]+20</Address>
+                      <Offsets>
+                        <Offset>40</Offset>
+                        <Offset>48</Offset>
+                        <Offset>10</Offset>
+                        <Offset>28</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321894</ID>
+                      <Description>"MagicDefence"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[data]+20</Address>
+                      <Offsets>
+                        <Offset>44</Offset>
+                        <Offset>48</Offset>
+                        <Offset>10</Offset>
+                        <Offset>28</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321895</ID>
+                      <Description>"Speed"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[data]+20</Address>
+                      <Offsets>
+                        <Offset>48</Offset>
+                        <Offset>48</Offset>
+                        <Offset>10</Offset>
+                        <Offset>28</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321896</ID>
+                      <Description>"Price"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[data]+20</Address>
+                      <Offsets>
+                        <Offset>4C</Offset>
+                        <Offset>48</Offset>
+                        <Offset>10</Offset>
+                        <Offset>28</Offset>
+                        <Offset>28</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>99</ID>
+              <Description>"Shop Data (no effect) precheck Shop"</Description>
+              <Options moHideChildren="1"/>
+              <Color>C08080</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>100</ID>
+                  <Description>"RarityDropTable"</Description>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>101</ID>
+                      <Description>"% Common"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[data]+38</Address>
+                      <Offsets>
+                        <Offset>20</Offset>
+                        <Offset>10</Offset>
+                        <Offset>50</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>102</ID>
+                      <Description>"% Rare"</Description>
+                      <Color>FF8000</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[data]+38</Address>
+                      <Offsets>
+                        <Offset>24</Offset>
+                        <Offset>10</Offset>
+                        <Offset>50</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>103</ID>
+                      <Description>"% Epic"</Description>
+                      <Color>FF00FF</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[data]+38</Address>
+                      <Offsets>
+                        <Offset>28</Offset>
+                        <Offset>10</Offset>
+                        <Offset>50</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>104</ID>
+                      <Description>"% Legendary"</Description>
+                      <Color>4080FF</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[data]+38</Address>
+                      <Offsets>
+                        <Offset>2C</Offset>
+                        <Offset>10</Offset>
+                        <Offset>50</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1337321834</ID>
+              <Description>"DungeonFloorConfig"</Description>
+              <Options moHideChildren="1"/>
+              <Color>C08080</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>1337321835</ID>
+                  <Description>"EmptyRoomNum"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>[data]+80</Address>
+                  <Offsets>
+                    <Offset>20</Offset>
+                    <Offset>30</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337321836</ID>
+                  <Description>"RestRoomNum"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>[data]+80</Address>
+                  <Offsets>
+                    <Offset>24</Offset>
+                    <Offset>30</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337321837</ID>
+                  <Description>"GemShopNum"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>[data]+80</Address>
+                  <Offsets>
+                    <Offset>28</Offset>
+                    <Offset>30</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337321838</ID>
+                  <Description>"NomadGemShopNum"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>[data]+80</Address>
+                  <Offsets>
+                    <Offset>2C</Offset>
+                    <Offset>30</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337321839</ID>
+                  <Description>"AlchemyShopNum"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>[data]+80</Address>
+                  <Offsets>
+                    <Offset>30</Offset>
+                    <Offset>30</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337321840</ID>
+                  <Description>"EnemyRoomNum"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>[data]+80</Address>
+                  <Offsets>
+                    <Offset>34</Offset>
+                    <Offset>30</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337321841</ID>
+                  <Description>"UnitTreasureRoomNum"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>[data]+80</Address>
+                  <Offsets>
+                    <Offset>38</Offset>
+                    <Offset>30</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337321842</ID>
+                  <Description>"GemTreasureRoomNum"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>[data]+80</Address>
+                  <Offsets>
+                    <Offset>3C</Offset>
+                    <Offset>30</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337321843</ID>
+                  <Description>"HappeningEventNum"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>[data]+80</Address>
+                  <Offsets>
+                    <Offset>40</Offset>
+                    <Offset>30</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337321844</ID>
+                  <Description>"SelectEventNum"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>[data]+80</Address>
+                  <Offsets>
+                    <Offset>44</Offset>
+                    <Offset>30</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337321845</ID>
+                  <Description>"MonologueNpcEventNum"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>[data]+80</Address>
+                  <Offsets>
+                    <Offset>48</Offset>
+                    <Offset>30</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337321846</ID>
+                  <Description>"StickerReplaceRoomEventNum"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>[data]+80</Address>
+                  <Offsets>
+                    <Offset>4C</Offset>
+                    <Offset>30</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>112</ID>
+              <Description>"misc"</Description>
+              <Options moHideChildren="1"/>
+              <Color>C08080</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>105</ID>
+                  <Description>"&lt;ElapsedTime&gt;k__BackingField"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>[data]+A8</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>106</ID>
+                  <Description>"IsGameResetOneDungeon"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>[data]+BC</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>108</ID>
+                  <Description>"IsKeyNeedDungeonMastering"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>[data]+C4</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>109</ID>
+                  <Description>"&lt;HasDungeonKey&gt;k__BackingField"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>[data]+C5</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>110</ID>
+                  <Description>"&lt;ContinueCount&gt;k__BackingField"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>[data]+D0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>107</ID>
+                  <Description>"CurrentEventKind"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>[data]+C0</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>104269</ID>
+      <Description>"------------------------------------------------------------------------"</Description>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>10326</ID>
+      <Description>"Discord/PayPal-Donation-Link/OCT"</Description>
+      <Options moHideChildren="1"/>
+      <Color>40FF00</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1337380679</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337380680</ID>
+          <Description>"[&lt;--CHECKBOX]_OPEN_MY_GITHUB"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://github.com/mbrking/CE-Tables')
+{$asm}
+
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337111357</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>10324</ID>
+          <Description>"Support/Donations can be Added to my PAYPAL.ME"</Description>
+          <Color>00FF00</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104128</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>41356</ID>
+          <Description>" [&lt;--CHECKBOX] PALPAL.ME Donation/Support Link"</Description>
+          <Color>F8EC07</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://paypal.me/mobiusce')
+{$asm}
+
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104152</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104270</ID>
+          <Description>"my Discord-ID:  --&gt;  ScooPaX#8840  &lt;--"</Description>
+          <Options moAlwaysHideChildren="1"/>
+          <Color>8000FF</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104155</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104156</ID>
+          <Description>"[&lt;--CHECKBOX]_OPEN_OCT_TOPIC"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://opencheattables.com/viewtopic.php?t=1608')
+{$asm}
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104129</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104151</ID>
+          <Description>"[&lt;--CHECKBOX]_OPEN_CHEATENGINE.ORG"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://www.cheatengine.org/')
+{$asm}
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>10634</ID>
+      <Description>"------------------------------------------------------------------------"</Description>
+      <Options moHideChildren="1"/>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>
