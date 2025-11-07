@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="46">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1337111356</ID>
+      <Description>"------------------------------------------------------------------------"</Description>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1337380547</ID>
+      <Description>"Crime_Boss_Rockay_City_Update_18.1_Steam_20250711_by_MBRKiNG"</Description>
+      <Options moHideChildren="1"/>
+      <Color>4080FF</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1337111308</ID>
+          <Description>"God / Invulnerable (Player+TeamMates)"</Description>
+          <Color>FF80FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(Invulnerable,$process,F6 ?? ?? ?? 74 ?? 0F 57 ?? 0F 2E)
+alloc(Invulnerable_RestoreBytes,4)
+Invulnerable_RestoreBytes:
+  readmem(Invulnerable,4)
+Invulnerable:
+  db 48 83 FA 05
+registersymbol(Invulnerable,Invulnerable_RestoreBytes)
+[DISABLE]
+Invulnerable:
+  readmem(Invulnerable_RestoreBytes,4)
+unregistersymbol(*)
+dealloc(*)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337111309</ID>
+          <Description>"Undetected By Guards"</Description>
+          <Color>FF80FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(UndetectedByGuards,$process,0F ?? ?? ?? ?? ?? 33 ?? 4C ?? ?? ?? ?? ?? ?? ?? 48 ?? ?? ?? ?? ?? ?? E8 ?? ?? ?? ?? 84 ?? 0F ?? ?? ?? ?? ?? 48 ?? ?? ?? ?? ?? ?? 48 ?? ?? ?? ?? ?? ?? ?? E8 ?? ?? ?? ?? 84 ?? 0F ?? ?? ?? ?? ?? 48 ?? ?? ?? ?? ?? ?? E8 ?? ?? ?? ?? 48 ?? ?? 48 ?? ??)
+alloc(UndetectedByGuards_RestoreBytes,2)
+UndetectedByGuards_RestoreBytes:
+  readmem(UndetectedByGuards,2)
+UndetectedByGuards:
+  db 90 E9
+registersymbol(UndetectedByGuards,UndetectedByGuards_RestoreBytes)
+[DISABLE]
+UndetectedByGuards:
+  readmem(UndetectedByGuards_RestoreBytes,2)
+unregistersymbol(*)
+dealloc(*)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337111643</ID>
+          <Description>"Disable Alert Checks"</Description>
+          <Color>FF80FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(DisableAlertCheck,$process,48 ?? ?? ?? ?? 48 ?? ?? ?? ?? 56 57 41 ?? 41 ?? 41 ?? 48 ?? ?? ?? 4D ?? ?? 88 ?? ?? ?? ?? ??)
+alloc(DisableAlertCheck_RestoreBytes,5)
+DisableAlertCheck_RestoreBytes:
+  readmem(DisableAlertCheck,5)
+DisableAlertCheck:
+  db C3 90 90 90 90
+registersymbol(DisableAlertCheck,DisableAlertCheck_RestoreBytes)
+[DISABLE]
+DisableAlertCheck:
+  readmem(DisableAlertCheck_RestoreBytes,5)
+unregistersymbol(*)
+dealloc(*)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337111645</ID>
+          <Description>"Disable Strike Checks"</Description>
+          <Color>FF80FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(DisableStrikeCheck,$process,89 ?? ?? ?? ?? ?? 41 ?? ?? 49 ?? ?? 4C ?? ?? ?? ?? ?? ?? 48 ?? ??)
+alloc(DisableStrikeCheck_RestoreBytes,2)
+DisableStrikeCheck_RestoreBytes:
+  readmem(DisableStrikeCheck,2)
+DisableStrikeCheck+1:
+  db 81
+registersymbol(DisableStrikeCheck,DisableStrikeCheck_RestoreBytes)
+[DISABLE]
+DisableStrikeCheck:
+  readmem(DisableStrikeCheck_RestoreBytes,2)
+unregistersymbol(*)
+dealloc(*)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337111310</ID>
+          <Description>"Easy Lock Picking"</Description>
+          <Color>FF80FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(EasyLockPicking,$process,0F 97 ?? 3A ?? ?? ?? ?? ?? 74 ?? 48)
+alloc(EasyLockPicking_RestoreBytes,2)
+EasyLockPicking_RestoreBytes:
+  readmem(EasyLockPicking,2)
+EasyLockPicking+1:
+  db 92
+registersymbol(EasyLockPicking,EasyLockPicking_RestoreBytes)
+[DISABLE]
+EasyLockPicking:
+  readmem(EasyLockPicking_RestoreBytes,2)
+unregistersymbol(*)
+dealloc(*)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337111311</ID>
+          <Description>"No Cam Detection"</Description>
+          <Color>FF80FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(NoCamDetection,$process,F3 ?? ?? ?? 0F 28 ?? ?? ?? F3 ?? ?? ?? ?? ?? ?? ?? 0F 2F ?? ?? ?? ?? ?? 76)
+alloc(NoCamDetection_RestoreBytes,4)
+NoCamDetection_RestoreBytes:
+  readmem(NoCamDetection,4)
+NoCamDetection:
+  db F3 0F 58 F6
+registersymbol(NoCamDetection,NoCamDetection_RestoreBytes)
+[DISABLE]
+NoCamDetection:
+  readmem(NoCamDetection_RestoreBytes,4)
+unregistersymbol(*)
+dealloc(*)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337111312</ID>
+          <Description>"Inf Ammo"</Description>
+          <Color>FF80FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(InfAmmo,$process,74 ?? F7 ?? E8 ?? ?? ?? ?? F7)
+alloc(InfAmmo_RestoreBytes,1)
+InfAmmo_RestoreBytes:
+  readmem(InfAmmo,1)
+InfAmmo:
+  db EB
+registersymbol(InfAmmo,InfAmmo_RestoreBytes)
+[DISABLE]
+InfAmmo:
+  readmem(InfAmmo_RestoreBytes,1)
+unregistersymbol(*)
+dealloc(*)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337111313</ID>
+          <Description>"No Recoil"</Description>
+          <Color>FF80FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(NoRecoil,$process,0F ?? ?? ?? ?? ?? 0F ?? ?? ?? ?? ?? ?? ?? 48 ?? ?? ?? ?? ?? ?? 0F ?? ?? ?? ?? 33 ??)
+alloc(NoRecoil_RestoreBytes,2)
+NoRecoil_RestoreBytes:
+  readmem(NoRecoil,2)
+NoRecoil:
+  db 90 E9
+registersymbol(NoRecoil,NoRecoil_RestoreBytes)
+[DISABLE]
+NoRecoil:
+  readmem(NoRecoil_RestoreBytes,2)
+unregistersymbol(*)
+dealloc(*)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337111314</ID>
+          <Description>"100% Accuracy"</Description>
+          <Color>FF80FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(100Accuracy01,$process,F3 ?? ?? ?? ?? F3 ?? ?? ?? ?? ?? 48 8B ?? E8 ?? ?? ?? ?? 48 8D)
+aobscanmodule(100Accuracy02,$process,72 ?? F3 ?? ?? ?? F3 ?? ?? ?? ?? F3 ?? ?? ?? ?? F3 ?? ?? ?? F3 ?? ?? ?? 0F 28)
+alloc(100Accuracy01_RestoreBytes,11)
+alloc(100Accuracy02_RestoreBytes,1)
+100Accuracy01_RestoreBytes:
+  readmem(100Accuracy01,11)
+100Accuracy02_RestoreBytes:
+  readmem(100Accuracy02,1)
+100Accuracy01+2:
+  db 11 2C
+100Accuracy01+7:
+  db 11 6C
+100Accuracy02:
+  db EB
+registersymbol(100Accuracy01,100Accuracy02,100Accuracy01_RestoreBytes,100Accuracy02_RestoreBytes)
+[DISABLE]
+100Accuracy01:
+  readmem(100Accuracy01_RestoreBytes,11)
+100Accuracy02:
+  readmem(100Accuracy02_RestoreBytes,1)
+unregistersymbol(*)
+dealloc(*)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337111315</ID>
+          <Description>"Always Sprint"</Description>
+          <Color>FF80FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(AlwaysSprint,$process,0F 84 ?? ?? ?? ?? 41 0F ?? ?? ?? ?? ?? ?? 0F 86 ?? ?? ?? ?? 38)
+alloc(AlwaysSprint_RestoreBytes,2)
+AlwaysSprint_RestoreBytes:
+  readmem(AlwaysSprint,2)
+AlwaysSprint+1:
+  db 85
+registersymbol(AlwaysSprint,AlwaysSprint_RestoreBytes)
+[DISABLE]
+AlwaysSprint:
+  readmem(AlwaysSprint_RestoreBytes,2)
+unregistersymbol(*)
+dealloc(*)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337111331</ID>
+          <Description>"Inf Jump´s"</Description>
+          <Color>FF80FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(infjumps,$process,0F ?? ?? 48 ?? ?? ?? ?? 48 ?? ?? ?? 5F C3 ?? ?? ?? ?? ?? 48 ?? ?? ?? ?? 55)
+alloc(infjumps_RestoreBytes,3)
+infjumps_RestoreBytes:
+  readmem(infjumps,3)
+infjumps:
+  db 90 B0 01
+registersymbol(infjumps,infjumps_RestoreBytes)
+[DISABLE]
+infjumps:
+  readmem(infjumps_RestoreBytes,3)
+unregistersymbol(*)
+dealloc(*)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337111332</ID>
+          <Description>"Edit Cash (click BOSS in MainScreen to get the Value)"</Description>
+          <Options moHideChildren="1"/>
+          <Color>FF80FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(cash,$process,8B ?? ?? ?? ?? ?? C3 ?? ?? ?? ?? ?? ?? ?? ?? ?? 40 ?? 55 41 ??)
+alloc(cash_RestoreBytes,6)
+cash_RestoreBytes:
+  readmem(cash,6)
+alloc(newmem,$1000,cash)
+label(code)
+label(return)
+label(cashedit)
+newmem:
+code:
+  mov eax,[rcx+000000D8]
+  mov [cashedit],rcx
+  jmp return
+cashedit:
+cash:
+  jmp newmem
+  nop
+return:
+registersymbol(cash,cash_RestoreBytes,cashedit)
+[DISABLE]
+cash:
+  readmem(cash_RestoreBytes,6)
+unregistersymbol(*)
+dealloc(*)
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>1337111333</ID>
+              <Description>"Current Cash --&gt;"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>FF80FF</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[cashedit]+D8</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>104269</ID>
+      <Description>"------------------------------------------------------------------------"</Description>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>10326</ID>
+      <Description>"Discord/PayPal-Donation-Link/OCT"</Description>
+      <Options moHideChildren="1"/>
+      <Color>40FF00</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1337380679</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337380680</ID>
+          <Description>"[&lt;--CHECKBOX]_OPEN_MY_GITHUB"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://github.com/mbrking/CE-Tables')
+{$asm}
+
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337111357</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>10324</ID>
+          <Description>"Support/Donations can be Added to my PAYPAL.ME"</Description>
+          <Color>00FF00</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104128</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>41356</ID>
+          <Description>" [&lt;--CHECKBOX] PALPAL.ME Donation/Support Link"</Description>
+          <Color>F8EC07</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://paypal.me/mobiusce')
+{$asm}
+
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104152</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104270</ID>
+          <Description>"my Discord-ID:  --&gt;  ScooPaX#8840  &lt;--"</Description>
+          <Options moAlwaysHideChildren="1"/>
+          <Color>8000FF</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104155</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104156</ID>
+          <Description>"[&lt;--CHECKBOX]_OPEN_OCT_TOPIC"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://opencheattables.com/viewtopic.php?t=1545')
+{$asm}
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104129</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104151</ID>
+          <Description>"[&lt;--CHECKBOX]_OPEN_CHEATENGINE.ORG"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://www.cheatengine.org/')
+{$asm}
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>10634</ID>
+      <Description>"------------------------------------------------------------------------"</Description>
+      <Options moHideChildren="1"/>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>
