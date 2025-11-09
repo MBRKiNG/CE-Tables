@@ -1,0 +1,565 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="46">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1337111356</ID>
+      <Description>"------------------------------------------------------------------------"</Description>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1337380547</ID>
+      <Description>"Skopje_83_v1.0.0071_Steam_20250911_by_MBRKiNG"</Description>
+      <Options moHideChildren="1"/>
+      <Color>4080FF</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>458</ID>
+          <Description>"GodMode (HP Drops but you CannotDie)"</Description>
+          <Color>FF80FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(cannotdie,GameAssembly.dll,74 ?? F3 ?? ?? ?? ?? ?? ?? ?? 0F ?? ?? 77 ?? F3 ?? ?? ?? ?? ?? ?? ?? 0F ?? ?? 76 ?? 0F ?? ?? 48 ?? ?? ?? 5B)
+cannotdie:
+  db 90 90
+registersymbol(cannotdie)
+[DISABLE]
+cannotdie:
+  db 74 1D
+unregistersymbol(*)
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>455</ID>
+          <Description>"Freeze PerkPoints"</Description>
+          <Color>FF80FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(perkpoints,GameAssembly.dll,FF ?? 48 ?? ?? 8B ?? E8 ?? ?? ?? ?? 48 ?? ?? ?? C6 ?? ?? ??)
+perkpoints:
+  db 90 90
+registersymbol(perkpoints)
+[DISABLE]
+perkpoints:
+  db FF CB
+unregistersymbol(*)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>444</ID>
+          <Description>"Air Jumps"</Description>
+          <Color>FF80FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(abletojump,GameAssembly.dll,F3 ?? ?? ?? ?? ?? ?? ?? ?? EB ?? 44 ?? ?? ?? ?? ?? ?? 75 ??)
+abletojump+4:
+  db 8B
+registersymbol(abletojump)
+aobscanmodule(airjump,GameAssembly.dll,0F ?? ?? ?? ?? ?? 48 ?? ?? ?? ?? ?? ?? 44 ?? ?? ?? ?? ?? ?? 74 ?? 48 ?? ?? 0F ?? ?? ?? ?? ??)
+airjump+1:
+  db 8C
+registersymbol(airjump)
+[DISABLE]
+
+abletojump+4:
+  db 83
+airjump+1:
+  db 85
+unregistersymbol(*)
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>383</ID>
+          <Description>"Enable AutoFire"</Description>
+          <Color>FF80FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(autofire,GameAssembly.dll,75 ?? F2 ?? ?? ?? ?? ?? ?? ?? 33 ?? 48 ?? ??)
+autofire:
+  db EB
+autofire+5C:
+  db 90 E9
+autofire+1E8:
+  DB 31 C9 90
+registersymbol(autofire)
+[DISABLE]
+autofire:
+  db 75
+autofire+5C:
+  db 0F 85
+autofire+1E8:
+  db 83 F9 08
+unregistersymbol(*)
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>385</ID>
+          <Description>"Inf Ammo"</Description>
+          <Color>FF80FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(consumeammo1,GameAssembly.dll,8B ?? ?? ?? ?? ?? 89 ?? ?? ?? ?? ?? 8B ?? ?? ?? ?? ?? 89 ?? ?? ?? ?? ?? 8B ?? ?? ?? ?? ?? 89 ?? ?? ?? ?? ?? 48 ?? ?? ?? ?? ?? ?? 48 ?? ?? ?? ?? ?? ?? 85 ?? 74 ?? 4C ?? ?? ?? ?? ?? ?? 49 ?? ?? ?? 41 ?? ?? ?? ?? ?? ?? 41 ?? ?? 48 ?? ?? ?? 41 ?? ?? ?? 41 ?? ?? ?? ?? ?? ?? ?? ?? 0F ?? ?? ?? ?? 49 ?? ?? ?? ?? ?? ?? ?? 48 ?? ?? 4C ?? ?? ?? F0 ?? ?? ?? ?? ?? ?? ?? ?? ?? 75 ?? 8B ?? ?? ?? ?? ?? 8B ?? ?? ?? ?? ??)
+alloc(newmem,$1000,consumeammo1)
+label(code)
+label(return)
+newmem:
+  mov [rdi+00000120],0
+  mov [rdi+00000124],0
+code:
+  mov eax,[rdi+00000120]
+  jmp return
+consumeammo1:
+  jmp newmem
+  nop
+return:
+registersymbol(consumeammo1)
+[DISABLE]
+consumeammo1:
+  db 8B 87 20 01 00 00
+unregistersymbol(*)
+dealloc(*)
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>398</ID>
+          <Description>"Full Food/Drink/Rest"</Description>
+          <Color>FF80FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(food,GameAssembly.dll,F3 ?? ?? ?? ?? 45 ?? ?? 45 ?? ?? 48 ?? ?? E8 ?? ?? ?? ?? 0F ?? ?? 0F ?? ?? 0F ?? ?? ?? ?? ?? F3 ?? ?? ?? ?? ?? ?? ?? 0F ?? ?? 0F ?? ?? ?? ?? ?? 0F ?? ?? E9 ?? ?? ?? ?? 48 ?? ?? ?? ?? ?? ??)
+food+4:
+  db 70
+registersymbol(food)
+aobscanmodule(drink,GameAssembly.dll,F3 ?? ?? ?? ?? 45 ?? ?? 45 ?? ?? 48 ?? ?? E8 ?? ?? ?? ?? 0F ?? ?? 0F ?? ?? 77 ?? F3 ?? ?? ?? ?? ?? ?? ?? 0F ?? ?? 76 ?? 0F ?? ?? EB ?? 48 ?? ?? ?? ?? ?? ??)
+drink+4:
+  db 70
+registersymbol(drink)
+aobscanmodule(rest,GameAssembly.dll,F3 ?? ?? ?? ?? 45 ?? ?? 45 ?? ?? 48 ?? ?? E8 ?? ?? ?? ?? 0F ?? ?? 0F ?? ?? 77 ?? F3 ?? ?? ?? ?? ?? ?? ?? 0F ?? ?? 76 ?? 0F ?? ?? EB ?? 0F ?? ?? 48 ?? ?? ?? ?? ?? ??)
+rest+4:
+  db 70
+registersymbol(rest)
+[DISABLE]
+food+4:
+  db 78
+drink+4:
+  db 78
+rest+4:
+  db 78
+unregistersymbol(*)
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>409</ID>
+          <Description>"Player Health Max"</Description>
+          <Color>FF80FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(playerHealth,GameAssembly.dll,F3 ?? ?? ?? ?? 48 ?? ?? ?? ?? ?? ?? 41 ?? ?? ?? F2 ?? ?? ?? ?? ?? ?? ?? ?? 48 ?? ?? 75 ?? 48 ?? ?? ?? ?? ?? ?? E8 ?? ?? ?? ?? 48 ?? ?? 0F ?? ?? ?? ?? ?? 48 ?? ?? ?? ?? ?? ?? 48 ?? ?? ?? ?? ?? ?? ?? 48 ?? ?? FF ?? 48 ?? ?? ?? 48 ?? ?? 0F ?? ?? ?? ?? ?? 33 ?? E8 ?? ?? ?? ?? 48 ?? ?? ?? ?? ?? ??)
+alloc(newmem,$1000,playerHealth)
+label(code)
+label(return)
+newmem:
+  movss xmm15,[rdx+70]
+  movss [rdx+78],xmm15
+code:
+  movss xmm0,[rdx+78]
+  jmp return
+
+playerHealth:
+  jmp newmem
+return:
+registersymbol(playerHealth)
+[DISABLE]
+playerHealth:
+  db F3 0F 10 42 78
+unregistersymbol(*)
+dealloc(*)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>388</ID>
+          <Description>"no Recoil/Spread"</Description>
+          <Color>FF80FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(recoil,GameAssembly.dll,8B ?? ?? ?? ?? ?? 89 ?? ?? ?? ?? ?? 8B ?? ?? ?? ?? ?? 89 ?? ?? ?? ?? ?? 48 ?? ?? ?? ?? ?? ?? 48 ?? ?? ?? ?? ?? ?? 85 ?? 74 ?? 4C ?? ?? ?? ?? ?? ?? 49 ?? ?? ?? 41 ?? ?? ?? ?? ?? ?? 41 ?? ?? 48 ?? ?? ?? 41 ?? ?? ?? 41 ?? ?? ?? ?? ?? ?? ?? ?? 49 ?? ?? ?? ?? ?? ?? ??)
+alloc(newmem,$1000,recoil)
+label(code)
+label(return)
+newmem:
+  mov [rdi+000000B8],0//shake
+  mov [rdi+000000E0],0//recoilx
+  mov [rdi+000000E4],0//recoily
+  mov [rdi+000000C0],0//Spread
+code:
+  mov eax,[rdi+000000E0]
+  jmp return
+recoil:
+  jmp newmem
+  nop
+return:
+registersymbol(recoil)
+[DISABLE]
+recoil:
+  db 8B 87 E0 00 00 00
+unregistersymbol(*)
+dealloc(*)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>371</ID>
+          <Description>"Enable Pointer"</Description>
+          <Options moHideChildren="1" moDeactivateChildrenAsWell="1"/>
+          <Color>FFFF80</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(sgm,GameAssembly.dll,48 ?? ?? ?? ?? 0F ?? ?? ?? ?? ?? 4C ?? ?? ?? ?? 48 ?? ?? ?? ?? ?? ?? 45 ?? ?? 83 ?? ?? ?? ?? ?? ??)
+alloc(newmem,$1000,sgm)
+label(code)
+label(return)
+label(p_SGM)
+newmem:
+code:
+  cmp qword ptr [rbx+10],00
+  mov [p_SGM],rbx
+  jmp return
+p_SGM:
+sgm:
+  jmp newmem
+return:
+registersymbol(sgm p_SGM)
+[DISABLE]
+sgm:
+  db 48 83 7B 10 00
+unregistersymbol(*)
+dealloc(*)
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>464</ID>
+              <Description>"Player"</Description>
+              <Options moHideChildren="1"/>
+              <Color>00FF00</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>457</ID>
+                  <Description>"CannotDie"</Description>
+                  <Color>FF8080</Color>
+                  <VariableType>Byte</VariableType>
+                  <Address>[p_SGM]+188</Address>
+                  <Offsets>
+                    <Offset>37C</Offset>
+                    <Offset>20</Offset>
+                    <Offset>10</Offset>
+                    <Offset>58</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>459</ID>
+                  <Description>"Health_value"</Description>
+                  <Color>FF8080</Color>
+                  <VariableType>Float</VariableType>
+                  <Address>[p_SGM]+188</Address>
+                  <Offsets>
+                    <Offset>78</Offset>
+                    <Offset>168</Offset>
+                    <Offset>158</Offset>
+                    <Offset>20</Offset>
+                    <Offset>10</Offset>
+                    <Offset>58</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>460</ID>
+                  <Description>"Food_value"</Description>
+                  <Color>FF8080</Color>
+                  <VariableType>Float</VariableType>
+                  <Address>[p_SGM]+188</Address>
+                  <Offsets>
+                    <Offset>78</Offset>
+                    <Offset>170</Offset>
+                    <Offset>158</Offset>
+                    <Offset>20</Offset>
+                    <Offset>10</Offset>
+                    <Offset>58</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>461</ID>
+                  <Description>"Drink_value"</Description>
+                  <Color>FF8080</Color>
+                  <VariableType>Float</VariableType>
+                  <Address>[p_SGM]+188</Address>
+                  <Offsets>
+                    <Offset>78</Offset>
+                    <Offset>178</Offset>
+                    <Offset>158</Offset>
+                    <Offset>20</Offset>
+                    <Offset>10</Offset>
+                    <Offset>58</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>462</ID>
+                  <Description>"Rest_value"</Description>
+                  <Color>FF8080</Color>
+                  <VariableType>Float</VariableType>
+                  <Address>[p_SGM]+188</Address>
+                  <Offsets>
+                    <Offset>78</Offset>
+                    <Offset>180</Offset>
+                    <Offset>158</Offset>
+                    <Offset>20</Offset>
+                    <Offset>10</Offset>
+                    <Offset>58</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>463</ID>
+                  <Description>"Evolution_value"</Description>
+                  <Color>FF8080</Color>
+                  <VariableType>Float</VariableType>
+                  <Address>[p_SGM]+188</Address>
+                  <Offsets>
+                    <Offset>78</Offset>
+                    <Offset>188</Offset>
+                    <Offset>158</Offset>
+                    <Offset>20</Offset>
+                    <Offset>10</Offset>
+                    <Offset>58</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>466</ID>
+              <Description>"Level Progress"</Description>
+              <Options moHideChildren="1"/>
+              <Color>4080FF</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>427</ID>
+                  <Description>"EXP Multiplier"</Description>
+                  <Color>C08000</Color>
+                  <VariableType>Float</VariableType>
+                  <Address>[p_SGM]+188</Address>
+                  <Offsets>
+                    <Offset>18</Offset>
+                    <Offset>28</Offset>
+                    <Offset>3E0</Offset>
+                    <Offset>30</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>429</ID>
+                  <Description>"Current Level"</Description>
+                  <Color>C08000</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>[p_SGM]+188</Address>
+                  <Offsets>
+                    <Offset>78</Offset>
+                    <Offset>3C0</Offset>
+                    <Offset>30</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>428</ID>
+                  <Description>"Total XP"</Description>
+                  <Color>C08000</Color>
+                  <VariableType>Float</VariableType>
+                  <Address>[p_SGM]+188</Address>
+                  <Offsets>
+                    <Offset>78</Offset>
+                    <Offset>3C8</Offset>
+                    <Offset>30</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>456</ID>
+                  <Description>"Current Perk Points (Edit &amp; Press U)"</Description>
+                  <Color>C08000</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>[p_SGM]+188</Address>
+                  <Offsets>
+                    <Offset>78</Offset>
+                    <Offset>2E8</Offset>
+                    <Offset>20</Offset>
+                    <Offset>10</Offset>
+                    <Offset>58</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>465</ID>
+              <Description>"Resource's"</Description>
+              <Options moHideChildren="1"/>
+              <Color>00FFFF</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>414</ID>
+                  <Description>"Current Metal"</Description>
+                  <Color>8080FF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>[p_SGM]+298</Address>
+                  <Offsets>
+                    <Offset>78</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>416</ID>
+                  <Description>"Current  Fabric"</Description>
+                  <Color>8080FF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>[p_SGM]+2A0</Address>
+                  <Offsets>
+                    <Offset>78</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>418</ID>
+                  <Description>"Current  Chemicals"</Description>
+                  <Color>8080FF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>[p_SGM]+2A8</Address>
+                  <Offsets>
+                    <Offset>78</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>104269</ID>
+      <Description>"------------------------------------------------------------------------"</Description>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>10326</ID>
+      <Description>"Discord/PayPal-Donation-Link/OCT"</Description>
+      <Options moHideChildren="1"/>
+      <Color>40FF00</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1337380679</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337380680</ID>
+          <Description>"[&lt;--CHECKBOX]_OPEN_MY_GITHUB"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://github.com/mbrking/CE-Tables')
+{$asm}
+
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337111357</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>10324</ID>
+          <Description>"Support/Donations can be Added to my PAYPAL.ME"</Description>
+          <Color>00FF00</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104128</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>41356</ID>
+          <Description>" [&lt;--CHECKBOX] PALPAL.ME Donation/Support Link"</Description>
+          <Color>F8EC07</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://paypal.me/mobiusce')
+{$asm}
+
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104152</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104270</ID>
+          <Description>"my Discord-ID:  --&gt;  ScooPaX#8840  &lt;--"</Description>
+          <Options moAlwaysHideChildren="1"/>
+          <Color>8000FF</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104155</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104156</ID>
+          <Description>"[&lt;--CHECKBOX]_OPEN_OCT_TOPIC"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://opencheattables.com/viewtopic.php?t=1615')
+{$asm}
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104129</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104151</ID>
+          <Description>"[&lt;--CHECKBOX]_OPEN_CHEATENGINE.ORG"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://www.cheatengine.org/')
+{$asm}
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>10634</ID>
+      <Description>"------------------------------------------------------------------------"</Description>
+      <Options moHideChildren="1"/>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>
