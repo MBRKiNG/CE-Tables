@@ -1,0 +1,827 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="46">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1337111356</ID>
+      <Description>"------------------------------------------------------------------------"</Description>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"PalWorld_PalEditor_v0.6.9.82911_Steam_GamePass_20251711_by_MBRKiNG"</Description>
+      <Options moHideChildren="1"/>
+      <Color>4080FF</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>88390</ID>
+          <Description>"----------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>88391</ID>
+          <Description>"[0] Open Steam Process"</Description>
+          <Color>FF80FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+{$lua}
+OpenProcess("Palworld-Win64-Shipping.exe")
+{$asm}
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>88389</ID>
+          <Description>"----------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>88392</ID>
+          <Description>"[0] Open GamePass Process"</Description>
+          <Color>FF80FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+{$lua}
+OpenProcess("Palworld-WinGDK-Shipping.exe")
+{$asm}
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>88393</ID>
+          <Description>"----------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>88394</ID>
+          <Description>"[1] Pal Passive ID Scanner (scan takes a few seconds)"</Description>
+          <Color>FF80FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+if syntaxcheck then return end
+[ENABLE]
+autoAssemble([[
+aobscan(getpalp, ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 02 00 00 00 ?? ?? ?? 00 02 00 00 00 ?? ?? ?? 00 02 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 02 00 00 00 ?? ?? ?? 00 03 00 00 00 ?? ?? ?? 00 02 00 00 00 ?? ?? ?? 00 03 00 00 00 ?? ?? ?? 00 04 00 00 00 ?? ?? ?? 00 02 00 00 00 ?? ?? ?? 00 03 00 00 00 ?? ?? ?? 00 02 00 00 00 ?? ?? ?? 00 03 00 00 00 ?? ?? ?? 00 04 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 02 00 00 00 ?? ?? ?? 00 03 00 00 00 ?? ?? ?? 00 04 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 02 00 00 00 ?? ?? ?? 00 03 00 00 00 ?? ?? ?? 00 02 00 00 00 ?? ?? ?? 00 02 00 00 00 ?? ?? ?? 00 03 00 00 00 ?? ?? ?? 00 04 00 00 00 ?? ?? ?? 00 02 00 00 00 ?? ?? ?? 00 02 00 00 00 ?? ?? ?? 00 03 00 00 00 ?? ?? ?? 00 02 00 00 00 ?? ?? ?? 00 00 00 00 00 ?? ?? ?? 00 00 00 00 00)
+registersymbol(getpalp)
+]])
+local address = getAddressSafe("getpalp")
+if address ~= nil and address ~= 0 then
+    MessageDialog("Scan Done at address: " .. string.format("0x%X", address), '\n\nENABLE NOW: --&gt; *[2] Pal Passive ID Dumper*')
+else
+    MessageDialog("Scan failed")
+end
+[DISABLE]
+autoAssemble([[
+unregistersymbol(getpalp)
+]])
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>88417</ID>
+          <Description>"----------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>88418</ID>
+          <Description>"[2] Pal Passive ID Dumper"</Description>
+          <Color>FF80FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+if syntaxcheck then return end
+[ENABLE]
+local pointer = "getpalp"
+local length = 728
+local bytesPerLine = 8
+local desktopPath = os.getenv("USERPROFILE") .. "\\Desktop\\pal_memory_dump.txt"
+local customNames = {
+    ":L_Remarkable Craftsmanship - Work Speed +75%.",
+    ":G_Artisan - Work Speed +50%",
+    ":W_Serious - Work Speed +20%",
+    ":R_Clumsy - Work Speed -10%",
+    ":R_Slacker - Work Speed -30%",
+    ":L_Diamond Body - 	Defense 30%.",
+    ":G_Burly Body - Defense +20%",
+    ":W_Hard Skin - Defense +10%",
+    ":R_Downtrodden - Defense -10%",
+    ":R_Brittle - 	Defense -20%",
+    ":G_Musclehead - Attack +30%, Work Speed -50%",
+    ":L_Lucky - Work Speed +15%, Attack +15%",
+    ":L_Legend - Attack +20%, Defense +20%, Movement Speed increases 15%",
+    ":L_Siren of the Void - 30% increase to Dark attack damage. 30% increase to Ice attack damage.",
+    ":L_Eternal Flame - 30% increase to Fire attack damage. 30% increase to Lightning attack damage.",
+    ":L_Invader - 30% increase in Dark attack damage. 30% increase in Dragon attack damage.",
+    ":L_Demon God - Attack +30%. Defense +5%.",
+    ":W_Ferocious - Attack +20%",
+    ":W_Brave - Attack +10%",
+    ":R_Coward - Attack -10%",
+    ":R_Pacifist - Attack -20%",
+    ":W_Hooligan - Attack +15%, Work Speed -10%",
+    ":W_Conceited - Work Speed +10%, Defense -10%",
+    ":W_Sadist - Attack +15%, Defense -15%",
+    ":W_Masochist - Defense +15%, Attack -15%",
+    ":W_Work Slave - Work Speed +30%, Attack -30%",
+    ":W_Aggressive - Attack +10%, Defense -10%",
+    ":G_Vanguard - 10% increase to Player Attack.",
+    ":G_Stronghold Strategist - 10% increase to Player Defense.",
+    ":G_Motivational Leader - 25% increase to Player Work Speed.",
+    ":G_Mine Foreman - 25% increase to Player Mining Efficiency.",
+    ":G_Logging Foreman - 25% increase to Player Logging Efficiency.",
+    ":W_Abnormal - 10% decrease to incoming Neutral damage.",
+    ":W_Suntan Lover - 10% decrease to incoming Fire damage.",
+    ":W_Waterproof - 10% decrease to incoming Water damage.",
+    ":W_Insulated Body - 10% decrease to incoming Lightning damage.",
+    ":W_Botanical Barrier - 10% decrease to incoming Grass damage.",
+    ":W_Heated Body - 10% decrease to incoming Ice damage.",
+    ":W_Earthquake Resistant - 10% decrease to incoming Ground damage.",
+    ":W_Cheery - 10% decrease to incoming Dark damage.",
+    ":W_Dragon Killer - 10% decrease to incoming Dragon damage.",
+    ":W_Zen Mind - 10% increase to Neutral attack damage.",
+    ":W_Pyromaniac - 10% increase to Fire attack damage.",
+    ":W_Hydromaniac - 10% increase to Water attack damage.",
+    ":W_Capacitor - 10% increase to Lightning attack damage.",
+    ":W_Fragrant Foliage - 10% increase to Grass attack damage.",
+    ":W_Coldblooded - 10% increase to Ice attack damage.",
+    ":W_Power of Gaia - 10% increase to Earth attack damage.",
+    ":W_Veil of Darkness - 10% increase to Dark attack damage.",
+    ":W_Blood of the Dragon - 10% increase to Dragon attack damage.",
+    ":R_Glutton - Hunger decreases +10% faster.",
+    ":R_Buttomless Stomach - 	Hunger decreases +15% faster.",
+    ":W_Dainty Eater - Hunger decreases +10% slower.",
+    ":G_Diet Lover - Hunger decreases +15% slower",
+    ":L_Mastery of Fasting - Hunger decreases +30% slower.",
+    ":R_Unstable - SAN drops +10% faster.",
+    ":R_Destructive - SAN drops +15% faster.",
+    ":W_Positive Thinker - 	SAN drops +10% slower.",
+    ":G_Workaholic - SAN drops +15% slower.",
+    ":L_Heart of the Immovable King - SAN drops +20% slower.",
+    ":G_Celestial Emperor - 20% increase to Normal attack damage.",
+    ":G_Flame Emperor - 20% increase to Fire attack damage.",
+    ":G_Lord of the Sea - 20% increase to Water attack damage.",
+    ":G_Lord of Lightning - 20% increase to Lightning attack damage.",
+    ":G_Spirit Emperor - 20% increase to Grass attack damage.",
+    ":G_Ice Emperor - 20% increase to Ice attack damage.",
+    ":G_Earth Emperor - 20% increase to Earth attack damage.",
+    ":G_Lord of the Underworld - 20% increase to Dark attack damage.",
+    ":G_Divine Dragon - 20% increase to Dragon attack damage.",
+    ":W_Nimble - 10% increase to Movement Speed.",
+    ":G_Runner - 20% increase to Movement Speed.",
+    ":L_Swift - 30% increase to movement speed.",
+    ":R_Mercy Hit - Pacifist. Will not reduce the target's Health below 1.",
+    ":W_Nocturnal - Does not sleep and continues to work even at night.",
+    ":G_Philanthropist - When assigned to a Breeding Farm, breeding speed is increased by 100%",
+    ":G_Serenity - Active skill cooldown reduction 30%, Attack +10%",
+    ":W_Impatient - Active skill cooldown reduction 15%",
+    ":R_Easygoing - Active Skill Cooldown extension -15%.",
+    ":G_Infinite Stamina - Max Stamina +50% This effect is only valid for Rideable Pals.",
+    ":W_Fast as a Fiddle - Max Stamina +25% This effect is only valid for Rideable Pals.",
+    ":L_Eternal Engine - Max Stamina +75% This effect is only valid for Rideable Pals.",
+    ":R_Slicky - Max Stamina -25% This effect is only valid for Rideable Pals.",
+    ":G_Noble - Sale price +5%",
+    ":W_FineFurs - Sale price +3%",
+    ":R_Shabby - Sale price -10%",
+    ":W_Otherworldly Cells - Attack +10%, Fire damage reduction 15%, Lightning damage reduction 15%",
+    ":L_Vampiric - Absorbs a portion of the damage dealt to restore Health. Does not sleep at night and continues to work.",
+    ":L_Lunker - 20% Increased Water Attack Damage, 20% Increased Ice Attack Damage, 20% Increased Defense.",
+    ":W_Sleek Stroke - 30% Increased Movement Speed on Water.",
+    ":G_Ace Swimmer - 40% Increased Movement Speed on Water.",
+    ":L_King of the Waves - 50% Increased Movement Speed on Water."
+}
+function formatBytes(byteTable)
+    local formatted = ""
+    for i, byte in ipairs(byteTable) do
+        formatted = formatted .. string.format("%02X ", byte)
+    end
+    return formatted:sub(1, -2)
+end
+function dumpToFile()
+    local file = io.open(desktopPath, "w")
+    if not file then
+        MessageDialog("❌ Failed to open file for writing!")
+        return
+    end
+    local address = getAddress(pointer)
+    local bytesRead = 0
+    local index = 1
+    while bytesRead &lt; length do
+        local byteTable = readBytes(address + bytesRead, bytesPerLine, true)
+
+        if byteTable then
+            local name = customNames[index] or ""
+            file:write(formatBytes(byteTable) .. "" .. name .. "\n")
+        else
+            MessageDialog(string.format("❌ Error reading memory at 0x%X", address + bytesRead))
+            break
+        end
+        bytesRead = bytesRead + bytesPerLine
+        index = index + 1
+    end
+    file:close()
+    MessageDialog("✅ Memory dump saved to: " .. desktopPath)
+end
+dumpToFile()
+
+local descriptions = {
+    "Passive Skill 1 ---&gt;",
+    "Passive Skill 2 ---&gt;",
+    "Passive Skill 3 ---&gt;",
+    "Passive Skill 4 ---&gt;"
+}
+
+local memoryRecords = {}
+
+for i, desc in ipairs(descriptions) do
+    local mr = getAddressList().getMemoryRecordByDescription(desc)
+    if not mr then
+        showMessage("Memory record not found: " .. desc)
+        return
+    end
+    table.insert(memoryRecords, mr)
+end
+
+local filepath = os.getenv("USERPROFILE") .. "\\Desktop\\pal_memory_dump.txt"
+local file = io.open(filepath, "r")
+if not file then
+    showMessage("File not found: " .. filepath)
+    return
+end
+local options = file:read("*all")
+file:close()
+
+for _, mr in ipairs(memoryRecords) do
+    mr.DropDownList.Text = options
+    mr.DropDownReadOnly = true
+    mr.DropDownDescriptionOnly = true
+    mr.DisplayAsDropDownListItem = true
+end
+
+local timer = createTimer()
+timer.Interval = 1 * 200
+timer.OnTimer = function(theTimerCallingThisFunction)
+  memrec.Active = false
+  timer.destroy()
+  end
+shellExecute(os.getenv("USERPROFILE") .. "\\Desktop\\pal_memory_dump.txt")
+
+[DISABLE]
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>88419</ID>
+          <Description>"----------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>88420</ID>
+          <Description>"[3] Mouse Over Pal Editor"</Description>
+          <Options moHideChildren="1"/>
+          <Color>C080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : Palworld-Win64-Shipping.exe
+  Version: 
+  Date   : 2025-11-17
+  Author : MBRKiNG
+}
+[ENABLE]
+aobscanmodule(pal_passive_changer,$process,48 8B ?? ?? ?? ?? ?? 89 ?? ?? 85 ?? 75 ?? 89 ?? ?? 48 8B ?? 48 8B ?? ?? ?? 48 8B ?? ?? ?? 48 83 ?? ?? 5F C3 45 33 ?? 8B ?? 48 8B ?? E8 ?? ?? ?? ?? 48 8B ?? 4C ?? ?? 4D ?? ?? 48 8B ?? E8 ?? ?? ?? ?? 48 8B ?? ?? ?? 48 8B ?? 48 8B ?? ?? ?? 48 83 ?? ?? 5F C3 ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? 48 89)
+alloc(newmem,$1000,pal_passive_changer)
+label(code)
+label(return)
+label(pal_p)
+newmem:
+code:
+  mov [pal_p],rcx
+  mov rsi,[rcx+000003D0]//old368 new3D0 change+68
+  jmp return
+pal_p:
+  dq 0
+pal_passive_changer:
+  jmp newmem
+  nop 2
+return:
+registersymbol(pal_passive_changer pal_p)
+[DISABLE]
+pal_passive_changer:
+  db 48 8B B1 D0 03 00 00
+unregistersymbol(*)
+dealloc(*)
+
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>88468</ID>
+              <Description>"----------------------------------------"</Description>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>88469</ID>
+              <Description>"[CURRENT-PAL-SLOT-NUMBER]"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>00FF00</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>pal_p</Address>
+              <Offsets>
+                <Offset>470+70</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>88470</ID>
+              <Description>"[FLAG] Moved from Global Box"</Description>
+              <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:YES
+1:NO
+</DropDownList>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>00FF00</Color>
+              <VariableType>Byte</VariableType>
+              <Address>pal_p</Address>
+              <Offsets>
+                <Offset>5B4+68</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>88471</ID>
+              <Description>"[FLAG] Global Box Sign"</Description>
+              <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:FLAG OFF
+1:FLAG ON
+</DropDownList>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>00FF00</Color>
+              <VariableType>Byte</VariableType>
+              <Address>pal_p</Address>
+              <Offsets>
+                <Offset>5B8+68</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>88472</ID>
+              <Description>"[FLAG] is Shiny/Lucky Pal"</Description>
+              <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:NO
+1:YES
+</DropDownList>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>00FF00</Color>
+              <VariableType>Byte</VariableType>
+              <Address>pal_p</Address>
+              <Offsets>
+                <Offset>360+68</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>88473</ID>
+              <Description>"[FLAG] Pal Gender"</Description>
+              <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">2:Female
+1:Male
+</DropDownList>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>00FF00</Color>
+              <VariableType>Byte</VariableType>
+              <Address>pal_p</Address>
+              <Offsets>
+                <Offset>320+68</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>88474</ID>
+              <Description>"----------------------------------------"</Description>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>88475</ID>
+              <Description>"[Value 1-255] Pal Current Level"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>00FFFF</Color>
+              <VariableType>Byte</VariableType>
+              <Address>pal_p</Address>
+              <Offsets>
+                <Offset>330+68</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>88476</ID>
+              <Description>"[Value 1-255] Pal Star Level Partner Skill"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>00FFFF</Color>
+              <VariableType>Byte</VariableType>
+              <Address>pal_p</Address>
+              <Offsets>
+                <Offset>331+68</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>88477</ID>
+              <Description>"----------------------------------------"</Description>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>88478</ID>
+              <Description>"[Value 1-255] Potion Enhance Pal Heath"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>4080FF</Color>
+              <VariableType>Byte</VariableType>
+              <Address>pal_p</Address>
+              <Offsets>
+                <Offset>390+68</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>88479</ID>
+              <Description>"[Value 1-255] Potion Enhance Pal Attack"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>4080FF</Color>
+              <VariableType>Byte</VariableType>
+              <Address>pal_p</Address>
+              <Offsets>
+                <Offset>392+68</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>88480</ID>
+              <Description>"[Value 1-255] Potion Enhance Pal Defense"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>4080FF</Color>
+              <VariableType>Byte</VariableType>
+              <Address>pal_p</Address>
+              <Offsets>
+                <Offset>393+68</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>88481</ID>
+              <Description>"----------------------------------------"</Description>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>88482</ID>
+              <Description>"[Value 1-255] Pal Souls Enhance Heath"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>80FF80</Color>
+              <VariableType>Byte</VariableType>
+              <Address>pal_p</Address>
+              <Offsets>
+                <Offset>334+68</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>88483</ID>
+              <Description>"[Value 1-255] Pal Souls Enhance Attack"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>80FF80</Color>
+              <VariableType>Byte</VariableType>
+              <Address>pal_p</Address>
+              <Offsets>
+                <Offset>335+68</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>88484</ID>
+              <Description>"[Value 1-255] Pal Souls Enhance Defense"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>80FF80</Color>
+              <VariableType>Byte</VariableType>
+              <Address>pal_p</Address>
+              <Offsets>
+                <Offset>336+68</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>88485</ID>
+              <Description>"[Value 1-255] Pal Souls Enhance Work Speed"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>80FF80</Color>
+              <VariableType>Byte</VariableType>
+              <Address>pal_p</Address>
+              <Offsets>
+                <Offset>337+68</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>88486</ID>
+              <Description>"----------------------------------------"</Description>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>88487</ID>
+              <Description>"[Current PAL EXP]"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>00FF00</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>pal_p</Address>
+              <Offsets>
+                <Offset>338+68</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>88488</ID>
+              <Description>"----------------------------------------"</Description>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>88489</ID>
+              <Description>"Current Passives (Change only to Max Passive Value)"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>00FF00</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>pal_p</Address>
+              <Offsets>
+                <Offset>3A8+68</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>88490</ID>
+              <Description>"----------------------------------------"</Description>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>88491</ID>
+              <Description>"Max Passives (do not change this value)"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>0000FF</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>pal_p</Address>
+              <Offsets>
+                <Offset>3AC+68</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>88492</ID>
+              <Description>"----------------------------------------"</Description>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>88493</ID>
+              <Description>"Mouse over Pal, Press "F", use DropDown Menu or Copy Paste ID´s"</Description>
+              <Color>4080FF</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>88494</ID>
+              <Description>"----------------------------------------"</Description>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>88517</ID>
+              <Description>"Drop Down ID Skill Changer (use ID Dumper first)"</Description>
+              <Options moHideChildren="1"/>
+              <Color>FFFF80</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>88495</ID>
+                  <Description>"Passive Skill 1 ---&gt;"</Description>
+                  <ShowAsHex>1</ShowAsHex>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>8000FF</Color>
+                  <VariableType>Array of byte</VariableType>
+                  <ByteLength>8</ByteLength>
+                  <Address>pal_p</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                    <Offset>3A0+68</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>88496</ID>
+                  <Description>"Passive Skill 2 ---&gt;"</Description>
+                  <ShowAsHex>1</ShowAsHex>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>8000FF</Color>
+                  <VariableType>Array of byte</VariableType>
+                  <ByteLength>8</ByteLength>
+                  <Address>pal_p</Address>
+                  <Offsets>
+                    <Offset>8</Offset>
+                    <Offset>3A0+68</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>88497</ID>
+                  <Description>"Passive Skill 3 ---&gt;"</Description>
+                  <ShowAsHex>1</ShowAsHex>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>8000FF</Color>
+                  <VariableType>Array of byte</VariableType>
+                  <ByteLength>8</ByteLength>
+                  <Address>pal_p</Address>
+                  <Offsets>
+                    <Offset>10</Offset>
+                    <Offset>3A0+68</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>88498</ID>
+                  <Description>"Passive Skill 4 ---&gt;"</Description>
+                  <ShowAsHex>1</ShowAsHex>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>8000FF</Color>
+                  <VariableType>Array of byte</VariableType>
+                  <ByteLength>8</ByteLength>
+                  <Address>pal_p</Address>
+                  <Offsets>
+                    <Offset>18</Offset>
+                    <Offset>3A0+68</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>88499</ID>
+              <Description>"----------------------------------------"</Description>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>88516</ID>
+              <Description>"Manually Edit ID´s (Copy Paste)"</Description>
+              <Options moHideChildren="1"/>
+              <Color>FFFF80</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>88511</ID>
+                  <Description>"Passive Skill 1 ----&gt;"</Description>
+                  <ShowAsHex>1</ShowAsHex>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>8000FF</Color>
+                  <VariableType>Array of byte</VariableType>
+                  <ByteLength>8</ByteLength>
+                  <Address>pal_p</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                    <Offset>3A0+68</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>88512</ID>
+                  <Description>"Passive Skill 2 ----&gt;"</Description>
+                  <ShowAsHex>1</ShowAsHex>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>8000FF</Color>
+                  <VariableType>Array of byte</VariableType>
+                  <ByteLength>8</ByteLength>
+                  <Address>pal_p</Address>
+                  <Offsets>
+                    <Offset>8</Offset>
+                    <Offset>3A0+68</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>88513</ID>
+                  <Description>"Passive Skill 3 ----&gt;"</Description>
+                  <ShowAsHex>1</ShowAsHex>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>8000FF</Color>
+                  <VariableType>Array of byte</VariableType>
+                  <ByteLength>8</ByteLength>
+                  <Address>pal_p</Address>
+                  <Offsets>
+                    <Offset>10</Offset>
+                    <Offset>3A0+68</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>88514</ID>
+                  <Description>"Passive Skill 4 ----&gt;"</Description>
+                  <ShowAsHex>1</ShowAsHex>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>8000FF</Color>
+                  <VariableType>Array of byte</VariableType>
+                  <ByteLength>8</ByteLength>
+                  <Address>pal_p</Address>
+                  <Offsets>
+                    <Offset>18</Offset>
+                    <Offset>3A0+68</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>88515</ID>
+              <Description>"----------------------------------------"</Description>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>104269</ID>
+      <Description>"------------------------------------------------------------------------"</Description>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>10326</ID>
+      <Description>"Discord/PayPal-Donation-Link/OCT"</Description>
+      <Options moHideChildren="1"/>
+      <Color>40FF00</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1337380679</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337380680</ID>
+          <Description>"[&lt;--CHECKBOX]_OPEN_MY_GITHUB"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://github.com/mbrking/CE-Tables')
+{$asm}
+
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337111357</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>10324</ID>
+          <Description>"Support/Donations can be Added to my PAYPAL.ME"</Description>
+          <Color>00FF00</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104128</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>41356</ID>
+          <Description>" [&lt;--CHECKBOX] PALPAL.ME Donation/Support Link"</Description>
+          <Color>F8EC07</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://paypal.me/mobiusce')
+{$asm}
+
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104152</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104270</ID>
+          <Description>"my Discord-ID:  --&gt;  ScooPaX#8840  &lt;--"</Description>
+          <Options moAlwaysHideChildren="1"/>
+          <Color>8000FF</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104155</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104156</ID>
+          <Description>"[&lt;--CHECKBOX]_OPEN_OCT_TOPIC"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://opencheattables.com/viewtopic.php?t=1679')
+{$asm}
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104129</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104151</ID>
+          <Description>"[&lt;--CHECKBOX]_OPEN_CHEATENGINE.ORG"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://www.cheatengine.org/')
+{$asm}
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>10634</ID>
+      <Description>"------------------------------------------------------------------------"</Description>
+      <Options moHideChildren="1"/>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>
