@@ -1,0 +1,1357 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="50">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1337111356</ID>
+      <Description>"------------------------------------------------------------------------"</Description>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1337321952</ID>
+      <Description>"Tiny_Aquarium_v1.15.5_Steam_20252311_by_MBRKiNG"</Description>
+      <Options moHideChildren="1"/>
+      <Color>4080FF</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>
+
+[ENABLE]
+{$lua}
+if syntaxcheck then return end
+--mono_initialize()
+LaunchMonoDataCollector()
+{$asm}
+[DISABLE]
+
+
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>91</ID>
+          <Description>"Game Manager (pointerstuff)"</Description>
+          <Options moHideChildren="1"/>
+          <Color>00FFFF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(gamemanager,GameAssembly.dll,48 ?? ?? ?? 83 ?? ?? ?? ?? ?? ?? 75 ?? E8 ?? ?? ?? ?? 45 ?? ?? 33 ?? 48 ?? ?? E8 ?? ?? ?? ?? 48 ?? ?? ?? ?? 84 ?? 0F ?? ?? ?? ?? ?? 38 ?? ?? ?? ?? ??) // should be unique
+alloc(newmem,$1000,gamemanager)
+label(code)
+label(return)
+label(gval)
+newmem:
+code:
+  mov [gval],rax
+  mov rdi,[rax+78]
+  cmp dword ptr [rcx+000000E4],00
+  jmp return
+gval:
+dd
+gamemanager:
+  jmp newmem
+  nop 6
+return:
+registersymbol(gamemanager gval)
+[DISABLE]
+gamemanager:
+  db 48 8B 78 78 83 B9 E4 00 00 00 00
+unregistersymbol(*)
+dealloc(*)
+
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>92</ID>
+              <Description>"fastForwardSeconds"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>[gval]+2bC</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>93</ID>
+              <Description>"newReactionsReceived"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gval]+2c0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>94</ID>
+              <Description>"timeMultiplier"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>[gval]+2c4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>95</ID>
+              <Description>"healthDepletionMultiplier"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>[gval]+2c8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>96</ID>
+              <Description>"hungerMultiplier"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>[gval]+2cc</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>97</ID>
+              <Description>"maxFishRevenueHours"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>[gval]+2d0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>98</ID>
+              <Description>"uniqueChance"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>[gval]+2d4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>99</ID>
+              <Description>"uniqueChancePerParent"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>[gval]+2d8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>100</ID>
+              <Description>"goldenChance"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>[gval]+2dC</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>101</ID>
+              <Description>"baseFeedValue"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gval]+2e0</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>102</ID>
+              <Description>"baseBreedingCooldown"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gval]+2e4</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>103</ID>
+              <Description>"breedingCooldownPerRarity"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gval]+2e8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>104</ID>
+              <Description>"minLevelForOnlineMarket"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gval]+2f8</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>105</ID>
+              <Description>"fishSellPriceMultiplier"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>[gval]+2fc</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>106</ID>
+              <Description>"FishTank baseCapacity"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gval]+340</Address>
+              <Offsets>
+                <Offset>18</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1337321946</ID>
+              <Description>"Coins currentValue"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gval]+338</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>20</Offset>
+                <Offset>20</Offset>
+                <Offset>30</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1337321947</ID>
+              <Description>"Pearls currentValue"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gval]+338</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>28</Offset>
+                <Offset>20</Offset>
+                <Offset>30</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1337321948</ID>
+              <Description>"Shells currentValue"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gval]+338</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>30</Offset>
+                <Offset>20</Offset>
+                <Offset>30</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1337321949</ID>
+              <Description>"XP currentValue"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gval]+338</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>38</Offset>
+                <Offset>20</Offset>
+                <Offset>30</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1337321950</ID>
+              <Description>"Event currentValue"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>4 Bytes</VariableType>
+              <Address>[gval]+338</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>40</Offset>
+                <Offset>20</Offset>
+                <Offset>30</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115</ID>
+              <Description>"Dirtiness"</Description>
+              <Options moHideChildren="1"/>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>108</ID>
+                  <Description>"currentValue"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>[gval]+78</Address>
+                  <Offsets>
+                    <Offset>10</Offset>
+                    <Offset>28</Offset>
+                    <Offset>20</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>109</ID>
+                  <Description>"minValue"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>[gval]+78</Address>
+                  <Offsets>
+                    <Offset>14</Offset>
+                    <Offset>28</Offset>
+                    <Offset>20</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>110</ID>
+                  <Description>"maxValue"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>[gval]+78</Address>
+                  <Offsets>
+                    <Offset>18</Offset>
+                    <Offset>28</Offset>
+                    <Offset>20</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>111</ID>
+                  <Description>"speckCleanPower"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>[gval]+48</Address>
+                  <Offsets>
+                    <Offset>20</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>112</ID>
+                  <Description>"maxDirtSpecks"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>[gval]+48</Address>
+                  <Offsets>
+                    <Offset>38</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>113</ID>
+                  <Description>"totalDirtiness"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>[gval]+48</Address>
+                  <Offsets>
+                    <Offset>44</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>114</ID>
+                  <Description>"minutesUntilFullDirt"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>[gval]+48</Address>
+                  <Offsets>
+                    <Offset>60</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1337321951</ID>
+              <Description>"misc"</Description>
+              <Options moHideChildren="1"/>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>1337321834</ID>
+                  <Description>"Money"</Description>
+                  <ShowAsHex>1</ShowAsHex>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>[gval]+338</Address>
+                  <Offsets>
+                    <Offset>20</Offset>
+                    <Offset>20</Offset>
+                    <Offset>30</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>1337321835</ID>
+                      <Description>"Coins currentValue"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[gval]+338</Address>
+                      <Offsets>
+                        <Offset>10</Offset>
+                        <Offset>20</Offset>
+                        <Offset>20</Offset>
+                        <Offset>30</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321836</ID>
+                      <Description>"minValue"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[gval]+338</Address>
+                      <Offsets>
+                        <Offset>14</Offset>
+                        <Offset>20</Offset>
+                        <Offset>20</Offset>
+                        <Offset>30</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321837</ID>
+                      <Description>"maxValue"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[gval]+338</Address>
+                      <Offsets>
+                        <Offset>18</Offset>
+                        <Offset>20</Offset>
+                        <Offset>20</Offset>
+                        <Offset>30</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337321838</ID>
+                  <Description>"Pearls"</Description>
+                  <ShowAsHex>1</ShowAsHex>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>[gval]+338</Address>
+                  <Offsets>
+                    <Offset>28</Offset>
+                    <Offset>20</Offset>
+                    <Offset>30</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>1337321839</ID>
+                      <Description>"Pearls currentValue"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[gval]+338</Address>
+                      <Offsets>
+                        <Offset>10</Offset>
+                        <Offset>28</Offset>
+                        <Offset>20</Offset>
+                        <Offset>30</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321840</ID>
+                      <Description>"minValue"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[gval]+338</Address>
+                      <Offsets>
+                        <Offset>14</Offset>
+                        <Offset>28</Offset>
+                        <Offset>20</Offset>
+                        <Offset>30</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321841</ID>
+                      <Description>"maxValue"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[gval]+338</Address>
+                      <Offsets>
+                        <Offset>18</Offset>
+                        <Offset>28</Offset>
+                        <Offset>20</Offset>
+                        <Offset>30</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337321842</ID>
+                  <Description>"Shells"</Description>
+                  <ShowAsHex>1</ShowAsHex>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>[gval]+338</Address>
+                  <Offsets>
+                    <Offset>30</Offset>
+                    <Offset>20</Offset>
+                    <Offset>30</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>1337321843</ID>
+                      <Description>"Shells currentValue"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[gval]+338</Address>
+                      <Offsets>
+                        <Offset>10</Offset>
+                        <Offset>30</Offset>
+                        <Offset>20</Offset>
+                        <Offset>30</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321844</ID>
+                      <Description>"minValue"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[gval]+338</Address>
+                      <Offsets>
+                        <Offset>14</Offset>
+                        <Offset>30</Offset>
+                        <Offset>20</Offset>
+                        <Offset>30</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321845</ID>
+                      <Description>"maxValue"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[gval]+338</Address>
+                      <Offsets>
+                        <Offset>18</Offset>
+                        <Offset>30</Offset>
+                        <Offset>20</Offset>
+                        <Offset>30</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337321846</ID>
+                  <Description>"Xp"</Description>
+                  <ShowAsHex>1</ShowAsHex>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>[gval]+338</Address>
+                  <Offsets>
+                    <Offset>38</Offset>
+                    <Offset>20</Offset>
+                    <Offset>30</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>1337321847</ID>
+                      <Description>"XP currentValue"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[gval]+338</Address>
+                      <Offsets>
+                        <Offset>10</Offset>
+                        <Offset>38</Offset>
+                        <Offset>20</Offset>
+                        <Offset>30</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321848</ID>
+                      <Description>"minValue"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[gval]+338</Address>
+                      <Offsets>
+                        <Offset>14</Offset>
+                        <Offset>38</Offset>
+                        <Offset>20</Offset>
+                        <Offset>30</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321849</ID>
+                      <Description>"maxValue"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[gval]+338</Address>
+                      <Offsets>
+                        <Offset>18</Offset>
+                        <Offset>38</Offset>
+                        <Offset>20</Offset>
+                        <Offset>30</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337321850</ID>
+                  <Description>"EventCurrency"</Description>
+                  <ShowAsHex>1</ShowAsHex>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>[gval]+338</Address>
+                  <Offsets>
+                    <Offset>40</Offset>
+                    <Offset>20</Offset>
+                    <Offset>30</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>1337321851</ID>
+                      <Description>"Event currentValue"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[gval]+338</Address>
+                      <Offsets>
+                        <Offset>10</Offset>
+                        <Offset>40</Offset>
+                        <Offset>20</Offset>
+                        <Offset>30</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321852</ID>
+                      <Description>"minValue"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[gval]+338</Address>
+                      <Offsets>
+                        <Offset>14</Offset>
+                        <Offset>40</Offset>
+                        <Offset>20</Offset>
+                        <Offset>30</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321853</ID>
+                      <Description>"maxValue"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[gval]+338</Address>
+                      <Offsets>
+                        <Offset>18</Offset>
+                        <Offset>40</Offset>
+                        <Offset>20</Offset>
+                        <Offset>30</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337321854</ID>
+                  <Description>"InventoryLevel"</Description>
+                  <ShowAsHex>1</ShowAsHex>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>[gval]+338</Address>
+                  <Offsets>
+                    <Offset>48</Offset>
+                    <Offset>20</Offset>
+                    <Offset>30</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>1337321855</ID>
+                      <Description>"currentValue"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[gval]+338</Address>
+                      <Offsets>
+                        <Offset>10</Offset>
+                        <Offset>48</Offset>
+                        <Offset>20</Offset>
+                        <Offset>30</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321856</ID>
+                      <Description>"minValue"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[gval]+338</Address>
+                      <Offsets>
+                        <Offset>14</Offset>
+                        <Offset>48</Offset>
+                        <Offset>20</Offset>
+                        <Offset>30</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321857</ID>
+                      <Description>"maxValue"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[gval]+338</Address>
+                      <Offsets>
+                        <Offset>18</Offset>
+                        <Offset>48</Offset>
+                        <Offset>20</Offset>
+                        <Offset>30</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337321858</ID>
+                  <Description>"FishingRodLevel"</Description>
+                  <ShowAsHex>1</ShowAsHex>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>[gval]+338</Address>
+                  <Offsets>
+                    <Offset>50</Offset>
+                    <Offset>20</Offset>
+                    <Offset>30</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>1337321859</ID>
+                      <Description>"currentValue"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[gval]+338</Address>
+                      <Offsets>
+                        <Offset>10</Offset>
+                        <Offset>50</Offset>
+                        <Offset>20</Offset>
+                        <Offset>30</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321860</ID>
+                      <Description>"minValue"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[gval]+338</Address>
+                      <Offsets>
+                        <Offset>14</Offset>
+                        <Offset>50</Offset>
+                        <Offset>20</Offset>
+                        <Offset>30</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321861</ID>
+                      <Description>"maxValue"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[gval]+338</Address>
+                      <Offsets>
+                        <Offset>18</Offset>
+                        <Offset>50</Offset>
+                        <Offset>20</Offset>
+                        <Offset>30</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337321862</ID>
+                  <Description>"BoatLevel"</Description>
+                  <ShowAsHex>1</ShowAsHex>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>[gval]+338</Address>
+                  <Offsets>
+                    <Offset>58</Offset>
+                    <Offset>20</Offset>
+                    <Offset>30</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>1337321863</ID>
+                      <Description>"currentValue"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[gval]+338</Address>
+                      <Offsets>
+                        <Offset>10</Offset>
+                        <Offset>58</Offset>
+                        <Offset>20</Offset>
+                        <Offset>30</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321864</ID>
+                      <Description>"minValue"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[gval]+338</Address>
+                      <Offsets>
+                        <Offset>14</Offset>
+                        <Offset>58</Offset>
+                        <Offset>20</Offset>
+                        <Offset>30</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321865</ID>
+                      <Description>"maxValue"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[gval]+338</Address>
+                      <Offsets>
+                        <Offset>18</Offset>
+                        <Offset>58</Offset>
+                        <Offset>20</Offset>
+                        <Offset>30</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337321866</ID>
+                  <Description>"LureLevel"</Description>
+                  <ShowAsHex>1</ShowAsHex>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>[gval]+338</Address>
+                  <Offsets>
+                    <Offset>60</Offset>
+                    <Offset>20</Offset>
+                    <Offset>30</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>1337321867</ID>
+                      <Description>"currentValue"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[gval]+338</Address>
+                      <Offsets>
+                        <Offset>10</Offset>
+                        <Offset>60</Offset>
+                        <Offset>20</Offset>
+                        <Offset>30</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321868</ID>
+                      <Description>"minValue"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[gval]+338</Address>
+                      <Offsets>
+                        <Offset>14</Offset>
+                        <Offset>60</Offset>
+                        <Offset>20</Offset>
+                        <Offset>30</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337321869</ID>
+                      <Description>"maxValue"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[gval]+338</Address>
+                      <Offsets>
+                        <Offset>18</Offset>
+                        <Offset>60</Offset>
+                        <Offset>20</Offset>
+                        <Offset>30</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337321881</ID>
+          <Description>"Infinite Shop Stock"</Description>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(itemstock,GameAssembly.dll,48 ?? ?? ?? 48 ?? ?? 0F ?? ?? ?? ?? ?? 40 ?? ?? ?? 0F ?? ?? ?? ?? ?? 40 ?? ?? ?? 0F ?? ?? ?? ?? ??)
+alloc(newmem,$1000,itemstock)
+label(code)
+label(return)
+newmem:
+code:
+  mov rcx,[rax+20]
+  mov byte ptr [rsi+30],01
+  test rcx,rcx
+  jmp return
+itemstock:
+  jmp newmem
+  nop 2
+return:
+registersymbol(itemstock)
+[DISABLE]
+itemstock:
+  db 48 8B 48 20 48 85 C9
+unregistersymbol(itemstock)
+dealloc(newmem)
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337321882</ID>
+          <Description>"Inf Item Use"</Description>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(infitemuse,GameAssembly.dll,FF ?? ?? 48 ?? ?? ?? 48 ?? ?? 74 ?? 48 ?? ?? ?? 48 ?? ?? 74 ?? 83 ?? ?? ?? 7F ??)
+infitemuse:
+  nop 3
+registersymbol(infitemuse)
+[DISABLE]
+infitemuse:
+  db FF 49 18
+unregistersymbol(infitemuse)
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337321918</ID>
+          <Description>"Stop Dirtyness"</Description>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(stopdirt,GameAssembly.dll,45 ?? ?? 03 ?? ?? E8 ?? ?? ?? ?? 48 ?? ?? ?? ?? ?? ?? 48 ?? ?? ??)
+alloc(newmem,$1000,stopdirt)
+label(code)
+label(return)
+newmem:
+code:
+  xor r8d,r8d
+  mov [rcx+18],0
+  add edx,[rcx+10]
+  jmp return
+stopdirt:
+  jmp newmem
+  nop
+return:
+registersymbol(stopdirt)
+[DISABLE]
+stopdirt:
+  db 45 33 C0 03 51 10
+unregistersymbol(stopdirt)
+dealloc(newmem)
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337321916</ID>
+          <Description>"Fish Always at 100% HP and Food"</Description>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(hungerhealth,GameAssembly.dll,F3 ?? ?? ?? ?? 48 ?? ?? 0F ?? ?? ?? ?? ?? 33 ?? 48 ?? ?? E8 ?? ?? ?? ?? F3 ?? ?? ?? 0F ?? ?? 0F ?? ??)
+alloc(newmem,$1000,hungerhealth)
+label(code)
+label(return)
+newmem:
+  mov [rbx+14],(float)1000
+  mov [rbx+18],(float)1000
+code:
+  movss xmm6,[rbx+10]
+  jmp return
+
+hungerhealth:
+  jmp newmem
+return:
+registersymbol(hungerhealth)
+[DISABLE]
+hungerhealth:
+  db F3 0F 10 73 10
+unregistersymbol(*)
+dealloc(*)
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337321908</ID>
+          <Description>"Perfect FishGenetics 100%"</Description>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(editfisggene,GameAssembly.dll,F3 ?? ?? ?? ?? 45 ?? ?? E8 ?? ?? ?? ?? 48 ?? ?? ?? 48 ?? ?? ?? 48 ?? ?? 0F ?? ?? ?? ?? ?? 48 ?? ?? ?? 48 ?? ?? 0F ?? ?? ?? ?? ?? 33 ?? E8 ?? ?? ?? ?? 48 ?? ?? ?? ?? ?? ?? 48 ?? ?? ?? ?? 89 ?? ?? ?? E8 ?? ?? ?? ?? 48 ?? ?? ?? ?? ?? ?? 45 ?? ?? 48 ?? ?? E8 ?? ?? ?? ?? 48 ?? ?? 0F ?? ?? ?? ?? ?? 4C ?? ?? 48 ?? ?? 48 ?? ?? 4D ?? ?? ?? ?? ?? ?? 41 ?? ?? ?? ?? ?? ?? 48 ?? ?? ?? 48 ?? ?? 0F ?? ?? ?? ?? ?? 48 ?? ?? ?? 48 ?? ?? 0F ?? ?? ?? ?? ?? 48 ?? ?? ?? 48 ?? ?? 0F ?? ?? ?? ?? ??)
+alloc(newmem,$1000,editfisggene)
+label(code)
+label(return)
+
+newmem:
+  mov [rdx+10],(float)1//_size
+  mov [rdx+14],(float)1//_metabolism
+  mov [rdx+18],(float)1//_fertility
+  mov [rdx+1C],(float)1//_fortune
+code:
+  movss xmm1,[rdx+10]
+  jmp return
+
+editfisggene:
+  jmp newmem
+return:
+registersymbol(editfisggene)
+[DISABLE]
+editfisggene:
+  db F3 0F 10 4A 10
+unregistersymbol(*)
+dealloc(*)
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337321955</ID>
+          <Description>"Fishing Mini Game"</Description>
+          <Color>C080FF</Color>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>1337321954</ID>
+              <Description>"Easy Catch Fish"</Description>
+              <Color>FFFF80</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+aobscanmodule(easycatch,GameAssembly.dll,F3 ?? ?? ?? ?? F3 ?? ?? ?? ?? F3 ?? ?? ?? ?? F3 ?? ?? ?? ?? 40 ?? ?? ?? ?? ?? ?? 0F ?? ?? ?? ?? ?? 0F ?? ?? ?? ?? ?? ??)
+alloc(newmem,$1000,easycatch)
+label(code)
+label(return)
+newmem:
+  mov [rbx+70],(float)100
+code:
+  mulss xmm0,[rbx+70]
+  jmp return
+easycatch:
+  jmp newmem
+return:
+registersymbol(easycatch)
+[DISABLE]
+easycatch:
+  db F3 0F 59 43 70
+unregistersymbol(*)
+dealloc(*)
+
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1337321944</ID>
+              <Description>"Fish Instant Bite Bait"</Description>
+              <Color>FFFF80</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+aobscanmodule(instbitebait,GameAssembly.dll,0F ?? ?? 33 ?? 0F ?? ?? 0F ?? ?? 0B ??)
+instbitebait+1:
+  db 92
+registersymbol(instbitebait)
+[DISABLE]
+instbitebait+1:
+  db 93
+unregistersymbol(*)
+
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1337321945</ID>
+              <Description>"No Fishing Rod Distance Limit"</Description>
+              <Color>FFFF80</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+aobscanmodule(distancecheck,GameAssembly.dll,F3 ?? ?? ?? ?? 0F ?? ?? 0F ?? ?? E9 ?? ?? ?? ?? E8 ?? ?? ?? ??)
+distancecheck+8:
+  db B0 01 90
+registersymbol(distancecheck)
+[DISABLE]
+distancecheck+8:
+  db 0F 97 C0
+unregistersymbol(*)
+
+</AssemblerScript>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337321964</ID>
+          <Description>"Shop Modification"</Description>
+          <Color>FF80FF</Color>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>1337321883</ID>
+              <Description>"Ignore Shop Currency (dont use with buy egg or shell shop)"</Description>
+              <Color>0000FF</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{ Game   : Tiny Aquarium.exe
+  Version: 
+  Date   : 2025-09-06
+  Author : MBRKiNG
+
+  This script does blah blah blah
+}
+{$lua}
+if syntaxcheck then return end
+mono_initialize()
+LaunchMonoDataCollector()
+local rec5 = getAddressList().getMemoryRecordByDescription("Buy Egg´s get Currency (enable and click shop)")
+local rec6 = getAddressList().getMemoryRecordByDescription("Shell Shop Price Edit, buy Items Get Shells (set value and open shop)")
+if rec6 and rec6.Active then
+  rec6.Active = false
+end
+if rec5 and rec5.Active then
+  rec5.Active = false
+end
+{$asm}
+
+[ENABLE]
+GameController.TrySpendMoney+49:
+  db EB
+GameController.TrySpendMoney+8F:
+  db 90 90 // change to "01 DA" to add currency when spend
+GameController.TrySpendEventCurrency+49:
+  db EB
+GameController.TrySpendEventCurrency+8F:
+  db 90 90 // change to "01 DA" to add currency when spend
+GameController.TrySpendShellsLocal+49:
+  db EB
+GameController.TrySpendShellsLocal+8F:
+  db 90 90 // change to "01 DA" to add currency when spend
+
+[DISABLE]
+GameController.TrySpendMoney+49:
+  db 7D
+GameController.TrySpendMoney+8F:
+  db 2B D3
+GameController.TrySpendEventCurrency+49:
+  db 7D
+GameController.TrySpendEventCurrency+8F:
+  db 2B D3
+GameController.TrySpendShellsLocal+49:
+  db 7D
+GameController.TrySpendShellsLocal+8F:
+  db 2B D3
+
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1337321905</ID>
+              <Description>"Buy Egg´s get Currency (enable and click shop may not work with Shells)"</Description>
+              <Color>FFFF00</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{ Game   : Tiny Aquarium.exe
+  Date   : 2025-09-07
+  Author : MBRKiNG
+}
+{$lua}
+if syntaxcheck then return end
+local rec2 = getAddressList().getMemoryRecordByDescription("Shell Shop Price Edit, buy Items Get Shells (set value and open shop)")
+local rec1 = getAddressList().getMemoryRecordByDescription("Ignore Shop Currency (dont use with buy egg or shell shop)")
+if rec2 and rec2.Active then
+  rec2.Active = false
+end
+if rec1 and rec1.Active then
+  rec1.Active = false
+end
+{$asm}
+[ENABLE]
+aobscanmodule(setpriceitem,GameAssembly.dll,4C ?? ?? ?? 4D ?? ?? 0F ?? ?? ?? ?? ?? 48 ?? ?? ?? ?? ?? ?? 4D ?? ?? 0F ?? ?? ?? ?? ?? ?? 41 ?? ?? ?? ?? ?? ?? 72 ?? 0F ?? ?? 49 ?? ?? ?? ?? ?? ?? 48 ?? ?? ?? ?? 75 ?? B0 ?? EB ?? 32 ?? 84 ?? 48 ?? ?? 49 ?? ?? ?? 48 ?? ?? 0F ?? ?? ?? ?? ??) // should be unique
+alloc(newmem,$1000,setpriceitem)
+label(code)
+label(return)
+label(legegg)
+label(rareegg)
+label(uncoegg)
+label(legeggval)
+newmem:
+code:
+  mov r8,[rbx+20]
+  cmp [r8+34],00001036
+  je legegg
+  cmp [r8+34],000004E2
+  je rareegg
+  cmp [r8+34],00000352
+  je uncoegg
+  test r8,r8
+  jmp return
+legegg:
+  mov r15,[legeggval]
+  mov [r8+34],r15
+  mov byte ptr [r8+38],01
+  test r8,r8
+  jmp return
+rareegg:
+  mov r15,[legeggval]
+  mov [r8+34],r15
+  mov byte ptr [r8+38],02
+  test r8,r8
+  jmp return
+uncoegg:
+  mov r15,[legeggval]
+  mov [r8+34],r15
+  mov byte ptr [r8+38],00
+  test r8,r8
+  jmp return
+legeggval:
+  dd (int)-1000000
+setpriceitem:
+  jmp newmem
+  nop 2
+return:
+registersymbol(setpriceitem legeggval)
+[DISABLE]
+setpriceitem:
+  db 4C 8B 43 20 4D 85 C0
+unregistersymbol(*)
+dealloc(*)
+
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1337321956</ID>
+              <Description>"Shell Shop Price Edit, buy Items Get Shells (set value and open shop)"</Description>
+              <Options moHideChildren="1"/>
+              <Color>FFFF00</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{ Game   : Tiny Aquarium.exe
+  Version: 
+  Date   : 2025-09-10
+  Author : MBRKiNG
+
+  This script does blah blah blah
+}
+{$lua}
+if syntaxcheck then return end
+local rec3 = getAddressList().getMemoryRecordByDescription("Buy Egg´s get Currency (enable and click shop)")
+local rec4 = getAddressList().getMemoryRecordByDescription("Ignore Shop Currency (dont use with buy egg or shell shop)")
+if rec4 and rec4.Active then
+  rec4.Active = false
+end
+if rec3 and rec3.Active then
+  rec3.Active = false
+end
+{$asm}
+[ENABLE]
+aobscanmodule(shellshop,GameAssembly.dll,48 8B ?? ?? 48 85 ?? 0F 84 ?? ?? ?? ?? 80 ?? ?? ?? 75 ?? 48 8B ?? ?? 48 85 ?? 0F 84 ?? ?? ?? ?? 45 33 ?? B2 ?? E8 ?? ?? ?? ?? 48 8B ?? ?? ) // should be unique
+alloc(newmem,$1000,shellshop)
+
+label(code)
+label(return)
+label(ssval)
+newmem:
+code:
+  mov rax,[rbx+20]
+  mov r15,[ssval]
+  mov [r11+34],r15
+  mov byte ptr [r11+38],01
+  test rax,rax
+  jmp return
+ssval:
+  dd (int)-1000000
+shellshop:
+  jmp newmem
+  nop 2
+return:
+registersymbol(shellshop ssval)
+[DISABLE]
+shellshop:
+  db 48 8B 43 20 48 85 C0
+unregistersymbol(*)
+dealloc(*)
+
+</AssemblerScript>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>1337321957</ID>
+                  <Description>"Shell Shop Price (set negative value -900000 e.g.)"</Description>
+                  <ShowAsSigned>1</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>ssval</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337111332</ID>
+          <Description>"OPEN GAMESAVE LOCATION - Tiny Aqarium v1.15.5"</Description>
+          <Color>00FF00</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+if syntaxcheck then return end
+[ENABLE]
+local UserProfilePath = os.getenv("USERPROFILE")
+local GameSavePath = UserProfilePath .. "\\AppData\\LocalLow\\Lunheim Studios\\Tiny Aquarium"
+shellExecute(GameSavePath)
+local memrec = memrec or getAddressList().getMemoryRecordByDescription("OPEN GAMESAVE LOCATION / CreateBackup - Tiny Aqarium v1.11")
+local timer = createTimer()
+timer.Interval = 1 * 100
+timer.OnTimer = function(theTimerCallingThisFunction)
+  memrec.Active = false
+  timer.destroy()
+end
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>104269</ID>
+      <Description>"------------------------------------------------------------------------"</Description>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1337321965</ID>
+      <Description>"Discord/PayPal-Donation-Link/OCT"</Description>
+      <Options moHideChildren="1"/>
+      <Color>40FF00</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1337380679</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337380680</ID>
+          <Description>"[&lt;--CHECKBOX]_OPEN_MY_GITHUB_TABLE_SOURCE"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://github.com/mbrking/CE-Tables')
+{$asm}
+
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337380681</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337380682</ID>
+          <Description>"Support/Donations can be Added to my PAYPAL.ME"</Description>
+          <Color>00FF00</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337380683</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337380684</ID>
+          <Description>" [&lt;--CHECKBOX] PALPAL.ME Donation/Support Link"</Description>
+          <Color>F8EC07</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://paypal.me/mobiusce')
+{$asm}
+
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337380685</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337380686</ID>
+          <Description>"my Discord-ID:  --&gt;  ScooPaX#8840  &lt;--"</Description>
+          <Options moAlwaysHideChildren="1"/>
+          <Color>8000FF</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337380687</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337380688</ID>
+          <Description>"[&lt;--CHECKBOX]_OPEN_OCT_TOPIC_TABLE_SOURCE"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://opencheattables.com/')
+{$asm}
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337380689</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337380690</ID>
+          <Description>"[&lt;--CHECKBOX]_OPEN_CHEATENGINE.ORG"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://www.cheatengine.org/')
+{$asm}
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1337380691</ID>
+      <Description>"------------------------------------------------------------------------"</Description>
+      <Options moHideChildren="1"/>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>
