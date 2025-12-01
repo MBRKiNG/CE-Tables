@@ -1,8 +1,55 @@
+```
+ _____                                                           _____ 
+( ___ )                                                         ( ___ )
+ |   |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|   | 
+ |   | ███╗   ███╗██████╗ ██████╗ ██╗  ██╗██╗███╗   ██╗ ██████╗  |   | 
+ |   | ████╗ ████║██╔══██╗██╔══██╗██║ ██╔╝██║████╗  ██║██╔════╝  |   | 
+ |   | ██╔████╔██║██████╔╝██████╔╝█████╔╝ ██║██╔██╗ ██║██║  ███╗ |   | 
+ |   | ██║╚██╔╝██║██╔══██╗██╔══██╗██╔═██╗ ██║██║╚██╗██║██║   ██║ |   | 
+ |   | ██║ ╚═╝ ██║██████╔╝██║  ██║██║  ██╗██║██║ ╚████║╚██████╔╝ |   | 
+ |   | ╚═╝     ╚═╝╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝ ╚═════╝  |   | 
+ |   |        Made with ❤️ for the Cheat Engine community 	     |   | 
+ |___|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|___| 
+(_____)                                                         (_____)
+
+```                                                                                          
+                                                                                          
+
+## 🎮 My Cheat Engine Table Collection
 
 
 
-# CE-Tables
-Cheat Engine Table Collection
-Made with ❤️ for the Cheat Engine community
+---
 
-https://opencheattables.com/
+## 🔗 Quick Links
+
+| Resource | Description |
+|----------|-------------|
+| [Open Cheat Tables](https://opencheattables.com/) | Open source cheat tables database |
+| [Cheat Engine](https://cheatengine.org/downloads.php) | Download Cheat Engine |
+| [Runtime Modifier](https://rtmod.cheatengine.org/downloads.php) | Runtime Modifier Custom Cheat Engine |
+
+---
+
+## 📁 Repository Contents
+
+- Curated Cheat Engine (.CT) tables
+- Game-specific memory editing tools
+- Community contributed tables
+
+## 🚀 Getting Started
+
+1. Download Cheat Engine or Runtime Modifier from the link above
+2. Cheat Engine / Runtime Modifier installer contains adware, so be sure to read what is being installed.
+3. Browse this repository for your favorite game
+4. Load the `.ct` file in Cheat Engine
+5. Start modifying game memory!
+
+## 🤝 Contributing
+
+- Fork this repository
+- Add your `.ct` files with documentation
+- Submit a Pull Request
+
+---
+
