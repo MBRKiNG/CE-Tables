@@ -1,0 +1,637 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="50">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1337111356</ID>
+      <Description>"------------------------------------------------------------------------"</Description>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1337380547</ID>
+      <Description>"Dying_Light_The_Beast_v1.4.0c_Steam_20250112_MBRKiNG"</Description>
+      <Options moHideChildren="1"/>
+      <Color>4080FF</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1337380664</ID>
+          <Description>"Player"</Description>
+          <Options moHideChildren="1"/>
+          <Color>4080FF</Color>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>1337380576</ID>
+              <Description>"God Mode"</Description>
+              <Color>80FF00</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+aobscanmodule(infhealth,gamedll_ph_x64_rwdi.dll,75 ?? 48 ?? ?? 48 ?? ?? FF ?? ?? 84 ?? 75 ?? 48 ?? ?? ?? ?? ?? ?? 48)
+infhealth:
+  db EB
+registersymbol(infhealth)
+[DISABLE]
+infhealth:
+  db 75
+unregistersymbol(*)
+
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>45</ID>
+              <Description>"Inf Stamina"</Description>
+              <Color>80FF00</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+aobscanmodule(infstamina,gamedll_ph_x64_rwdi.dll,F3 ?? ?? ?? E8 ?? ?? ?? ?? 41 0F ?? ?? 72)
+infstamina+3:
+  db FF
+registersymbol(infstamina)
+[DISABLE]
+infstamina+3:
+  db F7
+unregistersymbol(*)
+
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1337380549</ID>
+              <Description>"Stealth"</Description>
+              <Color>80FF00</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+aobscanmodule(stealth,gamedll_ph_x64_rwdi.dll,75 ?? 83 ?? ?? ?? ?? ?? ?? 0F ?? ?? 48 ?? ?? ?? ?? 48 ?? ?? ?? ??)
+stealth:
+  db EB
+registersymbol(stealth)
+[DISABLE]
+stealth:
+  db 75
+unregistersymbol(*)
+
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1337380662</ID>
+              <Description>"One Hit Kill´s"</Description>
+              <Color>80FF00</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+aobscanmodule(ohk,gamedll_ph_x64_rwdi.dll,48 ?? ?? 0F ?? ?? ?? ?? ?? 55 56 57 48 ?? ?? ?? ?? 48 ?? ?? ?? ?? ?? ?? 48 ?? ?? 4C)
+ohk+3:
+  nop 6
+ohk+8A:
+  nop 2
+registersymbol(ohk)
+[DISABLE]
+ohk+3:
+  db 0F 84 8C 0A 00 00
+ohk+8A:
+  db 74 50
+unregistersymbol(*)
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>34</ID>
+              <Description>"Inf Jumps"</Description>
+              <Color>80FF00</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+aobscanmodule(airjumps,gamedll_ph_x64_rwdi.dll,74 ?? E8 ?? ?? ?? ?? 48 ?? ?? ?? ?? ?? ?? ?? ?? ?? 48 ?? ?? ?? ?? ?? ?? 49 ?? ?? 4C ?? ?? ?? ?? ?? ?? 48 ?? ?? 48 ?? ?? ?? 48 ?? ?? ?? ?? ?? ?? 48 ?? ?? E8 ?? ?? ?? ?? 48 ?? ?? 48 ?? ?? E8 ?? ?? ?? ?? 48 ?? ?? ?? ?? ?? ?? E8 ?? ?? ?? ?? 48 ?? ?? ?? ?? ?? ?? E8 ?? ?? ?? ?? B0)
+airjumps:
+  db 75
+registersymbol(airjumps)
+[DISABLE]
+airjumps:
+  db 74
+unregistersymbol(*)
+
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1337380571</ID>
+              <Description>"Disable Fall Damage"</Description>
+              <Color>80FF00</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+aobscanmodule(falldmgoff,gamedll_ph_x64_rwdi.dll,0F ?? ?? ?? ?? ?? 8B ?? ?? ?? ?? ?? 83 ?? ?? 75 ?? 8B ?? ?? ?? ?? ?? 8B ?? 89 ?? ?? ?? ?? ?? FF ?? 89 ?? ?? ?? ?? ?? 48 ?? ?? E8 ?? ?? ?? ?? 48 ?? ?? 48 ?? ?? FF ?? ?? ?? ?? ?? 84 ?? 0F ?? ?? ?? ?? ?? 8B ?? ?? ?? ?? ?? 83 ?? ?? 75 ?? 8B ?? ?? ?? ?? ?? 8B ?? 89 ?? ?? ?? ?? ?? FF ?? 89 ?? ?? ?? ?? ?? 48 ?? ?? E8 ?? ?? ?? ?? 48 ?? ?? 48 ?? ?? FF ?? ?? ?? ?? ?? 84 ?? 0F ?? ?? ?? ?? ?? 48 ?? ?? ?? 48 ?? ?? ??)
+falldmgoff:
+  db 90 E9
+registersymbol(falldmgoff)
+[DISABLE]
+falldmgoff:
+  db 0F 85
+unregistersymbol(*)
+</AssemblerScript>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337380665</ID>
+          <Description>"Weapons"</Description>
+          <Options moHideChildren="1"/>
+          <Color>4080FF</Color>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>1337380591</ID>
+              <Description>"Inf Ammo / Arrows"</Description>
+              <Color>FFFF80</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+aobscanmodule(arrowscheat,gamedll_ph_x64_rwdi.dll,0F ?? ?? ?? ?? ?? 41 ?? ?? ?? 75 ?? 33 ??)
+arrowscheat:
+  db 90 E9
+registersymbol(arrowscheat)
+[DISABLE]
+arrowscheat:
+  db 0F 85
+unregistersymbol(*)
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1337380605</ID>
+              <Description>"no Reload"</Description>
+              <Color>FFFF80</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+aobscanmodule(noreload,gamedll_ph_x64_rwdi.dll,FF ?? 48 ?? ?? ?? E8 ?? ?? ?? ?? 48 ?? ?? 48 ?? ?? FF ?? ?? ?? ?? ?? 8B ?? ?? ?? ?? ?? 48 ?? ??)
+noreload:
+  db 90 90
+registersymbol(noreload)
+[DISABLE]
+noreload:
+  db FF CA
+unregistersymbol(*)
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>42</ID>
+              <Description>"Disable Recoil"</Description>
+              <Color>FFFF80</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+aobscanmodule(recoil,gamedll_ph_x64_rwdi.dll,74 ?? 0F 28 ?? F3 ?? ?? ?? ?? ?? ?? ?? F3 ?? ?? ?? ?? ?? ?? ?? F3 ?? ?? ?? ?? ?? ?? ?? F3)
+recoil:
+  db EB
+registersymbol(recoil)
+[DISABLE]
+recoil:
+  db 74
+unregistersymbol(*)
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1337380609</ID>
+              <Description>"Disable Spread"</Description>
+              <Color>FFFF80</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+aobscanmodule(nospread,gamedll_ph_x64_rwdi.dll,0F ?? ?? ?? ?? ?? 0F ?? ?? 0F ?? ?? ?? ?? 0F ?? ?? ?? ?? 48 ?? ?? ?? 5B C3 48 ?? ?? 48)
+nospread:
+  nop 6
+registersymbol(nospread)
+[DISABLE]
+nospread:
+  db 0F 84 3F 01 00 00
+unregistersymbol(*)
+
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1337380608</ID>
+              <Description>"Accuracy 100%"</Description>
+              <Color>FFFF80</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+aobscanmodule(accuracyX,gamedll_ph_x64_rwdi.dll,40 ?? 48 ?? ?? ?? 48 ?? ?? 48 ?? ?? FF ?? ?? ?? ?? ?? 8B ?? ?? ?? ?? ?? 4C ?? ?? ??)
+accuracyX:
+  db C3 90
+registersymbol(accuracyX)
+aobscanmodule(accuracyY,gamedll_ph_x64_rwdi.dll,40 ?? 48 ?? ?? ?? 48 ?? ?? 48 ?? ?? FF ?? ?? ?? ?? ?? 8B ?? ?? ?? ?? ?? 48 ?? ?? ?? ?? ?? ?? 48 ?? ?? ??)
+accuracyY:
+  db C3 90
+registersymbol(accuracyY)
+[DISABLE]
+accuracyX:
+  db 40 53
+accuracyY:
+  db 40 53
+unregistersymbol(*)
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>36</ID>
+              <Description>"Max Weapon Durability "</Description>
+              <Color>FFFF80</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+aobscanmodule(weapondura,gamedll_ph_x64_rwdi.dll,F3 ?? ?? ?? 0F ?? ?? 0F ?? ?? ?? ?? 48 ?? ?? ?? ?? F3)
+weapondura+2:
+  db 5F
+registersymbol(weapondura)
+[DISABLE]
+weapondura+2:
+  db 5D
+unregistersymbol(*)
+
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1337380678</ID>
+              <Description>"Inf Throwables / Consumables"</Description>
+              <Color>FFFF80</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+aobscanmodule(quickslots,gamedll_ph_x64_rwdi.dll,89 ?? ?? ?? ?? ?? 41 ?? ?? ?? ?? ?? 48 ?? ?? 48 ?? ?? ?? ?? ?? ?? FF ?? ?? ?? ?? ?? B0 ?? 48 ?? ?? ?? C3 32 ?? 48 ?? ?? ?? C3 ?? ?? ?? ?? ?? ?? ?? ?? 48 ?? ?? ?? F3 ?? ?? ?? 0F ?? ?? ?? ?? ?? ?? 75 ?? F3 ?? ?? ?? ?? 0F ?? ?? ?? ?? ?? ?? 75 ?? F3 ?? ?? ?? ?? 0F ?? ?? ?? ?? ?? ?? 75 ?? 32 ?? 48 ?? ?? ?? C3 F2 ?? ?? ?? 41 ?? ?? ?? ?? ?? F2 ?? ?? ?? ?? ?? ?? ?? 8B ?? ?? 89 ?? ?? ?? ?? ?? 48 ?? ?? 48 ?? ?? ?? ?? ?? ?? FF ?? ?? ?? ?? ?? B0 ?? 48 ?? ?? ?? C3 ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? 48 ?? ?? ?? F3 ?? ?? ?? 0F ?? ?? ?? ?? ?? ?? 75 ?? F3 ?? ?? ?? ?? 0F ?? ?? ?? ?? ?? ?? 75 ?? F3)
+alloc(newmem,$1000,quickslots)
+label(code)
+label(return)
+label(consumthrow)
+label(valcheck)
+newmem:
+  cmp [rcx+000000CC],#99
+  je valcheck
+code:
+  mov [rcx+000000C8],eax
+  jmp return
+valcheck:
+  cmp [rcx+000000C8],#9
+  jle consumthrow
+  jmp code
+consumthrow:
+  push r15
+  push r12
+  mov r15b,#88
+  mov [r12],r15b
+  pop r12
+  pop r15
+  jmp code
+quickslots:
+  jmp newmem
+  nop
+return:
+registersymbol(quickslots)
+[DISABLE]
+quickslots:
+  db 89 81 C8 00 00 00
+unregistersymbol(*)
+dealloc(*)
+</AssemblerScript>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337380666</ID>
+          <Description>"misc"</Description>
+          <Options moHideChildren="1"/>
+          <Color>4080FF</Color>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>1337380548</ID>
+              <Description>"Ignore Crafting Materials"</Description>
+              <Color>FF00FF</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+aobscanmodule(ignorecraftingmats,gamedll_ph_x64_rwdi.dll,0F ?? ?? ?? ?? ?? 48 ?? ?? 49 ?? ?? FF ?? ?? ?? ?? ?? 83 ?? ?? 75)
+ignorecraftingmats:
+  db 90 E9
+registersymbol(ignorecraftingmats)
+[DISABLE]
+ignorecraftingmats:
+  db 0F 84
+unregistersymbol(*)
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1337380582</ID>
+              <Description>"Ignore BluePrint Materials"</Description>
+              <Color>FF00FF</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+aobscanmodule(ingoreblueprintmats,gamedll_ph_x64_rwdi.dll,0F ?? ?? ?? ?? ?? 48 ?? ?? ?? ?? ?? ?? ?? 49 ?? ?? ?? ?? ?? ?? ?? ?? ?? 4C ?? ?? ?? ?? ?? ?? ?? 48 ?? ?? ?? ?? ?? ?? ?? ?? ?? 0F)
+ingoreblueprintmats:
+  db 90 E9
+registersymbol(ingoreblueprintmats)
+[DISABLE]
+ingoreblueprintmats:
+  db 0F 84
+unregistersymbol(*)
+
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1337380553</ID>
+              <Description>"Remaining Repairs wont decrease"</Description>
+              <Color>FF00FF</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+aobscanmodule(weaponrepairs,gamedll_ph_x64_rwdi.dll,83 ?? ?? ?? 7E ?? B0 ?? EB ?? 32 ?? 48 ?? ?? ?? ?? ?? ?? ?? 48 ?? ?? ?? ?? 74 ?? 84 ?? 74)
+weaponrepairs:
+  db C6 47 ?? ?? EB
+registersymbol(weaponrepairs)
+[DISABLE]
+weaponrepairs:
+  db 83 7F ?? ?? 7E
+unregistersymbol(*)
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1337380587</ID>
+              <Description>"LockPickingLawyer"</Description>
+              <Color>FF00FF</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+aobscanmodule(LockPickingLawyer,gamedll_ph_x64_rwdi.dll,0F ?? ?? 88 ?? ?? ?? ?? ?? F3 ?? ?? ?? ?? ?? ?? ?? 0F ?? ?? F3 ?? ?? ?? ?? ?? ?? ?? 73)
+LockPickingLawyer:
+  db B0 00 90
+registersymbol(LockPickingLawyer)
+[DISABLE]
+LockPickingLawyer:
+  db 0F 92 C0
+unregistersymbol(*)
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1337380559</ID>
+              <Description>"Loot Quickly"</Description>
+              <Color>FF00FF</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+aobscanmodule(quickloot,gamedll_ph_x64_rwdi.dll,74 ?? 85 ?? 75 ?? 83 ?? ?? ?? ?? ?? ?? 74 ?? F3 ?? ?? ?? ?? ?? ?? ??)
+quickloot:
+  db EB
+registersymbol(quickloot)
+[DISABLE]
+quickloot:
+  db 74
+unregistersymbol(*)
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1337380556</ID>
+              <Description>"set unlocked Ressources to 9k (open Inventory)"</Description>
+              <Color>FF00FF</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+aobscanmodule(inventoryresources,gamedll_ph_x64_rwdi.dll,48 ?? ?? ?? 8B ?? ?? EB ?? B9)
+alloc(newmem,$1000,inventoryresources)
+label(code)
+label(return)
+newmem:
+code:
+  mov rax,[rax+rbp]
+  mov [rax+10],#9000
+  mov ecx,[rax+10]
+  jmp return
+inventoryresources:
+  jmp newmem
+  nop 2
+return:
+registersymbol(inventoryresources)
+[DISABLE]
+inventoryresources:
+  db 48 8B 04 28 8B 48 10
+unregistersymbol(*)
+dealloc(*)
+
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1337380568</ID>
+              <Description>"Freeze inGame Time"</Description>
+              <Color>FF00FF</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+aobscanmodule(freezetime,gamedll_ph_x64_rwdi.dll,F3 ?? ?? ?? F3 ?? ?? ?? ?? F3 ?? ?? ?? ?? F3 ?? ?? ?? ?? 48 ?? ?? ?? 0F ?? ?? ?? ?? ?? ?? 0F)
+freezetime+3:
+  db F6
+registersymbol(freezetime)
+[DISABLE]
+freezetime+3:
+  db F7
+unregistersymbol(*)
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1337380625</ID>
+              <Description>" EXP Multiplier"</Description>
+              <Options moHideChildren="1"/>
+              <Color>FF00FF</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+aobscanmodule(expmulti,gamedll_ph_x64_rwdi.dll,4C ?? ?? ?? 4C ?? ?? 77 ?? 49)
+alloc(newmem,$1000,expmulti)
+label(code)
+label(return)
+label(xpMval)
+newmem:
+  cvtsi2ss xmm14,rbx
+  movss xmm15,[xpMval]
+  mulss xmm14,xmm15
+  cvttss2si rbx,xmm14
+code:
+  mov r15,[rdi+18]
+  cmp r15,rax
+  jmp return
+xpMval:
+  dd (float)10
+expmulti:
+  jmp newmem
+  nop 2
+return:
+registersymbol(expmulti xpMval)
+[DISABLE]
+expmulti:
+  db 4C 8B 7F 18 4C 3B F8
+unregistersymbol(*)
+dealloc(*)
+</AssemblerScript>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>1337380624</ID>
+                  <Description>"Current EXP Multiplier Value ---&gt;"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>8080FF</Color>
+                  <VariableType>Float</VariableType>
+                  <Address>xpMval</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1337380650</ID>
+              <Description>"Cash Edit (open Inventory and Edit)"</Description>
+              <Options moHideChildren="1"/>
+              <Color>FF00FF</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+aobscanmodule(cashmoneyedit,gamedll_ph_x64_rwdi.dll,8B ?? ?? C3 ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? 48 ?? ?? ?? ?? 57 48 ?? ?? ?? 48 ?? ?? ?? 49)
+alloc(newmem,$1000,cashmoneyedit)
+label(code)
+label(return)
+label(pCash)
+label(cashVal)
+newmem:
+  cmp r11d,80808080
+  jne pCash
+code:
+  mov eax,[rcx+38]
+  ret 
+  int 3 
+  jmp return
+pCash:
+  mov [cashVal],rcx
+  mov eax,[rcx+38]
+  ret
+  int 3
+  jmp return
+cashVal:
+cashmoneyedit:
+  jmp newmem
+return:
+registersymbol(cashmoneyedit cashVal)
+[DISABLE]
+cashmoneyedit:
+  db 8B 41 38 C3 CC
+unregistersymbol(*)
+dealloc(*)
+</AssemblerScript>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>1337380651</ID>
+                  <Description>"Current Cash ---&gt;"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>8080FF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>[cashVal]+38</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>104269</ID>
+      <Description>"------------------------------------------------------------------------"</Description>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>10326</ID>
+      <Description>"Discord/PayPal-Donation-Link/OCT"</Description>
+      <Options moHideChildren="1"/>
+      <Color>40FF00</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1337380679</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337380680</ID>
+          <Description>"[&lt;--CHECKBOX]_OPEN_MY_GITHUB"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://github.com/mbrking/CE-Tables')
+{$asm}
+
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337111357</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>10324</ID>
+          <Description>"Support/Donations can be Added to my PAYPAL.ME"</Description>
+          <Color>00FF00</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104128</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>41356</ID>
+          <Description>" [&lt;--CHECKBOX] PALPAL.ME Donation/Support Link"</Description>
+          <Color>F8EC07</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://paypal.me/mobiusce')
+{$asm}
+
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104152</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104270</ID>
+          <Description>"my Discord-ID:  --&gt;  ScooPaX#8840  &lt;--"</Description>
+          <Options moAlwaysHideChildren="1"/>
+          <Color>8000FF</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104155</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104156</ID>
+          <Description>"[&lt;--CHECKBOX]_OPEN_OCT_TOPIC"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://opencheattables.com/viewtopic.php?t=1579')
+{$asm}
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104129</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104151</ID>
+          <Description>"[&lt;--CHECKBOX]_OPEN_CHEATENGINE.ORG"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://www.cheatengine.org/')
+{$asm}
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>10634</ID>
+      <Description>"------------------------------------------------------------------------"</Description>
+      <Options moHideChildren="1"/>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>
