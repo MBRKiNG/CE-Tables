@@ -1,0 +1,609 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="45">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>10634</ID>
+      <Description>"---------------------------------------------------------------"</Description>
+      <Options moHideChildren="1"/>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>104868</ID>
+      <Description>"RETURNAL_UPDATE01_STEAM_FLT-REALESE_02/16/2023_MBRKiNG"</Description>
+      <Options moHideChildren="1"/>
+      <Color>4080FF</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>7</ID>
+          <Description>"INF_AMMO"</Description>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(INF_AMMO_AOB,Returnal-Returnal-Win64-Shipping.dll,0F 85 ?? ?? ?? ?? C5 ?? ?? ?? ?? ?? ?? ?? C5 ?? ?? ?? C4 ?? ?? ?? ?? ?? C5 ?? ?? ?? C5 ?? ?? ?? C5)
+INF_AMMO_AOB:
+  db E9 B8 00 00 00 90
+registersymbol(INF_AMMO_AOB)
+[DISABLE]
+INF_AMMO_AOB:
+  db 0F 85 B7 00 00 00
+unregistersymbol(INF_AMMO_AOB)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>375023</ID>
+          <Description>"NO_ALTFIRE_CD"</Description>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(NO_ALTFIRE_CD,Returnal-Returnal-Win64-Shipping.dll,?? ?? ?? ?? ?? ?? ?? C5 ?? ?? ?? ?? ?? ?? ?? ?? 48 8B ?? ?? ?? ?? ?? 48 33 ?? 48 89 ?? ?? ?? ?? ?? ?? 44 0F)
+NO_ALTFIRE_CD:
+  db C3 90 90 90 90 90 90
+registersymbol(NO_ALTFIRE_CD)
+[DISABLE]
+NO_ALTFIRE_CD:
+  db 48 81 EC 28 01 00 00
+unregistersymbol(NO_ALTFIRE_CD)
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>373853</ID>
+          <Description>"INVULNERABLE"</Description>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(INVULNERABLE_AOB,Returnal-Returnal-Win64-Shipping.dll,80 ?? ?? ?? ?? ?? ?? 75 ?? 83 ?? ?? ?? ?? ?? ?? 7F ?? 83 ?? ?? ?? ?? ?? ?? 7F ?? C5 ?? ?? ?? C5 ?? ?? ?? ?? ?? ?? ?? 73 ?? 8B)
+INVULNERABLE_AOB:
+  db 80 BB 88 02 00 00 01 74
+registersymbol(INVULNERABLE_AOB)
+[DISABLE]
+INVULNERABLE_AOB:
+  db 80 BB 38 03 00 00 00 75
+unregistersymbol(INVULNERABLE_AOB)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>105579</ID>
+          <Description>"INF_AIRJUMPS"</Description>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(INF_AIRJUMPS,Returnal-Returnal-Win64-Shipping.dll,39 ?? ?? ?? ?? ?? 0F 9C ?? 48 8B ?? ?? ?? 48 83 ?? ?? 5F C3 32)
+INF_AIRJUMPS:
+  db 66 C7 87 44 04 00 00 E7 03
+registersymbol(INF_AIRJUMPS)
+[DISABLE]
+INF_AIRJUMPS:
+  db 39 87 48 04 00 00 0F 9C C0
+unregistersymbol(INF_AIRJUMPS)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>373829</ID>
+          <Description>"INF_DASH/AIR_DASH"</Description>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(INF_DASH_AOB,Returnal-Returnal-Win64-Shipping.dll,C5 ?? ?? ?? ?? ?? ?? ?? C5 ?? ?? ?? C5 ?? ?? ?? ?? ?? ?? ?? 72 ?? 44 38)
+aobscanmodule(INF_AIRDASH_AOB,Returnal-Returnal-Win64-Shipping.dll,FF ?? ?? ?? ?? ?? 8B ?? ?? ?? ?? ?? 48 8D ?? ?? ?? ?? ?? 48 8D ?? ?? ?? 89 ?? ?? ?? 48 89)
+INF_DASH_AOB+3:
+  db 83
+INF_AIRDASH_AOB:
+  db 66 0F 1F 44 00 00
+registersymbol(INF_DASH_AOB)
+registersymbol(INF_AIRDASH_AOB)
+[DISABLE]
+INF_DASH_AOB+3:
+  db 8B
+INF_AIRDASH_AOB:
+  db FF 83 74 03 00 00
+unregistersymbol(INF_DASH_AOB)
+unregistersymbol(INF_AIRDASH_AOB)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>373845</ID>
+          <Description>"DISABLE_RECOIL/SPREAD"</Description>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(RECOIL_AOB,Returnal-Returnal-Win64-Shipping.dll,C6 ?? ?? ?? ?? ?? ?? FF ?? ?? ?? ?? ?? 48 8D ?? ?? ?? ?? ?? 40 B5)
+aobscanmodule(SPREAD_AOB,Returnal-Returnal-Win64-Shipping.dll,EB ?? C5 ?? ?? ?? ?? ?? ?? ?? C5 ?? ?? ?? C5 ?? ?? ?? ?? ?? ?? ?? 76 ?? C4)
+RECOIL_AOB+6:
+  db 00
+SPREAD_AOB:
+  db 66 90
+registersymbol(RECOIL_AOB)
+registersymbol(SPREAD_AOB)
+[DISABLE]
+
+RECOIL_AOB+6:
+  db 01
+SPREAD_AOB:
+  db EB 4C
+unregistersymbol(RECOIL_AOB)
+unregistersymbol(SPREAD_AOB)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>373850</ID>
+          <Description>"HIGH_FIRE_RATE"</Description>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(FIRE_RATE_AOB,Returnal-Returnal-Win64-Shipping.dll,C5 ?? ?? ?? ?? ?? ?? ?? 48 8B ?? ?? ?? ?? ?? C5 ?? ?? ?? ?? ?? C5 ?? ?? ?? C5 ?? ?? ?? ?? ?? ?? ?? 48 85)
+FIRE_RATE_AOB+18:
+  db D2
+registersymbol(FIRE_RATE_AOB)
+[DISABLE]
+FIRE_RATE_AOB+18:
+  db D1
+unregistersymbol(FIRE_RATE_AOB)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>375014</ID>
+          <Description>"IGNORE_KEYS_OBOLITES"</Description>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(IGNORE_KEYS,Returnal-Returnal-Win64-Shipping.dll,41 3B C8 0F 9D ?? C3 33 C9 41 3B C8 0F 9D C0 C3)
+IGNORE_KEYS:
+  db 39 C9 90
+registersymbol(IGNORE_KEYS)
+[DISABLE]
+IGNORE_KEYS:
+  db 41 3B C8
+unregistersymbol(IGNORE_KEYS)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>375017</ID>
+          <Description>"IGNORE_ETHER"</Description>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(IGNORE_ETHER_01,Returnal-Returnal-Win64-Shipping.dll,C5 ?? ?? ?? ?? ?? ?? ?? 0F 96 ?? C3 ?? ?? ?? ?? 48 8B)
+aobscanmodule(IGNORE_ETHER_02,Returnal-Returnal-Win64-Shipping.dll,48 8B ?? 48 81 ?? ?? ?? ?? ?? C5 ?? ?? ?? ?? C5 ?? ?? ?? ?? 48 8B ?? ?? ?? ?? ?? 48 33)
+IGNORE_ETHER_01+3:
+  db C9 90 90 90 90
+IGNORE_ETHER_02:
+  db C3 90 90
+registersymbol(IGNORE_ETHER_01)
+registersymbol(IGNORE_ETHER_02)
+[DISABLE]
+IGNORE_ETHER_01+3:
+  db 89 60 07 00 00
+IGNORE_ETHER_02:
+  db 48 8B C4
+unregistersymbol(IGNORE_ETHER_01)
+unregistersymbol(IGNORE_ETHER_02)
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>104737</ID>
+      <Description>"---------------------------------------------------------------"</Description>
+      <Options moHideChildren="1"/>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>10326</ID>
+      <Description>"Discord/PayPal-Donation-Link/"</Description>
+      <Options moHideChildren="1"/>
+      <Color>4080FF</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>104153</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>10324</ID>
+          <Description>"if you think i did a good job you can donate something to me via PP"</Description>
+          <Color>0080FF</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104128</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>41356</ID>
+          <Description>" [&lt;--CHECKBOX] Support Me at PP (use the Link below or hit the checkbox to open paypal)"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://paypal.me/mobiusce')
+{$asm}
+nop
+[DISABLE]
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>10325</ID>
+              <Description>"My PayPal --&gt; https://paypal.me/mobiusce"</Description>
+              <Color>4080FF</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104152</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104270</ID>
+          <Description>"my Discord:  --&gt;  ScooPaX#8840  &lt;--"</Description>
+          <Options moAlwaysHideChildren="1"/>
+          <Color>8000FF</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104155</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104156</ID>
+          <Description>"[&lt;--CHECKBOX]_OPEN_BOARD/FORUM_TOPIC"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://fearlessrevolution.com/')
+{$asm}
+nop
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104129</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104151</ID>
+          <Description>"[&lt;--CHECKBOX]_OPEN_CHEATENGINE.ORG"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://www.cheatengine.org/')
+{$asm}
+nop
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>104269</ID>
+      <Description>"---------------------------------------------------------------"</Description>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>375022</ID>
+      <Description>"NO_ALTFIRE_CD"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : Returnal-Win64-Shipping.exe
+  Version: 
+  Date   : 2023-02-18
+  Author : MBRKiNG
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+aobscanmodule(NO_ALTFIRE_CD,Returnal-Returnal-Win64-Shipping.dll,41 83 ?? ?? 74 ?? 41 83 ?? ?? 75 ?? C5 ?? ?? ?? ?? ?? ?? ?? C5 ?? ?? ?? ?? ?? ?? ?? C5) // should be unique
+NO_ALTFIRE_CD+3:
+  db 00
+NO_ALTFIRE_CD+A:
+  db EB
+registersymbol(NO_ALTFIRE_CD)
+
+[DISABLE]
+NO_ALTFIRE_CD+3:
+  db 01
+NO_ALTFIRE_CD+A:
+  db 75
+unregistersymbol(NO_ALTFIRE_CD)
+
+
+{
+// ORIGINAL CODE - INJECTION POINT: Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+33
+
+Returnal-Returnal-Win64-Shipping.UAnimationMessagingComponent::GetControlFlags+23F: CC                          - int 3 
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax: 48 81 EC 28 01 00 00        - sub rsp,Returnal-Engine-Win64-Shipping.dtor_list_head+E8
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+7: C5 F8 29 B4 24 10 01 00 00  - vmovaps [rsp+Returnal-Engine-Win64-Shipping.dtor_list_head+D0],xmm6
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+10: 48 8B 05 91 81 DE 00        - mov rax,[Returnal-Returnal-Win64-Shipping.__security_cookie]
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+17: 48 33 C4                    - xor rax,rsp
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+1A: 48 89 84 24 08 01 00 00     - mov [rsp+Returnal-Engine-Win64-Shipping.dtor_list_head+C8],rax
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+22: 44 0F B6 81 20 03 00 00     - movzx r8d,byte ptr [rcx+00000320]
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+2A: C5 C8 57 F6                 - vxorps xmm6,xmm6,xmm6
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+2E: 45 85 C0                    - test r8d,r8d
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+31: 74 48                       - je Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+7B
+// ---------- INJECTING HERE ----------
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+33: 41 83 E8 01                 - sub r8d,01
+// ---------- DONE INJECTING  ----------
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+37: 74 24                       - je Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+5D
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+39: 41 83 F8 01                 - cmp r8d,01
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+3D: 75 44                       - jne Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+83
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+3F: C5 FA 10 81 3C 03 00 00     - vmovss xmm0,[rcx+0000033C]
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+47: C5 FA 5F 15 31 20 78 00     - vmaxss xmm2,xmm0,["Returnal-Returnal-Win64-Shipping.UE4Function_Private::TFunction_CopyableOwnedObject&lt;&lt;lambda_5b2e8c49eeebe3472777882aefac22cf&gt;,1&gt;::`vftable'"+20]
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+4F: C5 FA 10 89 38 03 00 00     - vmovss xmm1,[rcx+00000338]
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+57: C5 F2 5E F2                 - vdivss xmm6,xmm1,xmm2
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+5B: EB 26                       - jmp Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+83
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+5D: C5 FA 10 81 34 03 00 00     - vmovss xmm0,[rcx+00000334]
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+65: C5 FA 5F 15 13 20 78 00     - vmaxss xmm2,xmm0,["Returnal-Returnal-Win64-Shipping.UE4Function_Private::TFunction_CopyableOwnedObject&lt;&lt;lambda_5b2e8c49eeebe3472777882aefac22cf&gt;,1&gt;::`vftable'"+20]
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>375024</ID>
+      <Description>"NO_ALTFIRE_CD-new"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : Returnal-Win64-Shipping.exe
+  Version: 
+  Date   : 2023-02-18
+  Author : MBRKiNG
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+aobscanmodule(NO_ALTFIRE_CD,Returnal-Returnal-Win64-Shipping.dll,?? ?? ?? ?? ?? ?? ?? C5 ?? ?? ?? ?? ?? ?? ?? ?? 48 8B ?? ?? ?? ?? ?? 48 33 ?? 48 89 ?? ?? ?? ?? ?? ?? 44 0F) // should be unique
+NO_ALTFIRE_CD:
+  db C3 90 90 90 90 90 90
+registersymbol(NO_ALTFIRE_CD)
+
+[DISABLE]
+NO_ALTFIRE_CD:
+  db 48 81 EC 28 01 00 00
+unregistersymbol(NO_ALTFIRE_CD)
+
+
+{
+// ORIGINAL CODE - INJECTION POINT: Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+33
+
+Returnal-Returnal-Win64-Shipping.UAnimationMessagingComponent::GetControlFlags+23F: CC                          - int 3 
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax: 48 81 EC 28 01 00 00        - sub rsp,Returnal-Engine-Win64-Shipping.dtor_list_head+E8
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+7: C5 F8 29 B4 24 10 01 00 00  - vmovaps [rsp+Returnal-Engine-Win64-Shipping.dtor_list_head+D0],xmm6
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+10: 48 8B 05 91 81 DE 00        - mov rax,[Returnal-Returnal-Win64-Shipping.__security_cookie]
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+17: 48 33 C4                    - xor rax,rsp
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+1A: 48 89 84 24 08 01 00 00     - mov [rsp+Returnal-Engine-Win64-Shipping.dtor_list_head+C8],rax
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+22: 44 0F B6 81 20 03 00 00     - movzx r8d,byte ptr [rcx+00000320]
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+2A: C5 C8 57 F6                 - vxorps xmm6,xmm6,xmm6
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+2E: 45 85 C0                    - test r8d,r8d
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+31: 74 48                       - je Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+7B
+// ---------- INJECTING HERE ----------
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+33: 41 83 E8 01                 - sub r8d,01
+// ---------- DONE INJECTING  ----------
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+37: 74 24                       - je Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+5D
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+39: 41 83 F8 01                 - cmp r8d,01
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+3D: 75 44                       - jne Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+83
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+3F: C5 FA 10 81 3C 03 00 00     - vmovss xmm0,[rcx+0000033C]
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+47: C5 FA 5F 15 31 20 78 00     - vmaxss xmm2,xmm0,["Returnal-Returnal-Win64-Shipping.UE4Function_Private::TFunction_CopyableOwnedObject&lt;&lt;lambda_5b2e8c49eeebe3472777882aefac22cf&gt;,1&gt;::`vftable'"+20]
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+4F: C5 FA 10 89 38 03 00 00     - vmovss xmm1,[rcx+00000338]
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+57: C5 F2 5E F2                 - vdivss xmm6,xmm1,xmm2
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+5B: EB 26                       - jmp Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+83
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+5D: C5 FA 10 81 34 03 00 00     - vmovss xmm0,[rcx+00000334]
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+65: C5 FA 5F 15 13 20 78 00     - vmaxss xmm2,xmm0,["Returnal-Returnal-Win64-Shipping.UE4Function_Private::TFunction_CopyableOwnedObject&lt;&lt;lambda_5b2e8c49eeebe3472777882aefac22cf&gt;,1&gt;::`vftable'"+20]
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>375025</ID>
+      <Description>"No description"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <VariableType>Array of byte</VariableType>
+      <ByteLength>36</ByteLength>
+      <Address>7FF83975D0E0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>375026</ID>
+      <Description>"No Description"</Description>
+      <VariableType>Float</VariableType>
+      <Address>1B00C20C8B4</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>375027</ID>
+      <Description>"Auto Assemble script"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : Returnal-Win64-Shipping.exe
+  Version: 
+  Date   : 2023-02-19
+  Author : MBRKiNG
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+aobscanmodule(ALTFIRE_COOLDOWN_VAL,Returnal-Returnal-Win64-Shipping.dll,C5 ?? ?? ?? ?? ?? ?? ?? 84 ?? 0F 84 ?? ?? ?? ?? 4C ?? ?? ?? ?? ?? ?? 4D)
+alloc(newmem,$1000,ALTFIRE_COOLDOWN_VAL)
+label(code)
+label(return)
+label(cooldown)
+registersymbol(cooldown)
+newmem:
+code:
+  vmovss xmm6,[cooldown]
+  jmp return
+
+cooldown:
+dq (float)2
+
+ALTFIRE_COOLDOWN_VAL:
+  jmp newmem
+  nop 3
+return:
+registersymbol(ALTFIRE_COOLDOWN_VAL)
+[DISABLE]
+ALTFIRE_COOLDOWN_VAL:
+  db C5 FA 10 B1 24 03 00 00
+unregistersymbol(ALTFIRE_COOLDOWN_VAL)
+dealloc(newmem)
+unregistersymbol(cooldown)
+{
+// ORIGINAL CODE - INJECTION POINT: Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+7B
+
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+3F: C5 FA 10 81 3C 03 00 00  - vmovss xmm0,[rcx+0000033C]
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+47: C5 FA 5F 15 31 20 78 00  - vmaxss xmm2,xmm0,[Returnal-Returnal-Win64-Shipping.dll.rdata+41160]
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+4F: C5 FA 10 89 38 03 00 00  - vmovss xmm1,[rcx+00000338]
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+57: C5 F2 5E F2              - vdivss xmm6,xmm1,xmm2
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+5B: EB 26                    - jmp Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+83
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+5D: C5 FA 10 81 34 03 00 00  - vmovss xmm0,[rcx+00000334]
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+65: C5 FA 5F 15 13 20 78 00  - vmaxss xmm2,xmm0,[Returnal-Returnal-Win64-Shipping.dll.rdata+41160]
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+6D: C5 FA 10 89 28 03 00 00  - vmovss xmm1,[rcx+00000328]
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+75: C5 F2 5E F2              - vdivss xmm6,xmm1,xmm2
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+79: EB 08                    - jmp Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+83
+// ---------- INJECTING HERE ----------
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+7B: C5 FA 10 B1 24 03 00 00  - vmovss xmm6,[rcx+00000324]
+// ---------- DONE INJECTING  ----------
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+83: 84 D2                    - test dl,dl
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+85: 0F 84 C9 01 00 00        - je Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+254
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+8B: 4C 8B 89 80 02 00 00     - mov r9,[rcx+00000280]
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+92: 4D 85 C9                 - test r9,r9
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+95: 0F 84 B9 01 00 00        - je Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+254
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+9B: 4C 8B 05 2E 34 74 00     - mov r8,[Returnal-Returnal-Win64-Shipping._imp_?GUObjectArray]
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+A2: 41 8B 41 0C              - mov eax,[r9+0C]
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+A6: 41 3B 40 24              - cmp eax,[r8+24]
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+AA: 7D 38                    - jnl Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+E4
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+AC: 99                       - cdq 
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>375028</ID>
+      <Description>"Auto Assemble script"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{ Game   : Returnal-Win64-Shipping.exe
+  Version: 
+  Date   : 2023-02-19
+  Author : MBRKiNG
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+aobscanmodule(ALTFIRE_COOLDOWN_VAL,Returnal-Returnal-Win64-Shipping.dll,C5 ?? ?? ?? ?? ?? ?? ?? 84 ?? 0F 84 ?? ?? ?? ?? 4C ?? ?? ?? ?? ?? ?? 4D)
+alloc(newmem,$8)
+
+
+registersymbol(cooldown)
+registersymbol(ALTFIRE_COOLDOWN_VAL)
+ALTFIRE_COOLDOWN_VAL:
+  vmovss xmm6,[cooldown]
+cooldown:
+dq (float)2
+[DISABLE]
+ALTFIRE_COOLDOWN_VAL:
+  db C5 FA 10 B1 24 03 00 00 84 D2 0F 84 C9 01 00 00 4C 8B 89 80 02 00 00 4D 85 C9
+unregistersymbol(*)
+dealloc(*)
+{
+// ORIGINAL CODE - INJECTION POINT: Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+7B
+
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+3F: C5 FA 10 81 3C 03 00 00  - vmovss xmm0,[rcx+0000033C]
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+47: C5 FA 5F 15 31 20 78 00  - vmaxss xmm2,xmm0,[Returnal-Returnal-Win64-Shipping.dll.rdata+41160]
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+4F: C5 FA 10 89 38 03 00 00  - vmovss xmm1,[rcx+00000338]
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+57: C5 F2 5E F2              - vdivss xmm6,xmm1,xmm2
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+5B: EB 26                    - jmp Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+83
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+5D: C5 FA 10 81 34 03 00 00  - vmovss xmm0,[rcx+00000334]
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+65: C5 FA 5F 15 13 20 78 00  - vmaxss xmm2,xmm0,[Returnal-Returnal-Win64-Shipping.dll.rdata+41160]
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+6D: C5 FA 10 89 28 03 00 00  - vmovss xmm1,[rcx+00000328]
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+75: C5 F2 5E F2              - vdivss xmm6,xmm1,xmm2
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+79: EB 08                    - jmp Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+83
+// ---------- INJECTING HERE ----------
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+7B: C5 FA 10 B1 24 03 00 00  - vmovss xmm6,[rcx+00000324]
+// ---------- DONE INJECTING  ----------
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+83: 84 D2                    - test dl,dl
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+85: 0F 84 C9 01 00 00        - je Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+254
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+8B: 4C 8B 89 80 02 00 00     - mov r9,[rcx+00000280]
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+92: 4D 85 C9                 - test r9,r9
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+95: 0F 84 B9 01 00 00        - je Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+254
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+9B: 4C 8B 05 2E 34 74 00     - mov r8,[Returnal-Returnal-Win64-Shipping._imp_?GUObjectArray]
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+A2: 41 8B 41 0C              - mov eax,[r9+0C]
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+A6: 41 3B 40 24              - cmp eax,[r8+24]
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+AA: 7D 38                    - jnl Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+E4
+Returnal-Returnal-Win64-Shipping.UAltFireComponent::GetCooldownMax+AC: 99                       - cdq 
+}
+</AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>375029</ID>
+      <Description>"ALTFIRE_COOLDOWN"</Description>
+      <Options moHideChildren="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+aobscanmodule(ALTFIRE_COOLDOWN_VAL,Returnal-Returnal-Win64-Shipping.dll,C5 ?? ?? ?? ?? ?? ?? ?? 84 ?? 0F 84 ?? ?? ?? ?? 4C ?? ?? ?? ?? ?? ?? 4D)
+alloc(newmem,$1000,ALTFIRE_COOLDOWN_VAL)
+label(code)
+label(return)
+label(cooldown)
+registersymbol(cooldown)
+newmem:
+code:
+  vmovss xmm6,[cooldown]
+  jmp return
+
+cooldown:
+dq (float)0.5 // 0.5 is your current alt fire cd, change it to the value u like
+
+ALTFIRE_COOLDOWN_VAL:
+  jmp newmem
+  nop 3
+return:
+registersymbol(ALTFIRE_COOLDOWN_VAL)
+[DISABLE]
+ALTFIRE_COOLDOWN_VAL:
+  db C5 FA 10 B1 24 03 00 00
+unregistersymbol(*)
+dealloc(*)
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>375030</ID>
+          <Description>"CURRENT_GUN_CD"</Description>
+          <ShowAsSigned>0</ShowAsSigned>
+          <VariableType>Float</VariableType>
+          <Address>cooldown</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+  <LuaScript>autoAttachProcessName = 'Returnal-Win64-Shipping.exe'
+local autoAttachTimer = nil
+local autoAttachTimerInterval = 100
+local autoAttachTimerTicks = 0
+local autoAttachTimerTickMax = 5000
+
+local function autoAttachTimer_tick(timer)
+	if autoAttachTimerTickMax &gt; 0 and autoAttachTimerTicks &gt;= autoAttachTimerTickMax then
+		timer.destroy()
+	end
+	if getProcessIDFromProcessName(autoAttachProcessName) ~= nil then
+		timer.destroy()
+		openProcess(autoAttachProcessName)
+	end
+	autoAttachTimerTicks = autoAttachTimerTicks + 1
+end
+
+autoAttachTimer = createTimer(MainForm)
+autoAttachTimer.Interval = autoAttachTimerInterval
+autoAttachTimer.OnTimer = autoAttachTimer_tick
+</LuaScript>
+</CheatTable>

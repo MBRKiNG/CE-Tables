@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="45">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>32</ID>
+      <Description>"The_Walking_Dead_Destinies_Steam_12032023_by_MBRKiNG"</Description>
+      <Options moHideChildren="1"/>
+      <Color>000080</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+{$lua}
+OpenProcess("The Walking Dead Destinies.exe")
+{$asm}
+[DISABLE]
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>20</ID>
+          <Description>"GodMode"</Description>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(GodMode,GameAssembly.dll,80 ?? ?? ?? 75 ?? 80 ?? ?? ?? ?? ?? ?? 74 ?? 45 33 ?? 0F 57 ?? 48 8B ?? E8 ?? ?? ?? ?? 45 33 ?? 33 ?? 48 8B ?? E8 ?? ?? ?? ?? 0F 28 ?? ?? ?? 48 8B)
+GodMode:
+  db 80 79 39 01
+registersymbol(GodMode)
+[DISABLE]
+GodMode:
+  db 80 79 39 00
+unregistersymbol(GodMode)
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>17</ID>
+          <Description>"InfAdrenalin"</Description>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(InfAdrenalin,GameAssembly.dll,80 ?? ?? ?? 74 ?? 33 ?? 48 83 ?? ?? 5B E9 ?? ?? ?? ?? 4C)
+InfAdrenalin:
+  db 80 79 3E 01
+registersymbol(InfAdrenalin)
+[DISABLE]
+InfAdrenalin:
+  db 80 79 3E 00
+unregistersymbol(InfAdrenalin)
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>18</ID>
+          <Description>"InfStamina"</Description>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(InfStamina,GameAssembly.dll,80 ?? ?? ?? 74 ?? F3 ?? ?? ?? ?? 48 83 ?? ?? 5B C3 F3)
+InfStamina:
+  db 80 79 3D 01
+registersymbol(InfStamina)
+[DISABLE]
+InfStamina:
+  db 80 79 3D 00
+unregistersymbol(InfStamina)
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>19</ID>
+          <Description>"Invisible"</Description>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(Invisible,GameAssembly.dll,48 89 ?? ?? ?? 48 89 ?? ?? ?? 48 89 ?? ?? ?? 57 48 83 ?? ?? 48 8B ?? ?? 48 8B ?? 48 85 ?? 0F 84 ?? ?? ?? ?? 80 ?? ?? ?? ?? ?? ?? 75 ?? 48 8D ?? ?? ?? ?? ?? E8 ?? ?? ?? ?? C6)
+Invisible+9C:
+  db 80 79 3B 01
+registersymbol(Invisible)
+[DISABLE]
+Invisible+9C:
+  db 80 79 3B 00
+unregistersymbol(Invisible)
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>21</ID>
+          <Description>"InstaKill"</Description>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(InstaKill,GameAssembly.dll,80 ?? ?? ?? 0F 84 ?? ?? ?? ?? 48 8B ?? ?? 48 85 ?? 0F 84 ?? ?? ?? ?? 80 ?? ?? ?? ?? ?? ?? 75)
+InstaKill:
+  db 80 79 38 01
+registersymbol(InstaKill)
+[DISABLE]
+InstaKill:
+  db 80 79 38 00
+unregistersymbol(InstaKill)
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>22</ID>
+          <Description>"InfAmmo/No Reload"</Description>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(InfAmmo,GameAssembly.dll,0F 95 ?? 0B ?? 0F 85 ?? ?? ?? ?? 48 8B)
+InfAmmo:
+  db 0F 94 C3
+registersymbol(InfAmmo)
+aobscanmodule(NoReload,GameAssembly.dll,FF ?? E8 ?? ?? ?? ?? 40 38 ?? ?? ?? ?? ?? 0F 84)
+NoReload:
+  db 90 90
+registersymbol(NoReload)
+[DISABLE]
+InfAmmo:
+  db 0F 95 C3
+NoReload:
+  db FF CA
+unregistersymbol(*)
+
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>10634</ID>
+      <Description>"---------------------------------------------------------------"</Description>
+      <Options moHideChildren="1"/>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>10326</ID>
+      <Description>"Discord/PayPal-Donation-Link/FRF"</Description>
+      <Options moHideChildren="1"/>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>104153</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>10324</ID>
+          <Description>"if you think i did a good job you can donate something to me via PP"</Description>
+          <Color>008000</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104128</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>41356</ID>
+          <Description>" [&lt;--CHECKBOX] Support Me at PP (use the Link below or hit the checkbox to open paypal)"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://paypal.me/mobiusce')
+{$asm}
+nop
+[DISABLE]
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>10325</ID>
+              <Description>"https://paypal.me/mobiusce"</Description>
+              <Color>008000</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104152</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104270</ID>
+          <Description>"my Discord:  --&gt;  ScooPaX#8840  &lt;--"</Description>
+          <Options moAlwaysHideChildren="1"/>
+          <Color>8000FF</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104155</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104156</ID>
+          <Description>"[&lt;--CHECKBOX]_OPEN_FearlessRevolution_TOPIC"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://fearlessrevolution.com/viewtopic.php?f=4&amp;t=26747')
+{$asm}
+nop
+[DISABLE]
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>104157</ID>
+              <Description>"https://fearlessrevolution.com/viewtopic.php?f=4&amp;t=26747"</Description>
+              <Color>008000</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104129</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104151</ID>
+          <Description>"[&lt;--CHECKBOX]_OPEN_CHEATENGINE.ORG"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://www.cheatengine.org/')
+{$asm}
+nop
+[DISABLE]
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>104154</ID>
+              <Description>"https://www.cheatengine.org/"</Description>
+              <Color>008000</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>104269</ID>
+      <Description>"---------------------------------------------------------------"</Description>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>Change of je GameAssembly.dll+12D481D</Description>
+      <AddressString>GameAssembly.dll+12D47FC</AddressString>
+      <Before>
+        <Byte>8B</Byte>
+        <Byte>DA</Byte>
+        <Byte>48</Byte>
+        <Byte>85</Byte>
+        <Byte>D2</Byte>
+      </Before>
+      <Actual>
+        <Byte>74</Byte>
+        <Byte>1F</Byte>
+      </Actual>
+      <After>
+        <Byte>33</Byte>
+        <Byte>D2</Byte>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>CB</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of dec edx</Description>
+      <AddressString>GameAssembly.dll+13F5836</AddressString>
+      <Before>
+        <Byte>51</Byte>
+        <Byte>18</Byte>
+        <Byte>45</Byte>
+        <Byte>33</Byte>
+        <Byte>C0</Byte>
+      </Before>
+      <Actual>
+        <Byte>FF</Byte>
+        <Byte>CA</Byte>
+      </Actual>
+      <After>
+        <Byte>E8</Byte>
+        <Byte>93</Byte>
+        <Byte>19</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+</CheatTable>
