@@ -46,19 +46,7 @@ end
 registerSymbol('p_HC', FetchStaticField('OptionsMenuHandlerNew.optionsInstance'))
 registerSymbol('p_GH', FetchStaticField('ORKFramework.GameHandler.instance'))
 registerSymbol('p_BT', FetchStaticField('ORKFramework.Battle.instance'))
---registerSymbol('Invincibility', FetchStaticField('CheatManager.Invincibility'))
---registerSymbol('ChangeEquipsAnywhere', FetchStaticField('CheatManager.ChangeEquipsAnywhere'))
---registerSymbol('QuickSilkEnabled', FetchStaticField('CheatManager.QuickSilkEnabled'))
---registerSymbol('SilkDrainDisabled', FetchStaticField('CheatManager.SilkDrainDisabled'))
---registerSymbol('NailDamage', FetchStaticField('CheatManager.NailDamage'))
---registerSymbol('SuperLuckyDice', FetchStaticField('CheatManager.SuperLuckyDice'))
---registerSymbol('BoostModeActive', FetchStaticField('CheatManager.BoostModeActive'))
---registerSymbol('p_HC', FetchStaticField('HeroController._instance'))
---registerSymbol('CanInfiniteAirJump', FetchStaticField('HeroController.CanInfiniteAirJump'))
---registerSymbol('p_HM', FetchStaticField('HorrorManager.instance'))
---registerSymbol('p_LC', FetchStaticField('LobbyComputer.instance'))
---registerSymbol('p_WC', FetchStaticField('WorkbenchCompouter.instance'))
---registerSymbol('p_O', FetchStaticField('Options.instance'))
+
 
 [DISABLE]
 if monopipe then
@@ -1765,3 +1753,4 @@ DissectCode(p_BT)
   </CheatCodes>
   <UserdefinedSymbols/>
 </CheatTable>
+
