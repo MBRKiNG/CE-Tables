@@ -31,6 +31,10 @@
 | [Fling Trainer](https://flingtrainer.com/) | Standalone Trainer Versions |
 | [mul0 Blog](https://mul0.com/) | Wemod, ModEngine, CheatEvolution, Aurora Unlocker and Table Dumper (PayWall bypass) |  
 | [PINCE](https://github.com/korcankaraokcu/PINCE) | PINCE is a front-end/reverse engineering tool like CE but for Linux |
+| [UE4SS](https://github.com/UE4SS-RE/RE-UE4SS/releases) | Unreal Engine 4/5 Scripting System, Dumper, Live Editor for UE4/5 Games |
+| [UEDumper](https://github.com/Spuckwaffel/UEDumper/) | UEDumper is a all in one Unreal Engine Dumper that supports UE 4.19 - UE5.3.0 and a live editor |
+| [GSpots](https://github.com/Do0ks/GSpots) | Simple way of getting GWorld, GNames, and GObjects of an Unreal Engine Game. |
+
 
 ---
 
