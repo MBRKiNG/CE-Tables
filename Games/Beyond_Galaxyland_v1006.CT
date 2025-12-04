@@ -1,0 +1,1767 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="50">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1337322035</ID>
+      <Description>" Beyond.Galaxyland.v1.0.0.6_MBRKiNG"</Description>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+
+[ENABLE]
+openProcess('Beyond Galaxyland')
+synchronize(LaunchMonoDataCollector)
+
+function parseStringSegments(inputStr)
+    local segments = {}
+    for segment in inputStr:gmatch("[A-Za-z0-9_]+") do
+        table.insert(segments, segment)
+    end
+    return segments
+end
+
+function DissectCode(address)
+    if not address then
+        address = inputQuery('Enter Address', 'Address:', '')
+    end
+    if not address or address == '' then
+        return
+    end
+    local structureForm = createStructureForm(string.format('%X', getAddress(address)))
+    structureForm.Definenewstructure1.doClick()
+end
+
+function FetchStaticField(symbolStr)
+    symbolStr = parseStringSegments(symbolStr)
+    local fieldName, className, namespace = symbolStr[#symbolStr], symbolStr[#symbolStr - 1], (symbolStr[#symbolStr - 2] or '')
+    local classRef = mono_findClass(namespace, className)
+    local classFields = mono_class_enumFields(classRef, true)
+    for _, field in pairs(classFields) do
+        if field.isStatic and (field.name == fieldName or field.name == '&lt;' .. fieldName .. '&gt;k__BackingField') then
+            return mono_class_getStaticFieldAddress('', classRef) + field.offset
+        end
+    end
+end
+
+registerSymbol('p_HC', FetchStaticField('OptionsMenuHandlerNew.optionsInstance'))
+registerSymbol('p_GH', FetchStaticField('ORKFramework.GameHandler.instance'))
+registerSymbol('p_BT', FetchStaticField('ORKFramework.Battle.instance'))
+--registerSymbol('Invincibility', FetchStaticField('CheatManager.Invincibility'))
+--registerSymbol('ChangeEquipsAnywhere', FetchStaticField('CheatManager.ChangeEquipsAnywhere'))
+--registerSymbol('QuickSilkEnabled', FetchStaticField('CheatManager.QuickSilkEnabled'))
+--registerSymbol('SilkDrainDisabled', FetchStaticField('CheatManager.SilkDrainDisabled'))
+--registerSymbol('NailDamage', FetchStaticField('CheatManager.NailDamage'))
+--registerSymbol('SuperLuckyDice', FetchStaticField('CheatManager.SuperLuckyDice'))
+--registerSymbol('BoostModeActive', FetchStaticField('CheatManager.BoostModeActive'))
+--registerSymbol('p_HC', FetchStaticField('HeroController._instance'))
+--registerSymbol('CanInfiniteAirJump', FetchStaticField('HeroController.CanInfiniteAirJump'))
+--registerSymbol('p_HM', FetchStaticField('HorrorManager.instance'))
+--registerSymbol('p_LC', FetchStaticField('LobbyComputer.instance'))
+--registerSymbol('p_WC', FetchStaticField('WorkbenchCompouter.instance'))
+--registerSymbol('p_O', FetchStaticField('Options.instance'))
+
+[DISABLE]
+if monopipe then
+    monopipe.destroy()
+    monopipe = nil
+end
+deleteAllRegisteredSymbols()
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1337322069</ID>
+          <Description>"GodMode / High Damage"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+if syntaxcheck then return end
+[ENABLE]
+
+local p_HC = getAddress("[p_HC]")
+local p_GH = getAddress("[p_GH]")
+
+if p_HC == 0 or p_GH == 0 then
+  messageDialog("Error: p_HC or p_GH not found, Enable Main Script!", mtError, mbOK)
+  return
+end
+
+local addr_HC = p_HC + 0x10B
+local addr_GH = p_GH + 0x8C
+
+-- Global variables to store originals and addresses (accessible in DISABLE)
+_G.orig_HC = readBytes(addr_HC, 1)
+_G.orig_GH = readBytes(addr_GH, 1)
+_G.addr_HC = addr_HC
+_G.addr_GH = addr_GH
+
+tCEFreeze = createTimer(nil)
+tCEFreeze.Interval = 100
+tCEFreeze.OnTimer = function()
+  writeBytes(addr_HC, 0x01)
+  writeBytes(addr_GH, 0x02)
+end
+tCEFreeze.Enabled = true
+
+[DISABLE]
+
+if syntaxcheck then return end
+
+if tCEFreeze then
+  tCEFreeze.Enabled = false
+  tCEFreeze.destroy()
+  tCEFreeze = nil
+end
+
+-- Restore using global variables
+if _G.orig_HC ~= nil and _G.addr_HC ~= nil then
+  writeBytes(_G.addr_HC, _G.orig_HC)
+end
+if _G.orig_GH ~= nil and _G.addr_GH ~= nil then
+  writeBytes(_G.addr_GH, _G.orig_GH)
+end
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337322072</ID>
+          <Description>"random Battle Chance 0%"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+if syntaxcheck then return end
+
+[ENABLE]
+local battlechance = getAddress("[p_GH]")
+
+if battlechance == 0 then
+  messageDialog("Error: p_GH not found, Enable Main Script!", mtError, mbOK)
+  return
+end
+
+local battleAddr = battlechance + 0xA4
+
+_G.battleOrig = readFloat(battleAddr)
+_G.battleAddr = battleAddr
+
+tCEFreeze = createTimer(nil)
+tCEFreeze.Interval = 100
+tCEFreeze.OnTimer = function()
+  writeFloat(_G.battleAddr, 0)
+end
+tCEFreeze.Enabled = true
+
+[DISABLE]
+if tCEFreeze then
+  tCEFreeze.Enabled = false
+  tCEFreeze.destroy()
+  tCEFreeze = nil
+end
+
+if _G.battleOrig ~= nil and _G.battleAddr ~= nil then
+  writeFloat(_G.battleAddr, _G.battleOrig)
+end
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337322083</ID>
+          <Description>"DISSECT"</Description>
+          <Options moHideChildren="1"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>1337322055</ID>
+              <Description>"GameHandler"</Description>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+
+[ENABLE]
+local p_GH = getAddress("[p_GH]")
+if p_GH == nil or p_GH == 0 then
+  --messageDialog("--ERROR !!!!--","HeroController not Found, Enable Main Script first!", mtError)
+  return
+end
+writeToClipboard("[p_GH]")
+messageDialog("--SUCCESS--", "String copied to clipboard:\n\n[p_GH]\n\nNow you can paste it Group Address ", mtInformation)
+DissectCode(p_GH)
+[DISABLE]
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1337322051</ID>
+              <Description>"MainMenuHandler"</Description>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+local p_HC = getAddress("[p_HC]")
+if p_HC == nil or p_HC == 0 then
+  --messageDialog("--ERROR !!!!--","HeroController not Found, Enable Main Script first!", mtError)
+  return
+end
+writeToClipboard("[p_HC]")
+messageDialog("--SUCCESS--", "String copied to clipboard:\n\n[p_HC]\n\nNow you can paste it Group Address ", mtInformation)
+DissectCode(p_HC)
+[DISABLE]
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1337322082</ID>
+              <Description>"BattleHandler"</Description>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+local p_BT = getAddress("[p_BT]")
+if p_BT == nil or p_BT == 0 then
+  --messageDialog("--ERROR !!!!--","HeroController not Found, Enable Main Script first!", mtError)
+  return
+end
+writeToClipboard("[p_BT]")
+messageDialog("--SUCCESS--", "String copied to clipboard:\n\n[p_BT]\n\nNow you can paste it Group Address ", mtInformation)
+DissectCode(p_BT)
+[DISABLE]
+</AssemblerScript>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337322084</ID>
+          <Description>"Pointer"</Description>
+          <Options moHideChildren="1"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>1337322085</ID>
+              <Description>"Game/MainMenu Handler"</Description>
+              <Options moHideChildren="1"/>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>1337322056</ID>
+                  <Description>"gameTime"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>[p_GH]+74</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337322061</ID>
+                  <Description>"difficultyID"</Description>
+                  <Color>FFFF80</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>[p_GH]+8C</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337322063</ID>
+                  <Description>"randomBattleChance"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>[p_GH]+A4</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337322064</ID>
+                  <Description>"randomBattleFactor"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>[p_GH]+A8</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337322065</ID>
+                  <Description>"randomBattleFactorTimestamp"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>[p_GH]+AC</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337322066</ID>
+                  <Description>"ogGodMode"</Description>
+                  <Color>FFFF80</Color>
+                  <VariableType>Byte</VariableType>
+                  <Address>[p_HC]+10B</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337322067</ID>
+                  <Description>"ogTrueBlock"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>[p_HC]+FC</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1337322086</ID>
+              <Description>"Battle"</Description>
+              <Options moHideChildren="1"/>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>1337322087</ID>
+                  <Description>"isDefending"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>[p_BT]+1C</Address>
+                  <Offsets>
+                    <Offset>55</Offset>
+                    <Offset>34</Offset>
+                    <Offset>8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>8</Offset>
+                    <Offset>C</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337322088</ID>
+                  <Description>"enableAutoAttack"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>[p_BT]+1C</Address>
+                  <Offsets>
+                    <Offset>56</Offset>
+                    <Offset>34</Offset>
+                    <Offset>8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>8</Offset>
+                    <Offset>C</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337322089</ID>
+                  <Description>"itemStolen"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>[p_BT]+1C</Address>
+                  <Offsets>
+                    <Offset>57</Offset>
+                    <Offset>34</Offset>
+                    <Offset>8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>8</Offset>
+                    <Offset>C</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337322090</ID>
+                  <Description>"moneyStolen"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>[p_BT]+1C</Address>
+                  <Offsets>
+                    <Offset>58</Offset>
+                    <Offset>34</Offset>
+                    <Offset>8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>8</Offset>
+                    <Offset>C</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337322091</ID>
+                  <Description>"gridMoveState"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>[p_BT]+1C</Address>
+                  <Offsets>
+                    <Offset>5C</Offset>
+                    <Offset>34</Offset>
+                    <Offset>8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>8</Offset>
+                    <Offset>C</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337322092</ID>
+                  <Description>"turnState"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>[p_BT]+1C</Address>
+                  <Offsets>
+                    <Offset>60</Offset>
+                    <Offset>34</Offset>
+                    <Offset>8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>8</Offset>
+                    <Offset>C</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337322093</ID>
+                  <Description>"currentTurn"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>[p_BT]+1C</Address>
+                  <Offsets>
+                    <Offset>64</Offset>
+                    <Offset>34</Offset>
+                    <Offset>8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>8</Offset>
+                    <Offset>C</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337322094</ID>
+                  <Description>"experienceGained"</Description>
+                  <VariableType>Byte</VariableType>
+                  <Address>[p_BT]+1C</Address>
+                  <Offsets>
+                    <Offset>8C</Offset>
+                    <Offset>10</Offset>
+                    <Offset>8</Offset>
+                    <Offset>C</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337322095</ID>
+                  <Description>"targetRange"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>[p_BT]+1C</Address>
+                  <Offsets>
+                    <Offset>84</Offset>
+                    <Offset>10</Offset>
+                    <Offset>8</Offset>
+                    <Offset>C</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337322096</ID>
+                  <Description>"damageMultiplier"</Description>
+                  <VariableType>Float</VariableType>
+                  <Address>[p_BT]+1C</Address>
+                  <Offsets>
+                    <Offset>80</Offset>
+                    <Offset>10</Offset>
+                    <Offset>8</Offset>
+                    <Offset>C</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337322097</ID>
+                  <Description>"currentLevel"</Description>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>[p_BT]+1C</Address>
+                  <Offsets>
+                    <Offset>50</Offset>
+                    <Offset>20</Offset>
+                    <Offset>8</Offset>
+                    <Offset>34</Offset>
+                    <Offset>8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>8</Offset>
+                    <Offset>C</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1337322158</ID>
+              <Description>"PlayerStatus (Active in Battle)"</Description>
+              <Options moHideChildren="1"/>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>1337322098</ID>
+                  <Description>"m_firstChar"</Description>
+                  <VariableType>String</VariableType>
+                  <Length>999</Length>
+                  <Unicode>1</Unicode>
+                  <CodePage>0</CodePage>
+                  <ZeroTerminate>1</ZeroTerminate>
+                  <Address>[p_BT]+1C</Address>
+                  <Offsets>
+                    <Offset>C</Offset>
+                    <Offset>8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>C</Offset>
+                    <Offset>8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>18</Offset>
+                    <Offset>20</Offset>
+                    <Offset>8</Offset>
+                    <Offset>34</Offset>
+                    <Offset>8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>8</Offset>
+                    <Offset>C</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>1337322099</ID>
+                      <Description>"baseValue"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[p_BT]+1C</Address>
+                      <Offsets>
+                        <Offset>28</Offset>
+                        <Offset>10</Offset>
+                        <Offset>18</Offset>
+                        <Offset>20</Offset>
+                        <Offset>8</Offset>
+                        <Offset>34</Offset>
+                        <Offset>8</Offset>
+                        <Offset>10</Offset>
+                        <Offset>8</Offset>
+                        <Offset>C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337322150</ID>
+                      <Description>"currentValue"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[p_BT]+1C</Address>
+                      <Offsets>
+                        <Offset>2C</Offset>
+                        <Offset>10</Offset>
+                        <Offset>18</Offset>
+                        <Offset>20</Offset>
+                        <Offset>8</Offset>
+                        <Offset>34</Offset>
+                        <Offset>8</Offset>
+                        <Offset>10</Offset>
+                        <Offset>8</Offset>
+                        <Offset>C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337322100</ID>
+                  <Description>"m_firstChar"</Description>
+                  <VariableType>String</VariableType>
+                  <Length>999</Length>
+                  <Unicode>1</Unicode>
+                  <CodePage>0</CodePage>
+                  <ZeroTerminate>1</ZeroTerminate>
+                  <Address>[p_BT]+1C</Address>
+                  <Offsets>
+                    <Offset>C</Offset>
+                    <Offset>8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>C</Offset>
+                    <Offset>8</Offset>
+                    <Offset>14</Offset>
+                    <Offset>18</Offset>
+                    <Offset>20</Offset>
+                    <Offset>8</Offset>
+                    <Offset>34</Offset>
+                    <Offset>8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>8</Offset>
+                    <Offset>C</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>1337322101</ID>
+                      <Description>"baseValue"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[p_BT]+1C</Address>
+                      <Offsets>
+                        <Offset>28</Offset>
+                        <Offset>14</Offset>
+                        <Offset>18</Offset>
+                        <Offset>20</Offset>
+                        <Offset>8</Offset>
+                        <Offset>34</Offset>
+                        <Offset>8</Offset>
+                        <Offset>10</Offset>
+                        <Offset>8</Offset>
+                        <Offset>C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337322151</ID>
+                      <Description>"currentValue"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[p_BT]+1C</Address>
+                      <Offsets>
+                        <Offset>2C</Offset>
+                        <Offset>14</Offset>
+                        <Offset>18</Offset>
+                        <Offset>20</Offset>
+                        <Offset>8</Offset>
+                        <Offset>34</Offset>
+                        <Offset>8</Offset>
+                        <Offset>10</Offset>
+                        <Offset>8</Offset>
+                        <Offset>C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337322102</ID>
+                  <Description>"m_firstChar"</Description>
+                  <VariableType>String</VariableType>
+                  <Length>999</Length>
+                  <Unicode>1</Unicode>
+                  <CodePage>0</CodePage>
+                  <ZeroTerminate>1</ZeroTerminate>
+                  <Address>[p_BT]+1C</Address>
+                  <Offsets>
+                    <Offset>C</Offset>
+                    <Offset>8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>C</Offset>
+                    <Offset>8</Offset>
+                    <Offset>18</Offset>
+                    <Offset>18</Offset>
+                    <Offset>20</Offset>
+                    <Offset>8</Offset>
+                    <Offset>34</Offset>
+                    <Offset>8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>8</Offset>
+                    <Offset>C</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>1337322103</ID>
+                      <Description>"baseValue"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[p_BT]+1C</Address>
+                      <Offsets>
+                        <Offset>28</Offset>
+                        <Offset>18</Offset>
+                        <Offset>18</Offset>
+                        <Offset>20</Offset>
+                        <Offset>8</Offset>
+                        <Offset>34</Offset>
+                        <Offset>8</Offset>
+                        <Offset>10</Offset>
+                        <Offset>8</Offset>
+                        <Offset>C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337322152</ID>
+                      <Description>"currentValue"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[p_BT]+1C</Address>
+                      <Offsets>
+                        <Offset>2C</Offset>
+                        <Offset>18</Offset>
+                        <Offset>18</Offset>
+                        <Offset>20</Offset>
+                        <Offset>8</Offset>
+                        <Offset>34</Offset>
+                        <Offset>8</Offset>
+                        <Offset>10</Offset>
+                        <Offset>8</Offset>
+                        <Offset>C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337322104</ID>
+                  <Description>"m_firstChar"</Description>
+                  <VariableType>String</VariableType>
+                  <Length>999</Length>
+                  <Unicode>1</Unicode>
+                  <CodePage>0</CodePage>
+                  <ZeroTerminate>1</ZeroTerminate>
+                  <Address>[p_BT]+1C</Address>
+                  <Offsets>
+                    <Offset>C</Offset>
+                    <Offset>8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>C</Offset>
+                    <Offset>8</Offset>
+                    <Offset>1C</Offset>
+                    <Offset>18</Offset>
+                    <Offset>20</Offset>
+                    <Offset>8</Offset>
+                    <Offset>34</Offset>
+                    <Offset>8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>8</Offset>
+                    <Offset>C</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>1337322105</ID>
+                      <Description>"baseValue"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[p_BT]+1C</Address>
+                      <Offsets>
+                        <Offset>28</Offset>
+                        <Offset>1C</Offset>
+                        <Offset>18</Offset>
+                        <Offset>20</Offset>
+                        <Offset>8</Offset>
+                        <Offset>34</Offset>
+                        <Offset>8</Offset>
+                        <Offset>10</Offset>
+                        <Offset>8</Offset>
+                        <Offset>C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337322153</ID>
+                      <Description>"currentValue"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[p_BT]+1C</Address>
+                      <Offsets>
+                        <Offset>2C</Offset>
+                        <Offset>1C</Offset>
+                        <Offset>18</Offset>
+                        <Offset>20</Offset>
+                        <Offset>8</Offset>
+                        <Offset>34</Offset>
+                        <Offset>8</Offset>
+                        <Offset>10</Offset>
+                        <Offset>8</Offset>
+                        <Offset>C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337322106</ID>
+                  <Description>"m_firstChar"</Description>
+                  <VariableType>String</VariableType>
+                  <Length>999</Length>
+                  <Unicode>1</Unicode>
+                  <CodePage>0</CodePage>
+                  <ZeroTerminate>1</ZeroTerminate>
+                  <Address>[p_BT]+1C</Address>
+                  <Offsets>
+                    <Offset>C</Offset>
+                    <Offset>8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>C</Offset>
+                    <Offset>8</Offset>
+                    <Offset>20</Offset>
+                    <Offset>18</Offset>
+                    <Offset>20</Offset>
+                    <Offset>8</Offset>
+                    <Offset>34</Offset>
+                    <Offset>8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>8</Offset>
+                    <Offset>C</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>1337322107</ID>
+                      <Description>"baseValue"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[p_BT]+1C</Address>
+                      <Offsets>
+                        <Offset>28</Offset>
+                        <Offset>20</Offset>
+                        <Offset>18</Offset>
+                        <Offset>20</Offset>
+                        <Offset>8</Offset>
+                        <Offset>34</Offset>
+                        <Offset>8</Offset>
+                        <Offset>10</Offset>
+                        <Offset>8</Offset>
+                        <Offset>C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337322154</ID>
+                      <Description>"currentValue"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[p_BT]+1C</Address>
+                      <Offsets>
+                        <Offset>2C</Offset>
+                        <Offset>20</Offset>
+                        <Offset>18</Offset>
+                        <Offset>20</Offset>
+                        <Offset>8</Offset>
+                        <Offset>34</Offset>
+                        <Offset>8</Offset>
+                        <Offset>10</Offset>
+                        <Offset>8</Offset>
+                        <Offset>C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337322108</ID>
+                  <Description>"m_firstChar ??? "NO NAME""</Description>
+                  <VariableType>String</VariableType>
+                  <Length>999</Length>
+                  <Unicode>1</Unicode>
+                  <CodePage>0</CodePage>
+                  <ZeroTerminate>1</ZeroTerminate>
+                  <Address>[p_BT]+1C</Address>
+                  <Offsets>
+                    <Offset>C</Offset>
+                    <Offset>8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>C</Offset>
+                    <Offset>8</Offset>
+                    <Offset>24</Offset>
+                    <Offset>18</Offset>
+                    <Offset>20</Offset>
+                    <Offset>8</Offset>
+                    <Offset>34</Offset>
+                    <Offset>8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>8</Offset>
+                    <Offset>C</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>1337322109</ID>
+                      <Description>"baseValue"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[p_BT]+1C</Address>
+                      <Offsets>
+                        <Offset>28</Offset>
+                        <Offset>24</Offset>
+                        <Offset>18</Offset>
+                        <Offset>20</Offset>
+                        <Offset>8</Offset>
+                        <Offset>34</Offset>
+                        <Offset>8</Offset>
+                        <Offset>10</Offset>
+                        <Offset>8</Offset>
+                        <Offset>C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337322155</ID>
+                      <Description>"currentValue"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[p_BT]+1C</Address>
+                      <Offsets>
+                        <Offset>2C</Offset>
+                        <Offset>24</Offset>
+                        <Offset>18</Offset>
+                        <Offset>20</Offset>
+                        <Offset>8</Offset>
+                        <Offset>34</Offset>
+                        <Offset>8</Offset>
+                        <Offset>10</Offset>
+                        <Offset>8</Offset>
+                        <Offset>C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337322110</ID>
+                  <Description>"m_firstChar"</Description>
+                  <VariableType>String</VariableType>
+                  <Length>999</Length>
+                  <Unicode>1</Unicode>
+                  <CodePage>0</CodePage>
+                  <ZeroTerminate>1</ZeroTerminate>
+                  <Address>[p_BT]+1C</Address>
+                  <Offsets>
+                    <Offset>C</Offset>
+                    <Offset>8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>C</Offset>
+                    <Offset>8</Offset>
+                    <Offset>28</Offset>
+                    <Offset>18</Offset>
+                    <Offset>20</Offset>
+                    <Offset>8</Offset>
+                    <Offset>34</Offset>
+                    <Offset>8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>8</Offset>
+                    <Offset>C</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>1337322111</ID>
+                      <Description>"baseValue"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[p_BT]+1C</Address>
+                      <Offsets>
+                        <Offset>28</Offset>
+                        <Offset>28</Offset>
+                        <Offset>18</Offset>
+                        <Offset>20</Offset>
+                        <Offset>8</Offset>
+                        <Offset>34</Offset>
+                        <Offset>8</Offset>
+                        <Offset>10</Offset>
+                        <Offset>8</Offset>
+                        <Offset>C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337322156</ID>
+                      <Description>"currentValue"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[p_BT]+1C</Address>
+                      <Offsets>
+                        <Offset>2C</Offset>
+                        <Offset>28</Offset>
+                        <Offset>18</Offset>
+                        <Offset>20</Offset>
+                        <Offset>8</Offset>
+                        <Offset>34</Offset>
+                        <Offset>8</Offset>
+                        <Offset>10</Offset>
+                        <Offset>8</Offset>
+                        <Offset>C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337322112</ID>
+                  <Description>"m_firstChar"</Description>
+                  <VariableType>String</VariableType>
+                  <Length>999</Length>
+                  <Unicode>1</Unicode>
+                  <CodePage>0</CodePage>
+                  <ZeroTerminate>1</ZeroTerminate>
+                  <Address>[p_BT]+1C</Address>
+                  <Offsets>
+                    <Offset>C</Offset>
+                    <Offset>8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>C</Offset>
+                    <Offset>8</Offset>
+                    <Offset>2C</Offset>
+                    <Offset>18</Offset>
+                    <Offset>20</Offset>
+                    <Offset>8</Offset>
+                    <Offset>34</Offset>
+                    <Offset>8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>8</Offset>
+                    <Offset>C</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>1337322113</ID>
+                      <Description>"baseValue"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[p_BT]+1C</Address>
+                      <Offsets>
+                        <Offset>28</Offset>
+                        <Offset>2C</Offset>
+                        <Offset>18</Offset>
+                        <Offset>20</Offset>
+                        <Offset>8</Offset>
+                        <Offset>34</Offset>
+                        <Offset>8</Offset>
+                        <Offset>10</Offset>
+                        <Offset>8</Offset>
+                        <Offset>C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337322157</ID>
+                      <Description>"currentValue"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[p_BT]+1C</Address>
+                      <Offsets>
+                        <Offset>2C</Offset>
+                        <Offset>2C</Offset>
+                        <Offset>18</Offset>
+                        <Offset>20</Offset>
+                        <Offset>8</Offset>
+                        <Offset>34</Offset>
+                        <Offset>8</Offset>
+                        <Offset>10</Offset>
+                        <Offset>8</Offset>
+                        <Offset>C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337322114</ID>
+                  <Description>"m_firstChar"</Description>
+                  <VariableType>String</VariableType>
+                  <Length>999</Length>
+                  <Unicode>1</Unicode>
+                  <CodePage>0</CodePage>
+                  <ZeroTerminate>1</ZeroTerminate>
+                  <Address>[p_BT]+1C</Address>
+                  <Offsets>
+                    <Offset>C</Offset>
+                    <Offset>8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>C</Offset>
+                    <Offset>8</Offset>
+                    <Offset>30</Offset>
+                    <Offset>18</Offset>
+                    <Offset>20</Offset>
+                    <Offset>8</Offset>
+                    <Offset>34</Offset>
+                    <Offset>8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>8</Offset>
+                    <Offset>C</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>1337322116</ID>
+                      <Description>"baseValue"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[p_BT]+1C</Address>
+                      <Offsets>
+                        <Offset>28</Offset>
+                        <Offset>30</Offset>
+                        <Offset>18</Offset>
+                        <Offset>20</Offset>
+                        <Offset>8</Offset>
+                        <Offset>34</Offset>
+                        <Offset>8</Offset>
+                        <Offset>10</Offset>
+                        <Offset>8</Offset>
+                        <Offset>C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337322115</ID>
+                      <Description>"currentValue"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[p_BT]+1C</Address>
+                      <Offsets>
+                        <Offset>2C</Offset>
+                        <Offset>30</Offset>
+                        <Offset>18</Offset>
+                        <Offset>20</Offset>
+                        <Offset>8</Offset>
+                        <Offset>34</Offset>
+                        <Offset>8</Offset>
+                        <Offset>10</Offset>
+                        <Offset>8</Offset>
+                        <Offset>C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337322117</ID>
+                  <Description>"m_firstChar"</Description>
+                  <VariableType>String</VariableType>
+                  <Length>999</Length>
+                  <Unicode>1</Unicode>
+                  <CodePage>0</CodePage>
+                  <ZeroTerminate>1</ZeroTerminate>
+                  <Address>[p_BT]+1C</Address>
+                  <Offsets>
+                    <Offset>C</Offset>
+                    <Offset>8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>C</Offset>
+                    <Offset>8</Offset>
+                    <Offset>38</Offset>
+                    <Offset>18</Offset>
+                    <Offset>20</Offset>
+                    <Offset>8</Offset>
+                    <Offset>34</Offset>
+                    <Offset>8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>8</Offset>
+                    <Offset>C</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>1337322118</ID>
+                      <Description>"baseValue"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[p_BT]+1C</Address>
+                      <Offsets>
+                        <Offset>28</Offset>
+                        <Offset>38</Offset>
+                        <Offset>18</Offset>
+                        <Offset>20</Offset>
+                        <Offset>8</Offset>
+                        <Offset>34</Offset>
+                        <Offset>8</Offset>
+                        <Offset>10</Offset>
+                        <Offset>8</Offset>
+                        <Offset>C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337322119</ID>
+                      <Description>"currentValue"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[p_BT]+1C</Address>
+                      <Offsets>
+                        <Offset>2C</Offset>
+                        <Offset>38</Offset>
+                        <Offset>18</Offset>
+                        <Offset>20</Offset>
+                        <Offset>8</Offset>
+                        <Offset>34</Offset>
+                        <Offset>8</Offset>
+                        <Offset>10</Offset>
+                        <Offset>8</Offset>
+                        <Offset>C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337322120</ID>
+                  <Description>"m_firstChar"</Description>
+                  <VariableType>String</VariableType>
+                  <Length>999</Length>
+                  <Unicode>1</Unicode>
+                  <CodePage>0</CodePage>
+                  <ZeroTerminate>1</ZeroTerminate>
+                  <Address>[p_BT]+1C</Address>
+                  <Offsets>
+                    <Offset>C</Offset>
+                    <Offset>8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>C</Offset>
+                    <Offset>8</Offset>
+                    <Offset>3C</Offset>
+                    <Offset>18</Offset>
+                    <Offset>20</Offset>
+                    <Offset>8</Offset>
+                    <Offset>34</Offset>
+                    <Offset>8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>8</Offset>
+                    <Offset>C</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>1337322121</ID>
+                      <Description>"baseValue"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[p_BT]+1C</Address>
+                      <Offsets>
+                        <Offset>28</Offset>
+                        <Offset>3C</Offset>
+                        <Offset>18</Offset>
+                        <Offset>20</Offset>
+                        <Offset>8</Offset>
+                        <Offset>34</Offset>
+                        <Offset>8</Offset>
+                        <Offset>10</Offset>
+                        <Offset>8</Offset>
+                        <Offset>C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337322122</ID>
+                      <Description>"currentValue"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[p_BT]+1C</Address>
+                      <Offsets>
+                        <Offset>2C</Offset>
+                        <Offset>3C</Offset>
+                        <Offset>18</Offset>
+                        <Offset>20</Offset>
+                        <Offset>8</Offset>
+                        <Offset>34</Offset>
+                        <Offset>8</Offset>
+                        <Offset>10</Offset>
+                        <Offset>8</Offset>
+                        <Offset>C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337322123</ID>
+                  <Description>"m_firstChar"</Description>
+                  <VariableType>String</VariableType>
+                  <Length>999</Length>
+                  <Unicode>1</Unicode>
+                  <CodePage>0</CodePage>
+                  <ZeroTerminate>1</ZeroTerminate>
+                  <Address>[p_BT]+1C</Address>
+                  <Offsets>
+                    <Offset>C</Offset>
+                    <Offset>8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>C</Offset>
+                    <Offset>8</Offset>
+                    <Offset>40</Offset>
+                    <Offset>18</Offset>
+                    <Offset>20</Offset>
+                    <Offset>8</Offset>
+                    <Offset>34</Offset>
+                    <Offset>8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>8</Offset>
+                    <Offset>C</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>1337322124</ID>
+                      <Description>"baseValue"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[p_BT]+1C</Address>
+                      <Offsets>
+                        <Offset>28</Offset>
+                        <Offset>40</Offset>
+                        <Offset>18</Offset>
+                        <Offset>20</Offset>
+                        <Offset>8</Offset>
+                        <Offset>34</Offset>
+                        <Offset>8</Offset>
+                        <Offset>10</Offset>
+                        <Offset>8</Offset>
+                        <Offset>C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337322125</ID>
+                      <Description>"currentValue"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[p_BT]+1C</Address>
+                      <Offsets>
+                        <Offset>2C</Offset>
+                        <Offset>40</Offset>
+                        <Offset>18</Offset>
+                        <Offset>20</Offset>
+                        <Offset>8</Offset>
+                        <Offset>34</Offset>
+                        <Offset>8</Offset>
+                        <Offset>10</Offset>
+                        <Offset>8</Offset>
+                        <Offset>C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337322126</ID>
+                  <Description>"m_firstChar"</Description>
+                  <VariableType>String</VariableType>
+                  <Length>999</Length>
+                  <Unicode>1</Unicode>
+                  <CodePage>0</CodePage>
+                  <ZeroTerminate>1</ZeroTerminate>
+                  <Address>[p_BT]+1C</Address>
+                  <Offsets>
+                    <Offset>C</Offset>
+                    <Offset>8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>C</Offset>
+                    <Offset>8</Offset>
+                    <Offset>44</Offset>
+                    <Offset>18</Offset>
+                    <Offset>20</Offset>
+                    <Offset>8</Offset>
+                    <Offset>34</Offset>
+                    <Offset>8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>8</Offset>
+                    <Offset>C</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>1337322127</ID>
+                      <Description>"baseValue"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[p_BT]+1C</Address>
+                      <Offsets>
+                        <Offset>28</Offset>
+                        <Offset>44</Offset>
+                        <Offset>18</Offset>
+                        <Offset>20</Offset>
+                        <Offset>8</Offset>
+                        <Offset>34</Offset>
+                        <Offset>8</Offset>
+                        <Offset>10</Offset>
+                        <Offset>8</Offset>
+                        <Offset>C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337322128</ID>
+                      <Description>"currentValue"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[p_BT]+1C</Address>
+                      <Offsets>
+                        <Offset>2C</Offset>
+                        <Offset>44</Offset>
+                        <Offset>18</Offset>
+                        <Offset>20</Offset>
+                        <Offset>8</Offset>
+                        <Offset>34</Offset>
+                        <Offset>8</Offset>
+                        <Offset>10</Offset>
+                        <Offset>8</Offset>
+                        <Offset>C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337322129</ID>
+                  <Description>"m_firstChar"</Description>
+                  <VariableType>String</VariableType>
+                  <Length>999</Length>
+                  <Unicode>1</Unicode>
+                  <CodePage>0</CodePage>
+                  <ZeroTerminate>1</ZeroTerminate>
+                  <Address>[p_BT]+1C</Address>
+                  <Offsets>
+                    <Offset>C</Offset>
+                    <Offset>8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>C</Offset>
+                    <Offset>8</Offset>
+                    <Offset>48</Offset>
+                    <Offset>18</Offset>
+                    <Offset>20</Offset>
+                    <Offset>8</Offset>
+                    <Offset>34</Offset>
+                    <Offset>8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>8</Offset>
+                    <Offset>C</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>1337322130</ID>
+                      <Description>"baseValue"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[p_BT]+1C</Address>
+                      <Offsets>
+                        <Offset>28</Offset>
+                        <Offset>48</Offset>
+                        <Offset>18</Offset>
+                        <Offset>20</Offset>
+                        <Offset>8</Offset>
+                        <Offset>34</Offset>
+                        <Offset>8</Offset>
+                        <Offset>10</Offset>
+                        <Offset>8</Offset>
+                        <Offset>C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337322131</ID>
+                      <Description>"currentValue"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[p_BT]+1C</Address>
+                      <Offsets>
+                        <Offset>2C</Offset>
+                        <Offset>48</Offset>
+                        <Offset>18</Offset>
+                        <Offset>20</Offset>
+                        <Offset>8</Offset>
+                        <Offset>34</Offset>
+                        <Offset>8</Offset>
+                        <Offset>10</Offset>
+                        <Offset>8</Offset>
+                        <Offset>C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337322132</ID>
+                  <Description>"m_firstChar"</Description>
+                  <VariableType>String</VariableType>
+                  <Length>999</Length>
+                  <Unicode>1</Unicode>
+                  <CodePage>0</CodePage>
+                  <ZeroTerminate>1</ZeroTerminate>
+                  <Address>[p_BT]+1C</Address>
+                  <Offsets>
+                    <Offset>C</Offset>
+                    <Offset>8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>C</Offset>
+                    <Offset>8</Offset>
+                    <Offset>4C</Offset>
+                    <Offset>18</Offset>
+                    <Offset>20</Offset>
+                    <Offset>8</Offset>
+                    <Offset>34</Offset>
+                    <Offset>8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>8</Offset>
+                    <Offset>C</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>1337322133</ID>
+                      <Description>"baseValue"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[p_BT]+1C</Address>
+                      <Offsets>
+                        <Offset>28</Offset>
+                        <Offset>4C</Offset>
+                        <Offset>18</Offset>
+                        <Offset>20</Offset>
+                        <Offset>8</Offset>
+                        <Offset>34</Offset>
+                        <Offset>8</Offset>
+                        <Offset>10</Offset>
+                        <Offset>8</Offset>
+                        <Offset>C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337322134</ID>
+                      <Description>"currentValue"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[p_BT]+1C</Address>
+                      <Offsets>
+                        <Offset>2C</Offset>
+                        <Offset>4C</Offset>
+                        <Offset>18</Offset>
+                        <Offset>20</Offset>
+                        <Offset>8</Offset>
+                        <Offset>34</Offset>
+                        <Offset>8</Offset>
+                        <Offset>10</Offset>
+                        <Offset>8</Offset>
+                        <Offset>C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337322135</ID>
+                  <Description>"m_firstChar"</Description>
+                  <VariableType>String</VariableType>
+                  <Length>999</Length>
+                  <Unicode>1</Unicode>
+                  <CodePage>0</CodePage>
+                  <ZeroTerminate>1</ZeroTerminate>
+                  <Address>[p_BT]+1C</Address>
+                  <Offsets>
+                    <Offset>C</Offset>
+                    <Offset>8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>C</Offset>
+                    <Offset>8</Offset>
+                    <Offset>50</Offset>
+                    <Offset>18</Offset>
+                    <Offset>20</Offset>
+                    <Offset>8</Offset>
+                    <Offset>34</Offset>
+                    <Offset>8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>8</Offset>
+                    <Offset>C</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>1337322136</ID>
+                      <Description>"baseValue"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[p_BT]+1C</Address>
+                      <Offsets>
+                        <Offset>28</Offset>
+                        <Offset>50</Offset>
+                        <Offset>18</Offset>
+                        <Offset>20</Offset>
+                        <Offset>8</Offset>
+                        <Offset>34</Offset>
+                        <Offset>8</Offset>
+                        <Offset>10</Offset>
+                        <Offset>8</Offset>
+                        <Offset>C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337322137</ID>
+                      <Description>"currentValue"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[p_BT]+1C</Address>
+                      <Offsets>
+                        <Offset>2C</Offset>
+                        <Offset>50</Offset>
+                        <Offset>18</Offset>
+                        <Offset>20</Offset>
+                        <Offset>8</Offset>
+                        <Offset>34</Offset>
+                        <Offset>8</Offset>
+                        <Offset>10</Offset>
+                        <Offset>8</Offset>
+                        <Offset>C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337322138</ID>
+                  <Description>"m_firstChar"</Description>
+                  <VariableType>String</VariableType>
+                  <Length>999</Length>
+                  <Unicode>1</Unicode>
+                  <CodePage>0</CodePage>
+                  <ZeroTerminate>1</ZeroTerminate>
+                  <Address>[p_BT]+1C</Address>
+                  <Offsets>
+                    <Offset>C</Offset>
+                    <Offset>8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>C</Offset>
+                    <Offset>8</Offset>
+                    <Offset>54</Offset>
+                    <Offset>18</Offset>
+                    <Offset>20</Offset>
+                    <Offset>8</Offset>
+                    <Offset>34</Offset>
+                    <Offset>8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>8</Offset>
+                    <Offset>C</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>1337322139</ID>
+                      <Description>"baseValue"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[p_BT]+1C</Address>
+                      <Offsets>
+                        <Offset>28</Offset>
+                        <Offset>54</Offset>
+                        <Offset>18</Offset>
+                        <Offset>20</Offset>
+                        <Offset>8</Offset>
+                        <Offset>34</Offset>
+                        <Offset>8</Offset>
+                        <Offset>10</Offset>
+                        <Offset>8</Offset>
+                        <Offset>C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337322140</ID>
+                      <Description>"currentValue"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[p_BT]+1C</Address>
+                      <Offsets>
+                        <Offset>2C</Offset>
+                        <Offset>54</Offset>
+                        <Offset>18</Offset>
+                        <Offset>20</Offset>
+                        <Offset>8</Offset>
+                        <Offset>34</Offset>
+                        <Offset>8</Offset>
+                        <Offset>10</Offset>
+                        <Offset>8</Offset>
+                        <Offset>C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337322141</ID>
+                  <Description>"m_firstChar"</Description>
+                  <VariableType>String</VariableType>
+                  <Length>999</Length>
+                  <Unicode>1</Unicode>
+                  <CodePage>0</CodePage>
+                  <ZeroTerminate>1</ZeroTerminate>
+                  <Address>[p_BT]+1C</Address>
+                  <Offsets>
+                    <Offset>C</Offset>
+                    <Offset>8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>C</Offset>
+                    <Offset>8</Offset>
+                    <Offset>58</Offset>
+                    <Offset>18</Offset>
+                    <Offset>20</Offset>
+                    <Offset>8</Offset>
+                    <Offset>34</Offset>
+                    <Offset>8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>8</Offset>
+                    <Offset>C</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>1337322142</ID>
+                      <Description>"baseValue"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[p_BT]+1C</Address>
+                      <Offsets>
+                        <Offset>28</Offset>
+                        <Offset>58</Offset>
+                        <Offset>18</Offset>
+                        <Offset>20</Offset>
+                        <Offset>8</Offset>
+                        <Offset>34</Offset>
+                        <Offset>8</Offset>
+                        <Offset>10</Offset>
+                        <Offset>8</Offset>
+                        <Offset>C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337322143</ID>
+                      <Description>"currentValue"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[p_BT]+1C</Address>
+                      <Offsets>
+                        <Offset>2C</Offset>
+                        <Offset>58</Offset>
+                        <Offset>18</Offset>
+                        <Offset>20</Offset>
+                        <Offset>8</Offset>
+                        <Offset>34</Offset>
+                        <Offset>8</Offset>
+                        <Offset>10</Offset>
+                        <Offset>8</Offset>
+                        <Offset>C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337322144</ID>
+                  <Description>"m_firstChar"</Description>
+                  <VariableType>String</VariableType>
+                  <Length>999</Length>
+                  <Unicode>1</Unicode>
+                  <CodePage>0</CodePage>
+                  <ZeroTerminate>1</ZeroTerminate>
+                  <Address>[p_BT]+1C</Address>
+                  <Offsets>
+                    <Offset>C</Offset>
+                    <Offset>8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>C</Offset>
+                    <Offset>8</Offset>
+                    <Offset>5C</Offset>
+                    <Offset>18</Offset>
+                    <Offset>20</Offset>
+                    <Offset>8</Offset>
+                    <Offset>34</Offset>
+                    <Offset>8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>8</Offset>
+                    <Offset>C</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>1337322145</ID>
+                      <Description>"baseValue"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[p_BT]+1C</Address>
+                      <Offsets>
+                        <Offset>28</Offset>
+                        <Offset>5C</Offset>
+                        <Offset>18</Offset>
+                        <Offset>20</Offset>
+                        <Offset>8</Offset>
+                        <Offset>34</Offset>
+                        <Offset>8</Offset>
+                        <Offset>10</Offset>
+                        <Offset>8</Offset>
+                        <Offset>C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337322146</ID>
+                      <Description>"currentValue"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[p_BT]+1C</Address>
+                      <Offsets>
+                        <Offset>2C</Offset>
+                        <Offset>5C</Offset>
+                        <Offset>18</Offset>
+                        <Offset>20</Offset>
+                        <Offset>8</Offset>
+                        <Offset>34</Offset>
+                        <Offset>8</Offset>
+                        <Offset>10</Offset>
+                        <Offset>8</Offset>
+                        <Offset>C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337322147</ID>
+                  <Description>"m_firstChar"</Description>
+                  <VariableType>String</VariableType>
+                  <Length>999</Length>
+                  <Unicode>1</Unicode>
+                  <CodePage>0</CodePage>
+                  <ZeroTerminate>1</ZeroTerminate>
+                  <Address>[p_BT]+1C</Address>
+                  <Offsets>
+                    <Offset>C</Offset>
+                    <Offset>8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>C</Offset>
+                    <Offset>8</Offset>
+                    <Offset>60</Offset>
+                    <Offset>18</Offset>
+                    <Offset>20</Offset>
+                    <Offset>8</Offset>
+                    <Offset>34</Offset>
+                    <Offset>8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>8</Offset>
+                    <Offset>C</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>1337322148</ID>
+                      <Description>"baseValue"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[p_BT]+1C</Address>
+                      <Offsets>
+                        <Offset>28</Offset>
+                        <Offset>60</Offset>
+                        <Offset>18</Offset>
+                        <Offset>20</Offset>
+                        <Offset>8</Offset>
+                        <Offset>34</Offset>
+                        <Offset>8</Offset>
+                        <Offset>10</Offset>
+                        <Offset>8</Offset>
+                        <Offset>C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337322149</ID>
+                      <Description>"currentValue"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[p_BT]+1C</Address>
+                      <Offsets>
+                        <Offset>2C</Offset>
+                        <Offset>60</Offset>
+                        <Offset>18</Offset>
+                        <Offset>20</Offset>
+                        <Offset>8</Offset>
+                        <Offset>34</Offset>
+                        <Offset>8</Offset>
+                        <Offset>10</Offset>
+                        <Offset>8</Offset>
+                        <Offset>C</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>Change of je ORKFramework.UI.ConsoleHUDSetting:IsVisible+30</Description>
+      <AddressString>376EB15F</AddressString>
+      <Before>
+        <Byte>FF</Byte>
+        <Byte>50</Byte>
+        <Byte>60</Byte>
+        <Byte>85</Byte>
+        <Byte>C0</Byte>
+      </Before>
+      <Actual>
+        <Byte>74</Byte>
+        <Byte>17</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>45</Byte>
+        <Byte>08</Byte>
+        <Byte>8B</Byte>
+        <Byte>40</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+</CheatTable>
