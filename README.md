@@ -29,7 +29,8 @@
 | [Cheat Engine](https://cheatengine.org/downloads.php) | Download Cheat Engine |
 | [Runtime Modifier](https://rtmod.cheatengine.org/downloads.php) | Runtime Modifier Custom Cheat Engine |
 | [Fling Trainer](https://flingtrainer.com/) | Standalone Trainer Versions |
-| [mul0 Blog](https://mul0.com/) | Wemod, ModEngine, CheatEvolution, Aurora Unlocker and Table Dumper (PayWall bypass) |
+| [mul0 Blog](https://mul0.com/) | Wemod, ModEngine, CheatEvolution, Aurora Unlocker and Table Dumper (PayWall bypass) |  
+| [PINCE](https://github.com/korcankaraokcu/PINCE) | PINCE is a front-end/reverse engineering tool like CE but for Linux |
 
 ---
 
