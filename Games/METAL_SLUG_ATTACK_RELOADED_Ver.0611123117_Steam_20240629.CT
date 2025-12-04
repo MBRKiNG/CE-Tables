@@ -1,0 +1,547 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="50">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1337111301</ID>
+      <Description>"---------------------------------------------------------------"</Description>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"METAL_SLUG_ATTACK_RELOADED_Ver.0611123117_Steam_20240629_by_MBRKiNG"</Description>
+      <Options moHideChildren="1"/>
+      <Color>000080</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1337111309</ID>
+          <Description>"Inf Unit/Base Health - Easy Kills"</Description>
+          <Options moHideChildren="1" moDeactivateChildrenAsWell="1"/>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(Base_Unit_Health, $process, 48 8D ?? ?? ?? ?? ?? 48 8D ?? ?? ?? E8 ?? ?? ?? ?? 48 8B ?? ?? ?? 48 8B ?? ?? ?? 48 83 ?? ?? 41 5E)
+alloc(Base_Unit_Health_MEM,$1000,Base_Unit_Health)
+alloc(restoreBYTES,7)
+alloc(Easy_Kills,1)
+alloc(Player_Base_Unit_HP,1)
+label(code)
+label(return)
+label(Player_HP_Check)
+label(Enemy_HP_Check)
+label(Player)
+Label(Enemy)
+Base_Unit_Health_MEM:
+  cmp byte ptr [rsi+0000018C],00
+  jz Player_HP_Check
+  cmp byte ptr [rsi+0000018C],00
+  jnz Enemy_HP_Check
+  jmp code
+Enemy_HP_Check:
+  cmp byte ptr [Easy_Kills],1
+  jne code
+  jmp Enemy
+Player_HP_Check:
+  cmp byte ptr [Player_Base_Unit_HP],1
+  jne code
+  jmp Player
+Enemy:
+  cmp [rsi+00000288],#1111
+  je code
+  mov [rsi+00000288],#1111
+  mov [rsi+00000290],#1111
+  jmp Enemy
+Player:
+  mov [rsi+00000288],#9999999
+  mov [rsi+00000290],#9999999
+  jmp code
+code:
+  readmem(Base_Unit_Health,7)
+  jmp return
+Base_Unit_Health:
+  jmp Base_Unit_Health_MEM
+  nop 2
+return:
+restoreBYTES:
+readmem(Base_Unit_Health,7)
+registersymbol(Base_Unit_Health,Easy_Kills,Player_Base_Unit_HP,restoreBYTES)
+[DISABLE]
+Base_Unit_Health:
+readmem(restoreBYTES,7)
+unregistersymbol(*)
+dealloc(*)
+
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>1337111310</ID>
+              <Description>"Inf Player Unit/Base HP"</Description>
+              <Color>4080FF</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+Player_Base_Unit_HP:
+db 1
+[DISABLE]
+Player_Base_Unit_HP:
+db 0
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1337111311</ID>
+              <Description>"Easy Kills"</Description>
+              <Color>4080FF</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+Easy_Kills:
+db 1
+[DISABLE]
+Easy_Kills:
+db 0
+</AssemblerScript>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337111302</ID>
+          <Description>"Inf AP"</Description>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(InfAP, $process, 76 ?? 48 8D ?? ?? ?? F3 ?? ?? ?? ?? ?? 48 8D)
+alloc(InfAP_RestoreBytes,2)
+InfAP_RestoreBytes:
+  readmem(InfAP,2)
+InfAP:
+  db 90 90
+registersymbol(InfAP,InfAP_RestoreBytes)
+[DISABLE]
+InfAP:
+  readmem(InfAP_RestoreBytes,2)
+unregistersymbol(*)
+dealloc(*)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337111303</ID>
+          <Description>"SupportSystem Always Max"</Description>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(SpecialMax, $process, 0F 8C ?? ?? ?? ?? 4C ?? ?? ?? ?? 8B ?? 4C ?? ?? ?? ?? E8)
+alloc(SpecialMax_RestoreBytes,2)
+SpecialMax_RestoreBytes:
+  readmem(SpecialMax,2)
+SpecialMax+1:
+  db 8D
+registersymbol(SpecialMax,SpecialMax_RestoreBytes)
+[DISABLE]
+SpecialMax:
+  readmem(SpecialMax_RestoreBytes,2)
+unregistersymbol(*)
+dealloc(*)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337111304</ID>
+          <Description>"Inf Support Unit"</Description>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(Inf_Sup, $process, 8B ?? ?? ?? ?? ?? ?? 85 ?? 7E ?? FF ?? 89)
+alloc(Inf_Sup_RestoreBytes,10)
+Inf_Sup_RestoreBytes:
+  readmem(Inf_Sup,10)
+Inf_Sup+9:
+  db EB
+registersymbol(Inf_Sup,Inf_Sup_RestoreBytes)
+[DISABLE]
+Inf_Sup:
+  readmem(Inf_Sup_RestoreBytes,10)
+unregistersymbol(*)
+dealloc(*)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337111305</ID>
+          <Description>"No Unit CD"</Description>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(NoUnitCD, $process, 74 ?? 49 8B ?? E8 ?? ?? ?? ?? 40 84 ?? 74 ?? 48 8D)
+alloc(NoUnitCD_RestoreBytes,1)
+NoUnitCD_RestoreBytes:
+  readmem(NoUnitCD,1)
+NoUnitCD:
+  db 75
+registersymbol(NoUnitCD,NoUnitCD_RestoreBytes)
+[DISABLE]
+NoUnitCD:
+  readmem(NoUnitCD_RestoreBytes,1)
+unregistersymbol(*)
+dealloc(*)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337111306</ID>
+          <Description>"Disable Unit Skill CD"</Description>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(DisableUnitSkillCD, $process, 0F 8C ?? ?? ?? ?? E8 ?? ?? ?? ?? 84 ?? 0F 85 ?? ?? ?? ?? 48 8D ?? ?? ?? ?? ?? E8)
+alloc(DisableUnitSkillCD_RestoreBytes,2)
+DisableUnitSkillCD_RestoreBytes:
+  readmem(DisableUnitSkillCD,2)
+DisableUnitSkillCD:
+  db 90 E9
+registersymbol(DisableUnitSkillCD,DisableUnitSkillCD_RestoreBytes)
+[DISABLE]
+DisableUnitSkillCD:
+  readmem(DisableUnitSkillCD_RestoreBytes,2)
+unregistersymbol(*)
+dealloc(*)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337111308</ID>
+          <Description>"Add 66 Million Currency ( Enable only in Mode Select Screen )"</Description>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+if syntaxcheck then return end
+[ENABLE]
+script_Currency = [[
+aobscanmodule(Currency, $process, 42 0F ?? ?? ?? 42 0F ?? ?? ?? ?? 66 ?? ?? ?? 66 ?? ?? 0F B7 ?? 0F B7 ?? 66 ?? ?? 66 ?? ?? 66 ?? ?? 66 ?? ?? 0F B7 ?? 66 ?? ?? 66 ?? ?? 66 ?? ?? 66 ?? ?? 66 ?? ?? 66 ?? ?? 41 0F ?? ?? ?? 0F B7 ?? 66 ?? ?? ?? 66 ?? ?? ?? 0A ?? 41 88 ?? ?? 41 0F ?? ?? ?? 66 ?? ?? 0F B7 ?? 0F B7 ?? 66 ?? ?? 66 ?? ?? 66 ?? ?? 66 ?? ?? 0F B7 ?? 66 ?? ?? 66 ?? ?? 66 ?? ?? 66 ?? ?? 66 ?? ?? 66 ?? ?? 0F B7 ?? 66 ?? ?? ?? 0A ?? 41 0F)
+alloc(Currency_MEM,$1000,Currency)
+alloc(restoreBYTES,5)
+label(return)
+Currency_MEM:
+  mov [r10],FFFFFF9C
+  mov [r10+4],808F5558
+  mov [r10+8],80A0A828
+  mov [r10+c],20208808
+  //movzx eax,byte ptr [rcx+r10]
+  readmem(Currency,5)
+  jmp return
+Currency:
+  jmp Currency_MEM
+return:
+restoreBYTES:
+readmem(Currency,5)
+registersymbol(Currency,restoreBYTES)
+]]
+autoAssemble(script_Currency)
+local memrec = memrec or getAddressList().getMemoryRecordByDescription("OPEN MSAR SAVEGAME LOACATION")
+local timer = createTimer()
+timer.Interval = 1 * 100 -- 1000 milliseconds per second
+timer.OnTimer = function(theTimerCallingThisFunction)
+  memrec.Active = false -- deactivate the script
+  timer.destroy() -- destroy the timer so it doesn't keep running
+end
+[DISABLE]
+script_Currency = [[
+Currency:
+readmem(restoreBYTES,5)
+unregistersymbol(*)
+dealloc(*)
+]]
+autoAssemble(script_Currency)
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337111307</ID>
+          <Description>"Freeze Currency"</Description>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(FreezeMoney, $process, 75 ?? 66 ?? 48 89 ?? ?? ?? 39 ?? ?? 7D ?? 48 8B ?? ?? 89)
+alloc(FreezeMoney_RestoreBytes,1)
+FreezeMoney_RestoreBytes:
+  readmem(FreezeMoney,1)
+FreezeMoney:
+  db EB
+registersymbol(FreezeMoney,FreezeMoney_RestoreBytes)
+[DISABLE]
+FreezeMoney:
+  readmem(FreezeMoney_RestoreBytes,1)
+unregistersymbol(*)
+dealloc(*)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337111313</ID>
+          <Description>"Set Equip Items to 9999 on Click"</Description>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+{$lua}
+if syntaxcheck then return end
+messageDialog("Use this script only in the customize unit character select menu, click on -EQUIP/POW UP- then click on the desired Item and it will be set to 9999. You need at least one Item for it to be set to 9999. USE -OPEN MSAR SAVEGAME LOACATION- Script to get your SaveGame then Backup this File." ,mtInformation, mbOK)
+{$asm}
+aobscanmodule(Set_Equip_Items9999, $process, 48 C7 ?? ?? ?? ?? ?? ?? ?? E8 ?? ?? ?? ?? 48 8D ?? ?? ?? 48 8D ?? ?? E8 ?? ?? ?? ?? 45 33 ?? 48 89 ?? ?? ?? 8B)
+alloc(Set_Equip_Items9999_MEM,$1000,Set_Equip_Items9999)
+alloc(restoreBYTES,9)
+label(return)
+label(code)
+label(set_item)
+Set_Equip_Items9999_MEM:
+  cmp rbx,02
+  je set_item
+  jmp code
+set_item:
+  mov [R10],0E17027F
+  mov [R10+4],2A02820A
+  mov [R10+8],AA22A20A
+  mov [R10+C],0A22222A
+  jmp code
+code:
+  readmem(Set_Equip_Items9999,9)
+  jmp return
+Set_Equip_Items9999:
+  jmp Set_Equip_Items9999_MEM
+  nop 4
+return:
+restoreBYTES:
+readmem(Set_Equip_Items9999,9)
+registersymbol(Set_Equip_Items9999,restoreBYTES)
+[DISABLE]
+Set_Equip_Items9999:
+readmem(restoreBYTES,9)
+unregistersymbol(*)
+dealloc(*)
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337111314</ID>
+          <Description>"Set Pow Up Items to 9999 on Click"</Description>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+{$lua}
+if syntaxcheck then return end
+messageDialog("Use this script only in the customize unit character select menu, click on -EQUIP/POW UP- then click on the desired Item and it will be set to 9999. You need at least one Item for it to be set to 9999. USE -OPEN MSAR SAVEGAME LOACATION- Script to get your SaveGame then Backup this File." ,mtInformation, mbOK)
+{$asm}
+aobscanmodule(SET_POW_UP_ITEMS9999, $process, 83 ?? ?? ?? ?? ?? ?? 4C ?? ?? 74 ?? 85)
+alloc(SET_POW_UP_ITEMS9999_MEM,$1000,SET_POW_UP_ITEMS9999)
+alloc(restoreBYTES,7)
+label(return)
+label(code)
+label(Set_Item_VAL)
+SET_POW_UP_ITEMS9999_MEM:
+  cmp dword ptr [rdi+00000398],1
+  je Set_Item_VAL
+  cmp dword ptr [rdi+00000398],2
+  je Set_Item_VAL
+  cmp dword ptr [rdi+00000398],3
+  je Set_Item_VAL
+  cmp dword ptr [rdi+00000398],4
+  je Set_Item_VAL
+  cmp dword ptr [rdi+00000398],5
+  je Set_Item_VAL
+  cmp dword ptr [rdi+00000398],6
+  je Set_Item_VAL
+  jmp code
+Set_Item_VAL:
+  mov [R10],0E17027F
+  mov [R10+4],2A02820A
+  mov [R10+8],AA22A20A
+  mov [R10+C],0A22222A
+  jmp code
+code:
+  readmem(SET_POW_UP_ITEMS9999,7)
+  jmp return
+SET_POW_UP_ITEMS9999:
+  jmp SET_POW_UP_ITEMS9999_MEM
+  nop 2
+return:
+restoreBYTES:
+readmem(SET_POW_UP_ITEMS9999,7)
+registersymbol(SET_POW_UP_ITEMS9999,restoreBYTES)
+[DISABLE]
+SET_POW_UP_ITEMS9999:
+readmem(restoreBYTES,7)
+unregistersymbol(*)
+dealloc(*)
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337111196</ID>
+          <Description>"MSAR FPS UNLOCKER / set custom FPS"</Description>
+          <Options moHideChildren="1"/>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(FPS_UNLOCKER,$process,F3 ?? ?? ?? ?? ?? ?? ?? ?? 45 0F ?? ?? 45 0F ?? ?? 76)
+alloc(FPS_MEM,$1000,FPS_UNLOCKER)
+alloc(restoreBYTES,9)
+label(return)
+label(FPS_VAL)
+FPS_MEM:
+  movss xmm11,[FPS_VAL]
+  jmp return
+FPS_VAL:
+  dq (float)120
+FPS_UNLOCKER:
+  jmp FPS_MEM
+  nop 4
+return:
+restoreBYTES:
+readmem(FPS_UNLOCKER,9)
+registersymbol(FPS_UNLOCKER,restoreBYTES,FPS_VAL)
+[DISABLE]
+FPS_UNLOCKER:
+readmem(restoreBYTES,9)
+unregistersymbol(*)
+dealloc(*)
+
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>1337111197</ID>
+              <Description>"CURRENT FPS"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>00FF00</Color>
+              <VariableType>Float</VariableType>
+              <Address>FPS_VAL</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337111315</ID>
+          <Description>"OPEN MSAR SAVEGAME LOACATION"</Description>
+          <Color>00FF00</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$lua}
+if syntaxcheck then return end
+[ENABLE]
+local AppDataPath = os.getenv("LOCALAPPDATA")
+local SaveGamesPath = AppDataPath .. "\\MSAR\\Saved\\SaveGames"
+shellExecute(SaveGamesPath)
+local memrec = memrec or getAddressList().getMemoryRecordByDescription("OPEN MSAR SAVEGAME LOACATION")
+local timer = createTimer()
+timer.Interval = 1 * 100
+timer.OnTimer = function(theTimerCallingThisFunction)
+  memrec.Active = false
+  timer.destroy()
+end
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>104269</ID>
+      <Description>"---------------------------------------------------------------"</Description>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>10326</ID>
+      <Description>"Discord/PayPal-Donation-Link/OCT"</Description>
+      <Options moHideChildren="1"/>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>104153</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>10324</ID>
+          <Description>"if you think i did a good job you can donate something to me via PayPal"</Description>
+          <Color>008000</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104128</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>41356</ID>
+          <Description>" [&lt;--CHECKBOX] Support Me with PayPal (use the Link below or hit the checkbox to open paypal)"</Description>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://paypal.me/mobiusce')
+{$asm}
+nop
+[DISABLE]
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>10325</ID>
+              <Description>"https://paypal.me/mobiusce"</Description>
+              <Color>4080FF</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104152</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104270</ID>
+          <Description>"my Discord:  --&gt;  ScooPaX#8840  &lt;--"</Description>
+          <Options moAlwaysHideChildren="1"/>
+          <Color>8000FF</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104155</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104156</ID>
+          <Description>"[&lt;--CHECKBOX]_OPEN_FRF_TOPIC"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://opencheattables.com/')
+{$asm}
+nop
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104129</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104151</ID>
+          <Description>"[&lt;--CHECKBOX]_OPEN_CHEATENGINE.ORG"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://www.cheatengine.org/')
+{$asm}
+nop
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>10634</ID>
+      <Description>"---------------------------------------------------------------"</Description>
+      <Options moHideChildren="1"/>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="46">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"TES_Oblivion_Remastered_Steam_GamePass_20252404_by_MBRKiNG"</Description>
+      <Options moHideChildren="1"/>
+      <Color>4080FF</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>88390</ID>
+          <Description>"----------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>88391</ID>
+          <Description>"[0] Open Steam Process"</Description>
+          <Color>FF8000</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+{$lua}
+OpenProcess("OblivionRemastered-Win64-Shipping.exe")
+{$asm}
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>88389</ID>
+          <Description>"----------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>88392</ID>
+          <Description>"[0] Open GamePass Process"</Description>
+          <Color>FF8000</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+{$lua}
+OpenProcess("OblivionRemastered-WinGDK-Shipping.exe")
+{$asm}
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>88393</ID>
+          <Description>"----------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>88500</ID>
+          <Description>"RemovesCheaterFlag/AllowAchievements using Console"</Description>
+          <Color>FF8000</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(achiev_on,$process,0F 85 ?? ?? ?? ?? E8 ?? ?? ?? ?? 48 8B ?? 48 83 ?? ?? ?? ?? ?? ?? 75 ?? 48 8B ?? E8 ?? ?? ?? ?? 48 8B ?? ?? ?? ?? ?? 48 8B)
+aobscanmodule(clean_flagged_save,$process,80 ?? ?? ?? ?? ?? ?? 48 8D ?? ?? ?? ?? ?? 48 8D ?? ?? ?? ?? ?? 48 0F ?? ?? 48 8D ?? ?? E8 ?? ?? ?? ?? 48 8D)
+aobscanmodule(flag_console,$process,66 ?? ?? ?? ?? ?? ?? ?? ?? C3 ?? ?? ?? ?? ?? ?? 48 89 ?? ?? ?? 57 48 83 ?? ?? 83)
+achiev_on:
+  db 90 E9
+clean_flagged_save:
+  db C6 83
+flag_console+7:
+  db 00 00
+registersymbol(achiev_on clean_flagged_save flag_console)
+[DISABLE]
+achiev_on:
+  db 0F 85
+clean_flagged_save:
+  db 80 BB
+flag_console+7:
+  db 01 01
+unregistersymbol(*)
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>88417</ID>
+          <Description>"----------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>88501</ID>
+          <Description>"Zero Weight"</Description>
+          <Color>FF8000</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(zero_weight,$process,0F 2E ?? 0F 8A ?? ?? ?? ?? 0F 85 ?? ?? ?? ?? 49 8B ?? ?? 48 89)
+zero_weight:
+  db F3 0F 10 C3 E9
+registersymbol(zero_weight)
+[DISABLE]
+zero_weight:
+  db 0F 2E C6 0F 8A
+unregistersymbol(*)
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>88419</ID>
+          <Description>"----------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>88517</ID>
+          <Description>"TGM = Inf Health,Magika,Stamina,Durability,Arrows,Lockpicks etc..."</Description>
+          <Color>4080FF</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>88502</ID>
+          <Description>"TGM God"</Description>
+          <Color>FF8000</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(tgm_god,$process,80 ?? ?? ?? ?? ?? ?? 75 ?? 32 ?? 48 83 ?? ?? 5B C3 B0 ?? 48 83 ?? ?? 5B C3 ?? ?? ?? ?? ?? ?? ?? 48 83)
+tgm_god+7:
+  db EB
+registersymbol(tgm_god)
+[DISABLE]
+tgm_god+7:
+  db 75
+unregistersymbol(*)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>88516</ID>
+          <Description>"----------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>

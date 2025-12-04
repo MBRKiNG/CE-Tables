@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="50">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"Shadow_Labyrinth_v1.0.3_Steam_RUNE_20252007_by_MBRKiNG"</Description>
+      <Options moHideChildren="1"/>
+      <Color>4080FF</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>88390</ID>
+          <Description>"----------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104168</ID>
+          <Description>"Open Process"</Description>
+          <Options moHideChildren="1"/>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+{$lua}
+OpenProcess("Shadow Labyrinth.exe")
+
+{$asm}
+
+[DISABLE]
+
+</AssemblerScript>
+          <Hotkeys>
+            <Hotkey>
+              <Action>Toggle Activation</Action>
+              <Keys>
+                <Key>17</Key>
+                <Key>96</Key>
+              </Keys>
+              <ID>0</ID>
+              <ActivateSound TTS="EN">Process Opened</ActivateSound>
+              <DeactivateSound TTS="EN">Process Closed</DeactivateSound>
+            </Hotkey>
+          </Hotkeys>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>104167</ID>
+              <Description>"Enable Mono Features"</Description>
+              <Options moHideChildren="1"/>
+              <Color>4080FF</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$lua}
+LaunchMonoDataCollector()
+{$asm}
+[DISABLE]
+
+
+
+</AssemblerScript>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Toggle Activation</Action>
+                  <Keys>
+                    <Key>17</Key>
+                    <Key>96</Key>
+                  </Keys>
+                  <ID>0</ID>
+                  <ActivateSound TTS="EN">Process Opened</ActivateSound>
+                  <DeactivateSound TTS="EN">Process Closed</DeactivateSound>
+                </Hotkey>
+              </Hotkeys>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>1</ID>
+                  <Description>"Inf Air Jumps"</Description>
+                  <Color>4080FF</Color>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>define(address,PlayerAction2D:CheckAirJump+f0)
+define(bytes,0F 8C A6 01 00 00)
+[ENABLE]
+address:
+  db 66 0F 1F 44 00 00
+[DISABLE]
+address:
+  db bytes
+
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>9</ID>
+                  <Description>"Inf MP"</Description>
+                  <Color>4080FF</Color>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>define(address,CharacterBase:UseMP+27)
+define(bytes,F2 0F 5C C1)
+[ENABLE]
+address+3:
+  db C9
+[DISABLE]
+address:
+  db bytes
+
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>12</ID>
+                  <Description>"Inf Life Tanks"</Description>
+                  <Color>4080FF</Color>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>define(address,Player2D:UseLifeTank+14)
+define(bytes,7E)
+[ENABLE]
+address:
+  db EB
+[DISABLE]
+address:
+  db bytes
+
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>23</ID>
+                  <Description>"Ignore Ora/Mats - Inf Ora on Enhance"</Description>
+                  <Color>4080FF</Color>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>define(address1,MoneyManager+Data:Verify+23)
+define(bytes1,7E 07)
+define(address2,Wire.Shop.ShopPresenter:CanBuyItem+7b)
+define(bytes2,7D)
+define(address3,Wire.Shop.PurchaseDialog:Confirm+50)
+define(bytes3,0F 8F AC 00 00 00)
+define(address4,Wire.Shop.ShopItem:UpdatePriceTextIfNeeded+108)
+define(bytes4,7D)
+define(address5,Wire.Shop.ShopPresenter:IsValidMaterials+80)
+define(bytes5,74)
+[ENABLE]
+address1:
+  db 90 90
+address2:
+  db EB
+address3:
+  db 66 0F 1F 44 00 00
+address4:
+  db EB
+address5:
+  db EB
+[DISABLE]
+address1:
+  db bytes1
+address2:
+  db bytes2
+address3:
+  db bytes3
+address4:
+  db bytes4
+address5:
+  db bytes5
+
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>104169</ID>
+                  <Description>"Invincible"</Description>
+                  <Color>4080FF</Color>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>define(address,CharacterManager:CheckDamageAttackParam+236)
+define(bytes,41 0F B6 86 72 03 00 00)
+define(roll,MutekiBehaviour:OnBehaviourPause+25)
+define(bytes_r,74)
+[ENABLE]
+assert(address,bytes)
+alloc(newmem,$1000,CharacterManager:CheckDamageAttackParam+236)
+label(code)
+label(return)
+label(player)
+newmem:
+  cmp rsi,01
+  je player
+  cmp rsi,01
+  jne code
+player:
+  mov byte ptr [r14+00000372],01
+  movzx eax,byte ptr [r14+00000372]
+  jmp return
+code:
+  mov byte ptr [r14+00000372],00
+  movzx eax,byte ptr [r14+00000372]
+  jmp return
+address:
+  jmp newmem
+  nop 3
+return:
+roll:
+  db EB
+[DISABLE]
+address:
+  db bytes
+roll:
+  db bytes_r
+dealloc(newmem)
+
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>104177</ID>
+                  <Description>"Ignore Perk Notches"</Description>
+                  <Color>4080FF</Color>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>define(perknotches,EquipManager:EquipCharm+7f)
+define(perknotches_bytes,2B CA)
+[ENABLE]
+perknotches:
+  db 90 90
+[DISABLE]
+perknotches:
+  db perknotches_bytes
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>104180</ID>
+                  <Description>"Ignore Map Marker Count"</Description>
+                  <Color>4080FF</Color>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>define(update_address,Wire.MapMarkerPaletteView:UpdateCountText+49)
+define(update_bytes,44 2B F9 )
+define(EnoughMarker_address,MiniMap:IsEnoughMarker+5c)
+define(EnoughMarker_bytes,40 0F 9C C0 )
+[ENABLE]
+update_address:
+  db 90 90 90
+EnoughMarker_address:
+  db B0 01 90 90
+[DISABLE]
+update_address:
+  db update_bytes
+EnoughMarker_address:
+  db EnoughMarker_bytes
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>104182</ID>
+                  <Description>"Freeze Pac Maze Timer"</Description>
+                  <Color>00FF00</Color>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>define(address,MBCourse:Update+544)
+define(bytes,F2 0F 5C C1)
+[ENABLE]
+address:
+  db F2 0F 5C C9
+[DISABLE]
+address:
+  db bytes
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>104190</ID>
+                  <Description>"Freeze Pac Maze Timer 2"</Description>
+                  <Color>00FF00</Color>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>define(time_address,MBCourse:get_CourseCount+b)
+define(time_bytes,F3 0F 10 86 50 01 00 00)
+[ENABLE]
+time_address+4:
+  db 4C
+[DISABLE]
+time_address:
+  db time_bytes
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>104184</ID>
+                  <Description>"Inf Pac Maze Lifes"</Description>
+                  <Color>00FF00</Color>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>define(address,MBCourse:Dead+30)
+define(bytes,FF C8)
+[ENABLE]
+address:
+  db 90 90
+[DISABLE]
+address:
+  db bytes
+</AssemblerScript>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>88389</ID>
+          <Description>"----------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>10326</ID>
+          <Description>"Discord/PayPal-Donation-Link/OCT"</Description>
+          <Options moHideChildren="1"/>
+          <Color>4080FF</Color>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>104153</ID>
+              <Description>"---------------------------------------------------------------"</Description>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>10324</ID>
+              <Description>"if you think i did a good job you can donate something to me via PP"</Description>
+              <Color>008000</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>104128</ID>
+              <Description>"---------------------------------------------------------------"</Description>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>41356</ID>
+              <Description>" [&lt;--CHECKBOX] Support Me at PP (use the Link below or hit the checkbox to open paypal)"</Description>
+              <Color>8000FF</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://paypal.me/mobiusce')
+{$asm}
+nop
+[DISABLE]
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>104152</ID>
+              <Description>"---------------------------------------------------------------"</Description>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>104270</ID>
+              <Description>"my Discord:  --&gt;  ScooPaX#8840  &lt;--"</Description>
+              <Options moAlwaysHideChildren="1"/>
+              <Color>8000FF</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>104155</ID>
+              <Description>"---------------------------------------------------------------"</Description>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>104156</ID>
+              <Description>"[&lt;--CHECKBOX]_OPEN_OCT_TOPIC"</Description>
+              <Color>8000FF</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://opencheattables.com/')
+{$asm}
+nop
+[DISABLE]
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>104129</ID>
+              <Description>"---------------------------------------------------------------"</Description>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>88393</ID>
+          <Description>"----------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>
