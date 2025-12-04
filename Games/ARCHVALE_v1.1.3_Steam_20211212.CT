@@ -1,0 +1,2772 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="46">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"ARCHVALE_v1.1.3_Steam_20211212_by_MBRKiNG"</Description>
+      <Color>000080</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>115790</ID>
+          <Description>"Enable v1.1.3"</Description>
+          <Options moHideChildren="1"/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : Archvale.exe
+  Version: 
+  Date   : 2021-12-06
+  Author : MBRKiNG
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(BaseInjectAOB,Archvale.exe,8B 01 8B 40 04 C7 86 28 01 00 00 0B 00 00 00 68 ** ** ** ** FF ** 89 46 1C) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+label(base)
+registersymbol(base)
+
+newmem:
+
+code:
+  mov [base],ecx
+  mov eax,[ecx]
+  mov eax,[eax+04]
+  jmp return
+base:
+db
+BaseInjectAOB:
+  jmp newmem
+return:
+registersymbol(BaseInjectAOB)
+
+[DISABLE]
+
+BaseInjectAOB:
+  db 8B 01 8B 40 04
+
+unregistersymbol(BaseInjectAOB)
+dealloc(newmem)
+unregistersymbol(base)
+{
+// ORIGINAL CODE - INJECTION POINT: Archvale.exe+265E3C7
+
+Archvale.exe+265E369: C7 86 F4 00 00 00 05 00 00 00  - mov [esi+000000F4],00000005
+Archvale.exe+265E373: C7 86 E8 00 00 00 00 00 00 00  - mov [esi+000000E8],00000000
+Archvale.exe+265E37D: C7 86 04 01 00 00 05 00 00 00  - mov [esi+00000104],00000005
+Archvale.exe+265E387: C7 86 F8 00 00 00 00 00 00 00  - mov [esi+000000F8],00000000
+Archvale.exe+265E391: C7 86 14 01 00 00 05 00 00 00  - mov [esi+00000114],00000005
+Archvale.exe+265E39B: C7 86 BC 00 00 00 05 00 00 00  - mov [esi+000000BC],00000005
+Archvale.exe+265E3A5: C7 46 4C 05 00 00 00           - mov [esi+4C],00000005
+Archvale.exe+265E3AC: C7 86 08 01 00 00 00 00 00 00  - mov [esi+00000108],00000000
+Archvale.exe+265E3B6: C7 86 B0 00 00 00 00 00 00 00  - mov [esi+000000B0],00000000
+Archvale.exe+265E3C0: C7 46 40 00 00 00 00           - mov [esi+40],00000000
+// ---------- INJECTING HERE ----------
+Archvale.exe+265E3C7: 8B 01                          - mov eax,[ecx]
+// ---------- DONE INJECTING  ----------
+Archvale.exe+265E3C9: 8B 40 04                       - mov eax,[eax+04]
+Archvale.exe+265E3CC: C7 86 28 01 00 00 0B 00 00 00  - mov [esi+00000128],0000000B
+Archvale.exe+265E3D6: 68 70 9F 01 00                 - push 00019F70
+Archvale.exe+265E3DB: FF D0                          - call eax
+Archvale.exe+265E3DD: 89 46 1C                       - mov [esi+1C],eax
+Archvale.exe+265E3E0: 8B 4D 08                       - mov ecx,[ebp+08]
+Archvale.exe+265E3E3: C7 86 AC 00 00 00 05 00 00 00  - mov [esi+000000AC],00000005
+Archvale.exe+265E3ED: C7 86 9C 00 00 00 05 00 00 00  - mov [esi+0000009C],00000005
+Archvale.exe+265E3F7: C7 86 8C 00 00 00 05 00 00 00  - mov [esi+0000008C],00000005
+Archvale.exe+265E401: C7 46 2C 05 00 00 00           - mov [esi+2C],00000005
+}
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>115791</ID>
+              <Description>"BASE ADR"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <GroupHeader>1</GroupHeader>
+              <Address>base</Address>
+              <Offsets>
+                <Offset>0</Offset>
+                <Offset>10</Offset>
+                <Offset>2c</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115792</ID>
+              <Description>"Inf GemDash"</Description>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{ Game   : Archvale.exe
+  Version: 
+  Date   : 2021-12-08
+  Author : MBRKiNG
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+aobscanmodule(InfGemDashAOB,Archvale.exe,C7 40 04 00 00 00 00 C7 00 00 00 00 00 8B 4D 08 C7 46 34 36) // should be unique
+registersymbol(InfGemDashAOB)
+InfGemDashAOB+5:
+  db 58 40
+[DISABLE]
+
+InfGemDashAOB+5:
+  db 00 00
+unregistersymbol(InfGemDashAOB)
+
+
+{
+// ORIGINAL CODE - INJECTION POINT: Archvale.exe+5C4C95
+
+Archvale.exe+5C4C6B: 68 47 91 01 00        - push 00019147
+Archvale.exe+5C4C70: FF 50 08              - call dword ptr [eax+08]
+Archvale.exe+5C4C73: 89 46 0C              - mov [esi+0C],eax
+Archvale.exe+5C4C76: 8B 46 0C              - mov eax,[esi+0C]
+Archvale.exe+5C4C79: 8B 40 0C              - mov eax,[eax+0C]
+Archvale.exe+5C4C7C: 8D 48 FF              - lea ecx,[eax-01]
+Archvale.exe+5C4C7F: F7 C1 FC FF FF 00     - test ecx,Archvale.exe+C8FFFC
+Archvale.exe+5C4C85: 0F 84 98 0B 00 00     - je Archvale.exe+5C5823
+Archvale.exe+5C4C8B: 8B 46 0C              - mov eax,[esi+0C]
+Archvale.exe+5C4C8E: C7 40 0C 00 00 00 00  - mov [eax+0C],00000000
+// ---------- INJECTING HERE ----------
+Archvale.exe+5C4C95: C7 40 04 00 00 00 00  - mov [eax+04],00000000
+// ---------- DONE INJECTING  ----------
+Archvale.exe+5C4C9C: C7 00 00 00 00 00     - mov [eax],00000000
+Archvale.exe+5C4CA2: 8B 4D 08              - mov ecx,[ebp+08]
+Archvale.exe+5C4CA5: C7 46 34 36 00 00 00  - mov [esi+34],00000036
+Archvale.exe+5C4CAC: 8B 01                 - mov eax,[ecx]
+Archvale.exe+5C4CAE: 68 2D 98 01 00        - push 0001982D
+Archvale.exe+5C4CB3: FF 50 04              - call dword ptr [eax+04]
+Archvale.exe+5C4CB6: 89 46 0C              - mov [esi+0C],eax
+Archvale.exe+5C4CB9: FF 76 0C              - push [esi+0C]
+Archvale.exe+5C4CBC: E8 CF 4B A2 03        - call Archvale.exe+3FE9890
+Archvale.exe+5C4CC1: 83 C4 04              - add esp,04
+}
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115793</ID>
+              <Description>"Grounded/can walk in Air"</Description>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{ Game   : Archvale.exe
+  Version: 
+  Date   : 2021-12-08
+  Author : MBRKiNG
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+
+aobscanmodule(GroundStateAOB,Archvale.exe,C7 47 04 00 00 F0 3F C7 07 00 00 00 00 C7 46 3C 2A 00) // should be unique
+registersymbol(GroundStateAOB)
+GroundStateAOB+5:
+  db 00 00
+[DISABLE]
+
+GroundStateAOB+5:
+  db F0 3F
+
+unregistersymbol(GroundStateAOB)
+
+
+{
+// ORIGINAL CODE - INJECTION POINT: Archvale.exe+265B41D
+
+Archvale.exe+265B3F1: C7 46 3C 29 00 00 00  - mov [esi+3C],00000029
+Archvale.exe+265B3F8: 8B 01                 - mov eax,[ecx]
+Archvale.exe+265B3FA: 68 5C 90 01 00        - push 0001905C
+Archvale.exe+265B3FF: FF 50 08              - call dword ptr [eax+08]
+Archvale.exe+265B402: 89 C7                 - mov edi,eax
+Archvale.exe+265B404: 8B 40 0C              - mov eax,[eax+0C]
+Archvale.exe+265B407: 8D 48 FF              - lea ecx,[eax-01]
+Archvale.exe+265B40A: F7 C1 FC FF FF 00     - test ecx,Archvale.exe+C8FFFC
+Archvale.exe+265B410: 0F 84 68 03 00 00     - je Archvale.exe+265B77E
+Archvale.exe+265B416: C7 47 0C 00 00 00 00  - mov [edi+0C],00000000
+// ---------- INJECTING HERE ----------
+Archvale.exe+265B41D: C7 47 04 00 00 F0 3F  - mov [edi+04],3FF00000
+// ---------- DONE INJECTING  ----------
+Archvale.exe+265B424: C7 07 00 00 00 00     - mov [edi],00000000
+Archvale.exe+265B42A: C7 46 3C 2A 00 00 00  - mov [esi+3C],0000002A
+Archvale.exe+265B431: 8B 4D 08              - mov ecx,[ebp+08]
+Archvale.exe+265B434: 8B 01                 - mov eax,[ecx]
+Archvale.exe+265B436: 68 97 87 01 00        - push 00018797
+Archvale.exe+265B43B: FF 50 08              - call dword ptr [eax+08]
+Archvale.exe+265B43E: 89 C7                 - mov edi,eax
+Archvale.exe+265B440: 8B 40 0C              - mov eax,[eax+0C]
+Archvale.exe+265B443: 8D 48 FF              - lea ecx,[eax-01]
+Archvale.exe+265B446: F7 C1 FC FF FF 00     - test ecx,Archvale.exe+C8FFFC
+}
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>116013</ID>
+              <Description>"Coyote_Time - Fall 1x to get the value"</Description>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{ Game   : Archvale.exe
+  Version: 
+  Date   : 2021-12-12
+  Author : MBRKiNG
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(CoyoteTimeAOBn,Archvale.exe,C7 47 04 00 00 00 00 C7 07 00 00 00 00 C7 46 1C 0A 00 00 00 C7) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+label(coyo)
+registersymbol(coyo)
+newmem:
+
+code:
+  mov [coyo],edi
+  mov [edi+04],00000000
+  jmp return
+coyo:
+db
+CoyoteTimeAOBn:
+  jmp newmem
+  nop 2
+return:
+registersymbol(CoyoteTimeAOBn)
+
+[DISABLE]
+
+CoyoteTimeAOBn:
+  db C7 47 04 00 00 00 00
+
+unregistersymbol(CoyoteTimeAOBn)
+dealloc(newmem)
+unregistersymbol(coyo)
+{
+// ORIGINAL CODE - INJECTION POINT: Archvale.exe+266252B
+
+Archvale.exe+2662503: 8B 4D 08                       - mov ecx,[ebp+08]
+Archvale.exe+2662506: 8B 01                          - mov eax,[ecx]
+Archvale.exe+2662508: 68 C7 8C 01 00                 - push 00018CC7
+Archvale.exe+266250D: FF 50 08                       - call dword ptr [eax+08]
+Archvale.exe+2662510: 89 C7                          - mov edi,eax
+Archvale.exe+2662512: 8B 40 0C                       - mov eax,[eax+0C]
+Archvale.exe+2662515: 8D 48 FF                       - lea ecx,[eax-01]
+Archvale.exe+2662518: F7 C1 FC FF FF 00              - test ecx,Archvale.exe+80FFFC
+Archvale.exe+266251E: 0F 84 01 05 00 00              - je Archvale.exe+2662A25
+Archvale.exe+2662524: C7 47 0C 00 00 00 00           - mov [edi+0C],00000000
+// ---------- INJECTING HERE ----------
+Archvale.exe+266252B: C7 47 04 00 00 00 00           - mov [edi+04],00000000
+// ---------- DONE INJECTING  ----------
+Archvale.exe+2662532: C7 07 00 00 00 00              - mov [edi],00000000
+Archvale.exe+2662538: C7 46 1C 0A 00 00 00           - mov [esi+1C],0000000A
+Archvale.exe+266253F: C7 46 3C 8E 00 00 00           - mov [esi+3C],0000008E
+Archvale.exe+2662546: C7 46 14 00 00 00 00           - mov [esi+14],00000000
+Archvale.exe+266254D: C7 46 10 00 00 00 00           - mov [esi+10],00000000
+Archvale.exe+2662554: C7 86 F8 03 00 00 73 00 00 00  - mov [esi+000003F8],00000073
+Archvale.exe+266255E: F2 0F 10 05 00 9D F3 04        - movsd xmm0,[Archvale.exe+4749D00]
+Archvale.exe+2662566: 83 EC 14                       - sub esp,14
+Archvale.exe+2662569: 8D 46 10                       - lea eax,[esi+10]
+Archvale.exe+266256C: F2 0F 11 44 24 08              - movsd [esp+08],xmm0
+}
+</AssemblerScript>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>116014</ID>
+                  <Description>"Coyote_Time"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Double</VariableType>
+                  <Address>coyo</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115796</ID>
+              <Description>"GodMode/Invincible"</Description>
+              <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">1:Enabled
+0:Disabled
+</DropDownList>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Double</VariableType>
+              <Address>base</Address>
+              <Offsets>
+                <Offset>0</Offset>
+                <Offset>3A14</Offset>
+                <Offset>10</Offset>
+                <Offset>2c</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115797</ID>
+              <Description>"Stamina Regen Rate"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Double</VariableType>
+              <Address>base</Address>
+              <Offsets>
+                <Offset>0</Offset>
+                <Offset>B8C8</Offset>
+                <Offset>10</Offset>
+                <Offset>2c</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115798</ID>
+              <Description>"Coins"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Double</VariableType>
+              <Address>base</Address>
+              <Offsets>
+                <Offset>0</Offset>
+                <Offset>9918</Offset>
+                <Offset>10</Offset>
+                <Offset>2c</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115799</ID>
+              <Description>"Bombs"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Double</VariableType>
+              <Address>base</Address>
+              <Offsets>
+                <Offset>1140</Offset>
+                <Offset>25D4</Offset>
+                <Offset>10</Offset>
+                <Offset>2c</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115800</ID>
+              <Description>"enemy_health_modifier "</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Double</VariableType>
+              <Address>base</Address>
+              <Offsets>
+                <Offset>0</Offset>
+                <Offset>6B4</Offset>
+                <Offset>10</Offset>
+                <Offset>2c</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115814</ID>
+              <Description>"Perk_badge_slots"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Double</VariableType>
+              <Address>base</Address>
+              <Offsets>
+                <Offset>0</Offset>
+                <Offset>6798</Offset>
+                <Offset>10</Offset>
+                <Offset>2c</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115801</ID>
+              <Description>"MISC"</Description>
+              <Options moHideChildren="1"/>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>115802</ID>
+                  <Description>"PlayTimeSeconds"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Double</VariableType>
+                  <Address>base</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                    <Offset>4350</Offset>
+                    <Offset>10</Offset>
+                    <Offset>2c</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>115803</ID>
+                  <Description>"PlayTime"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Double</VariableType>
+                  <Address>base</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                    <Offset>39A8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>2c</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>115804</ID>
+                  <Description>"enemy_damage_mod"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Double</VariableType>
+                  <Address>base</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                    <Offset>5F88</Offset>
+                    <Offset>10</Offset>
+                    <Offset>2c</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>115805</ID>
+                  <Description>"player_bomb_level"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Double</VariableType>
+                  <Address>base</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                    <Offset>7080</Offset>
+                    <Offset>10</Offset>
+                    <Offset>2c</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>115807</ID>
+                  <Description>"difficulty_level"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Double</VariableType>
+                  <Address>base</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                    <Offset>8EC8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>2c</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>115813</ID>
+                  <Description>"badge_debuff_chance"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Double</VariableType>
+                  <Address>base</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                    <Offset>9264</Offset>
+                    <Offset>10</Offset>
+                    <Offset>2c</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>115815</ID>
+                  <Description>"badge_chance_mult"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Double</VariableType>
+                  <Address>base</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                    <Offset>8CE8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>2c</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>115818</ID>
+                  <Description>"badge_magic_radius"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Double</VariableType>
+                  <Address>base</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                    <Offset>3990</Offset>
+                    <Offset>10</Offset>
+                    <Offset>2c</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115819</ID>
+              <Description>"Inventory Editor - first 8 Slots from left to right"</Description>
+              <Options moHideChildren="1"/>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>115820</ID>
+                  <Description>"Slot 1 (quantity)"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>000080</Color>
+                  <VariableType>Double</VariableType>
+                  <Address>base</Address>
+                  <Offsets>
+                    <Offset>-3E30</Offset>
+                    <Offset>25D4</Offset>
+                    <Offset>10</Offset>
+                    <Offset>2c</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>115821</ID>
+                  <Description>"Slot 1 (quantity)"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>FF00FF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>base</Address>
+                  <Offsets>
+                    <Offset>-3E30</Offset>
+                    <Offset>25D4</Offset>
+                    <Offset>10</Offset>
+                    <Offset>2c</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>115822</ID>
+                  <Description>"Item ID"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>FF00FF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>base</Address>
+                  <Offsets>
+                    <Offset>-3E20</Offset>
+                    <Offset>25D4</Offset>
+                    <Offset>10</Offset>
+                    <Offset>2c</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>115823</ID>
+                  <Description>""</Description>
+                  <Color>008000</Color>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>115824</ID>
+                  <Description>"Slot 2 (quantity)"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>000080</Color>
+                  <VariableType>Double</VariableType>
+                  <Address>base</Address>
+                  <Offsets>
+                    <Offset>-3EB0</Offset>
+                    <Offset>25D4</Offset>
+                    <Offset>10</Offset>
+                    <Offset>2c</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>115825</ID>
+                  <Description>"Slot 2 (quantity)"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>FF00FF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>base</Address>
+                  <Offsets>
+                    <Offset>-3EB0</Offset>
+                    <Offset>25D4</Offset>
+                    <Offset>10</Offset>
+                    <Offset>2c</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>115826</ID>
+                  <Description>"Item ID"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>FF00FF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>base</Address>
+                  <Offsets>
+                    <Offset>-3EA0</Offset>
+                    <Offset>25D4</Offset>
+                    <Offset>10</Offset>
+                    <Offset>2c</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>115827</ID>
+                  <Description>""</Description>
+                  <Color>008000</Color>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>115828</ID>
+                  <Description>"Slot 3 (quantity)"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>000080</Color>
+                  <VariableType>Double</VariableType>
+                  <Address>base</Address>
+                  <Offsets>
+                    <Offset>-3F30</Offset>
+                    <Offset>25D4</Offset>
+                    <Offset>10</Offset>
+                    <Offset>2c</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>115829</ID>
+                  <Description>"Slot 3 (quantity)"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>FF00FF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>base</Address>
+                  <Offsets>
+                    <Offset>-3F30</Offset>
+                    <Offset>25D4</Offset>
+                    <Offset>10</Offset>
+                    <Offset>2c</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>115830</ID>
+                  <Description>"Item ID"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>FF00FF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>base</Address>
+                  <Offsets>
+                    <Offset>-3F20</Offset>
+                    <Offset>25D4</Offset>
+                    <Offset>10</Offset>
+                    <Offset>2c</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>115831</ID>
+                  <Description>""</Description>
+                  <Color>008000</Color>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>115832</ID>
+                  <Description>"Slot 4 (quantity)"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>000080</Color>
+                  <VariableType>Double</VariableType>
+                  <Address>base</Address>
+                  <Offsets>
+                    <Offset>-3FB0</Offset>
+                    <Offset>25D4</Offset>
+                    <Offset>10</Offset>
+                    <Offset>2c</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>115833</ID>
+                  <Description>"Slot 4 (quantity)"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>FF00FF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>base</Address>
+                  <Offsets>
+                    <Offset>-3FB0</Offset>
+                    <Offset>25D4</Offset>
+                    <Offset>10</Offset>
+                    <Offset>2c</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>115834</ID>
+                  <Description>"Item ID"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>FF00FF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>base</Address>
+                  <Offsets>
+                    <Offset>-3FA0</Offset>
+                    <Offset>25D4</Offset>
+                    <Offset>10</Offset>
+                    <Offset>2c</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>115835</ID>
+                  <Description>""</Description>
+                  <Color>008000</Color>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>115836</ID>
+                  <Description>"Slot 5 (quantity)"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>000080</Color>
+                  <VariableType>Double</VariableType>
+                  <Address>base</Address>
+                  <Offsets>
+                    <Offset>-4030</Offset>
+                    <Offset>25D4</Offset>
+                    <Offset>10</Offset>
+                    <Offset>2c</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>115837</ID>
+                  <Description>"Slot 5 (quantity)"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>FF00FF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>base</Address>
+                  <Offsets>
+                    <Offset>-4030</Offset>
+                    <Offset>25D4</Offset>
+                    <Offset>10</Offset>
+                    <Offset>2c</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>115838</ID>
+                  <Description>"Item ID"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>FF00FF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>base</Address>
+                  <Offsets>
+                    <Offset>-4020</Offset>
+                    <Offset>25D4</Offset>
+                    <Offset>10</Offset>
+                    <Offset>2c</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>115839</ID>
+                  <Description>""</Description>
+                  <Color>008000</Color>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>115840</ID>
+                  <Description>"Slot 6 (quantity)"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>000080</Color>
+                  <VariableType>Double</VariableType>
+                  <Address>base</Address>
+                  <Offsets>
+                    <Offset>-40B0</Offset>
+                    <Offset>25D4</Offset>
+                    <Offset>10</Offset>
+                    <Offset>2c</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>115841</ID>
+                  <Description>"Slot 6 (quantity)"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>FF00FF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>base</Address>
+                  <Offsets>
+                    <Offset>-40B0</Offset>
+                    <Offset>25D4</Offset>
+                    <Offset>10</Offset>
+                    <Offset>2c</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>115842</ID>
+                  <Description>"Item ID"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>FF00FF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>base</Address>
+                  <Offsets>
+                    <Offset>-40A0</Offset>
+                    <Offset>25D4</Offset>
+                    <Offset>10</Offset>
+                    <Offset>2c</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>115843</ID>
+                  <Description>""</Description>
+                  <Color>008000</Color>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>115844</ID>
+                  <Description>"Slot 7 (quantity)"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>000080</Color>
+                  <VariableType>Double</VariableType>
+                  <Address>base</Address>
+                  <Offsets>
+                    <Offset>-4130</Offset>
+                    <Offset>25D4</Offset>
+                    <Offset>10</Offset>
+                    <Offset>2c</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>115845</ID>
+                  <Description>"Slot 7 (quantity)"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>FF00FF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>base</Address>
+                  <Offsets>
+                    <Offset>-4130</Offset>
+                    <Offset>25D4</Offset>
+                    <Offset>10</Offset>
+                    <Offset>2c</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>115846</ID>
+                  <Description>"Item ID"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>FF00FF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>base</Address>
+                  <Offsets>
+                    <Offset>-4120</Offset>
+                    <Offset>25D4</Offset>
+                    <Offset>10</Offset>
+                    <Offset>2c</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>115847</ID>
+                  <Description>""</Description>
+                  <Color>008000</Color>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>115848</ID>
+                  <Description>"Slot 8 (quantity)"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>000080</Color>
+                  <VariableType>Double</VariableType>
+                  <Address>base</Address>
+                  <Offsets>
+                    <Offset>-41B0</Offset>
+                    <Offset>25D4</Offset>
+                    <Offset>10</Offset>
+                    <Offset>2c</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>115849</ID>
+                  <Description>"Slot 8 (quantity)"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>FF00FF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>base</Address>
+                  <Offsets>
+                    <Offset>-41B0</Offset>
+                    <Offset>25D4</Offset>
+                    <Offset>10</Offset>
+                    <Offset>2c</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>115850</ID>
+                  <Description>"Item ID"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>FF00FF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>base</Address>
+                  <Offsets>
+                    <Offset>-41A0</Offset>
+                    <Offset>25D4</Offset>
+                    <Offset>10</Offset>
+                    <Offset>2c</Offset>
+                  </Offsets>
+                  <Hotkeys>
+                    <Hotkey>
+                      <Action>Increase Value</Action>
+                      <Keys>
+                        <Key>74</Key>
+                      </Keys>
+                      <Value>1</Value>
+                      <ID>0</ID>
+                    </Hotkey>
+                  </Hotkeys>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>110411</ID>
+          <Description>"OLD Table"</Description>
+          <Options moHideChildren="1"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>110355</ID>
+              <Description>"Enable v1.1.2"</Description>
+              <Options moHideChildren="1"/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{ Game   : Archvale.exe
+  Version: 
+  Date   : 2021-12-06
+  Author : MBRKiNG
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(BaseInjectAOB,Archvale.exe,8B 01 8B 40 04 C7 86 28 01 00 00 0B 00 00 00 68 ** ** ** ** FF ** 89 46 1C) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+label(base)
+registersymbol(base)
+
+newmem:
+
+code:
+  mov [base],ecx
+  mov eax,[ecx]
+  mov eax,[eax+04]
+  jmp return
+base:
+db
+BaseInjectAOB:
+  jmp newmem
+return:
+registersymbol(BaseInjectAOB)
+
+[DISABLE]
+
+BaseInjectAOB:
+  db 8B 01 8B 40 04
+
+unregistersymbol(BaseInjectAOB)
+dealloc(newmem)
+unregistersymbol(base)
+{
+// ORIGINAL CODE - INJECTION POINT: Archvale.exe+265E3C7
+
+Archvale.exe+265E369: C7 86 F4 00 00 00 05 00 00 00  - mov [esi+000000F4],00000005
+Archvale.exe+265E373: C7 86 E8 00 00 00 00 00 00 00  - mov [esi+000000E8],00000000
+Archvale.exe+265E37D: C7 86 04 01 00 00 05 00 00 00  - mov [esi+00000104],00000005
+Archvale.exe+265E387: C7 86 F8 00 00 00 00 00 00 00  - mov [esi+000000F8],00000000
+Archvale.exe+265E391: C7 86 14 01 00 00 05 00 00 00  - mov [esi+00000114],00000005
+Archvale.exe+265E39B: C7 86 BC 00 00 00 05 00 00 00  - mov [esi+000000BC],00000005
+Archvale.exe+265E3A5: C7 46 4C 05 00 00 00           - mov [esi+4C],00000005
+Archvale.exe+265E3AC: C7 86 08 01 00 00 00 00 00 00  - mov [esi+00000108],00000000
+Archvale.exe+265E3B6: C7 86 B0 00 00 00 00 00 00 00  - mov [esi+000000B0],00000000
+Archvale.exe+265E3C0: C7 46 40 00 00 00 00           - mov [esi+40],00000000
+// ---------- INJECTING HERE ----------
+Archvale.exe+265E3C7: 8B 01                          - mov eax,[ecx]
+// ---------- DONE INJECTING  ----------
+Archvale.exe+265E3C9: 8B 40 04                       - mov eax,[eax+04]
+Archvale.exe+265E3CC: C7 86 28 01 00 00 0B 00 00 00  - mov [esi+00000128],0000000B
+Archvale.exe+265E3D6: 68 70 9F 01 00                 - push 00019F70
+Archvale.exe+265E3DB: FF D0                          - call eax
+Archvale.exe+265E3DD: 89 46 1C                       - mov [esi+1C],eax
+Archvale.exe+265E3E0: 8B 4D 08                       - mov ecx,[ebp+08]
+Archvale.exe+265E3E3: C7 86 AC 00 00 00 05 00 00 00  - mov [esi+000000AC],00000005
+Archvale.exe+265E3ED: C7 86 9C 00 00 00 05 00 00 00  - mov [esi+0000009C],00000005
+Archvale.exe+265E3F7: C7 86 8C 00 00 00 05 00 00 00  - mov [esi+0000008C],00000005
+Archvale.exe+265E401: C7 46 2C 05 00 00 00           - mov [esi+2C],00000005
+}
+</AssemblerScript>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>110356</ID>
+                  <Description>"BASE ADR"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <GroupHeader>1</GroupHeader>
+                  <Address>base</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                    <Offset>10</Offset>
+                    <Offset>2c</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>114037</ID>
+                  <Description>"Inf GemDash"</Description>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>{ Game   : Archvale.exe
+  Version: 
+  Date   : 2021-12-08
+  Author : MBRKiNG
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+aobscanmodule(InfGemDashAOB,Archvale.exe,C7 40 04 00 00 00 00 C7 00 00 00 00 00 8B 4D 08 C7 46 34 36) // should be unique
+registersymbol(InfGemDashAOB)
+InfGemDashAOB+5:
+  db 58 40
+[DISABLE]
+
+InfGemDashAOB+5:
+  db 00 00
+unregistersymbol(InfGemDashAOB)
+
+
+{
+// ORIGINAL CODE - INJECTION POINT: Archvale.exe+5C4C95
+
+Archvale.exe+5C4C6B: 68 47 91 01 00        - push 00019147
+Archvale.exe+5C4C70: FF 50 08              - call dword ptr [eax+08]
+Archvale.exe+5C4C73: 89 46 0C              - mov [esi+0C],eax
+Archvale.exe+5C4C76: 8B 46 0C              - mov eax,[esi+0C]
+Archvale.exe+5C4C79: 8B 40 0C              - mov eax,[eax+0C]
+Archvale.exe+5C4C7C: 8D 48 FF              - lea ecx,[eax-01]
+Archvale.exe+5C4C7F: F7 C1 FC FF FF 00     - test ecx,Archvale.exe+C8FFFC
+Archvale.exe+5C4C85: 0F 84 98 0B 00 00     - je Archvale.exe+5C5823
+Archvale.exe+5C4C8B: 8B 46 0C              - mov eax,[esi+0C]
+Archvale.exe+5C4C8E: C7 40 0C 00 00 00 00  - mov [eax+0C],00000000
+// ---------- INJECTING HERE ----------
+Archvale.exe+5C4C95: C7 40 04 00 00 00 00  - mov [eax+04],00000000
+// ---------- DONE INJECTING  ----------
+Archvale.exe+5C4C9C: C7 00 00 00 00 00     - mov [eax],00000000
+Archvale.exe+5C4CA2: 8B 4D 08              - mov ecx,[ebp+08]
+Archvale.exe+5C4CA5: C7 46 34 36 00 00 00  - mov [esi+34],00000036
+Archvale.exe+5C4CAC: 8B 01                 - mov eax,[ecx]
+Archvale.exe+5C4CAE: 68 2D 98 01 00        - push 0001982D
+Archvale.exe+5C4CB3: FF 50 04              - call dword ptr [eax+04]
+Archvale.exe+5C4CB6: 89 46 0C              - mov [esi+0C],eax
+Archvale.exe+5C4CB9: FF 76 0C              - push [esi+0C]
+Archvale.exe+5C4CBC: E8 CF 4B A2 03        - call Archvale.exe+3FE9890
+Archvale.exe+5C4CC1: 83 C4 04              - add esp,04
+}
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>114218</ID>
+                  <Description>"Grounded/can walk in Air"</Description>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>{ Game   : Archvale.exe
+  Version: 
+  Date   : 2021-12-08
+  Author : MBRKiNG
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+
+aobscanmodule(GroundStateAOB,Archvale.exe,C7 47 04 00 00 F0 3F C7 07 00 00 00 00 C7 46 3C 2A 00) // should be unique
+registersymbol(GroundStateAOB)
+GroundStateAOB+5:
+  db 00 00
+[DISABLE]
+
+GroundStateAOB+5:
+  db F0 3F
+
+unregistersymbol(GroundStateAOB)
+
+
+{
+// ORIGINAL CODE - INJECTION POINT: Archvale.exe+265B41D
+
+Archvale.exe+265B3F1: C7 46 3C 29 00 00 00  - mov [esi+3C],00000029
+Archvale.exe+265B3F8: 8B 01                 - mov eax,[ecx]
+Archvale.exe+265B3FA: 68 5C 90 01 00        - push 0001905C
+Archvale.exe+265B3FF: FF 50 08              - call dword ptr [eax+08]
+Archvale.exe+265B402: 89 C7                 - mov edi,eax
+Archvale.exe+265B404: 8B 40 0C              - mov eax,[eax+0C]
+Archvale.exe+265B407: 8D 48 FF              - lea ecx,[eax-01]
+Archvale.exe+265B40A: F7 C1 FC FF FF 00     - test ecx,Archvale.exe+C8FFFC
+Archvale.exe+265B410: 0F 84 68 03 00 00     - je Archvale.exe+265B77E
+Archvale.exe+265B416: C7 47 0C 00 00 00 00  - mov [edi+0C],00000000
+// ---------- INJECTING HERE ----------
+Archvale.exe+265B41D: C7 47 04 00 00 F0 3F  - mov [edi+04],3FF00000
+// ---------- DONE INJECTING  ----------
+Archvale.exe+265B424: C7 07 00 00 00 00     - mov [edi],00000000
+Archvale.exe+265B42A: C7 46 3C 2A 00 00 00  - mov [esi+3C],0000002A
+Archvale.exe+265B431: 8B 4D 08              - mov ecx,[ebp+08]
+Archvale.exe+265B434: 8B 01                 - mov eax,[ecx]
+Archvale.exe+265B436: 68 97 87 01 00        - push 00018797
+Archvale.exe+265B43B: FF 50 08              - call dword ptr [eax+08]
+Archvale.exe+265B43E: 89 C7                 - mov edi,eax
+Archvale.exe+265B440: 8B 40 0C              - mov eax,[eax+0C]
+Archvale.exe+265B443: 8D 48 FF              - lea ecx,[eax-01]
+Archvale.exe+265B446: F7 C1 FC FF FF 00     - test ecx,Archvale.exe+C8FFFC
+}
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>114039</ID>
+                  <Description>"Coyote_Time - Fall 1x to get the value"</Description>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>{ Game   : Archvale.exe
+  Version: 
+  Date   : 2021-12-08
+  Author : MBRKiNG
+
+  This script does blah blah blah
+}
+
+define(address,"Archvale.exe"+265CECB)
+define(bytes,C7 47 04 00 00 00 00)
+
+[ENABLE]
+
+assert(address,bytes)
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+label(coyo)
+registersymbol(coyo)
+
+
+newmem:
+
+code:
+  mov [coyo],edi
+  mov [edi+04],00000000
+  jmp return
+coyo:
+db
+address:
+  jmp newmem
+  nop 2
+return:
+
+[DISABLE]
+
+address:
+  db bytes
+  // mov [edi+04],00000000
+
+dealloc(newmem)
+unregistersymbol(coyo)
+{
+// ORIGINAL CODE - INJECTION POINT: Archvale.exe+265CECB
+
+Archvale.exe+265CEA3: 8B 4D 08              - mov ecx,[ebp+08]
+Archvale.exe+265CEA6: 8B 01                 - mov eax,[ecx]
+Archvale.exe+265CEA8: 68 B9 92 01 00        - push 000192B9
+Archvale.exe+265CEAD: FF 50 08              - call dword ptr [eax+08]
+Archvale.exe+265CEB0: 89 C7                 - mov edi,eax
+Archvale.exe+265CEB2: 8B 40 0C              - mov eax,[eax+0C]
+Archvale.exe+265CEB5: 8D 48 FF              - lea ecx,[eax-01]
+Archvale.exe+265CEB8: F7 C1 FC FF FF 00     - test ecx,Archvale.exe+C8FFFC
+Archvale.exe+265CEBE: 0F 84 F5 04 00 00     - je Archvale.exe+265D3B9
+Archvale.exe+265CEC4: C7 47 0C 00 00 00 00  - mov [edi+0C],00000000
+// ---------- INJECTING HERE ----------
+Archvale.exe+265CECB: C7 47 04 00 00 00 00  - mov [edi+04],00000000
+// ---------- DONE INJECTING  ----------
+Archvale.exe+265CED2: C7 07 00 00 00 00     - mov [edi],00000000
+Archvale.exe+265CED8: C7 46 3C 8A 00 00 00  - mov [esi+3C],0000008A
+Archvale.exe+265CEDF: 8B 4D 08              - mov ecx,[ebp+08]
+Archvale.exe+265CEE2: 8B 01                 - mov eax,[ecx]
+Archvale.exe+265CEE4: 68 67 92 01 00        - push 00019267
+Archvale.exe+265CEE9: FF 50 08              - call dword ptr [eax+08]
+Archvale.exe+265CEEC: 89 C7                 - mov edi,eax
+Archvale.exe+265CEEE: 8B 40 0C              - mov eax,[eax+0C]
+Archvale.exe+265CEF1: 8D 48 FF              - lea ecx,[eax-01]
+Archvale.exe+265CEF4: F7 C1 FC FF FF 00     - test ecx,Archvale.exe+C8FFFC
+}
+</AssemblerScript>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>114049</ID>
+                      <Description>"Coyote_Time"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Double</VariableType>
+                      <Address>coyo</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>110357</ID>
+                  <Description>"GodMode/Invincible"</Description>
+                  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">1:Enabled
+0:Disabled
+</DropDownList>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Double</VariableType>
+                  <Address>base</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                    <Offset>117C</Offset>
+                    <Offset>10</Offset>
+                    <Offset>2c</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>110358</ID>
+                  <Description>"Stamina Regen Rate"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Double</VariableType>
+                  <Address>base</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                    <Offset>B8C8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>2c</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>110359</ID>
+                  <Description>"Coins"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Double</VariableType>
+                  <Address>base</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                    <Offset>9918</Offset>
+                    <Offset>10</Offset>
+                    <Offset>2c</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>110360</ID>
+                  <Description>"Bombs"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Double</VariableType>
+                  <Address>base</Address>
+                  <Offsets>
+                    <Offset>1140</Offset>
+                    <Offset>25D4</Offset>
+                    <Offset>10</Offset>
+                    <Offset>2c</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>110361</ID>
+                  <Description>"enemy_health_modifier "</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Double</VariableType>
+                  <Address>base</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                    <Offset>5268</Offset>
+                    <Offset>10</Offset>
+                    <Offset>2c</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>110394</ID>
+                  <Description>"MISC"</Description>
+                  <Options moHideChildren="1"/>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>110395</ID>
+                      <Description>"PlayTimeSeconds"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Double</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                        <Offset>666C</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110396</ID>
+                      <Description>"PlayTime"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Double</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                        <Offset>5CC4</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110398</ID>
+                      <Description>"enemy_damage_mod"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Double</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                        <Offset>AB48</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110399</ID>
+                      <Description>"player_bomb_level"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Double</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                        <Offset>47E8</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110401</ID>
+                      <Description>"debug_zoom"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Double</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                        <Offset>7488</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110402</ID>
+                      <Description>"difficulty_level"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Double</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                        <Offset>1A7C</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110403</ID>
+                      <Description>"badge_stack"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Double</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                        <Offset>1BE4</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110404</ID>
+                      <Description>"healing_level"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Double</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                        <Offset>618C</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110405</ID>
+                      <Description>"player_runes"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Double</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                        <Offset>6120</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110406</ID>
+                      <Description>"healing_capacity_max"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Double</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                        <Offset>105C</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110407</ID>
+                      <Description>"healing_level_plums_banked"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Double</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                        <Offset>8A24</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110408</ID>
+                      <Description>"badge_debuff_chance"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Double</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                        <Offset>9264</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110409</ID>
+                      <Description>"badge_slots"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Double</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                        <Offset>6798</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110410</ID>
+                      <Description>"badge_chance_mult"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Double</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                        <Offset>8CE8</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>112037</ID>
+                      <Description>"bank_balance"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Double</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                        <Offset>375C</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>112036</ID>
+                      <Description>"bank_level"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Double</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                        <Offset>8880</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>112035</ID>
+                      <Description>"badge_magic_radius"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Double</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                        <Offset>3984</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>110362</ID>
+                  <Description>"Inventory Editor - first 8 Slots from left to right"</Description>
+                  <Options moHideChildren="1"/>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>110363</ID>
+                      <Description>"Slot 1 (quantity)"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>000080</Color>
+                      <VariableType>Double</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>-3E30</Offset>
+                        <Offset>25D4</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110364</ID>
+                      <Description>"Slot 1 (quantity)"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>FF00FF</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>-3E30</Offset>
+                        <Offset>25D4</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110365</ID>
+                      <Description>"Item ID"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>FF00FF</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>-3E20</Offset>
+                        <Offset>25D4</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110366</ID>
+                      <Description>""</Description>
+                      <Color>008000</Color>
+                      <GroupHeader>1</GroupHeader>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110367</ID>
+                      <Description>"Slot 2 (quantity)"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>000080</Color>
+                      <VariableType>Double</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>-3EB0</Offset>
+                        <Offset>25D4</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110368</ID>
+                      <Description>"Slot 2 (quantity)"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>FF00FF</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>-3EB0</Offset>
+                        <Offset>25D4</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110369</ID>
+                      <Description>"Item ID"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>FF00FF</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>-3EA0</Offset>
+                        <Offset>25D4</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110370</ID>
+                      <Description>""</Description>
+                      <Color>008000</Color>
+                      <GroupHeader>1</GroupHeader>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110371</ID>
+                      <Description>"Slot 3 (quantity)"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>000080</Color>
+                      <VariableType>Double</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>-3F30</Offset>
+                        <Offset>25D4</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110372</ID>
+                      <Description>"Slot 3 (quantity)"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>FF00FF</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>-3F30</Offset>
+                        <Offset>25D4</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110373</ID>
+                      <Description>"Item ID"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>FF00FF</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>-3F20</Offset>
+                        <Offset>25D4</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110374</ID>
+                      <Description>""</Description>
+                      <Color>008000</Color>
+                      <GroupHeader>1</GroupHeader>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110375</ID>
+                      <Description>"Slot 4 (quantity)"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>000080</Color>
+                      <VariableType>Double</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>-3FB0</Offset>
+                        <Offset>25D4</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110376</ID>
+                      <Description>"Slot 4 (quantity)"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>FF00FF</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>-3FB0</Offset>
+                        <Offset>25D4</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110377</ID>
+                      <Description>"Item ID"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>FF00FF</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>-3FA0</Offset>
+                        <Offset>25D4</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110378</ID>
+                      <Description>""</Description>
+                      <Color>008000</Color>
+                      <GroupHeader>1</GroupHeader>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110379</ID>
+                      <Description>"Slot 5 (quantity)"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>000080</Color>
+                      <VariableType>Double</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>-4030</Offset>
+                        <Offset>25D4</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110380</ID>
+                      <Description>"Slot 5 (quantity)"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>FF00FF</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>-4030</Offset>
+                        <Offset>25D4</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110381</ID>
+                      <Description>"Item ID"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>FF00FF</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>-4020</Offset>
+                        <Offset>25D4</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110382</ID>
+                      <Description>""</Description>
+                      <Color>008000</Color>
+                      <GroupHeader>1</GroupHeader>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110383</ID>
+                      <Description>"Slot 6 (quantity)"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>000080</Color>
+                      <VariableType>Double</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>-40B0</Offset>
+                        <Offset>25D4</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110384</ID>
+                      <Description>"Slot 6 (quantity)"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>FF00FF</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>-40B0</Offset>
+                        <Offset>25D4</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110385</ID>
+                      <Description>"Item ID"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>FF00FF</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>-40A0</Offset>
+                        <Offset>25D4</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110386</ID>
+                      <Description>""</Description>
+                      <Color>008000</Color>
+                      <GroupHeader>1</GroupHeader>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110387</ID>
+                      <Description>"Slot 7 (quantity)"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>000080</Color>
+                      <VariableType>Double</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>-4130</Offset>
+                        <Offset>25D4</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110388</ID>
+                      <Description>"Slot 7 (quantity)"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>FF00FF</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>-4130</Offset>
+                        <Offset>25D4</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110389</ID>
+                      <Description>"Item ID"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>FF00FF</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>-4120</Offset>
+                        <Offset>25D4</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110390</ID>
+                      <Description>""</Description>
+                      <Color>008000</Color>
+                      <GroupHeader>1</GroupHeader>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110391</ID>
+                      <Description>"Slot 8 (quantity)"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>000080</Color>
+                      <VariableType>Double</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>-41B0</Offset>
+                        <Offset>25D4</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110392</ID>
+                      <Description>"Slot 8 (quantity)"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>FF00FF</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>-41B0</Offset>
+                        <Offset>25D4</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110393</ID>
+                      <Description>"Item ID"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>FF00FF</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>-41A0</Offset>
+                        <Offset>25D4</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                      <Hotkeys>
+                        <Hotkey>
+                          <Action>Increase Value</Action>
+                          <Keys>
+                            <Key>74</Key>
+                          </Keys>
+                          <Value>1</Value>
+                          <ID>0</ID>
+                        </Hotkey>
+                      </Hotkeys>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>106695</ID>
+              <Description>"Enable v1.1.1"</Description>
+              <Options moHideChildren="1"/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{ Game   : Archvale.exe
+  Version: 
+  Date   : 2021-12-06
+  Author : MBRKiNG
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(BaseInjectAOB,Archvale.exe,8B 01 8B 40 04 C7 86 28 01 00 00 0B 00 00 00 68 ** ** ** ** FF ** 89 46 1C) // should be unique
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+label(base)
+registersymbol(base)
+
+newmem:
+
+code:
+  mov [base],ecx
+  mov eax,[ecx]
+  mov eax,[eax+04]
+  jmp return
+base:
+db
+BaseInjectAOB:
+  jmp newmem
+return:
+registersymbol(BaseInjectAOB)
+
+[DISABLE]
+
+BaseInjectAOB:
+  db 8B 01 8B 40 04
+
+unregistersymbol(BaseInjectAOB)
+dealloc(newmem)
+unregistersymbol(base)
+{
+// ORIGINAL CODE - INJECTION POINT: Archvale.exe+265E3C7
+
+Archvale.exe+265E369: C7 86 F4 00 00 00 05 00 00 00  - mov [esi+000000F4],00000005
+Archvale.exe+265E373: C7 86 E8 00 00 00 00 00 00 00  - mov [esi+000000E8],00000000
+Archvale.exe+265E37D: C7 86 04 01 00 00 05 00 00 00  - mov [esi+00000104],00000005
+Archvale.exe+265E387: C7 86 F8 00 00 00 00 00 00 00  - mov [esi+000000F8],00000000
+Archvale.exe+265E391: C7 86 14 01 00 00 05 00 00 00  - mov [esi+00000114],00000005
+Archvale.exe+265E39B: C7 86 BC 00 00 00 05 00 00 00  - mov [esi+000000BC],00000005
+Archvale.exe+265E3A5: C7 46 4C 05 00 00 00           - mov [esi+4C],00000005
+Archvale.exe+265E3AC: C7 86 08 01 00 00 00 00 00 00  - mov [esi+00000108],00000000
+Archvale.exe+265E3B6: C7 86 B0 00 00 00 00 00 00 00  - mov [esi+000000B0],00000000
+Archvale.exe+265E3C0: C7 46 40 00 00 00 00           - mov [esi+40],00000000
+// ---------- INJECTING HERE ----------
+Archvale.exe+265E3C7: 8B 01                          - mov eax,[ecx]
+// ---------- DONE INJECTING  ----------
+Archvale.exe+265E3C9: 8B 40 04                       - mov eax,[eax+04]
+Archvale.exe+265E3CC: C7 86 28 01 00 00 0B 00 00 00  - mov [esi+00000128],0000000B
+Archvale.exe+265E3D6: 68 70 9F 01 00                 - push 00019F70
+Archvale.exe+265E3DB: FF D0                          - call eax
+Archvale.exe+265E3DD: 89 46 1C                       - mov [esi+1C],eax
+Archvale.exe+265E3E0: 8B 4D 08                       - mov ecx,[ebp+08]
+Archvale.exe+265E3E3: C7 86 AC 00 00 00 05 00 00 00  - mov [esi+000000AC],00000005
+Archvale.exe+265E3ED: C7 86 9C 00 00 00 05 00 00 00  - mov [esi+0000009C],00000005
+Archvale.exe+265E3F7: C7 86 8C 00 00 00 05 00 00 00  - mov [esi+0000008C],00000005
+Archvale.exe+265E401: C7 46 2C 05 00 00 00           - mov [esi+2C],00000005
+}
+</AssemblerScript>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>110339</ID>
+                  <Description>"BASE ADR"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <GroupHeader>1</GroupHeader>
+                  <Address>base</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                    <Offset>10</Offset>
+                    <Offset>2c</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>106912</ID>
+                  <Description>"GodMode/Invincible"</Description>
+                  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">1:Enabled
+0:Disabled
+</DropDownList>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Double</VariableType>
+                  <Address>base</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                    <Offset>117C</Offset>
+                    <Offset>10</Offset>
+                    <Offset>2c</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>106920</ID>
+                  <Description>"Stamina Regen Rate"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Double</VariableType>
+                  <Address>base</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                    <Offset>B8C8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>2c</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>106919</ID>
+                  <Description>"Coins"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Double</VariableType>
+                  <Address>base</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                    <Offset>47E8</Offset>
+                    <Offset>10</Offset>
+                    <Offset>2c</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>108611</ID>
+                  <Description>"Bombs"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Double</VariableType>
+                  <Address>base</Address>
+                  <Offsets>
+                    <Offset>1140</Offset>
+                    <Offset>25D4</Offset>
+                    <Offset>10</Offset>
+                    <Offset>2c</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>106918</ID>
+                  <Description>"enemy_health_modifier "</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Double</VariableType>
+                  <Address>base</Address>
+                  <Offsets>
+                    <Offset>0</Offset>
+                    <Offset>5268</Offset>
+                    <Offset>10</Offset>
+                    <Offset>2c</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>110324</ID>
+                  <Description>"Inventory first 8 Slots from left to right"</Description>
+                  <Options moHideChildren="1"/>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>110323</ID>
+                      <Description>"Slot 1 (quantity)"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>000080</Color>
+                      <VariableType>Double</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>-3E30</Offset>
+                        <Offset>25D4</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110347</ID>
+                      <Description>"Slot 1 (quantity)"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>FF00FF</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>-3E30</Offset>
+                        <Offset>25D4</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110322</ID>
+                      <Description>"Item ID"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>FF00FF</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>-3E20</Offset>
+                        <Offset>25D4</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110340</ID>
+                      <Description>""</Description>
+                      <Color>008000</Color>
+                      <GroupHeader>1</GroupHeader>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110321</ID>
+                      <Description>"Slot 2 (quantity)"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>000080</Color>
+                      <VariableType>Double</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>-3EB0</Offset>
+                        <Offset>25D4</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110348</ID>
+                      <Description>"Slot 2 (quantity)"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>FF00FF</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>-3EB0</Offset>
+                        <Offset>25D4</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110325</ID>
+                      <Description>"Item ID"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>FF00FF</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>-3EA0</Offset>
+                        <Offset>25D4</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110341</ID>
+                      <Description>""</Description>
+                      <Color>008000</Color>
+                      <GroupHeader>1</GroupHeader>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110326</ID>
+                      <Description>"Slot 3 (quantity)"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>000080</Color>
+                      <VariableType>Double</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>-3F30</Offset>
+                        <Offset>25D4</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110349</ID>
+                      <Description>"Slot 3 (quantity)"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>FF00FF</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>-3F30</Offset>
+                        <Offset>25D4</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110327</ID>
+                      <Description>"Item ID"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>FF00FF</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>-3F20</Offset>
+                        <Offset>25D4</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110342</ID>
+                      <Description>""</Description>
+                      <Color>008000</Color>
+                      <GroupHeader>1</GroupHeader>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110336</ID>
+                      <Description>"Slot 4 (quantity)"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>000080</Color>
+                      <VariableType>Double</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>-3FB0</Offset>
+                        <Offset>25D4</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110350</ID>
+                      <Description>"Slot 4 (quantity)"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>FF00FF</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>-3FB0</Offset>
+                        <Offset>25D4</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110337</ID>
+                      <Description>"Item ID"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>FF00FF</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>-3FA0</Offset>
+                        <Offset>25D4</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110343</ID>
+                      <Description>""</Description>
+                      <Color>008000</Color>
+                      <GroupHeader>1</GroupHeader>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110334</ID>
+                      <Description>"Slot 5 (quantity)"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>000080</Color>
+                      <VariableType>Double</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>-4030</Offset>
+                        <Offset>25D4</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110351</ID>
+                      <Description>"Slot 5 (quantity)"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>FF00FF</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>-4030</Offset>
+                        <Offset>25D4</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110335</ID>
+                      <Description>"Item ID"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>FF00FF</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>-4020</Offset>
+                        <Offset>25D4</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110344</ID>
+                      <Description>""</Description>
+                      <Color>008000</Color>
+                      <GroupHeader>1</GroupHeader>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110332</ID>
+                      <Description>"Slot 6 (quantity)"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>000080</Color>
+                      <VariableType>Double</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>-40B0</Offset>
+                        <Offset>25D4</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110352</ID>
+                      <Description>"Slot 6 (quantity)"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>FF00FF</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>-40B0</Offset>
+                        <Offset>25D4</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110333</ID>
+                      <Description>"Item ID"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>FF00FF</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>-40A0</Offset>
+                        <Offset>25D4</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110345</ID>
+                      <Description>""</Description>
+                      <Color>008000</Color>
+                      <GroupHeader>1</GroupHeader>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110330</ID>
+                      <Description>"Slot 7 (quantity)"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>000080</Color>
+                      <VariableType>Double</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>-4130</Offset>
+                        <Offset>25D4</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110353</ID>
+                      <Description>"Slot 7 (quantity)"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>FF00FF</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>-4130</Offset>
+                        <Offset>25D4</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110331</ID>
+                      <Description>"Item ID"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>FF00FF</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>-4120</Offset>
+                        <Offset>25D4</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110346</ID>
+                      <Description>""</Description>
+                      <Color>008000</Color>
+                      <GroupHeader>1</GroupHeader>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110328</ID>
+                      <Description>"Slot 8 (quantity)"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>000080</Color>
+                      <VariableType>Double</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>-41B0</Offset>
+                        <Offset>25D4</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110354</ID>
+                      <Description>"Slot 8 (quantity)"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>FF00FF</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>-41B0</Offset>
+                        <Offset>25D4</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110329</ID>
+                      <Description>"Item ID Decrease/Increase ID with numpad -/+"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>FF00FF</Color>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>-41A0</Offset>
+                        <Offset>25D4</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                      <Hotkeys>
+                        <Hotkey>
+                          <Action>Increase Value</Action>
+                          <Keys>
+                            <Key>107</Key>
+                          </Keys>
+                          <Value>1</Value>
+                          <ID>0</ID>
+                        </Hotkey>
+                        <Hotkey>
+                          <Action>Decrease Value</Action>
+                          <Keys>
+                            <Key>109</Key>
+                          </Keys>
+                          <Value>1</Value>
+                          <ID>1</ID>
+                        </Hotkey>
+                      </Hotkeys>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>110338</ID>
+                  <Description>"MISC"</Description>
+                  <Options moHideChildren="1"/>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>106874</ID>
+                      <Description>"PlayTimeSeconds"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Double</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                        <Offset>3DD4</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>106911</ID>
+                      <Description>"PlayTime"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Double</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                        <Offset>3438</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>106924</ID>
+                      <Description>"player_skilltokens"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Double</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                        <Offset>b250</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>106923</ID>
+                      <Description>"enemy_damage_mod"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Double</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                        <Offset>AB48</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110300</ID>
+                      <Description>"player_bomb_level"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Double</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                        <Offset>1F50</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>106914</ID>
+                      <Description>"player_bomb_CD"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Double</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>218A0</Offset>
+                        <Offset>1F50</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>106913</ID>
+                      <Description>"debug_zoom"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Double</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                        <Offset>747C</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110301</ID>
+                      <Description>"difficulty_level"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Double</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                        <Offset>1A7C</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>106925</ID>
+                      <Description>"badge_stack"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Double</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                        <Offset>1BE4</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>106926</ID>
+                      <Description>"healing_level"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Double</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                        <Offset>618C</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>106927</ID>
+                      <Description>"player_runes"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Double</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                        <Offset>3888</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>106928</ID>
+                      <Description>"healing_capacity_max"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Double</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                        <Offset>105C</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>106921</ID>
+                      <Description>"healing_level_plums_banked"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Double</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                        <Offset>8A24</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>106922</ID>
+                      <Description>"badge_debuff_chance"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Double</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                        <Offset>9270</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>110302</ID>
+                      <Description>"badge_slots"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Double</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                        <Offset>6798</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>106917</ID>
+                      <Description>"badge_chance_mult"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Double</VariableType>
+                      <Address>base</Address>
+                      <Offsets>
+                        <Offset>0</Offset>
+                        <Offset>8CE8</Offset>
+                        <Offset>10</Offset>
+                        <Offset>2c</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>104269</ID>
+      <Description>"---------------------------------------------------------------"</Description>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>10326</ID>
+      <Description>"Discord/PayPal-Donation-Link/OCT"</Description>
+      <Options moHideChildren="1"/>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>104153</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>10324</ID>
+          <Description>"if you think i did a good job you can donate something to me via PP"</Description>
+          <Color>008000</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104128</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>41356</ID>
+          <Description>" [&lt;--CHECKBOX] Support Me at PP (use the Link below or hit the checkbox to open paypal)"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://paypal.me/mobiusce')
+{$asm}
+nop
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104152</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104270</ID>
+          <Description>"my Discord:  --&gt;  ScooPaX#8840  &lt;--"</Description>
+          <Options moAlwaysHideChildren="1"/>
+          <Color>8000FF</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104155</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104156</ID>
+          <Description>"[&lt;--CHECKBOX]_OPEN_OCT_TOPIC"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://opencheattables.com/viewtopic.php?t=1542')
+{$asm}
+nop
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104129</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104151</ID>
+          <Description>"[&lt;--CHECKBOX]_OPEN_CHEATENGINE.ORG"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://www.cheatengine.org/')
+{$asm}
+nop
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>10634</ID>
+      <Description>"---------------------------------------------------------------"</Description>
+      <Options moHideChildren="1"/>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+  <LuaScript>--------
+-------- Auto Attach
+--------
+PROCESS_NAME = 'Archvale.exe'
+local autoAttachTimer = nil
+local autoAttachTimerInterval = 100
+local autoAttachTimerTicks = 0
+local autoAttachTimerTickMax = 5000
+
+local function autoAttachTimer_tick(timer)
+	if autoAttachTimerTickMax &gt; 0 and autoAttachTimerTicks &gt;= autoAttachTimerTickMax then
+		timer.destroy()
+	end
+	if getProcessIDFromProcessName(PROCESS_NAME) ~= nil then
+		timer.destroy()
+		openProcess(PROCESS_NAME)
+	end
+	autoAttachTimerTicks = autoAttachTimerTicks + 1
+end
+
+autoAttachTimer = createTimer(MainForm)
+autoAttachTimer.Interval = autoAttachTimerInterval
+autoAttachTimer.OnTimer = autoAttachTimer_tick
+</LuaScript>
+</CheatTable>

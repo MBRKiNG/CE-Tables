@@ -1,0 +1,709 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="50">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>104452</ID>
+      <Description>"F.I.S.T_Forged_In_Shadow_Torch_v1.20_Steam_Epic_20222712_by_MBRKiNG"</Description>
+      <Options moHideChildren="1"/>
+      <Color>4080FF</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>104443</ID>
+          <Description>"Inf Health"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : ZingangGame-Win64-Shipping.exe
+  Version: 
+  Date   : 2022-12-27
+  Author : MBRKiNG
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(InfHealth_AOB,ZingangGame-Win64-Shipping.exe,0F 2E B8 ** ** 00 00 74 ** 48 8D 8B ** ** 00 00 E8 ** ** ** ** 48 8B CB ) // should be unique
+alloc(newmem,$1000,InfHealth_AOB)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  movss xmm15,[rax+00000504]
+  movss [rax+00000560],xmm15
+  ucomiss xmm7,[rax+00000560]
+  jmp return
+
+InfHealth_AOB:
+  jmp newmem
+  nop 2
+return:
+registersymbol(InfHealth_AOB)
+
+[DISABLE]
+
+InfHealth_AOB:
+  db 0F 2E B8 60 05 00 00
+
+unregistersymbol(InfHealth_AOB)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: ZingangGame-Win64-Shipping.exe.text+440B344
+
+ZingangGame-Win64-Shipping.exe.text+440B319: 44 0F 29 40 B8           - movaps [rax-48],xmm8
+ZingangGame-Win64-Shipping.exe.text+440B31E: 44 0F 28 C2              - movaps xmm8,xmm2
+ZingangGame-Win64-Shipping.exe.text+440B322: E8 49 15 3D 00           - call ZingangGame-Win64-Shipping.exe.text+47DC870
+ZingangGame-Win64-Shipping.exe.text+440B327: 33 F6                    - xor esi,esi
+ZingangGame-Win64-Shipping.exe.text+440B329: 84 C0                    - test al,al
+ZingangGame-Win64-Shipping.exe.text+440B32B: 74 68                    - je ZingangGame-Win64-Shipping.exe.text+440B395
+ZingangGame-Win64-Shipping.exe.text+440B32D: 48 8D 8B F0 03 00 00     - lea rcx,[rbx+000003F0]
+ZingangGame-Win64-Shipping.exe.text+440B334: E8 87 D7 3C 00           - call ZingangGame-Win64-Shipping.exe.text+47D8AC0
+ZingangGame-Win64-Shipping.exe.text+440B339: 66 0F 6E BB 40 04 00 00  - movd xmm7,[rbx+00000440]
+ZingangGame-Win64-Shipping.exe.text+440B341: 0F 5B FF                 - cvtdq2ps xmm7,xmm7
+// ---------- INJECTING HERE ----------
+ZingangGame-Win64-Shipping.exe.text+440B344: 0F 2E B8 60 05 00 00     - ucomiss xmm7,[rax+00000560]
+// ---------- DONE INJECTING  ----------
+ZingangGame-Win64-Shipping.exe.text+440B34B: 74 6C                    - je ZingangGame-Win64-Shipping.exe.text+440B3B9
+ZingangGame-Win64-Shipping.exe.text+440B34D: 48 8D 8B F0 03 00 00     - lea rcx,[rbx+000003F0]
+ZingangGame-Win64-Shipping.exe.text+440B354: E8 67 D7 3C 00           - call ZingangGame-Win64-Shipping.exe.text+47D8AC0
+ZingangGame-Win64-Shipping.exe.text+440B359: 48 8B CB                 - mov rcx,rbx
+ZingangGame-Win64-Shipping.exe.text+440B35C: F3 0F 10 B0 48 0E 00 00  - movss xmm6,[rax+00000E48]
+ZingangGame-Win64-Shipping.exe.text+440B364: E8 27 CC 00 00           - call ZingangGame-Win64-Shipping.exe.text+4417F90
+ZingangGame-Win64-Shipping.exe.text+440B369: 66 0F 6E 83 40 04 00 00  - movd xmm0,[rbx+00000440]
+ZingangGame-Win64-Shipping.exe.text+440B371: 0F 5B C0                 - cvtdq2ps xmm0,xmm0
+ZingangGame-Win64-Shipping.exe.text+440B374: 0F 2F 05 ED E2 70 02     - comiss xmm0,[ZingangGame-Win64-Shipping.exe.rdata+A4668]
+ZingangGame-Win64-Shipping.exe.text+440B37B: 72 32                    - jb ZingangGame-Win64-Shipping.exe.text+440B3AF
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104444</ID>
+          <Description>"Invincible"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : ZingangGame-Win64-Shipping.exe
+  Version: 
+  Date   : 2022-12-27
+  Author : MBRKiNG
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(PlayerInvincible_AOB,ZingangGame-Win64-Shipping.exe,80 79 59 00 7D ** 48 8B 01 FF 90 ** ** ** ** 48 83 B8 ** ** ** ** 00) // should be unique
+alloc(newmem,$1000,PlayerInvincible_AOB)
+
+label(code)
+label(return)
+label(player)
+
+newmem:
+  cmp [rcx+40],03
+  je player
+  jmp code
+player:
+  cmp byte ptr [rcx+59],00
+  jl ZingangGame-Win64-Shipping.exe+5E6FD22
+  //db 80 79 59 00 7C 27
+  jmp return
+
+code:
+  cmp byte ptr [rcx+59],00
+  jnl ZingangGame-Win64-Shipping.exe+5E6FD22
+  jmp return
+
+PlayerInvincible_AOB:
+  jmp newmem
+  nop
+return:
+registersymbol(PlayerInvincible_AOB)
+
+[DISABLE]
+
+PlayerInvincible_AOB:
+  db 80 79 59 00 7D 27
+
+unregistersymbol(PlayerInvincible_AOB)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: ZingangGame-Win64-Shipping.exe.text+5E6ECF5
+
+ZingangGame-Win64-Shipping.exe.text+5E6ECD9: 0F 95 C0                 - setne al
+ZingangGame-Win64-Shipping.exe.text+5E6ECDC: C3                       - ret 
+ZingangGame-Win64-Shipping.exe.text+5E6ECDD: CC                       - int 3 
+ZingangGame-Win64-Shipping.exe.text+5E6ECDE: CC                       - int 3 
+ZingangGame-Win64-Shipping.exe.text+5E6ECDF: CC                       - int 3 
+ZingangGame-Win64-Shipping.exe.text+5E6ECE0: 48 83 EC 38              - sub rsp,38
+ZingangGame-Win64-Shipping.exe.text+5E6ECE4: 80 B9 F0 00 00 00 03     - cmp byte ptr [rcx+000000F0],03
+ZingangGame-Win64-Shipping.exe.text+5E6ECEB: 0F 29 74 24 20           - movaps [rsp+20],xmm6
+ZingangGame-Win64-Shipping.exe.text+5E6ECF0: 0F 28 F1                 - movaps xmm6,xmm1
+ZingangGame-Win64-Shipping.exe.text+5E6ECF3: 72 2D                    - jb ZingangGame-Win64-Shipping.exe.text+5E6ED22
+// ---------- INJECTING HERE ----------
+ZingangGame-Win64-Shipping.exe.text+5E6ECF5: 80 79 59 00              - cmp byte ptr [rcx+59],00
+// ---------- DONE INJECTING  ----------
+ZingangGame-Win64-Shipping.exe.text+5E6ECF9:                     - jnl ZingangGame-Win64-Shipping.exe.text+5E6ED22
+ZingangGame-Win64-Shipping.exe.text+5E6ECFB: 48 8B 01                 - mov rax,[rcx]
+ZingangGame-Win64-Shipping.exe.text+5E6ECFE: FF 90 58 01 00 00        - call qword ptr [rax+00000158]
+ZingangGame-Win64-Shipping.exe.text+5E6ED04: 48 83 B8 18 01 00 00 00  - cmp qword ptr [rax+00000118],00
+ZingangGame-Win64-Shipping.exe.text+5E6ED0C: 74 14                    - je ZingangGame-Win64-Shipping.exe.text+5E6ED22
+ZingangGame-Win64-Shipping.exe.text+5E6ED0E: 0F 57 C0                 - xorps xmm0,xmm0
+ZingangGame-Win64-Shipping.exe.text+5E6ED11: 0F 2E F0                 - ucomiss xmm6,xmm0
+ZingangGame-Win64-Shipping.exe.text+5E6ED14: 74 0C                    - je ZingangGame-Win64-Shipping.exe.text+5E6ED22
+ZingangGame-Win64-Shipping.exe.text+5E6ED16: B0 01                    - mov al,01
+ZingangGame-Win64-Shipping.exe.text+5E6ED18: 0F 28 74 24 20           - movaps xmm6,[rsp+20]
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104445</ID>
+          <Description>"DAMAGE Multiplier"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : ZingangGame-Win64-Shipping.exe
+  Version: 
+  Date   : 2022-12-27
+  Author : MBRKiNG
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(DMGmulti_AOB,ZingangGame-Win64-Shipping.exe,F3 0F 5C D1 F3 0F 5F D0 F3 0F 11 91 ** ** ** ** C3) // should be unique
+alloc(newmem,$1000,DMGmulti_AOB)
+
+label(code)
+label(return)
+registersymbol(dmg)
+label(dmg)
+newmem:
+
+code:
+  mulss xmm1,[dmg]
+  subss xmm2,xmm1
+  maxss xmm2,xmm0
+  jmp return
+dmg:
+dq (float)1
+DMGmulti_AOB:
+  jmp newmem
+  nop 3
+return:
+registersymbol(DMGmulti_AOB)
+
+[DISABLE]
+
+DMGmulti_AOB:
+  db F3 0F 5C D1 F3 0F 5F D0
+
+unregistersymbol(DMGmulti_AOB)
+dealloc(newmem)
+unregistersymbol(dmg)
+{
+// ORIGINAL CODE - INJECTION POINT: ZingangGame-Win64-Shipping.exe.text+42EDCFB
+
+ZingangGame-Win64-Shipping.exe.text+42EDCE8: CC                       - int 3 
+ZingangGame-Win64-Shipping.exe.text+42EDCE9: CC                       - int 3 
+ZingangGame-Win64-Shipping.exe.text+42EDCEA: CC                       - int 3 
+ZingangGame-Win64-Shipping.exe.text+42EDCEB: CC                       - int 3 
+ZingangGame-Win64-Shipping.exe.text+42EDCEC: CC                       - int 3 
+ZingangGame-Win64-Shipping.exe.text+42EDCED: CC                       - int 3 
+ZingangGame-Win64-Shipping.exe.text+42EDCEE: CC                       - int 3 
+ZingangGame-Win64-Shipping.exe.text+42EDCEF: CC                       - int 3 
+ZingangGame-Win64-Shipping.exe.text+42EDCF0: F3 0F 10 91 60 05 00 00  - movss xmm2,[rcx+00000560]
+ZingangGame-Win64-Shipping.exe.text+42EDCF8: 0F 57 C0                 - xorps xmm0,xmm0
+// ---------- INJECTING HERE ----------
+ZingangGame-Win64-Shipping.exe.text+42EDCFB: F3 0F 5C D1              - subss xmm2,xmm1
+// ---------- DONE INJECTING  ----------
+ZingangGame-Win64-Shipping.exe.text+42EDCFF: F3 0F 5F D0              - maxss xmm2,xmm0
+ZingangGame-Win64-Shipping.exe.text+42EDD03: F3 0F 11 91 60 05 00 00  - movss [rcx+00000560],xmm2
+ZingangGame-Win64-Shipping.exe.text+42EDD0B: C3                       - ret 
+ZingangGame-Win64-Shipping.exe.text+42EDD0C: CC                       - int 3 
+ZingangGame-Win64-Shipping.exe.text+42EDD0D: CC                       - int 3 
+ZingangGame-Win64-Shipping.exe.text+42EDD0E: CC                       - int 3 
+ZingangGame-Win64-Shipping.exe.text+42EDD0F: CC                       - int 3 
+ZingangGame-Win64-Shipping.exe.text+42EDD10: 0F 57 C0                 - xorps xmm0,xmm0
+ZingangGame-Win64-Shipping.exe.text+42EDD13: 0F 2F C8                 - comiss xmm1,xmm0
+ZingangGame-Win64-Shipping.exe.text+42EDD16: 76 2C                    - jna ZingangGame-Win64-Shipping.exe.text+42EDD44
+}
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>104446</ID>
+              <Description>"Multiplier"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Float</VariableType>
+              <Address>dmg</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104448</ID>
+          <Description>"Inf Jumps"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : ZingangGame-Win64-Shipping.exe
+  Version: 
+  Date   : 2022-12-27
+  Author : MBRKiNG
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+aobscanmodule(InfJumps_AOB,ZingangGame-Win64-Shipping.exe,FF 83 ** ** 00 00 FF 90 ** ** 00 00 48 8B CB F3 0F 11 83 ** ** 00 00 E8 ** ** ** ** EB ** 33 FF 8B 83 ** ** 00 00 0F BA F0 0A) // should be unique
+InfJumps_AOB:
+  nop 6
+registersymbol(InfJumps_AOB)
+[DISABLE]
+InfJumps_AOB:
+  db FF 83 48 03 00 00
+unregistersymbol(InfJumps_AOB)
+
+{
+// ORIGINAL CODE - INJECTION POINT: ZingangGame-Win64-Shipping.exe.text+4322907
+
+ZingangGame-Win64-Shipping.exe.text+43228DF: 80 E2 01                       - and dl,01
+ZingangGame-Win64-Shipping.exe.text+43228E2: 4C 8B 01                       - mov r8,[rcx]
+ZingangGame-Win64-Shipping.exe.text+43228E5: 41 FF 90 40 06 00 00           - call qword ptr [r8+00000640]
+ZingangGame-Win64-Shipping.exe.text+43228EC: 84 C0                          - test al,al
+ZingangGame-Win64-Shipping.exe.text+43228EE: 74 35                          - je ZingangGame-Win64-Shipping.exe.text+4322925
+ZingangGame-Win64-Shipping.exe.text+43228F0: F7 83 30 03 00 00 00 04 00 00  - test [rbx+00000330],00000400
+ZingangGame-Win64-Shipping.exe.text+43228FA: BF 01 00 00 00                 - mov edi,00000001
+ZingangGame-Win64-Shipping.exe.text+43228FF: 75 26                          - jne ZingangGame-Win64-Shipping.exe.text+4322927
+ZingangGame-Win64-Shipping.exe.text+4322901: 48 8B 03                       - mov rax,[rbx]
+ZingangGame-Win64-Shipping.exe.text+4322904: 48 8B CB                       - mov rcx,rbx
+// ---------- INJECTING HERE ----------
+ZingangGame-Win64-Shipping.exe.text+4322907: FF 83 48 03 00 00              - inc [rbx+00000348]
+// ---------- DONE INJECTING  ----------
+ZingangGame-Win64-Shipping.exe.text+432290D: FF 90 50 08 00 00              - call qword ptr [rax+00000850]
+ZingangGame-Win64-Shipping.exe.text+4322913: 48 8B CB                       - mov rcx,rbx
+ZingangGame-Win64-Shipping.exe.text+4322916: F3 0F 11 83 38 03 00 00        - movss [rbx+00000338],xmm0
+ZingangGame-Win64-Shipping.exe.text+432291E: E8 4D 6E DC 01                 - call ZingangGame-Win64-Shipping.exe.text+60E9770
+ZingangGame-Win64-Shipping.exe.text+4322923: EB 02                          - jmp ZingangGame-Win64-Shipping.exe.text+4322927
+ZingangGame-Win64-Shipping.exe.text+4322925: 33 FF                          - xor edi,edi
+ZingangGame-Win64-Shipping.exe.text+4322927: 8B 83 30 03 00 00              - mov eax,[rbx+00000330]
+ZingangGame-Win64-Shipping.exe.text+432292D: 0F BA F0 0A                    - btr eax,0A
+ZingangGame-Win64-Shipping.exe.text+4322931: C1 E7 0A                       - shl edi,0A
+ZingangGame-Win64-Shipping.exe.text+4322934: 0B F8                          - or edi,eax
+
+FF 83 ** ** 00 00 FF 90 ** ** 00 00 48 8B CB F3 0F 11 83 ** ** 00 00 E8 ** ** ** ** EB ** 33 FF 8B 83 ** ** 00 00 0F BA F0 0A
+ZingangGame-Win64-Shipping.exe.text+4322907 - FF 83 48030000        - inc [rbx+00000348]
+ZingangGame-Win64-Shipping.exe.text+432290D - FF 90 50080000        - call qword ptr [rax+00000850]
+ZingangGame-Win64-Shipping.exe.text+4322913 - 48 8B CB              - mov rcx,rbx
+ZingangGame-Win64-Shipping.exe.text+4322916 - F3 0F11 83 38030000   - movss [rbx+00000338],xmm0
+ZingangGame-Win64-Shipping.exe.text+432291E - E8 4D6EDC01           - call ZingangGame-Win64-Shipping.exe.text+60E9770
+ZingangGame-Win64-Shipping.exe.text+4322923 - EB 02                 - jmp ZingangGame-Win64-Shipping.exe.text+4322927
+ZingangGame-Win64-Shipping.exe.text+4322925 - 33 FF                 - xor edi,edi
+ZingangGame-Win64-Shipping.exe.text+4322927 - 8B 83 30030000        - mov eax,[rbx+00000330]
+ZingangGame-Win64-Shipping.exe.text+432292D - 0FBA F0 0A            - btr eax,0A
+ZingangGame-Win64-Shipping.exe.text+4322931 - C1 E7 0A              - shl edi,0A
+ZingangGame-Win64-Shipping.exe.text+4322934 - 0B F8                 - or edi,eax
+ZingangGame-Win64-Shipping.exe.text+4322936 - 89 BB 30030000        - mov [rbx+00000330],edi
+ZingangGame-Win64-Shipping.exe.text+432293C - 0FBA E7 0A            - bt edi,0A
+ZingangGame-Win64-Shipping.exe.text+4322940 - 0F82 C2000000         - jb ZingangGame-Win64-Shipping.exe.text+4322A08
+ZingangGame-Win64-Shipping.exe.text+4322946 - 48 8B CB              - mov rcx,rbx
+ZingangGame-Win64-Shipping.exe.text+4322949 - E8 B2130100           - call ZingangGame-Win64-Shipping.exe.text+4333D00
+ZingangGame-Win64-Shipping.exe.text+432294E - 84 C0                 - test al,al
+ZingangGame-Win64-Shipping.exe.text+4322950 - 0F84 B2000000         - je ZingangGame-Win64-Shipping.exe.text+4322A08
+ZingangGame-Win64-Shipping.exe.text+4322956 - 48 8B CB              - mov rcx,rbx
+ZingangGame-Win64-Shipping.exe.text+4322959 - E8 E2030100           - call ZingangGame-Win64-Shipping.exe.text+4332D40
+ZingangGame-Win64-Shipping.exe.text+432295E - 84 C0                 - test al,al
+ZingangGame-Win64-Shipping.exe.text+4322960 - 0F85 A2000000         - jne ZingangGame-Win64-Shipping.exe.text+4322A08
+ZingangGame-Win64-Shipping.exe.text+4322966 - 48 8B 03              - mov rax,[rbx]
+ZingangGame-Win64-Shipping.exe.text+4322969 - 48 8B CB              - mov rcx,rbx
+ZingangGame-Win64-Shipping.exe.text+432296C - FF 90 58010000        - call qword ptr [rax+00000158]
+ZingangGame-Win64-Shipping.exe.text+4322972 - F3 0F10 80 98050000   - movss xmm0,[rax+00000598]
+ZingangGame-Win64-Shipping.exe.text+432297A - 0F2F 83 C80B0000      - comiss xmm0,[rbx+00000BC8]
+
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104449</ID>
+          <Description>"Currency 77k"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : ZingangGame-Win64-Shipping.exe
+  Version: 
+  Date   : 2022-12-27
+  Author : MBRKiNG
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(Currency_AOB,ZingangGame-Win64-Shipping.exe,45 8B B7 ** ** 00 00 44 89 75 00 C7 44 24 28 ** ** 00 00 48 8D 8D ** ** 00 00 45 33 C9 C7 44 24 20 01) // should be unique
+alloc(newmem,$1000,Currency_AOB)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov [r15+000000CC],#77777
+  mov [r15+000000B0],#77777
+  mov r14d,[r15+000000B0]
+  jmp return
+
+Currency_AOB:
+  jmp newmem
+  nop 2
+return:
+registersymbol(Currency_AOB)
+
+[DISABLE]
+
+Currency_AOB:
+  db 45 8B B7 B0 00 00 00
+
+unregistersymbol(Currency_AOB)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: ZingangGame-Win64-Shipping.exe.text+3A4B5AD
+
+ZingangGame-Win64-Shipping.exe.text+3A4B58C: 48 8D 14 40              - lea rdx,[rax+rax*2]
+ZingangGame-Win64-Shipping.exe.text+3A4B590: 48 8B 05 F1 E6 D9 04     - mov rax,[ZingangGame-Win64-Shipping.exe+87EAC88]
+ZingangGame-Win64-Shipping.exe.text+3A4B597: 48 8B 0C C8              - mov rcx,[rax+rcx*8]
+ZingangGame-Win64-Shipping.exe.text+3A4B59B: 48 8D 04 D1              - lea rax,[rcx+rdx*8]
+ZingangGame-Win64-Shipping.exe.text+3A4B59F: EB 02                    - jmp ZingangGame-Win64-Shipping.exe.text+3A4B5A3
+ZingangGame-Win64-Shipping.exe.text+3A4B5A1: 33 C0                    - xor eax,eax
+ZingangGame-Win64-Shipping.exe.text+3A4B5A3: 8B 40 08                 - mov eax,[rax+08]
+ZingangGame-Win64-Shipping.exe.text+3A4B5A6: C1 E8 1D                 - shr eax,1D
+ZingangGame-Win64-Shipping.exe.text+3A4B5A9: A8 01                    - test al,01
+ZingangGame-Win64-Shipping.exe.text+3A4B5AB: 75 0B                    - jne ZingangGame-Win64-Shipping.exe.text+3A4B5B8
+// ---------- INJECTING HERE ----------
+ZingangGame-Win64-Shipping.exe.text+3A4B5AD: 45 8B B7 B0 00 00 00     - mov r14d,[r15+000000B0]
+// ---------- DONE INJECTING  ----------
+ZingangGame-Win64-Shipping.exe.text+3A4B5B4: 44 89 75 00              - mov [rbp+00],r14d
+ZingangGame-Win64-Shipping.exe.text+3A4B5B8: C7 44 24 28 44 01 00 00  - mov [rsp+28],00000144
+ZingangGame-Win64-Shipping.exe.text+3A4B5C0: 48 8D 8D 80 01 00 00     - lea rcx,[rbp+00000180]
+ZingangGame-Win64-Shipping.exe.text+3A4B5C7: 45 33 C9                 - xor r9d,r9d
+ZingangGame-Win64-Shipping.exe.text+3A4B5CA: C7 44 24 20 01 00 00 00  - mov [rsp+20],00000001
+ZingangGame-Win64-Shipping.exe.text+3A4B5D2: 45 33 C0                 - xor r8d,r8d
+ZingangGame-Win64-Shipping.exe.text+3A4B5D5: 41 8B D6                 - mov edx,r14d
+ZingangGame-Win64-Shipping.exe.text+3A4B5D8: E8 E3 53 2B 02           - call ZingangGame-Win64-Shipping.exe.text+5D009C0
+ZingangGame-Win64-Shipping.exe.text+3A4B5DD: 48 8B 55 20              - mov rdx,[rbp+20]
+ZingangGame-Win64-Shipping.exe.text+3A4B5E1: 48 8B 08                 - mov rcx,[rax]
+
+45 8B B7 ** ** 00 00 44 89 75 00 C7 44 24 28 ** ** 00 00 48 8D 8D ** ** 00 00 45 33 C9 C7 44 24 20 01
+ZingangGame-Win64-Shipping.exe.text+3A4B5AD - 45 8B B7 B0000000     - mov r14d,[r15+000000B0]
+ZingangGame-Win64-Shipping.exe.text+3A4B5B4 - 44 89 75 00           - mov [rbp+00],r14d
+ZingangGame-Win64-Shipping.exe.text+3A4B5B8 - C7 44 24 28 44010000  - mov [rsp+28],00000144
+ZingangGame-Win64-Shipping.exe.text+3A4B5C0 - 48 8D 8D 80010000     - lea rcx,[rbp+00000180]
+ZingangGame-Win64-Shipping.exe.text+3A4B5C7 - 45 33 C9              - xor r9d,r9d
+ZingangGame-Win64-Shipping.exe.text+3A4B5CA - C7 44 24 20 01000000  - mov [rsp+20],00000001
+ZingangGame-Win64-Shipping.exe.text+3A4B5D2 - 45 33 C0              - xor r8d,r8d
+ZingangGame-Win64-Shipping.exe.text+3A4B5D5 - 41 8B D6              - mov edx,r14d
+ZingangGame-Win64-Shipping.exe.text+3A4B5D8 - E8 E3532B02           - call ZingangGame-Win64-Shipping.exe.text+5D009C0
+ZingangGame-Win64-Shipping.exe.text+3A4B5DD - 48 8B 55 20           - mov rdx,[rbp+20]
+ZingangGame-Win64-Shipping.exe.text+3A4B5E1 - 48 8B 08              - mov rcx,[rax]
+ZingangGame-Win64-Shipping.exe.text+3A4B5E4 - 48 89 4D 20           - mov [rbp+20],rcx
+ZingangGame-Win64-Shipping.exe.text+3A4B5E8 - 48 89 10              - mov [rax],rdx
+ZingangGame-Win64-Shipping.exe.text+3A4B5EB - 48 8B 48 08           - mov rcx,[rax+08]
+ZingangGame-Win64-Shipping.exe.text+3A4B5EF - 48 8B 55 28           - mov rdx,[rbp+28]
+ZingangGame-Win64-Shipping.exe.text+3A4B5F3 - 48 89 4D 28           - mov [rbp+28],rcx
+ZingangGame-Win64-Shipping.exe.text+3A4B5F7 - 48 89 50 08           - mov [rax+08],rdx
+ZingangGame-Win64-Shipping.exe.text+3A4B5FB - 48 8B 9D 88010000     - mov rbx,[rbp+00000188]
+ZingangGame-Win64-Shipping.exe.text+3A4B602 - 8B 40 10              - mov eax,[rax+10]
+ZingangGame-Win64-Shipping.exe.text+3A4B605 - 89 45 30              - mov [rbp+30],eax
+ZingangGame-Win64-Shipping.exe.text+3A4B608 - 48 85 DB              - test rbx,rbx
+
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104450</ID>
+          <Description>"Inf Energy"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : ZingangGame-Win64-Shipping.exe
+  Version: 
+  Date   : 2022-12-27
+  Author : MBRKiNG
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+
+aobscanmodule(InfEnergy_AOB,ZingangGame-Win64-Shipping.exe,48 63 A8 ** ** 00 00 0F 29 ** ** ** F3 ** ** ** ** ** ** ** 0F 1F 00 48 3B DD 7D ** 0F) // should be unique
+alloc(newmem,$1000,InfEnergy_AOB)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov [rax+00000EC],#100
+  mov [rax+000001EC],#100
+  movsxd  rbp,dword ptr [rax+000001EC]
+  jmp return
+
+InfEnergy_AOB:
+  jmp newmem
+  nop 2
+return:
+registersymbol(InfEnergy_AOB)
+
+[DISABLE]
+
+InfEnergy_AOB:
+  db 48 63 A8 EC 01 00 00
+
+unregistersymbol(InfEnergy_AOB)
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: ZingangGame-Win64-Shipping.exe.text+441AEF9
+
+ZingangGame-Win64-Shipping.exe.text+441AECD: 48 89 74 24 50           - mov [rsp+50],rsi
+ZingangGame-Win64-Shipping.exe.text+441AED2: E8 E9 DB 3B 00           - call ZingangGame-Win64-Shipping.exe.text+47D8AC0
+ZingangGame-Win64-Shipping.exe.text+441AED7: 48 8B C8                 - mov rcx,rax
+ZingangGame-Win64-Shipping.exe.text+441AEDA: E8 E1 75 F8 FF           - call ZingangGame-Win64-Shipping.exe.text+43A24C0
+ZingangGame-Win64-Shipping.exe.text+441AEDF: 33 F6                    - xor esi,esi
+ZingangGame-Win64-Shipping.exe.text+441AEE1: 39 B7 28 04 00 00        - cmp [rdi+00000428],esi
+ZingangGame-Win64-Shipping.exe.text+441AEE7: 0F 8E 87 00 00 00        - jng ZingangGame-Win64-Shipping.exe.text+441AF74
+ZingangGame-Win64-Shipping.exe.text+441AEED: 48 89 5C 24 40           - mov [rsp+40],rbx
+ZingangGame-Win64-Shipping.exe.text+441AEF2: 8B DE                    - mov ebx,esi
+ZingangGame-Win64-Shipping.exe.text+441AEF4: 48 89 6C 24 48           - mov [rsp+48],rbp
+// ---------- INJECTING HERE ----------
+ZingangGame-Win64-Shipping.exe.text+441AEF9: 48 63 A8 EC 01 00 00     - movsxd  rbp,dword ptr [rax+000001EC]
+// ---------- DONE INJECTING  ----------
+ZingangGame-Win64-Shipping.exe.text+441AF00: 0F 29 74 24 20           - movaps [rsp+20],xmm6
+ZingangGame-Win64-Shipping.exe.text+441AF05: F3 0F 10 35 23 34 6A 02  - movss xmm6,[ZingangGame-Win64-Shipping.exe.rdata+49330]
+ZingangGame-Win64-Shipping.exe.text+441AF0D: 0F 1F 00                 - nop dword ptr [rax]
+ZingangGame-Win64-Shipping.exe.text+441AF10: 48 3B DD                 - cmp rbx,rbp
+ZingangGame-Win64-Shipping.exe.text+441AF13: 7D 05                    - jnl ZingangGame-Win64-Shipping.exe.text+441AF1A
+ZingangGame-Win64-Shipping.exe.text+441AF15: 0F 28 CE                 - movaps xmm1,xmm6
+ZingangGame-Win64-Shipping.exe.text+441AF18: EB 2E                    - jmp ZingangGame-Win64-Shipping.exe.text+441AF48
+ZingangGame-Win64-Shipping.exe.text+441AF1A: 75 29                    - jne ZingangGame-Win64-Shipping.exe.text+441AF45
+ZingangGame-Win64-Shipping.exe.text+441AF1C: 48 8D 8F F8 03 00 00     - lea rcx,[rdi+000003F8]
+ZingangGame-Win64-Shipping.exe.text+441AF23: E8 98 DB 3B 00           - call ZingangGame-Win64-Shipping.exe.text+47D8AC0
+
+48 63 A8 ** ** 00 00 0F 29 ** ** ** F3 ** ** ** ** ** ** ** 0F 1F 00 48 3B DD 7D ** 0F
+ZingangGame-Win64-Shipping.exe.text+441AEF9 - 48 63 A8 EC010000     - movsxd  rbp,dword ptr [rax+000001EC]
+ZingangGame-Win64-Shipping.exe.text+441AF00 - 0F29 74 24 20         - movaps [rsp+20],xmm6
+ZingangGame-Win64-Shipping.exe.text+441AF05 - F3 0F10 35 23346A02   - movss xmm6,[ZingangGame-Win64-Shipping.exe.rdata+49330]
+ZingangGame-Win64-Shipping.exe.text+441AF0D - 0F1F 00               - nop dword ptr [rax]
+ZingangGame-Win64-Shipping.exe.text+441AF10 - 48 3B DD              - cmp rbx,rbp
+ZingangGame-Win64-Shipping.exe.text+441AF13 - 7D 05                 - jnl ZingangGame-Win64-Shipping.exe.text+441AF1A
+ZingangGame-Win64-Shipping.exe.text+441AF15 - 0F28 CE               - movaps xmm1,xmm6
+ZingangGame-Win64-Shipping.exe.text+441AF18 - EB 2E                 - jmp ZingangGame-Win64-Shipping.exe.text+441AF48
+ZingangGame-Win64-Shipping.exe.text+441AF1A - 75 29                 - jne ZingangGame-Win64-Shipping.exe.text+441AF45
+ZingangGame-Win64-Shipping.exe.text+441AF1C - 48 8D 8F F8030000     - lea rcx,[rdi+000003F8]
+ZingangGame-Win64-Shipping.exe.text+441AF23 - E8 98DB3B00           - call ZingangGame-Win64-Shipping.exe.text+47D8AC0
+ZingangGame-Win64-Shipping.exe.text+441AF28 - 48 8B C8              - mov rcx,rax
+ZingangGame-Win64-Shipping.exe.text+441AF2B - E8 9075F8FF           - call ZingangGame-Win64-Shipping.exe.text+43A24C0
+ZingangGame-Win64-Shipping.exe.text+441AF30 - 48 8B 8F 20040000     - mov rcx,[rdi+00000420]
+ZingangGame-Win64-Shipping.exe.text+441AF37 - F3 0F10 88 F8010000   - movss xmm1,[rax+000001F8]
+ZingangGame-Win64-Shipping.exe.text+441AF3F - 48 8B 0C D9           - mov rcx,[rcx+rbx*8]
+ZingangGame-Win64-Shipping.exe.text+441AF43 - EB 0E                 - jmp ZingangGame-Win64-Shipping.exe.text+441AF53
+ZingangGame-Win64-Shipping.exe.text+441AF45 - 0F57 C9               - xorps xmm1,xmm1
+ZingangGame-Win64-Shipping.exe.text+441AF48 - 48 8B 87 20040000     - mov rax,[rdi+00000420]
+ZingangGame-Win64-Shipping.exe.text+441AF4F - 48 8B 0C D8           - mov rcx,[rax+rbx*8]
+ZingangGame-Win64-Shipping.exe.text+441AF53 - E8 3897FFFF           - call ZingangGame-Win64-Shipping.exe.text+4414690
+ZingangGame-Win64-Shipping.exe.text+441AF58 - FF C6                 - inc esi
+ZingangGame-Win64-Shipping.exe.text+441AF5A - 48 FF C3              - inc rbx
+ZingangGame-Win64-Shipping.exe.text+441AF5D - 3B B7 28040000        - cmp esi,[rdi+00000428]
+ZingangGame-Win64-Shipping.exe.text+441AF63 - 7C AB                 - jl ZingangGame-Win64-Shipping.exe.text+441AF10
+
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104451</ID>
+          <Description>"MASTER WU - Easy Training (use Drill only)"</Description>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : ZingangGame-Win64-Shipping.exe
+  Version: 
+  Date   : 2022-12-27
+  Author : MBRKiNG
+
+  This script does blah blah blah
+}
+
+[ENABLE]
+aobscanmodule(MasterWU_AOB,ZingangGame-Win64-Shipping.exe,49 8B 96 ** ** 00 00 4D 03 C0 48 8D 0C 40 48 C1 E1 05 4A 8B 04 C2 48 3B 1C 01 75 17) // should be unique
+MasterWU_AOB+1A:
+db 74
+registersymbol(MasterWU_AOB)
+[DISABLE]
+MasterWU_AOB+1A:
+  db 75
+unregistersymbol(MasterWU_AOB)
+
+
+{
+// ORIGINAL CODE - INJECTION POINT: ZingangGame-Win64-Shipping.exe.text+3234CBF
+
+ZingangGame-Win64-Shipping.exe.text+3234C9F: A8 01                 - test al,01
+ZingangGame-Win64-Shipping.exe.text+3234CA1: 75 04                 - jne ZingangGame-Win64-Shipping.exe.text+3234CA7
+ZingangGame-Win64-Shipping.exe.text+3234CA3: B0 01                 - mov al,01
+ZingangGame-Win64-Shipping.exe.text+3234CA5: EB 02                 - jmp ZingangGame-Win64-Shipping.exe.text+3234CA9
+ZingangGame-Win64-Shipping.exe.text+3234CA7: 32 C0                 - xor al,al
+ZingangGame-Win64-Shipping.exe.text+3234CA9: 84 C0                 - test al,al
+ZingangGame-Win64-Shipping.exe.text+3234CAB: 74 04                 - je ZingangGame-Win64-Shipping.exe.text+3234CB1
+ZingangGame-Win64-Shipping.exe.text+3234CAD: 49 8B 58 40           - mov rbx,[r8+40]
+ZingangGame-Win64-Shipping.exe.text+3234CB1: 49 63 86 CC 00 00 00  - movsxd  rax,dword ptr [r14+000000CC]
+ZingangGame-Win64-Shipping.exe.text+3234CB8: 4D 63 86 C8 00 00 00  - movsxd  r8,dword ptr [r14+000000C8]
+// ---------- INJECTING HERE ----------
+ZingangGame-Win64-Shipping.exe.text+3234CBF: 49 8B 96 B8 00 00 00  - mov rdx,[r14+000000B8]
+// ---------- DONE INJECTING  ----------
+ZingangGame-Win64-Shipping.exe.text+3234CC6: 4D 03 C0              - add r8,r8
+ZingangGame-Win64-Shipping.exe.text+3234CC9: 48 8D 0C 40           - lea rcx,[rax+rax*2]
+ZingangGame-Win64-Shipping.exe.text+3234CCD: 48 C1 E1 05           - shl rcx,05
+ZingangGame-Win64-Shipping.exe.text+3234CD1: 4A 8B 04 C2           - mov rax,[rdx+r8*8]
+ZingangGame-Win64-Shipping.exe.text+3234CD5: 48 3B 1C 01           - cmp rbx,[rcx+rax]
+ZingangGame-Win64-Shipping.exe.text+3234CD9: 75 17                 - jne ZingangGame-Win64-Shipping.exe.text+3234CF2
+ZingangGame-Win64-Shipping.exe.text+3234CDB: 49 8B CE              - mov rcx,r14
+ZingangGame-Win64-Shipping.exe.text+3234CDE: E8 FD AE 14 01        - call ZingangGame-Win64-Shipping.exe.text+437FBE0
+ZingangGame-Win64-Shipping.exe.text+3234CE3: 4C 8B 4D E8           - mov r9,[rbp-18]
+ZingangGame-Win64-Shipping.exe.text+3234CE7: 8B 7D F0              - mov edi,[rbp-10]
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104453</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <Options moHideChildren="1"/>
+          <Color>008000</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104454</ID>
+          <Description>"Discord/PayPal-Donation-Link/OCT"</Description>
+          <Options moHideChildren="1"/>
+          <Color>008000</Color>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>104455</ID>
+              <Description>"---------------------------------------------------------------"</Description>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>104456</ID>
+              <Description>"if you think i did a good job you can donate something to me via PP"</Description>
+              <Color>008000</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>104457</ID>
+              <Description>"---------------------------------------------------------------"</Description>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>104458</ID>
+              <Description>" [&lt;--CHECKBOX] Support Me at PP (use the Link below or hit the checkbox to open paypal)"</Description>
+              <Color>8000FF</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://paypal.me/mobiusce')
+{$asm}
+nop
+[DISABLE]
+</AssemblerScript>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>104459</ID>
+                  <Description>"https://paypal.me/mobiusce"</Description>
+                  <Color>008000</Color>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>104460</ID>
+              <Description>"---------------------------------------------------------------"</Description>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>104461</ID>
+              <Description>"my Discord:  --&gt;  ScooPaX#8840  &lt;--"</Description>
+              <Options moAlwaysHideChildren="1"/>
+              <Color>8000FF</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>104462</ID>
+              <Description>"---------------------------------------------------------------"</Description>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>104463</ID>
+              <Description>"[&lt;--CHECKBOX]_OPEN_OCT_TOPIC"</Description>
+              <Color>8000FF</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://opencheattables.com/viewtopic.php?t=1546')
+{$asm}
+nop
+[DISABLE]
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>104465</ID>
+              <Description>"---------------------------------------------------------------"</Description>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>104466</ID>
+              <Description>"[&lt;--CHECKBOX]_OPEN_CHEATENGINE.ORG"</Description>
+              <Color>8000FF</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://www.cheatengine.org/')
+{$asm}
+nop
+[DISABLE]
+</AssemblerScript>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104468</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <Color>008000</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+  <LuaScript>--------
+-------- Auto Attach
+--------
+PROCESS_NAME = 'ZingangGame-Win64-Shipping.exe'
+local autoAttachTimer = nil
+local autoAttachTimerInterval = 100
+local autoAttachTimerTicks = 0
+local autoAttachTimerTickMax = 5000
+
+local function autoAttachTimer_tick(timer)
+	if autoAttachTimerTickMax &gt; 0 and autoAttachTimerTicks &gt;= autoAttachTimerTickMax then
+		timer.destroy()
+	end
+	if getProcessIDFromProcessName(PROCESS_NAME) ~= nil then
+		timer.destroy()
+		openProcess(PROCESS_NAME)
+	end
+	autoAttachTimerTicks = autoAttachTimerTicks + 1
+end
+
+autoAttachTimer = createTimer(MainForm)
+autoAttachTimer.Interval = autoAttachTimerInterval
+autoAttachTimer.OnTimer = autoAttachTimer_tick
+
+</LuaScript>
+</CheatTable>

@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="46">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1337111356</ID>
+      <Description>"------------------------------------------------------------------------"</Description>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1337321953</ID>
+      <Description>"Castle_of_Heart_Retold_Steam_GoG_20250610_MBRKiNG"</Description>
+      <Options moHideChildren="1"/>
+      <Color>4080FF</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>26944</ID>
+          <Description>"Inf Health / Disable HP Fading"</Description>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(fadingoff,GameAssembly.dll,76 ?? F3 ?? ?? ?? ?? 0F ?? ?? ?? 0F ?? ?? ?? ?? ?? 33 ??)
+fadingoff:
+  db 90 90
+registersymbol(fadingoff)
+[DISABLE]
+fadingoff:
+  db 76 05
+unregistersymbol(*)
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>26913</ID>
+          <Description>"Inf Air Jumps"</Description>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(InfAirJumps,GameAssembly.dll,80 ?? ?? ?? 0F ?? ?? ?? ?? ?? 80 ?? ?? ?? ?? ?? ?? 75 ?? F3 ?? ?? ?? ?? ?? ?? ??)
+InfAirJumps+4:
+  nop 6
+InfAirJumps+11:
+  db 74
+registersymbol(InfAirJumps)
+[DISABLE]
+InfAirJumps+4:
+  db 0F 85 56 01 00 00
+InfAirJumps+11:
+  db 75
+unregistersymbol(*)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>26930</ID>
+          <Description>"Freeze Crossbow Arrows/Spear"</Description>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(freezearrowsspears,GameAssembly.dll,FF ?? ?? ?? ?? ?? 48 ?? ?? ?? ?? ?? ?? 48 ?? ?? ?? 48 ?? ?? 0F ?? ?? ?? ?? ?? 33 ??)
+freezearrowsspears:
+  nop 6
+registersymbol(freezearrowsspears)
+[DISABLE]
+freezearrowsspears:
+  db FF 89 98 00 00 00
+unregistersymbol(*)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>26942</ID>
+          <Description>"SwordDamage x50"</Description>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(dmgmulti,GameAssembly.dll,44 ?? ?? ?? 45 ?? ?? 74 ?? 48 ?? ?? 0F ?? ?? ?? ?? ??)
+alloc(newmem,$1000,dmgmulti)
+label(code)
+label(return)
+newmem:
+code:
+  mov r9d,[rsi+3C]
+  imul r9d,#50
+  test r15b,r15b
+  jmp return
+dmgmulti:
+  jmp newmem
+  nop 2
+return:
+registersymbol(dmgmulti)
+[DISABLE]
+dmgmulti:
+  db 44 8B 4E 3C 45 84 FF
+unregistersymbol(*)
+dealloc(*)
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>26943</ID>
+          <Description>"Block Chance 100% Block Anything"</Description>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(block100,GameAssembly.dll,0F ?? ?? ?? ?? ?? 44 ?? ?? ?? ?? ?? ?? 0F ?? ?? ?? ?? ?? 83 ?? ?? 4C ?? ?? ?? ??)
+block100:
+  db 90 E9
+registersymbol(block100)
+[DISABLE]
+block100:
+  db 0F 85
+unregistersymbol(*)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>26946</ID>
+          <Description>"Endless Rage"</Description>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(fullrage,GameAssembly.dll,48 ?? ?? ?? ?? ?? ?? 80 ?? ?? ?? 75 ?? 48 ?? ?? ?? ?? ?? ?? 83 ?? ?? ?? ?? ?? ?? 75 ?? E8 ?? ?? ?? ?? 80 ?? ?? ?? ?? ?? ?? 75 ?? 48 ?? ?? ?? ?? ?? ?? E8 ?? ?? ?? ?? F0 ?? ?? ?? ?? 48)
+fullrage+B:
+  db 74
+registersymbol(fullrage)
+[DISABLE]
+fullrage+B:
+  db 75
+unregistersymbol(*)
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>26956</ID>
+          <Description>"Inf Bombs"</Description>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(bombs,GameAssembly.dll,41 ?? ?? 41 ?? ?? ?? 0F ?? ?? ?? ?? ?? 45 ?? ?? ?? ?? FF)
+bombs:
+  db 41 B1 09
+registersymbol(bombs)
+[DISABLE]
+bombs:
+  db 41 FF C9
+unregistersymbol(*)
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>104269</ID>
+      <Description>"------------------------------------------------------------------------"</Description>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>10326</ID>
+      <Description>"Discord/PayPal-Donation-Link/OCT"</Description>
+      <Options moHideChildren="1"/>
+      <Color>40FF00</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1337111357</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>10324</ID>
+          <Description>"Support/Donations can be Added to my PAYPAL.ME"</Description>
+          <Color>00FF00</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104128</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>41356</ID>
+          <Description>" [&lt;--CHECKBOX] PALPAL.ME Donation/Support Link"</Description>
+          <Color>F8EC07</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://paypal.me/mobiusce')
+{$asm}
+nop
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104152</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104270</ID>
+          <Description>"my Discord-ID:  --&gt;  ScooPaX#8840  &lt;--"</Description>
+          <Options moAlwaysHideChildren="1"/>
+          <Color>8000FF</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104155</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104156</ID>
+          <Description>"[&lt;--CHECKBOX]_OPEN_OCT_TOPIC"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://opencheattables.com/viewtopic.php?t=1562')
+{$asm}
+nop
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104129</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104151</ID>
+          <Description>"[&lt;--CHECKBOX]_OPEN_CHEATENGINE.ORG"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://www.cheatengine.org/')
+{$asm}
+nop
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>10634</ID>
+      <Description>"------------------------------------------------------------------------"</Description>
+      <Options moHideChildren="1"/>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>

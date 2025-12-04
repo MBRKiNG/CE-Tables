@@ -1,0 +1,739 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="50">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>10634</ID>
+      <Description>"---------------------------------------------------------------"</Description>
+      <Options moHideChildren="1"/>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>104868</ID>
+      <Description>"Injustice™2_Legendary_Edition_STEAM_20230801_MBRKiNG"</Description>
+      <Options moHideChildren="1"/>
+      <Color>000080</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>104869</ID>
+          <Description>"Multiverse (no  restrictions)"</Description>
+          <Color>008000</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(Multiverse_AOB,Injustice2.exe,EB ** 33 ** 48 8B ** ** ** 48 8B ** ** ** 4C ** ** ** ** 48 83 ** ** 41 5F 5F)
+Multiverse_AOB+1:
+  db 00
+registersymbol(Multiverse_AOB)
+[DISABLE]
+Multiverse_AOB+1:
+  db 02
+unregistersymbol(Multiverse_AOB)
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104870</ID>
+          <Description>"EXP/Currency/Points (1million after 1 Battle)"</Description>
+          <Options moHideChildren="1"/>
+          <Color>008000</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+aobscanmodule(CurrencyEXP_AOB,Injustice2.exe,48 8B ** 41 89 ** ** E8 ** ** ** ** 45 8B)
+alloc(newmem,$1000,CurrencyEXP_AOB)
+
+alloc(charakterxpscr,1)
+alloc(profilexpscr,1)
+alloc(geartokenscr,1)
+alloc(guildpointsscr,1)
+alloc(creditsscr,1)
+alloc(guildtokenscr,1)
+alloc(sourcecrystalscr,1)
+
+registersymbol(charakterxpscr)
+registersymbol(profilexpscr)
+registersymbol(geartokenscr)
+registersymbol(guildpointsscr)
+registersymbol(creditsscr)
+registersymbol(guildtokenscr)
+registersymbol(sourcecrystalscr)
+
+label(charakterxpcheck)
+label(profilexpcheck)
+label(geartokencheck)
+label(guildpointscheck)
+label(creditscheck)
+label(guildtokencheck)
+label(sourcecrystalcheck)
+
+label(charakterxp)
+label(profilexp)
+label(geartoken)
+label(guildpoints)
+label(credits)
+label(guildtoken)
+label(sourcecrystal)
+
+label(code)
+label(return)
+
+label(test)
+
+newmem:
+cmp [r14],#0 //profilexp
+je profilexpcheck
+cmp [r14],#1//guild  points
+je guildpointscheck
+cmp [r14],#2//credits
+je creditscheck
+cmp [r14],#3//guild tokens
+je guildtokencheck
+cmp [r14],#4//????
+je test
+cmp [r14],#5//sourcecrystal
+je sourcecrystalcheck
+cmp [r14],#6//charakter
+je charakterxpcheck
+cmp [r14],#7//charakter
+je charakterxpcheck
+cmp [r14],#8//charakter
+je charakterxpcheck
+cmp [r14],#9//charakter
+je charakterxpcheck
+cmp [r14],#10//charakter
+je charakterxpcheck
+cmp [r14],#11//charakter
+je charakterxpcheck
+cmp [r14],#12//charakter
+je charakterxpcheck
+cmp [r14],#13//charakter
+je charakterxpcheck
+cmp [r14],#14//charakter
+je charakterxpcheck
+cmp [r14],#15//charakter
+je charakterxpcheck
+cmp [r14],#16//charakter
+je charakterxpcheck
+cmp [r14],#17//charakter
+je charakterxpcheck
+cmp [r14],#18//charakter
+je charakterxpcheck
+cmp [r14],#19//charakter
+je charakterxpcheck
+cmp [r14],#20//charakter
+je charakterxpcheck
+cmp [r14],#21//charakter
+je charakterxpcheck
+cmp [r14],#22//charakter
+je charakterxpcheck
+cmp [r14],#23//charakter
+je charakterxpcheck
+cmp [r14],#24//charakter
+je charakterxpcheck
+cmp [r14],#25//charakter
+je charakterxpcheck
+cmp [r14],#26//charakter
+je charakterxpcheck
+cmp [r14],#27//charakter
+je charakterxpcheck
+cmp [r14],#28//charakter------
+je charakterxpcheck
+cmp [r14],#29//charakter
+je charakterxpcheck
+cmp [r14],#30//charakter
+je charakterxpcheck
+cmp [r14],#31//charakter
+je charakterxpcheck
+cmp [r14],#32//charakter
+je charakterxpcheck
+cmp [r14],#33//charakter
+je charakterxpcheck
+cmp [r14],#34//charakter
+je charakterxpcheck
+cmp [r14],#35//charakter
+je charakterxpcheck
+cmp [r14],#36//charakter
+je charakterxpcheck
+cmp [r14],#37//charakter
+je charakterxpcheck
+cmp [r14],#38//charakter
+je charakterxpcheck
+cmp [r14],#39//charakter
+je charakterxpcheck
+cmp [r14],#40//charakter
+je charakterxpcheck
+cmp [r14],#41//charakter
+je charakterxpcheck
+cmp [r14],#42//charakter
+je charakterxpcheck
+cmp [r14],#43//charakter
+je charakterxpcheck
+cmp [r14],#44//gear tokens
+je geartokencheck
+jmp code
+
+charakterxpcheck:
+  cmp byte ptr [charakterxpscr],1
+  jne code
+  jmp charakterxp
+
+profilexpcheck:
+  cmp byte ptr [profilexpscr],1
+  jne code
+  jmp profilexp
+
+geartokencheck:
+  cmp byte ptr [geartokenscr],1
+  jne code
+  jmp geartoken
+
+guildpointscheck:
+  cmp byte ptr [guildpointsscr],1
+  jne code
+  jmp guildpoints
+
+creditscheck:
+  cmp byte ptr [creditsscr],1
+  jne code
+  jmp credits
+
+guildtokencheck:
+  cmp byte ptr [guildtokenscr],1
+  jne code
+  jmp guildtoken
+
+sourcecrystalcheck:
+  cmp byte ptr [sourcecrystalscr],1
+  jne code
+  jmp sourcecrystal
+
+test:
+  mov rcx,rbp
+  mov [r14+0C],edi
+  mov [r14+0C],#1000000
+  jmp return
+
+sourcecrystal:
+  mov rcx,rbp
+  mov [r14+0C],edi
+  mov [r14+0C],#1000000
+  jmp return
+
+guildtoken:
+  mov rcx,rbp
+  mov [r14+0C],edi
+  mov [r14+0C],#1000000
+  jmp return
+
+credits:
+  mov rcx,rbp
+  mov [r14+0C],edi
+  mov [r14+0C],#1000000
+  jmp return
+
+guildpoints:
+  mov rcx,rbp
+  mov [r14+0C],edi
+  mov [r14+0C],#1000000
+  jmp return
+
+geartoken:
+  mov rcx,rbp
+  mov [r14+0C],edi
+  mov [r14+0C],#1000000
+  jmp return
+
+profilexp:
+  mov rcx,rbp
+  mov [r14+0C],edi
+  mov [r14+0C],#1000000
+  jmp return
+
+charakterxp:
+  mov rcx,rbp
+  mov [r14+0C],edi
+  mov [r14+0C],#1000000
+  jmp return
+
+code:
+  mov rcx,rbp
+  mov [r14+0C],edi
+  jmp return
+
+CurrencyEXP_AOB:
+  jmp newmem
+  nop 2
+return:
+registersymbol(CurrencyEXP_AOB)
+
+[DISABLE]
+
+CurrencyEXP_AOB:
+  db 48 8B CD 41 89 7E 0C
+
+unregistersymbol(CurrencyEXP_AOB)
+dealloc(newmem)
+dealloc(charakterxpscr,1)
+dealloc(profilexpscr,1)
+dealloc(geartokenscr,1)
+dealloc(guildpointsscr,1)
+dealloc(creditsscr,1)
+dealloc(guildtokenscr,1)
+dealloc(sourcecrystalscr,1)
+unregistersymbol(charakterxpscr)
+unregistersymbol(profilexpscr)
+unregistersymbol(geartokenscr)
+unregistersymbol(guildpointsscr)
+unregistersymbol(creditsscr)
+unregistersymbol(guildtokenscr)
+unregistersymbol(sourcecrystalscr)
+
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>104871</ID>
+              <Description>"Credits"</Description>
+              <Color>008000</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+creditsscr:
+db 1
+[DISABLE]
+creditsscr:
+db 0
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>104872</ID>
+              <Description>"Guild Tokens"</Description>
+              <Color>008000</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+guildtokenscr:
+db 1
+[DISABLE]
+guildtokenscr:
+db 0
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>104873</ID>
+              <Description>"Gear Tokens"</Description>
+              <Color>008000</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+geartokenscr:
+db 1
+[DISABLE]
+geartokenscr:
+db 0
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>104874</ID>
+              <Description>"Source Crystals"</Description>
+              <Color>008000</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+sourcecrystalscr:
+db 1
+[DISABLE]
+sourcecrystalscr:
+db 0
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>104875</ID>
+              <Description>"Character EXP"</Description>
+              <Color>008000</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+charakterxpscr:
+db 1
+[DISABLE]
+charakterxpscr:
+db 0
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>104876</ID>
+              <Description>"Profile EXP"</Description>
+              <Color>008000</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+profilexpscr:
+db 1
+[DISABLE]
+profilexpscr:
+db 0
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>104877</ID>
+              <Description>"Guild Points"</Description>
+              <Color>008000</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+guildpointsscr:
+db 1
+[DISABLE]
+guildpointsscr:
+db 0
+</AssemblerScript>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104878</ID>
+          <Description>"Freeze Battle Timer"</Description>
+          <Color>008000</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(StopBattleTimeAOB,Injustice2.exe,8B ** ** ** ** ** 85 ** 0F 8E ** ** ** ** 48 8B ** ** 48 0F)
+registersymbol(StopBattleTimeAOB)
+StopBattleTimeAOB+9:
+  db 8F
+[DISABLE]
+unregistersymbol(StopBattleTimeAOB)
+StopBattleTimeAOB+9:
+  db 8E
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104879</ID>
+          <Description>"Battle Time Over (use with Instant Win to bypass 2 or more Rounds)"</Description>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(TimeOverAOB,Injustice2.exe,83 ** ** ** ** ** ** 0F 8F ** ** ** ** BA) // should be unique
+registersymbol(TimeOverAOB)
+TimeOverAOB+8:
+  db 84
+[DISABLE]
+unregistersymbol(TimeOverAOB)
+TimeOverAOB+8:
+  db 8F
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104880</ID>
+          <Description>"P1 Inf Health + Instant Win"</Description>
+          <Options moHideChildren="1"/>
+          <Color>008000</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(HealthAOB,Injustice2.exe,F3 ** ** ** ** ** ** ** FF ** 3B ** ** 7C) // should be unique
+alloc(newmem,$1000,HealthAOB)
+alloc(one_hit,1)
+alloc(infhp,1)
+registersymbol(one_hit)
+registersymbol(infhp)
+label(aicheck)
+label(playercheck)
+label(code)
+label(return)
+label(p1)
+label(p2)
+newmem:
+  cmp byte ptr [rdi+18],0
+  je playercheck
+  cmp byte ptr [rdi+18],1
+  je aicheck
+  jmp code
+aicheck:
+  cmp byte ptr [one_hit],1
+  jne code
+  jmp p2
+playercheck:
+  cmp byte ptr [infhp],1
+  jne code
+  jmp p1
+p1:
+  mov [rax+00000A44],(float)1
+  addss xmm6,[rax+00000A44]
+  jmp return
+p2:
+  mov [rax+00000A44],(float)0
+  addss xmm6,[rax+00000A44]
+  jmp return
+code:
+  addss xmm6,[rax+00000A44]
+  jmp return
+HealthAOB:
+  jmp newmem
+  nop 3
+return:
+registersymbol(HealthAOB)
+[DISABLE]
+HealthAOB:
+  db F3 0F 58 B0 44 0A 00 00
+unregistersymbol(HealthAOB)
+dealloc(newmem)
+unregistersymbol(one_hit)
+unregistersymbol(infhp)
+dealloc(one_hit,1)
+dealloc(infhp,1)
+
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>104881</ID>
+              <Description>"P1 Inf Health"</Description>
+              <Color>008000</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+infhp:
+db 1
+[DISABLE]
+infhp:
+db 0
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>104882</ID>
+              <Description>"Instant Win"</Description>
+              <Color>4080FF</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+one_hit:
+db 1
+[DISABLE]
+one_hit:
+db 0
+</AssemblerScript>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104883</ID>
+          <Description>"P1 Max Multimeter - P2 no Multimeter"</Description>
+          <Options moHideChildren="1"/>
+          <Color>008000</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+aobscanmodule(MultimeterAOB,Injustice2.exe,0F 2E ** ** ** ** ** 7A ** 75 ** 33 ** 48 83 ** ** 5B)
+alloc(newmem,$1000,MultimeterAOB)
+alloc(maxp1,1)
+alloc(zerop2,1)
+registersymbol(maxp1)
+registersymbol(zerop2)
+label(multip1check)
+label(multip2check)
+label(code)
+label(return)
+label(p1multi)
+label(p2multi)
+
+newmem:
+  cmp [rcx+08],00
+  je multip1check
+  cmp [rcx+08],01
+  je multip2check
+  jmp code
+
+multip1check:
+  cmp byte ptr [maxp1],1
+  jne code
+  jmp p1multi
+
+multip2check:
+  cmp byte ptr [zerop2],1
+  jne code
+  jmp p2multi
+
+p1multi:
+  mov [rbx+00000334],(float)1
+  ucomiss xmm0,[rbx+00000334]
+  jmp return
+
+p2multi:
+  mov [rbx+00000334],(float)0
+  ucomiss xmm0,[rbx+00000334]
+  jmp return
+
+code:
+  ucomiss xmm0,[rbx+00000334]
+  jmp return
+
+MultimeterAOB:
+  jmp newmem
+  nop 2
+return:
+registersymbol(MultimeterAOB)
+
+[DISABLE]
+
+MultimeterAOB:
+  db 0F 2E 83 34 03 00 00
+
+unregistersymbol(MultimeterAOB)
+dealloc(newmem)
+unregistersymbol(maxp1)
+unregistersymbol(zerop2)
+dealloc(maxp1,1)
+dealloc(zerop2,1)
+
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>104884</ID>
+              <Description>"Player 1 max Multimeter"</Description>
+              <Color>008000</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+maxp1:
+db 1
+[DISABLE]
+maxp1:
+db 0
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>104885</ID>
+              <Description>"Player 2 zero Multimeter"</Description>
+              <Color>008080</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+zerop2:
+db 1
+[DISABLE]
+zerop2:
+db 0
+</AssemblerScript>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>104737</ID>
+      <Description>"---------------------------------------------------------------"</Description>
+      <Options moHideChildren="1"/>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>10326</ID>
+      <Description>"Discord/PayPal-Donation-Link/OCT"</Description>
+      <Options moHideChildren="1"/>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>104153</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>10324</ID>
+          <Description>"if you think i did a good job you can donate something to me via PP"</Description>
+          <Color>008000</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104128</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>41356</ID>
+          <Description>" [&lt;--CHECKBOX] Support Me at PP (use the Link below or hit the checkbox to open paypal)"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://paypal.me/mobiusce')
+{$asm}
+nop
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104152</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104270</ID>
+          <Description>"my Discord:  --&gt;  ScooPaX#8840  &lt;--"</Description>
+          <Options moAlwaysHideChildren="1"/>
+          <Color>8000FF</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104155</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104156</ID>
+          <Description>"[&lt;--CHECKBOX]_OPEN_OCT_TOPIC"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://opencheattables.com/viewtopic.php?t=1543')
+{$asm}
+nop
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104129</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104151</ID>
+          <Description>"[&lt;--CHECKBOX]_OPEN_CHEATENGINE.ORG"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://www.cheatengine.org/')
+{$asm}
+nop
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>104269</ID>
+      <Description>"---------------------------------------------------------------"</Description>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+  <LuaScript>--------
+-------- Auto Attach
+--------
+PROCESS_NAME = 'Injustice2.exe'
+local autoAttachTimer = nil
+local autoAttachTimerInterval = 100
+local autoAttachTimerTicks = 0
+local autoAttachTimerTickMax = 5000
+
+local function autoAttachTimer_tick(timer)
+	if autoAttachTimerTickMax &gt; 0 and autoAttachTimerTicks &gt;= autoAttachTimerTickMax then
+		timer.destroy()
+	end
+	if getProcessIDFromProcessName(PROCESS_NAME) ~= nil then
+		timer.destroy()
+		openProcess(PROCESS_NAME)
+	end
+	autoAttachTimerTicks = autoAttachTimerTicks + 1
+end
+
+autoAttachTimer = createTimer(MainForm)
+autoAttachTimer.Interval = autoAttachTimerInterval
+autoAttachTimer.OnTimer = autoAttachTimer_tick
+</LuaScript>
+</CheatTable>

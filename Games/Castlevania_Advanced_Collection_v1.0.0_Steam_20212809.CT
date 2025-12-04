@@ -1,0 +1,1084 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="50">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"Castlevania_Advanced_Collection_v1.0.0_Steam_20212809_by_MBRKiNG"</Description>
+      <Color>000080</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>104309</ID>
+          <Description>"ENABLE"</Description>
+          <Color>800000</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : game.exe
+  Version: 
+  Date   : 2021-09-25
+  Author : MBRKiNG
+
+  This script does blah blah blah
+}
+
+define(address,"game.exe"+3F987)
+define(bytes,66 0F 1F 84 00 00 00 00 00)
+
+[ENABLE]
+
+assert(address,bytes)
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+label(ramrom)
+registersymbol(ramrom)
+
+newmem:
+
+code:
+  nop word ptr [eax+eax+00000000]
+  mov [ramrom],esi
+  jmp return
+ramrom:
+db
+address:
+  jmp newmem
+  nop 4
+return:
+
+[DISABLE]
+
+address:
+  db bytes
+  // nop word ptr [eax+eax+00000000]
+
+dealloc(newmem)
+unregistersymbol(ramrom)
+{
+// ORIGINAL CODE - INJECTION POINT: game.exe+3F987
+
+game.exe+3F968: E8 C3 E1 07 00              - call game.exe+BDB30
+game.exe+3F96D: 83 C4 08                    - add esp,08
+game.exe+3F970: EB 59                       - jmp game.exe+3F9CB
+game.exe+3F972: E8 3A CD 1A 00              - call game.exe+1EC6B1
+game.exe+3F977: 8B E8                       - mov ebp,eax
+game.exe+3F979: 83 C4 04                    - add esp,04
+game.exe+3F97C: 85 ED                       - test ebp,ebp
+game.exe+3F97E: 74 47                       - je game.exe+3F9C7
+game.exe+3F980: 8B D5                       - mov edx,ebp
+game.exe+3F982: BB 00 00 02 00              - mov ebx,00020000
+// ---------- INJECTING HERE ----------
+game.exe+3F987: 66 0F 1F 84 00 00 00 00 00  - nop word ptr [eax+eax+00000000]
+// ---------- DONE INJECTING  ----------
+game.exe+3F990: B9 02 00 00 00              - mov ecx,00000002
+game.exe+3F995: 8A 44 31 FF                 - mov al,[ecx+esi-01]
+game.exe+3F999: 49                          - dec ecx
+game.exe+3F99A: 88 02                       - mov [edx],al
+game.exe+3F99C: 42                          - inc edx
+game.exe+3F99D: 85 C9                       - test ecx,ecx
+game.exe+3F99F: 75 F4                       - jne game.exe+3F995
+game.exe+3F9A1: 83 C6 02                    - add esi,02
+game.exe+3F9A4: 83 EB 01                    - sub ebx,01
+game.exe+3F9A7: 75 E7                       - jne game.exe+3F990
+}
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>104310</ID>
+              <Description>"BaseROMRAM"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>000080</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>ramrom</Address>
+              <Offsets>
+                <Offset>0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>104322</ID>
+              <Description>"Castlevania - Circle of the Moon (USA,EU,JAP)"</Description>
+              <Options moHideChildren="1"/>
+              <Color>008000</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>104600</ID>
+                  <Description>"Inf Jumps"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>000000</Color>
+                  <VariableType>Byte</VariableType>
+                  <Address>ramrom</Address>
+                  <Offsets>
+                    <Offset>80</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>104312</ID>
+                  <Description>"GamePlay Timer"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>ramrom</Address>
+                  <Offsets>
+                    <Offset>253F8</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>104323</ID>
+                  <Description>"RATE (980=100%)"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>2 Bytes</VariableType>
+                  <Address>ramrom</Address>
+                  <Offsets>
+                    <Offset>25414</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>104316</ID>
+                  <Description>"Invincible Timer"</Description>
+                  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0098967F:ENABLED
+*:Counter is Running
+00000000:Disabled
+</DropDownList>
+                  <ShowAsHex>1</ShowAsHex>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>ramrom</Address>
+                  <Offsets>
+                    <Offset>C0</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>104313</ID>
+                  <Description>"Current HP"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>2 Bytes</VariableType>
+                  <Address>ramrom</Address>
+                  <Offsets>
+                    <Offset>2562E</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>104319</ID>
+                  <Description>"Current MP"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>2 Bytes</VariableType>
+                  <Address>ramrom</Address>
+                  <Offsets>
+                    <Offset>25636</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>104321</ID>
+                  <Description>"Current HEARTS"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>2 Bytes</VariableType>
+                  <Address>ramrom</Address>
+                  <Offsets>
+                    <Offset>2563c</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>104343</ID>
+                  <Description>"Sub-Weapons"</Description>
+                  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">00:Empty
+01:Dagger
+02:Axe
+03:Holy Water
+04:Boomerang
+05:Stop Watch
+</DropDownList>
+                  <ShowAsHex>1</ShowAsHex>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Byte</VariableType>
+                  <Address>ramrom</Address>
+                  <Offsets>
+                    <Offset>25640</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>104318</ID>
+                  <Description>"Current Level"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>ramrom</Address>
+                  <Offsets>
+                    <Offset>25664</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>104317</ID>
+                  <Description>"Current EXP"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>ramrom</Address>
+                  <Offsets>
+                    <Offset>25668</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>104341</ID>
+              <Description>"Castlevania - Harmony of Dissonance (USA,EU,JAP)"</Description>
+              <Options moHideChildren="1"/>
+              <Color>008000</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>104682</ID>
+                  <Description>"All Enemy Info in Encyclopedia"</Description>
+                  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">*:Not Completed
+FF FF FF FF FF FF FF FF FF FF:Completed
+</DropDownList>
+                  <ShowAsHex>1</ShowAsHex>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Array of byte</VariableType>
+                  <ByteLength>10</ByteLength>
+                  <Address>ramrom</Address>
+                  <Offsets>
+                    <Offset>18854</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>104683</ID>
+                  <Description>"GamePlay TIMER"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>ramrom</Address>
+                  <Offsets>
+                    <Offset>88</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>104617</ID>
+                  <Description>"Inf Jumps (require Sulph Feather, freeze 1)"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Byte</VariableType>
+                  <Address>ramrom</Address>
+                  <Offsets>
+                    <Offset>43A</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>104340</ID>
+                  <Description>"Invincible (enable+freeze)"</Description>
+                  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">13:ENABLED
+0:DISBALED
+</DropDownList>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Byte</VariableType>
+                  <Address>ramrom</Address>
+                  <Offsets>
+                    <Offset>48C</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>104666</ID>
+                  <Description>"No Collisions (Disable for ItemPickups)"</Description>
+                  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">5:ENABLED
+1:DISBALED
+</DropDownList>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Byte</VariableType>
+                  <Address>ramrom</Address>
+                  <Offsets>
+                    <Offset>48A</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>104324</ID>
+                  <Description>"Current HP"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>2 Bytes</VariableType>
+                  <Address>ramrom</Address>
+                  <Offsets>
+                    <Offset>1854E</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>104326</ID>
+                  <Description>"Current MP"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>2 Bytes</VariableType>
+                  <Address>ramrom</Address>
+                  <Offsets>
+                    <Offset>18550</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>104330</ID>
+                  <Description>"STR"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>2 Bytes</VariableType>
+                  <Address>ramrom</Address>
+                  <Offsets>
+                    <Offset>18552</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>104329</ID>
+                  <Description>"DEF"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>2 Bytes</VariableType>
+                  <Address>ramrom</Address>
+                  <Offsets>
+                    <Offset>18554</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>104328</ID>
+                  <Description>"INT"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>2 Bytes</VariableType>
+                  <Address>ramrom</Address>
+                  <Offsets>
+                    <Offset>18556</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>104327</ID>
+                  <Description>"LCK"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>2 Bytes</VariableType>
+                  <Address>ramrom</Address>
+                  <Offsets>
+                    <Offset>18558</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>104335</ID>
+                  <Description>"Current LEVEL"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>2 Bytes</VariableType>
+                  <Address>ramrom</Address>
+                  <Offsets>
+                    <Offset>1877C</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>104349</ID>
+                  <Description>"Sub-Weapons"</Description>
+                  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">00:Empty
+01:Dagger
+02:Axe
+03:Boomerang
+04:Holy Water
+05:Holy Book
+06:Fist
+</DropDownList>
+                  <ShowAsHex>1</ShowAsHex>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Byte</VariableType>
+                  <Address>ramrom</Address>
+                  <Offsets>
+                    <Offset>1877e</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>104338</ID>
+                  <Description>"Current HEARTS"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>2 Bytes</VariableType>
+                  <Address>ramrom</Address>
+                  <Offsets>
+                    <Offset>18794</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>104336</ID>
+                  <Description>"Current EXP"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>ramrom</Address>
+                  <Offsets>
+                    <Offset>18798</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>104337</ID>
+                  <Description>"Current GOLD"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>ramrom</Address>
+                  <Offsets>
+                    <Offset>1879C</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>104352</ID>
+              <Description>"Castlevania - Aria of Sorrow (USA,EU,JAP)"</Description>
+              <Options moHideChildren="1"/>
+              <Color>008000</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>104358</ID>
+                  <Description>"GamePlay TIMER"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>ramrom</Address>
+                  <Offsets>
+                    <Offset>AC</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>104605</ID>
+                  <Description>"Inf Jumps"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Byte</VariableType>
+                  <Address>ramrom</Address>
+                  <Offsets>
+                    <Offset>4F8</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>104364</ID>
+                  <Description>"Invincible State (enable+freeze)"</Description>
+                  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0A08:ENABLED
+0000:DISBALED
+</DropDownList>
+                  <ShowAsHex>1</ShowAsHex>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>2 Bytes</VariableType>
+                  <Address>ramrom</Address>
+                  <Offsets>
+                    <Offset>558</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>104598</ID>
+                  <Description>"Invincible Timer (enable+freeze)"</Description>
+                  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">F0F0:ENABLED
+*:*Timer Running*
+0000:DISBALED
+</DropDownList>
+                  <ShowAsHex>1</ShowAsHex>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>2 Bytes</VariableType>
+                  <Address>ramrom</Address>
+                  <Offsets>
+                    <Offset>55c</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>104371</ID>
+                  <Description>"Current LEVEL"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>Byte</VariableType>
+                  <Address>ramrom</Address>
+                  <Offsets>
+                    <Offset>13279</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>104357</ID>
+                  <Description>"Current HP"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>2 Bytes</VariableType>
+                  <Address>ramrom</Address>
+                  <Offsets>
+                    <Offset>1327A</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>104373</ID>
+                  <Description>"Current MAX HP"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>2 Bytes</VariableType>
+                  <Address>ramrom</Address>
+                  <Offsets>
+                    <Offset>1327E</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>104356</ID>
+                  <Description>"Current MP"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>2 Bytes</VariableType>
+                  <Address>ramrom</Address>
+                  <Offsets>
+                    <Offset>1327C</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>104374</ID>
+                  <Description>"Current MAX MP"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>2 Bytes</VariableType>
+                  <Address>ramrom</Address>
+                  <Offsets>
+                    <Offset>13280</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>104370</ID>
+                  <Description>"STR"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>2 Bytes</VariableType>
+                  <Address>ramrom</Address>
+                  <Offsets>
+                    <Offset>13282</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>104369</ID>
+                  <Description>"CON"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>2 Bytes</VariableType>
+                  <Address>ramrom</Address>
+                  <Offsets>
+                    <Offset>13284</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>104368</ID>
+                  <Description>"INT"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>2 Bytes</VariableType>
+                  <Address>ramrom</Address>
+                  <Offsets>
+                    <Offset>13286</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>104367</ID>
+                  <Description>"LCK"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>2 Bytes</VariableType>
+                  <Address>ramrom</Address>
+                  <Offsets>
+                    <Offset>13288</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>104366</ID>
+                  <Description>"Current EXP"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>ramrom</Address>
+                  <Offsets>
+                    <Offset>1328C</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>104372</ID>
+                  <Description>"Current GOLD"</Description>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>ramrom</Address>
+                  <Offsets>
+                    <Offset>13290</Offset>
+                  </Offsets>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104377</ID>
+          <Description>"Castlevania - Dracula X (USA,EU,JAP)"</Description>
+          <Options moHideChildren="1"/>
+          <Color>008000</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : game.exe
+  Version: 
+  Date   : 2021-09-25
+  Author : MBRKiNG
+
+  This script does blah blah blah
+}
+
+define(address,"game.exe"+9941F)
+define(bytes,8B 44 C6 28 2B 42 04)
+
+[ENABLE]
+
+assert(address,bytes)
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+registersymbol(draculax)
+label(draculax)
+
+newmem:
+
+code:
+  mov [draculax],esi
+  mov eax,[esi+eax*8+28]
+  sub eax,[edx+04]
+  jmp return
+draculax:
+db
+address:
+  jmp newmem
+  nop 2
+return:
+
+[DISABLE]
+
+address:
+  db bytes
+  // mov eax,[esi+eax*8+28]
+  // sub eax,[edx+04]
+
+dealloc(newmem)
+unregistersymbol(draculax)
+{
+// ORIGINAL CODE - INJECTION POINT: game.exe+9941F
+
+game.exe+99407: 74 0A        - je game.exe+99413
+game.exe+99409: 8B 56 0C     - mov edx,[esi+0C]
+game.exe+9940C: 23 D7        - and edx,edi
+game.exe+9940E: C1 E2 04     - shl edx,04
+game.exe+99411: 03 D0        - add edx,eax
+game.exe+99413: 8B 02        - mov eax,[edx]
+game.exe+99415: 8B 4C 24 10  - mov ecx,[esp+10]
+game.exe+99419: 85 C0        - test eax,eax
+game.exe+9941B: 74 0C        - je game.exe+99429
+game.exe+9941D: 03 C0        - add eax,eax
+// ---------- INJECTING HERE ----------
+game.exe+9941F: 8B 44 C6 28  - mov eax,[esi+eax*8+28]
+// ---------- DONE INJECTING  ----------
+game.exe+99423: 2B 42 04     - sub eax,[edx+04]
+game.exe+99426: 88 0C 38     - mov [eax+edi],cl
+game.exe+99429: 8B 42 08     - mov eax,[edx+08]
+game.exe+9942C: 85 C0        - test eax,eax
+game.exe+9942E: 74 07        - je game.exe+99437
+game.exe+99430: 51           - push ecx
+game.exe+99431: 8B 0E        - mov ecx,[esi]
+game.exe+99433: 8B D3        - mov edx,ebx
+game.exe+99435: FF D0        - call eax
+game.exe+99437: 8B 75 34     - mov esi,[ebp+34]
+}
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>104378</ID>
+              <Description>"LIFES"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Byte</VariableType>
+              <Address>[draculax]+38</Address>
+              <Offsets>
+                <Offset>9E</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>104383</ID>
+              <Description>"SCORE (in hex 01=10k, 10=100k)"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Byte</VariableType>
+              <Address>[draculax]+38</Address>
+              <Offsets>
+                <Offset>a1</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>104385</ID>
+              <Description>"Invincible (Enable+freeze)"</Description>
+              <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">FE:Enable
+*:*Timer Running*
+00:Disable
+</DropDownList>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Byte</VariableType>
+              <Address>[draculax]+38</Address>
+              <Offsets>
+                <Offset>DE</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>104387</ID>
+              <Description>"Invincible 2 + Deathtouch OHK (Enable+freeze)"</Description>
+              <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">DD:Enable
+00:Disable
+</DropDownList>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Byte</VariableType>
+              <Address>[draculax]+38</Address>
+              <Offsets>
+                <Offset>DF</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>104381</ID>
+              <Description>"Current HEARTS"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Byte</VariableType>
+              <Address>[draculax]+38</Address>
+              <Offsets>
+                <Offset>A2</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>104678</ID>
+              <Description>"World 00-08"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Byte</VariableType>
+              <Address>[draculax]+38</Address>
+              <Offsets>
+                <Offset>78</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>104681</ID>
+              <Description>"World Part 00-05"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Byte</VariableType>
+              <Address>[draculax]+38</Address>
+              <Offsets>
+                <Offset>7a</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>104673</ID>
+              <Description>"Higher Jumps (freeze value 1)"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Byte</VariableType>
+              <Address>[draculax]+38</Address>
+              <Offsets>
+                <Offset>4A2</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>104684</ID>
+              <Description>"Jump further by using Whip in Mid air (freeze value 0)"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Byte</VariableType>
+              <Address>[draculax]+38</Address>
+              <Offsets>
+                <Offset>4A9</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>104388</ID>
+              <Description>"Sub-Weapons"</Description>
+              <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">00:EMPTY
+01:AXE
+02:BOMMERRANG
+03:HOLY WATER
+04:DAGGER
+05:STOP WATCH
+</DropDownList>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Byte</VariableType>
+              <Address>[draculax]+38</Address>
+              <Offsets>
+                <Offset>A4</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>104379</ID>
+              <Description>"Current HP"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Byte</VariableType>
+              <Address>[draculax]+38</Address>
+              <Offsets>
+                <Offset>A8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>104380</ID>
+              <Description>"Current MP"</Description>
+              <ShowAsHex>1</ShowAsHex>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Byte</VariableType>
+              <Address>[draculax]+38</Address>
+              <Offsets>
+                <Offset>AC</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104589</ID>
+          <Description>"RomSpeed (CTRL+numpad / 0 =Default, 1-6 = Romspeed x1-x6)"</Description>
+          <Color>800080</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : game.exe
+  Version: 
+  Date   : 2021-09-26
+  Author : MBRKiNG
+
+  This script does blah blah blah
+}
+
+define(address,"game.exe"+18C2C)
+define(bytes,8B 8E 98 01 00 00)
+
+[ENABLE]
+
+assert(address,bytes)
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+registersymbol(romspeed)
+label(romspeed)
+
+newmem:
+
+code:
+  mov [romspeed],esi
+  mov ecx,[esi+00000198]
+  jmp return
+romspeed:
+db
+address:
+  jmp newmem
+  nop
+return:
+
+[DISABLE]
+
+address:
+  db bytes
+  // mov ecx,[esi+00000198]
+
+dealloc(newmem)
+unregistersymbol(romspeed)
+{
+// ORIGINAL CODE - INJECTION POINT: game.exe+18C2C
+
+game.exe+18C13: 53                    - push ebx
+game.exe+18C14: 55                    - push ebp
+game.exe+18C15: 56                    - push esi
+game.exe+18C16: 8B F1                 - mov esi,ecx
+game.exe+18C18: 57                    - push edi
+game.exe+18C19: 8B 86 1C 01 00 00     - mov eax,[esi+0000011C]
+game.exe+18C1F: 85 C0                 - test eax,eax
+game.exe+18C21: 74 24                 - je game.exe+18C47
+game.exe+18C23: 80 BE 08 02 00 00 00  - cmp byte ptr [esi+00000208],00
+game.exe+18C2A: 74 08                 - je game.exe+18C34
+// ---------- INJECTING HERE ----------
+game.exe+18C2C: 8B 8E 98 01 00 00     - mov ecx,[esi+00000198]
+// ---------- DONE INJECTING  ----------
+game.exe+18C32: EB 02                 - jmp game.exe+18C36
+game.exe+18C34: 33 C9                 - xor ecx,ecx
+game.exe+18C36: 51                    - push ecx
+game.exe+18C37: 6A 22                 - push 22
+game.exe+18C39: FF 70 08              - push [eax+08]
+game.exe+18C3C: FF 70 04              - push [eax+04]
+game.exe+18C3F: E8 FC A5 00 00        - call game.exe+23240
+game.exe+18C44: 83 C4 10              - add esp,10
+game.exe+18C47: 8B BE 98 01 00 00     - mov edi,[esi+00000198]
+game.exe+18C4D: 85 FF                 - test edi,edi
+}
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>104597</ID>
+              <Description>"Current RomSpeed"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Byte</VariableType>
+              <Address>romspeed</Address>
+              <Offsets>
+                <Offset>198</Offset>
+              </Offsets>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>17</Key>
+                    <Key>96</Key>
+                  </Keys>
+                  <Value>0</Value>
+                  <Description>Default Value</Description>
+                  <ID>2</ID>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>17</Key>
+                    <Key>97</Key>
+                  </Keys>
+                  <Value>1</Value>
+                  <Description>Speed x1</Description>
+                  <ID>0</ID>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>17</Key>
+                    <Key>98</Key>
+                  </Keys>
+                  <Value>2</Value>
+                  <Description>Speed x2</Description>
+                  <ID>1</ID>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>17</Key>
+                    <Key>99</Key>
+                  </Keys>
+                  <Value>3</Value>
+                  <Description>Speed x3</Description>
+                  <ID>3</ID>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>17</Key>
+                    <Key>100</Key>
+                  </Keys>
+                  <Value>4</Value>
+                  <Description>Speed x4</Description>
+                  <ID>4</ID>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>17</Key>
+                    <Key>101</Key>
+                  </Keys>
+                  <Value>5</Value>
+                  <Description>Speed x5</Description>
+                  <ID>5</ID>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>17</Key>
+                    <Key>102</Key>
+                  </Keys>
+                  <Value>6</Value>
+                  <Description>Speed x6</Description>
+                  <ID>6</ID>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>10634</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <Options moHideChildren="1"/>
+          <Color>008000</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>10326</ID>
+          <Description>"Discord/PayPal-Donation-Link/OCT"</Description>
+          <Options moHideChildren="1"/>
+          <Color>FF0080</Color>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>104153</ID>
+              <Description>"---------------------------------------------------------------"</Description>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>10324</ID>
+              <Description>"if you think i did a good job you can donate something to me via PP"</Description>
+              <Color>008000</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>104128</ID>
+              <Description>"---------------------------------------------------------------"</Description>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>41356</ID>
+              <Description>" [&lt;--CHECKBOX] Support Me at PP (use the Link below or hit the checkbox to open paypal)"</Description>
+              <Color>8000FF</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://paypal.me/mobiusce')
+{$asm}
+nop
+[DISABLE]
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>104152</ID>
+              <Description>"---------------------------------------------------------------"</Description>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>104270</ID>
+              <Description>"my Discord:  --&gt;  ScooPaX#8840  &lt;--"</Description>
+              <Options moAlwaysHideChildren="1"/>
+              <Color>8000FF</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>104155</ID>
+              <Description>"---------------------------------------------------------------"</Description>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>104156</ID>
+              <Description>"[&lt;--CHECKBOX]_OPEN_OCT_TOPIC"</Description>
+              <Color>8000FF</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://opencheattables.com/viewtopic.php?t=1544')
+{$asm}
+nop
+[DISABLE]
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>104129</ID>
+              <Description>"---------------------------------------------------------------"</Description>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>104151</ID>
+              <Description>"[&lt;--CHECKBOX]_OPEN_CHEATENGINE.ORG"</Description>
+              <Color>8000FF</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://www.cheatengine.org/')
+{$asm}
+nop
+[DISABLE]
+</AssemblerScript>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104269</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <Color>008000</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+  <LuaScript>function myattach(timer)
+	if getProcessIDFromProcessName("game.exe") ~= nil then
+		object_destroy(timer)
+		openProcess("game.exe")
+	end
+end
+
+t=createTimer(nil)
+timer_setInterval(t,10)
+timer_onTimer(t,myattach)
+</LuaScript>
+</CheatTable>
