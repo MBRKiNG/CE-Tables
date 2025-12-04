@@ -1,0 +1,597 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="46">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1337111301</ID>
+      <Description>"---------------------------------------------------------------"</Description>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"AWAKEN.Astral.Blade.Deluxe.Edition_Steam_SKIDROW_20241201_by_MBRKiNG"</Description>
+      <Options moHideChildren="1"/>
+      <Color>FF00FF</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>75</ID>
+          <Description>"Invulnerable"</Description>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(Invulnerable,GameAssembly.dll,0F84????????488B??????????B9????????E8????????F3????????????????488B)
+aobscanmodule(InvulnerableTraps,GameAssembly.dll,0F84????????488B??????????B9????????E8????????4438??????????0F28??75)
+alloc(Invulnerable_RestoreBytes,2)
+alloc(InvulnerableTraps_RestoreBytes,2)
+Invulnerable_RestoreBytes:
+  readmem(Invulnerable,2)
+InvulnerableTraps_RestoreBytes:
+  readmem(InvulnerableTraps,2)
+Invulnerable+1:
+  db 85
+InvulnerableTraps+1:
+  db 85
+registersymbol(Invulnerable)
+registersymbol(Invulnerable_RestoreBytes)
+registersymbol(InvulnerableTraps)
+registersymbol(InvulnerableTraps_RestoreBytes)
+[DISABLE]
+Invulnerable:
+  readmem(Invulnerable_RestoreBytes,2)
+InvulnerableTraps:
+  readmem(InvulnerableTraps_RestoreBytes,2)
+unregistersymbol(*)
+dealloc(*)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>76</ID>
+          <Description>"Inf Air Jumps"</Description>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(InfAirJumps,GameAssembly.dll,0F84????????FF??????????E9????????4885??0F84????????488B????4885??0F84????????4533??B2??E8????????488B????4885??0F84????????488B??????????4885??0F84????????33??89??????????488B??????????E8)
+alloc(InfAirJumps_RestoreBytes,2)
+InfAirJumps_RestoreBytes:
+  readmem(InfAirJumps,2)
+InfAirJumps+1:
+  db 85
+registersymbol(InfAirJumps)
+registersymbol(InfAirJumps_RestoreBytes)
+[DISABLE]
+InfAirJumps:
+  readmem(InfAirJumps_RestoreBytes,2)
+unregistersymbol(*)
+dealloc(*)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>77</ID>
+          <Description>"Ultimate Skill no Cost"</Description>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(InfEnergy,GameAssembly.dll,75??F3??????????????0F2F??????????0F93)
+aobscanmodule(zerocost,GameAssembly.dll,75??F3??????????????F3??????????????F3??????????????F3??????????????488B)
+alloc(InfEnergy_RestoreBytes,1)
+alloc(zerocost_RestoreBytes,1)
+InfEnergy_RestoreBytes:
+  readmem(InfEnergy,1)
+zerocost_RestoreBytes:
+  readmem(zerocost,1)
+InfEnergy:
+  db EB
+zerocost:
+  db EB
+registersymbol(InfEnergy)
+registersymbol(InfEnergy_RestoreBytes)
+registersymbol(zerocost)
+registersymbol(zerocost_RestoreBytes)
+[DISABLE]
+InfEnergy:
+  readmem(InfEnergy_RestoreBytes,1)
+zerocost:
+  readmem(zerocost_RestoreBytes,1)
+unregistersymbol(*)
+dealloc(*)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>78</ID>
+          <Description>"Ignore Aether"</Description>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(ignoreaether,GameAssembly.dll,7C??4038??????????74??4038??????????75)
+aobscanmodule(ignoreaether1,GameAssembly.dll,74??8B??????????2B??????????89??????????488B)
+aobscanmodule(ignoreaetherstore01,GameAssembly.dll,0F8D????????33??E8????????4885??0F84????????4533??488B??488B??E8????????33??E8????????488B)
+aobscanmodule(ignoreaetherstore02,GameAssembly.dll,2B????89??????????488B????4885??0F84)
+alloc(ignoreaether_RestoreBytes,1)
+alloc(ignoreaether1_RestoreBytes,1)
+alloc(ignoreaetherstore01_RestoreBytes,2)
+alloc(ignoreaetherstore02_RestoreBytes,3)
+ignoreaether_RestoreBytes:
+  readmem(ignoreaether,1)
+ignoreaether1_RestoreBytes:
+  readmem(ignoreaether1,1)
+ignoreaetherstore01_RestoreBytes:
+  readmem(ignoreaetherstore01,2)
+ignoreaetherstore02_RestoreBytes:
+  readmem(ignoreaetherstore02,3)
+ignoreaether:
+  db 74
+ignoreaether1:
+  db EB
+ignoreaetherstore01:
+  db 90 E9
+ignoreaetherstore02:
+  db 0F 1F 00
+registersymbol(ignoreaether)
+registersymbol(ignoreaether_RestoreBytes)
+registersymbol(ignoreaether1)
+registersymbol(ignoreaether1_RestoreBytes)
+registersymbol(ignoreaetherstore01)
+registersymbol(ignoreaetherstore01_RestoreBytes)
+registersymbol(ignoreaetherstore02)
+registersymbol(ignoreaetherstore02_RestoreBytes)
+[DISABLE]
+ignoreaether:
+  readmem(ignoreaether_RestoreBytes,1)
+ignoreaether1:
+  readmem(ignoreaether1_RestoreBytes,1)
+ignoreaetherstore01:
+  readmem(ignoreaetherstore01_RestoreBytes,2)
+ignoreaetherstore02:
+  readmem(ignoreaetherstore02_RestoreBytes,3)
+unregistersymbol(*)
+dealloc(*)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>79</ID>
+          <Description>"Ignore Karpas Alloy"</Description>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(ignorekarpasalloy00,GameAssembly.dll,7D??85??74??32)
+aobscanmodule(ignorekarpasalloy01,GameAssembly.dll,412B????89????488B??????????4885)
+alloc(ignorekarpasalloy00_RestoreBytes,1)
+alloc(ignorekarpasalloy01_RestoreBytes,4)
+ignorekarpasalloy00_RestoreBytes:
+  readmem(ignorekarpasalloy00,1)
+ignorekarpasalloy01_RestoreBytes:
+  readmem(ignorekarpasalloy01,4)
+ignorekarpasalloy00:
+  db EB
+ignorekarpasalloy01:
+  db 0F 1F 40 00
+registersymbol(ignorekarpasalloy00)
+registersymbol(ignorekarpasalloy00_RestoreBytes)
+registersymbol(ignorekarpasalloy01)
+registersymbol(ignorekarpasalloy01_RestoreBytes)
+[DISABLE]
+ignorekarpasalloy00:
+  readmem(ignorekarpasalloy00_RestoreBytes,2)
+ignorekarpasalloy01:
+  readmem(ignorekarpasalloy01_RestoreBytes,4)
+unregistersymbol(*)
+dealloc(*)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>80</ID>
+          <Description>"Ignore Flask Flower Fruit"</Description>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(FlaskFlower01,GameAssembly.dll,83??????0F84????????33??E8????????4885??0F84????????488B????33??E8????????4885??0F84????????488B????4885??0F84????????4885??0F84????????8B??????????33??FF??89??????????E8????????33??488B??E8????????4885??0F84????????488B????4885??0F84????????4885??0F84????????8B??????????4533??488B??E8????????4C)
+aobscanmodule(FlaskFlower02,GameAssembly.dll,FF????33??E8????????C7)
+alloc(FlaskFlower01_RestoreBytes,8)
+alloc(FlaskFlower02_RestoreBytes,3)
+FlaskFlower01_RestoreBytes:
+  readmem(FlaskFlower01,8)
+FlaskFlower02_RestoreBytes:
+  readmem(FlaskFlower02,3)
+FlaskFlower01+4:
+  db 66 0F 1F 44
+FlaskFlower02:
+  db 0F 1F 00
+registersymbol(FlaskFlower01)
+registersymbol(FlaskFlower01_RestoreBytes)
+registersymbol(FlaskFlower02)
+registersymbol(FlaskFlower02_RestoreBytes)
+[DISABLE]
+FlaskFlower01:
+  readmem(FlaskFlower01_RestoreBytes,8)
+FlaskFlower02:
+  readmem(FlaskFlower02_RestoreBytes,3)
+unregistersymbol(*)
+dealloc(*)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>82</ID>
+          <Description>"Ignore Alien Crystals"</Description>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(AlienCrystals01,GameAssembly.dll,83??????74??488B??????????488B????83????????????75??E8????????488B??????????33)
+aobscanmodule(AlienCrystals02,GameAssembly.dll,8B????4139??????7D??41FF)
+aobscanmodule(AlienCrystals03,GameAssembly.dll,0F8C????????412B??????89????80????????????75)
+alloc(AlienCrystals01_RestoreBytes,6)
+alloc(AlienCrystals02_RestoreBytes,10)
+alloc(AlienCrystals03_RestoreBytes,11)
+AlienCrystals01_RestoreBytes:
+  readmem(AlienCrystals01,6)
+AlienCrystals02_RestoreBytes:
+  readmem(AlienCrystals02,10)
+AlienCrystals03_RestoreBytes:
+  readmem(AlienCrystals03,11)
+AlienCrystals01+4:
+  db 90 90
+AlienCrystals02+8:
+  db 90 90
+AlienCrystals03:
+  db 66 0F 1F 44 00 00 0F 1F 44 00 00
+registersymbol(AlienCrystals01)
+registersymbol(AlienCrystals01_RestoreBytes)
+registersymbol(AlienCrystals02)
+registersymbol(AlienCrystals02_RestoreBytes)
+registersymbol(AlienCrystals03)
+registersymbol(AlienCrystals03_RestoreBytes)
+[DISABLE]
+AlienCrystals01:
+  readmem(AlienCrystals01_RestoreBytes,6)
+AlienCrystals02:
+  readmem(AlienCrystals02_RestoreBytes,10)
+AlienCrystals03:
+  readmem(AlienCrystals03_RestoreBytes,11)
+unregistersymbol(*)
+dealloc(*)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>81</ID>
+          <Description>"Ignore Flask Flower Corolla"</Description>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(Corolla01,GameAssembly.dll,83??????0F84????????33??E8????????4885??0F84????????488B????33??E8????????4885??0F84????????488B????4885??0F84????????4885??0F84????????8B??????????33??FF??89??????????E8????????33??488B??E8????????4885??0F84????????488B????4885??0F84????????4885??0F84????????8B??????????4533??488B??E8????????33)
+aobscanmodule(Corolla02,GameAssembly.dll,FF????C7????????????488B??488B??488B??????????FF)
+alloc(Corolla01_RestoreBytes,8)
+alloc(Corolla02_RestoreBytes,3)
+Corolla01_RestoreBytes:
+  readmem(Corolla01,8)
+Corolla02_RestoreBytes:
+  readmem(Corolla02,3)
+Corolla01+4:
+  db 66 0F 1F 44
+Corolla02:
+  db 0F 1F 00
+registersymbol(Corolla01)
+registersymbol(Corolla01_RestoreBytes)
+registersymbol(Corolla02)
+registersymbol(Corolla02_RestoreBytes)
+[DISABLE]
+Corolla01:
+  readmem(Corolla01_RestoreBytes,8)
+Corolla02:
+  readmem(Corolla02_RestoreBytes,3)
+unregistersymbol(*)
+dealloc(*)
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>104269</ID>
+      <Description>"---------------------------------------------------------------"</Description>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>10326</ID>
+      <Description>"Discord/PayPal-Donation-Link/OCT"</Description>
+      <Options moHideChildren="1"/>
+      <Color>FF00FF</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>104153</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>10324</ID>
+          <Description>"if you think i did a good job you can donate something to me via PayPal"</Description>
+          <Color>00FF00</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104128</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>41356</ID>
+          <Description>" [&lt;--CHECKBOX] Support Me with PayPal (use the Link below or hit the checkbox to open paypal)"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://paypal.me/mobiusce')
+{$asm}
+nop
+[DISABLE]
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>10325</ID>
+              <Description>"https://paypal.me/mobiusce"</Description>
+              <Color>00FF00</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104152</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104270</ID>
+          <Description>"my Discord:  --&gt;  ScooPaX#8840  &lt;--"</Description>
+          <Options moAlwaysHideChildren="1"/>
+          <Color>8000FF</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104155</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104156</ID>
+          <Description>"[&lt;--CHECKBOX]_OPEN_OCT_TOPIC"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://opencheattables.com/viewtopic.php?t=1537')
+{$asm}
+nop
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104129</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104151</ID>
+          <Description>"[&lt;--CHECKBOX]_OPEN_CHEATENGINE.ORG"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://www.cheatengine.org/')
+{$asm}
+nop
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>10634</ID>
+      <Description>"---------------------------------------------------------------"</Description>
+      <Options moHideChildren="1"/>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>Change of jna GameAssembly.dll+719E91</Description>
+      <AddressString>GameAssembly.dll+719E8A</AddressString>
+      <Before>
+        <Byte>58</Byte>
+        <Byte>28</Byte>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>C8</Byte>
+      </Before>
+      <Actual>
+        <Byte>76</Byte>
+        <Byte>05</Byte>
+      </Actual>
+      <After>
+        <Byte>F3</Byte>
+        <Byte>0F</Byte>
+        <Byte>10</Byte>
+        <Byte>58</Byte>
+        <Byte>28</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of inc [rcx+0000011C]</Description>
+      <AddressString>GameAssembly.dll+7EB7FB</AddressString>
+      <Before>
+        <Byte>84</Byte>
+        <Byte>28</Byte>
+        <Byte>06</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>FF</Byte>
+        <Byte>81</Byte>
+        <Byte>1C</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>E9</Byte>
+        <Byte>CF</Byte>
+        <Byte>05</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of mov al,01</Description>
+      <AddressString>GameAssembly.dll+61F02B</AddressString>
+      <Before>
+        <Byte>81</Byte>
+        <Byte>28</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>B0</Byte>
+        <Byte>01</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>5C</Byte>
+        <Byte>24</Byte>
+        <Byte>30</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of inc [rcx+00000128]</Description>
+      <AddressString>GameAssembly.dll+61F025</AddressString>
+      <Before>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>7D</Byte>
+        <Byte>13</Byte>
+      </Before>
+      <Actual>
+        <Byte>FF</Byte>
+        <Byte>81</Byte>
+        <Byte>28</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>B0</Byte>
+        <Byte>01</Byte>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>5C</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of je GameAssembly.dll+6DEED6</Description>
+      <AddressString>GameAssembly.dll+6DEE17</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>83</Byte>
+        <Byte>78</Byte>
+        <Byte>1C</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>0F</Byte>
+        <Byte>84</Byte>
+        <Byte>B9</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>33</Byte>
+        <Byte>C9</Byte>
+        <Byte>E8</Byte>
+        <Byte>2C</Byte>
+        <Byte>82</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of jl GameAssembly.dll+89DE5F</Description>
+      <AddressString>GameAssembly.dll+89D9F6</AddressString>
+      <Before>
+        <Byte>41</Byte>
+        <Byte>3B</Byte>
+        <Byte>44</Byte>
+        <Byte>24</Byte>
+        <Byte>70</Byte>
+      </Before>
+      <Actual>
+        <Byte>0F</Byte>
+        <Byte>8C</Byte>
+        <Byte>63</Byte>
+        <Byte>04</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>0F</Byte>
+        <Byte>1F</Byte>
+        <Byte>44</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of je GameAssembly.dll+6DF3AE</Description>
+      <AddressString>GameAssembly.dll+6DF361</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>83</Byte>
+        <Byte>78</Byte>
+        <Byte>1C</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>74</Byte>
+        <Byte>4B</Byte>
+      </Actual>
+      <After>
+        <Byte>4C</Byte>
+        <Byte>8B</Byte>
+        <Byte>05</Byte>
+        <Byte>5E</Byte>
+        <Byte>3B</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of je GameAssembly.dll+6DEBC9</Description>
+      <AddressString>GameAssembly.dll+6DEAF7</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>83</Byte>
+        <Byte>78</Byte>
+        <Byte>1C</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>0F</Byte>
+        <Byte>84</Byte>
+        <Byte>CC</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>33</Byte>
+        <Byte>C9</Byte>
+        <Byte>E8</Byte>
+        <Byte>4C</Byte>
+        <Byte>85</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+</CheatTable>

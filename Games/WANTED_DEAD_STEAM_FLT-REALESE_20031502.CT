@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="50">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>10634</ID>
+      <Description>"---------------------------------------------------------------"</Description>
+      <Options moHideChildren="1"/>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>104868</ID>
+      <Description>"WANTED_DEAD_STEAM_FLT-REALESE_20031502_MBRKiNG"</Description>
+      <Options moHideChildren="1"/>
+      <Color>4080FF</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>105545</ID>
+          <Description>"INF_AMMO"</Description>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(INF_AMMO_00_AOB,WDGame-Win64-Shipping.exe,83 ?? ?? ?? ?? ?? ?? 0F 95 ?? C3 ?? ?? ?? ?? ?? 48 89 ?? ?? ?? 48 89 ?? ?? ?? 48 89 ?? ?? ?? 55)
+aobscanmodule(INF_AMMO_01_AOB,WDGame-Win64-Shipping.exe,75 ?? FF ?? ?? ?? ?? ?? 4C ?? ?? ?? ?? ?? ?? 45 33 ?? 48 89)
+INF_AMMO_00_AOB+8:
+  db 94
+INF_AMMO_01_AOB:
+  db EB
+registersymbol(INF_AMMO_00_AOB)
+registersymbol(INF_AMMO_01_AOB)
+[DISABLE]
+INF_AMMO_00_AOB+8:
+  db 95
+INF_AMMO_01_AOB:
+  db 75
+unregistersymbol(INF_AMMO_00_AOB)
+unregistersymbol(INF_AMMO_01_AOB)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>105593</ID>
+          <Description>"INF_GRENADES"</Description>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(INF_GRENADES,WDGame-Win64-Shipping.exe,0F 85 ?? ?? ?? ?? 80 ?? ?? ?? ?? ?? ?? 75 ?? 8B ?? ?? ?? ?? ?? 85)
+INF_GRENADES:
+  db E9 95 00 00 00 90
+registersymbol(INF_GRENADES)
+[DISABLE]
+INF_GRENADES:
+  db 0F 85 94 00 00 00
+unregistersymbol(INF_GRENADES)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>105558</ID>
+          <Description>"INF_RECOVERYITEMS"</Description>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(HEALTH_RECOVERY_ITEM_AOB,WDGame-Win64-Shipping.exe,FF ?? 41 B0 ?? 48 8B ?? E8 ?? ?? ?? ?? 48 8B)
+HEALTH_RECOVERY_ITEM_AOB:
+  db 90 90
+registersymbol(HEALTH_RECOVERY_ITEM_AOB)
+[DISABLE]
+HEALTH_RECOVERY_ITEM_AOB:
+  db FF CA
+unregistersymbol(HEALTH_RECOVERY_ITEM_AOB)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>105585</ID>
+          <Description>"INVINCIBLE"</Description>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(INVINCIBLE,WDGame-Win64-Shipping.exe,0F 84 ?? ?? ?? ?? E8 ?? ?? ?? ?? 48 8B ?? 49 8B ?? E8 ?? ?? ?? ?? 48 85 ?? 0F 84 ?? ?? ?? ?? 4C ?? ?? 4C ?? ?? ?? 48 8D ?? ?? 48 8B ?? 41 FF ?? ?? 4C ?? ?? 48 85 ?? 0F 84 ?? ?? ?? ?? 0F B6)
+INVINCIBLE:
+  db E9 7D 03 00 00 90
+registersymbol(INVINCIBLE)
+[DISABLE]
+INVINCIBLE:
+  db 0F 84 7C 03 00 00
+unregistersymbol(INVINCIBLE)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>105587</ID>
+          <Description>"IGNORE_SKILL_COSTS"</Description>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(IGNORESKILLCOST_00_AOB,WDGame-Win64-Shipping.exe,0F 8F ?? ?? ?? ?? 48 8B ?? ?? 4C ?? ?? ?? 4C ?? ?? 49 3B)
+aobscanmodule(IGNORESKILLCOST_01_AOB,WDGame-Win64-Shipping.exe,29 ?? B0 01 4C ?? ?? ?? ?? 4C)
+IGNORESKILLCOST_00_AOB+1:
+  db 84
+IGNORESKILLCOST_01_AOB:
+  db 90 90
+registersymbol(IGNORESKILLCOST_00_AOB)
+registersymbol(IGNORESKILLCOST_01_AOB)
+[DISABLE]
+IGNORESKILLCOST_00_AOB+1:
+  db 8F
+IGNORESKILLCOST_01_AOB:
+  db 29 06
+unregistersymbol(IGNORESKILLCOST_00_AOB)
+unregistersymbol(IGNORESKILLCOST_01_AOB)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>105607</ID>
+          <Description>"OHK_Main_GUNS (enable in main menu or switch weapon parts ingame)"</Description>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(OHK_WEAPONS,WDGame-Win64-Shipping.exe,F3 ?? ?? ?? ?? ?? ?? ?? F3 ?? ?? ?? ?? ?? ?? ?? F3 ?? ?? ?? ?? F3 ?? ?? ?? ?? ?? ?? ?? F3 ?? ?? ?? ?? ?? ?? ?? F3 ?? ?? ?? ?? F3 ?? ?? ?? ?? ?? ?? ?? F3 ?? ?? ?? ?? ?? ?? ?? F3 ?? ?? ?? ?? F3 ?? ?? ?? ?? ?? ?? ?? F3 ?? ?? ?? ?? ?? ?? ?? F3 ?? ?? ?? ?? F3 ?? ?? ?? ?? ?? ?? ?? F3 ?? ?? ?? ?? ?? ?? ?? F3 ?? ?? ?? ?? F3 ?? ?? ?? ?? ?? ?? ?? F3 ?? ?? ?? ?? ?? ?? ?? 83) // should be unique
+OHK_WEAPONS+3:
+  db 0D 9A A3 EF 03
+registersymbol(OHK_WEAPONS)
+[DISABLE]
+OHK_WEAPONS+3:
+  db 8F B8 05 00 00
+unregistersymbol(OHK_WEAPONS)
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>104737</ID>
+      <Description>"---------------------------------------------------------------"</Description>
+      <Options moHideChildren="1"/>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>10326</ID>
+      <Description>"Discord/PayPal-Donation-Link/FRF"</Description>
+      <Options moHideChildren="1"/>
+      <Color>4080FF</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>104153</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>10324</ID>
+          <Description>"if you think i did a good job you can donate something to me via PP"</Description>
+          <Color>0080FF</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104128</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>41356</ID>
+          <Description>" [&lt;--CHECKBOX] Support Me at PP (use the Link below or hit the checkbox to open paypal)"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://paypal.me/mobiusce')
+{$asm}
+nop
+[DISABLE]
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>10325</ID>
+              <Description>"My PayPal --&gt; https://paypal.me/mobiusce"</Description>
+              <Color>4080FF</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104152</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104270</ID>
+          <Description>"my Discord:  --&gt;  ScooPaX#8840  &lt;--"</Description>
+          <Options moAlwaysHideChildren="1"/>
+          <Color>8000FF</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104155</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104156</ID>
+          <Description>"[&lt;--CHECKBOX]_OPEN_OCT_TOPIC"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://opencheattables.com/viewtopic.php?t=650')
+{$asm}
+nop
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104129</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104151</ID>
+          <Description>"[&lt;--CHECKBOX]_OPEN_CHEATENGINE.ORG"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://www.cheatengine.org/')
+{$asm}
+nop
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>104269</ID>
+      <Description>"---------------------------------------------------------------"</Description>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+  <LuaScript>PROCESS_NAME = 'WDGame-Win64-Shipping.exe'
+local autoAttachTimer = nil
+local autoAttachTimerInterval = 100
+local autoAttachTimerTicks = 0
+local autoAttachTimerTickMax = 5000
+
+local function autoAttachTimer_tick(timer)
+	if autoAttachTimerTickMax &gt; 0 and autoAttachTimerTicks &gt;= autoAttachTimerTickMax then
+		timer.destroy()
+	end
+	if getProcessIDFromProcessName(PROCESS_NAME) ~= nil then
+		timer.destroy()
+		openProcess(PROCESS_NAME)
+	end
+	autoAttachTimerTicks = autoAttachTimerTicks + 1
+end
+
+autoAttachTimer = createTimer(MainForm)
+autoAttachTimer.Interval = autoAttachTimerInterval
+autoAttachTimer.OnTimer = autoAttachTimer_tick
+
+</LuaScript>
+</CheatTable>

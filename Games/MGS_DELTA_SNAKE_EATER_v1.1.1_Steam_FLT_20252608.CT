@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="46">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1337111356</ID>
+      <Description>"------------------------------------------------------------------------"</Description>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"MGS_DELTA_SNAKE_EATER_v1.1.1_Steam_FLT_20252608_by_MBRKiNG"</Description>
+      <Options moHideChildren="1"/>
+      <Color>4080FF</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1337111600</ID>
+          <Description>"Stealth (Undetected)"</Description>
+          <Color>FFFF00</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanModule(danger,$process,C7 83 ?? ?? ?? ?? ?? ?? ?? ?? C7 83 ?? ?? ?? ?? ?? ?? ?? ?? C7 83 ?? ?? ?? ?? ?? ?? ?? ?? C7 83 ?? ?? ?? ?? ?? ?? ?? ?? E8 ?? ?? ?? ?? A9 ?? ?? ?? ?? 74 ?? B9 ?? ?? ?? ?? E8 ?? ?? ?? ?? B9 ?? ?? ?? ?? E8 ?? ?? ?? ?? B9 ?? ?? ?? ?? 48 ?? ?? ??)
+aobscanModule(stealthdetection,$process,74 ?? 48 8D ?? ?? ?? ?? ?? 89 ?? ?? ?? ?? ?? 48 89 ?? ?? ?? 45 33)
+danger+6:
+  db 00 00
+danger+10:
+  db 00 00
+danger+1A:
+  db 00 00
+danger+24:
+  db 00
+stealthdetection:
+  db 90 90
+registersymbol(stealthdetection danger)
+registersymbol(danger)
+[DISABLE]
+danger+6:
+  db 50 46
+danger+10:
+  db 50 46
+danger+1A:
+  db 50 46
+danger+24:
+  db 01
+stealthdetection:
+  db 74 48
+unregistersymbol(*)
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337321844</ID>
+          <Description>"Invulnerable"</Description>
+          <Options moAlwaysHideChildren="1" moActivateChildrenAsWell="1"/>
+          <Color>FFFF00</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(aob_Invulnerable,$process,F7 ?? ?? ?? ?? ?? ?? ?? ?? ?? 48 8B ?? 48 8B ?? ?? ?? ?? ?? 48 8B ?? 44 0F)
+label(val)
+registersymbol(val)
+aob_Invulnerable+a+(DWORD)[aob_Invulnerable+2]:
+val:
+[DISABLE]
+unregistersymbol(*)
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry NoCheckbox="1" ValueOnActivate="1" RestoreOnDeactivate="1">
+              <ID>1337321845</ID>
+              <Description>"set Global Movement Speed"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <VariableType>Byte</VariableType>
+              <Address>val</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337321862</ID>
+          <Description>"Inf Oxygen"</Description>
+          <Color>FFFF00</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(breathunderwater,$process,66 ?? ?? ?? ?? ?? ?? 66 ?? ?? ?? ?? ?? ?? 7F ?? 66 ?? ?? ?? ?? ?? ?? 66 ?? ?? ?? ?? ?? ?? 66)
+breathunderwater+2:
+  db AF
+registersymbol(breathunderwater)
+[DISABLE]
+breathunderwater+2:
+  db 97
+unregistersymbol(*)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337321834</ID>
+          <Description>"no Caution / Evasion Timer if Detected"</Description>
+          <Color>FFFF00</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanModule(cautiontimer,$process,B9 ?? ?? ?? ?? 2B ?? ?? ?? ?? ?? 89 ?? ?? ?? ?? ?? 3B ?? 7E ?? 89 ?? ?? ?? ?? ?? EB ?? 8B ?? 85 ?? 79 ?? 89 ?? ?? ?? ?? ?? 8B ?? 8B ?? ?? ?? ?? ?? 48 0F ?? ?? ?? 73 ?? 81 ?? ?? ?? ?? ?? 7D ?? C7 ?? ?? ?? ?? ?? ?? ?? ?? ?? 39 ?? ?? ?? ?? ?? 0F 84)
+aobscanModule(evasiontimer,$process,B9 ?? ?? ?? ?? 2B ?? ?? ?? ?? ?? 89 ?? ?? ?? ?? ?? 3B ?? 7E ?? 89 ?? ?? ?? ?? ?? EB ?? 8B ?? 85 ?? 79 ?? 89 ?? ?? ?? ?? ?? 8B ?? 8B ?? ?? ?? ?? ?? 48 0F ?? ?? ?? 73 ?? 81 ?? ?? ?? ?? ?? 7D ?? C7 ?? ?? ?? ?? ?? ?? ?? ?? ?? 39 ?? ?? ?? ?? ?? 74 ?? 89 ?? ?? ?? ?? ?? EB)
+cautiontimer+1:
+  db 00 00
+evasiontimer+1:
+  db 00 00
+registersymbol(evasiontimer)
+registersymbol(cautiontimer)
+[DISABLE]
+cautiontimer+1:
+  db 50 46
+evasiontimer+1:
+  db 50 46
+unregistersymbol(*)
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337111611</ID>
+          <Description>"Freeze Stamina"</Description>
+          <Color>FFFF00</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(stamina,$process,66 ?? ?? 48 8B ?? ?? ?? ?? ?? 66 ?? ?? ?? 7D)
+stamina:
+  db 90 90 90
+registersymbol(stamina)
+[DISABLE]
+stamina:
+  db 66 29 30
+unregistersymbol(*)
+
+
+{
+// ORIGINAL CODE - INJECTION POINT: MGSDelta-Win64-Shipping.exe.text+7B72F47
+
+MGSDelta-Win64-Shipping.exe.text+7B72F25: 0F BA E1 10              - bt ecx,10
+MGSDelta-Win64-Shipping.exe.text+7B72F29: 73 15                    - jae MGSDelta-Win64-Shipping.exe.text+7B72F40
+MGSDelta-Win64-Shipping.exe.text+7B72F2B: 83 3D 16 D8 9C 0C 01     - cmp dword ptr ["MGSDelta-Win64-Shipping.exe"+14541748],01
+MGSDelta-Win64-Shipping.exe.text+7B72F32: 75 0C                    - jne MGSDelta-Win64-Shipping.exe.text+7B72F40
+MGSDelta-Win64-Shipping.exe.text+7B72F34: 8B C6                    - mov eax,esi
+MGSDelta-Win64-Shipping.exe.text+7B72F36: 99                       - cdq 
+MGSDelta-Win64-Shipping.exe.text+7B72F37: 83 E2 03                 - and edx,03
+MGSDelta-Win64-Shipping.exe.text+7B72F3A: 8D 34 02                 - lea esi,[rdx+rax]
+MGSDelta-Win64-Shipping.exe.text+7B72F3D: C1 FE 02                 - sar esi,02
+MGSDelta-Win64-Shipping.exe.text+7B72F40: 48 8B 87 70 0A 00 00     - mov rax,[rdi+00000A70]
+// ---------- INJECTING HERE ----------
+MGSDelta-Win64-Shipping.exe.text+7B72F47: 66 29 30                 - sub [rax],si
+// ---------- DONE INJECTING  ----------
+MGSDelta-Win64-Shipping.exe.text+7B72F4A: 48 8B 87 70 0A 00 00     - mov rax,[rdi+00000A70]
+MGSDelta-Win64-Shipping.exe.text+7B72F51: 66 44 39 38              - cmp [rax],r15w
+MGSDelta-Win64-Shipping.exe.text+7B72F55: 7D 4C                    - jnl MGSDelta-Win64-Shipping.exe.text+7B72FA3
+MGSDelta-Win64-Shipping.exe.text+7B72F57: 66 44 89 38              - mov [rax],r15w
+MGSDelta-Win64-Shipping.exe.text+7B72F5B: EB 46                    - jmp MGSDelta-Win64-Shipping.exe.text+7B72FA3
+MGSDelta-Win64-Shipping.exe.text+7B72F5D: 66 0F 6E C6              - movd xmm0,esi
+MGSDelta-Win64-Shipping.exe.text+7B72F61: 0F 5B C0                 - cvtdq2ps xmm0,xmm0
+MGSDelta-Win64-Shipping.exe.text+7B72F64: F3 0F 59 05 00 35 21 04  - mulss xmm0,[MGSDelta-Win64-Shipping.exe.rdata+36C746C]
+MGSDelta-Win64-Shipping.exe.text+7B72F6C: EB A7                    - jmp MGSDelta-Win64-Shipping.exe.text+7B72F15
+MGSDelta-Win64-Shipping.exe.text+7B72F6E: 8B 8F 2C 04 00 00        - mov ecx,[rdi+0000042C]
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337111415</ID>
+          <Description>"Freeze Health"</Description>
+          <Color>FFFF00</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(health,$process,0F 84 ?? ?? ?? ?? 8B ?? ?? ?? ?? ?? F6 ?? ?? 0F 85 ?? ?? ?? ?? 8B)
+health:
+  db 90 E9
+registersymbol(health)
+[DISABLE]
+health:
+  db 0F 84
+unregistersymbol(health)
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337111391</ID>
+          <Description>"Freeze Ammo / no Reload"</Description>
+          <Color>FFFF00</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(ammo,$process,66 ?? ?? ?? ?? 7E ?? 0F B7 ?? ?? 66)
+ammo+5:
+  db EB
+ammo+19:
+  db EB
+return:
+registersymbol(ammo)
+[DISABLE]
+ammo+5:
+  db 7E
+ammo+19:
+  db 74
+unregistersymbol(ammo)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337111397</ID>
+          <Description>"Freeze Suppressor/Grenades etc.  (Disable in CURE Screen)"</Description>
+          <Color>FFFF00</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(surpressor,MGSDelta-Win64-Shipping.exe,74 ?? 0F BF ?? ?? 66 ?? ?? 7F)
+surpressor+9:
+  db 90 90
+registersymbol(surpressor)
+[DISABLE]
+surpressor+9:
+  db 7F 07
+unregistersymbol(surpressor)
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337111624</ID>
+          <Description>"Movement Speed"</Description>
+          <Options moHideChildren="1"/>
+          <Color>FFFF00</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+//aobscanmodule(aob_GW,$process,48 8B ?? ?? ?? ?? ?? 48 85 ?? 74 ?? E8 ?? ?? ?? ?? 48 8B ?? 48 85 ?? 74 ?? F6 ?? ?? ?? ?? ?? ?? 74 ?? 48 8B ?? 48 8B ?? FF ?? ?? ?? ?? ?? 84 ?? 74 ?? E8 ?? ?? ?? ?? 48 8B ?? 48 8B)
+aobscanmodule(aob_GE,$process,48 8B ?? ?? ?? ?? ?? 48 85 ?? 74 ?? 48 8B ?? ?? ?? ?? ?? 48 63 ?? ?? ?? ?? ?? 48 8D ?? ?? 48 3B ?? 74 ?? 0F 1F ?? 48 8B ?? 4C ?? ?? ?? ?? ?? ?? 74)
+label(GE)
+registersymbol(GE)
+aob_GE+7+(DWORD)[aob_GE+3]:
+GE:
+[DISABLE]
+unregistersymbol(*)
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>1337321833</ID>
+              <Description>"set Movement Speed"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>FFFF00</Color>
+              <VariableType>Float</VariableType>
+              <Address>[GE]+10B0</Address>
+              <Offsets>
+                <Offset>6C</Offset>
+                <Offset>2F0</Offset>
+                <Offset>30</Offset>
+                <Offset>0</Offset>
+                <Offset>38</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337111400</ID>
+          <Description>"Camouflage 100%"</Description>
+          <Color>FFFF00</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(stealth,MGSDelta-Win64-Shipping.exe,83 ?? ?? ?? 48 8B ?? 4C ?? ?? ?? ?? ?? ?? ?? 75 ?? 8B)
+alloc(newmem,$1000,stealth)
+label(code)
+label(return)
+newmem:
+  mov dword ptr [rcx+64],01
+  mov dword ptr [rcx+68],#2000
+code:
+  cmp dword ptr [rcx+64],00
+  mov rdi,rcx
+  jmp return
+stealth:
+  jmp newmem
+  nop 2
+return:
+registersymbol(stealth)
+[DISABLE]
+stealth:
+  db 83 79 64 00 48 8B F9
+unregistersymbol(*)
+dealloc(*)
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>104269</ID>
+      <Description>"------------------------------------------------------------------------"</Description>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>10326</ID>
+      <Description>"Discord/PayPal-Donation-Link/OCT"</Description>
+      <Options moHideChildren="1"/>
+      <Color>40FF00</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1337111357</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>10324</ID>
+          <Description>"Support/Donations can be Added to my PAYPAL.ME"</Description>
+          <Color>00FF00</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104128</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>41356</ID>
+          <Description>" [&lt;--CHECKBOX] PALPAL.ME Donation/Support Link"</Description>
+          <Color>F8EC07</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://paypal.me/mobiusce')
+{$asm}
+nop
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104152</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104270</ID>
+          <Description>"my Discord-ID:  --&gt;  ScooPaX#8840  &lt;--"</Description>
+          <Options moAlwaysHideChildren="1"/>
+          <Color>8000FF</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104155</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104156</ID>
+          <Description>"[&lt;--CHECKBOX]_OPEN_OCT_TOPIC"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://opencheattables.com/viewtopic.php?t=1534')
+{$asm}
+nop
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104129</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104151</ID>
+          <Description>"[&lt;--CHECKBOX]_OPEN_CHEATENGINE.ORG"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://www.cheatengine.org/')
+{$asm}
+nop
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>10634</ID>
+      <Description>"------------------------------------------------------------------------"</Description>
+      <Options moHideChildren="1"/>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>

@@ -1,0 +1,3021 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="46">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1337111356</ID>
+      <Description>"------------------------------------------------------------------------"</Description>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"Relic_Hunters_Legend_v1.0.0_Steam_RUNE_20252108_by_MBRKiNG"</Description>
+      <Options moHideChildren="1"/>
+      <Color>4080FF</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1337111331</ID>
+          <Description>"Relic Hunters Legend v1.0.0 (GAMESAVE EDITOR)"</Description>
+          <Options moHideChildren="1"/>
+          <Color>FF00FF</Color>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>1337111350</ID>
+              <Description>"1. Click Open Savegame Script"</Description>
+              <Color>FFFF00</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1337111354</ID>
+              <Description>"2. In CE Click "FILE" and "OPEN FILE" and click "OK""</Description>
+              <Color>FFFF00</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1337111353</ID>
+              <Description>"3. File you need to open called "database.db.*TIMESTAMP*_Backup""</Description>
+              <Color>FFFF00</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1337111352</ID>
+              <Description>"4.Click Scripts and again "FILE" and "SAVE FILE""</Description>
+              <Color>FFFF00</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1337111351</ID>
+              <Description>"5.Override "database.db" now play the Game"</Description>
+              <Color>FFFF00</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1337111332</ID>
+              <Description>"OPEN GAMESAVE LOCATION / CreateBackup - Relic Hunters Legend"</Description>
+              <Color>00FF00</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{$lua}
+if syntaxcheck then return end
+[ENABLE]
+local UserProfilePath = os.getenv("USERPROFILE")
+local GameSavePath = UserProfilePath .. "\\AppData\\LocalLow\\Rogue Snail\\RelicHuntersLegend"
+local DatabasePath = GameSavePath .. "\\database.db"
+local file = io.open(DatabasePath, "r")
+if file then
+    file:close()
+    local timestamp = os.date("%Y-%m-%d_%H-%M-%S")
+    local backupPath = DatabasePath .. "." .. timestamp .. ".MBRKiNG_Backup"
+    local command = 'copy "' .. DatabasePath .. '" "' .. backupPath .. '"'
+    os.execute(command)
+    messageDialog("GAMESAVE Backup with Timestamp Created:\n\n" .. backupPath)
+else
+    messageDialog("ERROR: database.db File not Found. no Backup was Created.")
+end
+shellExecute(GameSavePath)
+local memrec = memrec or getAddressList().getMemoryRecordByDescription("OPEN - Relic Hunters Legend - SAVEGAME LOCATION")
+local timer = createTimer()
+timer.Interval = 1 * 100
+timer.OnTimer = function(theTimerCallingThisFunction)
+  memrec.Active = false
+  timer.destroy()
+end
+[DISABLE]
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1337111333</ID>
+              <Description>"OPEN GAMESAVE LOCATION / CreateBackup - Relic Hunters Legend *DEMO*"</Description>
+              <Color>00FF00</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{$lua}
+if syntaxcheck then return end
+[ENABLE]
+local UserProfilePath = os.getenv("USERPROFILE")
+local GameSavePath = UserProfilePath .. "\\AppData\\LocalLow\\Rogue Snail\\RelicHuntersLegendDemo"
+local DatabasePath = GameSavePath .. "\\database.db"
+local file = io.open(DatabasePath, "r")
+if file then
+    file:close()
+    local timestamp = os.date("%Y-%m-%d_%H-%M-%S")
+    local backupPath = DatabasePath .. "." .. timestamp .. ".MBRKiNG_Backup"
+    local command = 'copy "' .. DatabasePath .. '" "' .. backupPath .. '"'
+    os.execute(command)
+    messageDialog("GAMESAVE Backup with Timestamp Created:\n\n" .. backupPath)
+else
+    messageDialog("ERROR: database.db File not Found. no Backup was Created.")
+end
+shellExecute(GameSavePath)
+local memrec = memrec or getAddressList().getMemoryRecordByDescription("OPEN - Relic Hunters Legend *DEMO* - SAVEGAME LOCATION")
+local timer = createTimer()
+timer.Interval = 1 * 100
+timer.OnTimer = function(theTimerCallingThisFunction)
+  memrec.Active = false
+  timer.destroy()
+end
+[DISABLE]
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1337111334</ID>
+              <Description>"Attribute Changer"</Description>
+              <Color>4080FF</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$lua}
+if syntaxcheck then return end
+local function w(a,p,o)
+local b={}
+local i=1
+for h in string.gmatch(p,"%S+") do
+if h=="??" then b[i]=o[i] else b[i]=tonumber(h,16) end
+i=i+1
+end
+writeBytes(a,b)
+end
+local s="74 74 72 69 62 75 74 65 73 00 21 ?? ?? ?? ?? 30 ?? ?? ?? ?? ?? ?? 31 ?? ?? ?? ?? ?? ?? 32 ?? ?? ?? ?? ?? ?? 33 ?? ?? ?? ?? ??"
+local r="?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? 88 13 ?? ?? ?? ?? ?? 88 13 ?? ?? ?? ?? ?? 58 02 ?? ?? ?? ?? ?? 88 13 ?? ??"
+local f=AOBScan(s)
+local v={}
+local l=(#r+1)/3
+local c=0
+if f.Count&gt;0 then
+for i=0,f.Count-1 do
+local a=f[i]
+local o=readBytes(a,l,true)
+v[i]=o
+w(a,r,o)
+c=c+1
+end
+messageDialog("Found "..c.." Characters and replaced Attributes. \n\nClick 'File' and 'Save File' \n\nNew Attributes set to:\n\nMight = *5000*\nVigor = *5000*\nAgility = *600*\nSpirit = *5000* ")
+else
+messageDialog("Nothing Found. \n'databse.db' File needs to be Open! \n\nYou have to Spend inGame some Attribute Points first.")
+end
+_G[cheat_name]={["addresses"]=f,["originalData"]=v}
+{$asm}
+[DISABLE]
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1337111335</ID>
+              <Description>"Give all Materials 999k"</Description>
+              <Color>4080FF</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$lua}
+if syntaxcheck then return end
+local function w(a,p,o)
+local b={}
+local i=1
+for h in string.gmatch(p,"%S+") do
+if h=="??" then b[i]=o[i] else b[i]=tonumber(h,16) end
+i=i+1
+end
+writeBytes(a,b)
+end
+local s="6D 61 74 65 72 69 61 6C 49 44 ?? ?? ?? ?? ?? ?? 76 61 6C 75 65 00 ?? ?? ?? ??"
+local r="?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? 3F 42 0F 00"
+local f=AOBScan(s)
+local v={}
+local l=(#r+1)/3
+local c=0
+if f.Count&gt;0 then
+for i=0,f.Count-1 do
+local a=f[i]
+local o=readBytes(a,l,true)
+v[i]=o
+w(a,r,o)
+c=c+1
+end
+messageDialog("Found and Modified "..c.." Material IDs. \n\nMaterials set to 999999 \n\nClick 'File' and 'Save File' ")
+else
+messageDialog("Nothing Found. 'databse.db' File needs to be Open!")
+end
+_G[cheat_name]={["addresses"]=f,["originalData"]=v}
+{$asm}
+[DISABLE]
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1337111361</ID>
+              <Description>"Give all Materials 99k"</Description>
+              <Color>4080FF</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$lua}
+if syntaxcheck then return end
+local function w(a,p,o)
+local b={}
+local i=1
+for h in string.gmatch(p,"%S+") do
+if h=="??" then b[i]=o[i] else b[i]=tonumber(h,16) end
+i=i+1
+end
+writeBytes(a,b)
+end
+local s="6D 61 74 65 72 69 61 6C 49 44 ?? ?? ?? ?? ?? ?? 76 61 6C 75 65 00 ?? ?? ?? ??"
+local r="?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? 9F 86 01 00"
+local f=AOBScan(s)
+local v={}
+local l=(#r+1)/3
+local c=0
+if f.Count&gt;0 then
+for i=0,f.Count-1 do
+local a=f[i]
+local o=readBytes(a,l,true)
+v[i]=o
+w(a,r,o)
+c=c+1
+end
+messageDialog("Found and Modified "..c.." Material IDs. \n\nMaterials set to 99999 \n\nClick 'File' and 'Save File' ")
+else
+messageDialog("Nothing Found. 'databse.db' File needs to be Open!")
+end
+_G[cheat_name]={["addresses"]=f,["originalData"]=v}
+{$asm}
+[DISABLE]
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1337111336</ID>
+              <Description>"Give 99 Million Bounty"</Description>
+              <Color>4080FF</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$lua}
+if syntaxcheck then return end
+local function w(a,p,o)
+local b={}
+local i=1
+for h in string.gmatch(p,"%S+") do
+if h=="??" then b[i]=o[i] else b[i]=tonumber(h,16) end
+i=i+1
+end
+writeBytes(a,b)
+end
+local s="62 6F 75 6E 74 79 00 ?? ?? ?? ??"
+local r="?? ?? ?? ?? ?? ?? ?? C0 9E E6 05"
+local f=AOBScan(s)
+local v={}
+local l=(#r+1)/3
+local c=0
+if f.Count&gt;0 then
+for i=0,f.Count-1 do
+local a=f[i]
+local o=readBytes(a,l,true)
+v[i]=o
+w(a,r,o)
+c=c+1
+end
+messageDialog("Found and Modified ".." Bounty Value(s). \n\nNew Bounty Value is: 99.000,000 \n\nClick 'File' and 'Save File' ")
+else
+messageDialog("Nothing Found. 'databse.db' File needs to be Open!")
+end
+_G[cheat_name]={["addresses"]=f,["originalData"]=v}
+{$asm}
+[DISABLE]
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1337111363</ID>
+              <Description>"Give 1 Million Bounty"</Description>
+              <Color>4080FF</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$lua}
+if syntaxcheck then return end
+local function w(a,p,o)
+local b={}
+local i=1
+for h in string.gmatch(p,"%S+") do
+if h=="??" then b[i]=o[i] else b[i]=tonumber(h,16) end
+i=i+1
+end
+writeBytes(a,b)
+end
+local s="62 6F 75 6E 74 79 00 ?? ?? ?? ??"
+local r="?? ?? ?? ?? ?? ?? ?? 40 42 0F 00"
+local f=AOBScan(s)
+local v={}
+local l=(#r+1)/3
+local c=0
+if f.Count&gt;0 then
+for i=0,f.Count-1 do
+local a=f[i]
+local o=readBytes(a,l,true)
+v[i]=o
+w(a,r,o)
+c=c+1
+end
+messageDialog("Found and Modified ".." Bounty Value(s). \n\nNew Bounty Value is: 1.000,000 \n\nClick 'File' and 'Save File' ")
+else
+messageDialog("Nothing Found. 'databse.db' File needs to be Open!")
+end
+_G[cheat_name]={["addresses"]=f,["originalData"]=v}
+{$asm}
+[DISABLE]
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1337111365</ID>
+              <Description>"Inventory Editor (set Custom Value)"</Description>
+              <Options moHideChildren="1"/>
+              <Color>FF80FF</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+aobscan(matloc01,6D 61 74 65 72 69 61 6C 49 44 ?? ?? ?? ?? ?? ?? 76 61 6C 75 65 00 ?? ?? ?? ?? ?? ?? 31 34 30)
+matloc01:
+  db
+aobscan(matloc02,6D 61 74 65 72 69 61 6C 49 44 ?? ?? ?? ?? ?? ?? 76 61 6C 75 65 00 ?? ?? ?? ?? ?? ?? 31 00 20)
+matloc02:
+  db
+registersymbol(matloc01)
+registersymbol(matloc02)
+[DISABLE]
+unregistersymbol(*)
+
+</AssemblerScript>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>1337111530</ID>
+                  <Description>"Order by Address"</Description>
+                  <Options moHideChildren="1"/>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>1337111366</ID>
+                      <Description>"The Spooky Sphere Frame (99)"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc01+22-c</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111529</ID>
+                      <Description>"The Spooky Sphere Ornaments (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc01+22+19</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111367</ID>
+                      <Description>"The Champion Belt Blueprints (1)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc01+22+3E</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111368</ID>
+                      <Description>"The Champion Belt Core (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc01+22+63</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111369</ID>
+                      <Description>"The Champion Belt Frame (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc01+22+88</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111370</ID>
+                      <Description>"The Champion Belt Ornaments (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc01+22+AD</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111371</ID>
+                      <Description>"The Manifesto Belt Blueprints (1)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc01+22+D2</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111372</ID>
+                      <Description>"The Manifesto Belt Core (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc01+22+F7</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111373</ID>
+                      <Description>"The Manifesto Belt Frame (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc01+22+11C</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111374</ID>
+                      <Description>"The Manifesto Belt Ornaments (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc01+22+141</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111375</ID>
+                      <Description>"The Ancient Book Blueprints (1)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc01+22+166</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111376</ID>
+                      <Description>"The Ancient Book Core (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc01+22+18B</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111377</ID>
+                      <Description>"The Ancient Book Frame (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc01+22+1B0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111378</ID>
+                      <Description>"The Ancient Book Ornaments (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc01+22+1D5</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111379</ID>
+                      <Description>"Hunter Token"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc01+22+1FA</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111380</ID>
+                      <Description>"Fashion Credits (99999)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc01+22+21F</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111381</ID>
+                      <Description>"Augmentation Modules (999)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc01+22+244</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111382</ID>
+                      <Description>"Set Emblems (999)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc01+22+269</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111383</ID>
+                      <Description>"Exotic Lining (999)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc01+22+28E</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111384</ID>
+                      <Description>"Wishfull Fragment (999)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc01+22+2B3</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111385</ID>
+                      <Description>"Crystallized Time (999)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc01+22+2D8</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111386</ID>
+                      <Description>"Shifting Orb (999)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc01+22+2FD</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111387</ID>
+                      <Description>"Utopical Orb (999)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc01+22+322</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111388</ID>
+                      <Description>"Bounty (1000000)"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22-3d</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111528</ID>
+                      <Description>"Scrap Parts (99999)"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22-C</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111526</ID>
+                      <Description>"Cloth Rags (99999)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+17</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111389</ID>
+                      <Description>"Weapon Parts (99999)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+3A</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111390</ID>
+                      <Description>"Chemical Components (99999)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+5D</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111391</ID>
+                      <Description>"Duct Tape (99999)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+80</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111392</ID>
+                      <Description>"Cordboard (99999)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+A3</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111393</ID>
+                      <Description>"Wiring (99999)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+C6</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111394</ID>
+                      <Description>"Biomass (99999)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+E9</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111395</ID>
+                      <Description>"Glue (99999)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+10C</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111396</ID>
+                      <Description>"Plastic (99999)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+12F</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111397</ID>
+                      <Description>"Lether (99999)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+153</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111398</ID>
+                      <Description>"Crystal (99999)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+177</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111399</ID>
+                      <Description>"Chipset (99999)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+19B</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111400</ID>
+                      <Description>"Uncommon Catalyst (99999)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+1BF</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111401</ID>
+                      <Description>"Polyester (99999)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+1E3</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111402</ID>
+                      <Description>"Alloy (99999)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+207</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111403</ID>
+                      <Description>"DNA (99999)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+22B</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111404</ID>
+                      <Description>"Computer Module (99999)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+24F</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111405</ID>
+                      <Description>"Rare Catalyst (99999)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+273</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111406</ID>
+                      <Description>"Timeless Essence (9999)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+297</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111407</ID>
+                      <Description>"Kindness (99999)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+2BB</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111408</ID>
+                      <Description>"Delve Key (10)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+2DF</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111409</ID>
+                      <Description>"UNKOWN (*****)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+303</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111410</ID>
+                      <Description>"UNKOWN (*****)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+327</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111411</ID>
+                      <Description>"UNKOWN (*****)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+34B</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111412</ID>
+                      <Description>"UNKOWN (*****)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+36F</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111527</ID>
+                      <Description>"Timelocked Memory (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+393</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111414</ID>
+                      <Description>"Greater Memory (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+3B7</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111415</ID>
+                      <Description>"Acendant Memory (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+3DB</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111416</ID>
+                      <Description>"Basic Dye Kit (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+3FF</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111417</ID>
+                      <Description>"Advanced Dye Kit (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+423</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111418</ID>
+                      <Description>"Legendary Dye Kit (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+447</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111419</ID>
+                      <Description>"Time Crystal (99999)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+46B</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111525</ID>
+                      <Description>"Epic Catalys (999)"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+48f</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111420</ID>
+                      <Description>"Nand Metal (999)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+4B3</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111421</ID>
+                      <Description>"Alien Carapace (999)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+4D7</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111422</ID>
+                      <Description>"Energy Core (999)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+4FB</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111423</ID>
+                      <Description>"Strong God (999)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+51F</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111424</ID>
+                      <Description>"Curious Treasure Key (10)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+543</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111425</ID>
+                      <Description>"Ascendant Treasure Key (10)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+567</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111426</ID>
+                      <Description>"Old Treasure Key (10)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+58B</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111427</ID>
+                      <Description>"Shop Token (99999)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+5AF</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111428</ID>
+                      <Description>"The Shield Blueprints (1)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+5D3</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111429</ID>
+                      <Description>"The Shield Core (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+5F7</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111430</ID>
+                      <Description>"The Shield Frame (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+61B</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111431</ID>
+                      <Description>"The Shield Ornaments (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+63F</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111432</ID>
+                      <Description>"The Thunder Hammer Blueprints (1)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+663</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111433</ID>
+                      <Description>"The Thunder Hammer Core (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+687</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111434</ID>
+                      <Description>"The Thunder Hammer Frame (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+6AB</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111435</ID>
+                      <Description>"The Thunder Hammer Ornaments (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+6CF</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111436</ID>
+                      <Description>"The Scanner Blueprints (1)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+6F3</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111437</ID>
+                      <Description>"The Scanner Core (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+717</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111438</ID>
+                      <Description>"The Scanner Frame (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+73B</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111439</ID>
+                      <Description>"The Scanner Ornaments (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+75F</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111440</ID>
+                      <Description>"The Stopwatch Blueprints (1)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+783</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111441</ID>
+                      <Description>"The Stopwatch Core (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+7A7</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111442</ID>
+                      <Description>"The Stopwatch Frame (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+7CB</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111443</ID>
+                      <Description>"The Stopwatch Ornaments (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+7EF</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111444</ID>
+                      <Description>"The Trash Heart Blueprints (1)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+813</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111445</ID>
+                      <Description>"The Trash Heart Core (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+837</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111446</ID>
+                      <Description>"The Trash Heart Frame (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+85B</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111447</ID>
+                      <Description>"The Trash Heart Ornaments (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+87F</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111448</ID>
+                      <Description>"The Obsidian Cat Blueprints (1)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+8A3</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111449</ID>
+                      <Description>"The Obsidian Cat Core (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+8C7</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111450</ID>
+                      <Description>"The Obsidian Cat Frame (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+8EB</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111451</ID>
+                      <Description>"The Obsidian Cat Ornaments (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+90F</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111452</ID>
+                      <Description>"The Shell Blueprints (1)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+933</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111453</ID>
+                      <Description>"The Shell Core (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+957</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111454</ID>
+                      <Description>"The Shell Frame (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+97B</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111455</ID>
+                      <Description>"The Shell Ornaments (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+99F</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111456</ID>
+                      <Description>"The Cross Blueprints (1)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+9C3</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111457</ID>
+                      <Description>"The Cross Core (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+9E7</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111458</ID>
+                      <Description>"The Cross Frame (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+A0B</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111459</ID>
+                      <Description>"The Cross Ornaments (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+A2F</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111460</ID>
+                      <Description>"Cartographer Shards (99999)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+A53</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111461</ID>
+                      <Description>"Broken Era Delve Key (10)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+A77</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111462</ID>
+                      <Description>"Curious Treasure Key +1 (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+A9B</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111463</ID>
+                      <Description>"Curious Treasure Key +2 (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+ABF</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111464</ID>
+                      <Description>"Old Treasure Key +2 (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+AE3</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111465</ID>
+                      <Description>"Old Treasure Key +1 (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+B07</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111466</ID>
+                      <Description>"Old Treasure Key (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+B2B</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111467</ID>
+                      <Description>"Ancient Treasure Key (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+B4F</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111468</ID>
+                      <Description>"Ancient Treasure Key +1 (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+B73</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111469</ID>
+                      <Description>"Ancient Treasure Key +2 (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+B97</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111470</ID>
+                      <Description>"Curious Treasure Key (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+BBB</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111471</ID>
+                      <Description>"TNF:(TEST) - Grey (99) *maybe TEST Item Placeholder*"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+BDF</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111472</ID>
+                      <Description>"TNF:(TEST) - DarkGrey (99) *maybe TEST Item Placeholder*"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+C03</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111473</ID>
+                      <Description>"TNF:(TEST) - Blue (99) *maybe TEST Item Placeholder*"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+C27</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111474</ID>
+                      <Description>"TNF:(TEST) - Green (99) *maybe TEST Item Placeholder*"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+C4B</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111475</ID>
+                      <Description>"UNKOWN (*****)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+C6F</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111476</ID>
+                      <Description>"Ancient Treasure Key +3 (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+C93</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111477</ID>
+                      <Description>"Ancient Treasure Key +4 (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+CB7</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111478</ID>
+                      <Description>"Ancient Treasure Key +5 (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+CDB</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111479</ID>
+                      <Description>"Curious Treasure Key +3 (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+CFF</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111480</ID>
+                      <Description>"Curious Treasure Key +4 (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+D23</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111481</ID>
+                      <Description>"Curious Treasure Key +5 (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+D47</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111482</ID>
+                      <Description>"Old Treasure Key +3 (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+D6B</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111483</ID>
+                      <Description>"Old Treasure Key +4 (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+D8F</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111484</ID>
+                      <Description>"Old Treasure Key +5 (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+DB3</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111485</ID>
+                      <Description>"Mystical Treasure Key (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+DD7</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111486</ID>
+                      <Description>"Mystical Treasure Key +1 (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+DFC</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111487</ID>
+                      <Description>"Mystical Treasure Key +2 (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+E21</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111488</ID>
+                      <Description>"Mystical Treasure Key +3 (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+E46</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111489</ID>
+                      <Description>"Mystical Treasure Key +4 (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+E6B</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111490</ID>
+                      <Description>"Mystical Treasure Key +5 (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+E90</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111491</ID>
+                      <Description>"The Crystal Hedgehog Blueprints (1)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+EB5</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111492</ID>
+                      <Description>"The Crystal Hedgehog Core (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+EDA</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111493</ID>
+                      <Description>"The Crystal Hedgehog Frame (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+EFF</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111494</ID>
+                      <Description>"The Crystal Hedgehog Ornaments (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+F24</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111495</ID>
+                      <Description>"The Astral Belt Blueprints (1)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+F49</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111496</ID>
+                      <Description>"The Astral Belt Core (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+F6E</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111497</ID>
+                      <Description>"The Astral Belt Frame (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+F93</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111498</ID>
+                      <Description>"The Astral Belt Ornamens (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+FB8</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111499</ID>
+                      <Description>"The Buttery Blueprints (1)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+FDD</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111500</ID>
+                      <Description>"The Buttery Core (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+1002</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111501</ID>
+                      <Description>"The Buttery Frame (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+1027</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111502</ID>
+                      <Description>"The Buttery Ornaments (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+104C</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111503</ID>
+                      <Description>"The Red Butterfly Blueprints (1)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+1071</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111504</ID>
+                      <Description>"The Red Butterfly Core (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+1096</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111505</ID>
+                      <Description>"The Red Butterfly Frame (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+10BB</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111506</ID>
+                      <Description>"The Red Butterfly Ornaments (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+10E0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111507</ID>
+                      <Description>"The Frozen Statue Blueprints (1)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+1105</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111508</ID>
+                      <Description>"The Frozen Statue Core (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+112A</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111509</ID>
+                      <Description>"The Frozen Statue Frame (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+114F</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111510</ID>
+                      <Description>"The Frozen Statue Ornaments (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+1174</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111511</ID>
+                      <Description>"The Ring of Steel Blueprints (1)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+1199</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111512</ID>
+                      <Description>"The Ring Of Steel Core (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+11BE</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111513</ID>
+                      <Description>"The Ring Of Steel Frame (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+11E3</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111514</ID>
+                      <Description>"The Ring Of Steel Ornaments (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+1208</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111515</ID>
+                      <Description>"The Ring Of Elements (1)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+122D</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111516</ID>
+                      <Description>"The Ring Of Elements Core (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+1252</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111517</ID>
+                      <Description>"The Ring Of Elements Frame (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+1277</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111518</ID>
+                      <Description>"The Ring Of Elements Ornaments (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+129C</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111519</ID>
+                      <Description>"The Wild Mask Blueprints (1)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+12C1</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111520</ID>
+                      <Description>"The Wild Mask Core (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+12E6</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111521</ID>
+                      <Description>"The Wild Mask Frame (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+130B</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111522</ID>
+                      <Description>"The Wild Mask Ornaments (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+1330</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111523</ID>
+                      <Description>"The Spooky Sphere Blueprints (1)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+1355</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111524</ID>
+                      <Description>"The Spooky Sphere Core (99)"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>matloc02+22+137A</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337111531</ID>
+                  <Description>"Order by Max Item Amount"</Description>
+                  <Options moHideChildren="1"/>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>1337111699</ID>
+                      <Description>"Currency"</Description>
+                      <Options moHideChildren="1"/>
+                      <GroupHeader>1</GroupHeader>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>1337111546</ID>
+                          <Description>"Hunter Token"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc01+22+1FA</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111547</ID>
+                          <Description>"Fashion Credits (99999)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc01+22+21F</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111555</ID>
+                          <Description>"Bounty (1000000)"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22-3d</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111597</ID>
+                          <Description>"Shop Token (99999)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+5AF</Address>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111695</ID>
+                      <Description>"Blueprints (max Value 1)"</Description>
+                      <Options moHideChildren="1"/>
+                      <GroupHeader>1</GroupHeader>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>1337111534</ID>
+                          <Description>"The Champion Belt Blueprints (1)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc01+22+3E</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111538</ID>
+                          <Description>"The Manifesto Belt Blueprints (1)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc01+22+D2</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111542</ID>
+                          <Description>"The Ancient Book Blueprints (1)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc01+22+166</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111598</ID>
+                          <Description>"The Shield Blueprints (1)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+5D3</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111602</ID>
+                          <Description>"The Thunder Hammer Blueprints (1)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+663</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111606</ID>
+                          <Description>"The Scanner Blueprints (1)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+6F3</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111610</ID>
+                          <Description>"The Stopwatch Blueprints (1)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+783</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111614</ID>
+                          <Description>"The Trash Heart Blueprints (1)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+813</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111618</ID>
+                          <Description>"The Obsidian Cat Blueprints (1)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+8A3</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111622</ID>
+                          <Description>"The Shell Blueprints (1)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+933</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111626</ID>
+                          <Description>"The Cross Blueprints (1)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+9C3</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111661</ID>
+                          <Description>"The Crystal Hedgehog Blueprints (1)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+EB5</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111665</ID>
+                          <Description>"The Astral Belt Blueprints (1)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+F49</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111669</ID>
+                          <Description>"The Buttery Blueprints (1)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+FDD</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111673</ID>
+                          <Description>"The Red Butterfly Blueprints (1)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+1071</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111677</ID>
+                          <Description>"The Frozen Statue Blueprints (1)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+1105</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111681</ID>
+                          <Description>"The Ring of Steel Blueprints (1)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+1199</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111685</ID>
+                          <Description>"The Ring Of Elements (1)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+122D</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111689</ID>
+                          <Description>"The Wild Mask Blueprints (1)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+12C1</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111693</ID>
+                          <Description>"The Spooky Sphere Blueprints (1)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+1355</Address>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111696</ID>
+                      <Description>"Normal Treasure Keys (max Value 10)"</Description>
+                      <Options moHideChildren="1"/>
+                      <GroupHeader>1</GroupHeader>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>1337111577</ID>
+                          <Description>"Delve Key (10)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+2DF</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111594</ID>
+                          <Description>"Curious Treasure Key (10)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+543</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111595</ID>
+                          <Description>"Ascendant Treasure Key (10)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+567</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111596</ID>
+                          <Description>"Old Treasure Key (10)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+58B</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111631</ID>
+                          <Description>"Broken Era Delve Key (10)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+A77</Address>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111698</ID>
+                      <Description>"Special Treasure Keys (max Value 99)"</Description>
+                      <Options moHideChildren="1"/>
+                      <GroupHeader>1</GroupHeader>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>1337111640</ID>
+                          <Description>"Curious Treasure Key (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+BBB</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111632</ID>
+                          <Description>"Curious Treasure Key +1 (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+A9B</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111633</ID>
+                          <Description>"Curious Treasure Key +2 (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+ABF</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111649</ID>
+                          <Description>"Curious Treasure Key +3 (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+CFF</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111650</ID>
+                          <Description>"Curious Treasure Key +4 (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+D23</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111651</ID>
+                          <Description>"Curious Treasure Key +5 (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+D47</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111636</ID>
+                          <Description>"Old Treasure Key (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+B2B</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111635</ID>
+                          <Description>"Old Treasure Key +1 (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+B07</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111634</ID>
+                          <Description>"Old Treasure Key +2 (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+AE3</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111652</ID>
+                          <Description>"Old Treasure Key +3 (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+D6B</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111653</ID>
+                          <Description>"Old Treasure Key +4 (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+D8F</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111654</ID>
+                          <Description>"Old Treasure Key +5 (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+DB3</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111637</ID>
+                          <Description>"Ancient Treasure Key (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+B4F</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111638</ID>
+                          <Description>"Ancient Treasure Key +1 (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+B73</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111639</ID>
+                          <Description>"Ancient Treasure Key +2 (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+B97</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111646</ID>
+                          <Description>"Ancient Treasure Key +3 (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+C93</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111647</ID>
+                          <Description>"Ancient Treasure Key +4 (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+CB7</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111648</ID>
+                          <Description>"Ancient Treasure Key +5 (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+CDB</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111655</ID>
+                          <Description>"Mystical Treasure Key (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+DD7</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111656</ID>
+                          <Description>"Mystical Treasure Key +1 (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+DFC</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111657</ID>
+                          <Description>"Mystical Treasure Key +2 (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+E21</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111658</ID>
+                          <Description>"Mystical Treasure Key +3 (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+E46</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111659</ID>
+                          <Description>"Mystical Treasure Key +4 (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+E6B</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111660</ID>
+                          <Description>"Mystical Treasure Key +5 (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+E90</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111641</ID>
+                          <Description>"TNF:(TEST) - Grey (99) *maybe TEST Item Placeholder*"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+BDF</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111642</ID>
+                          <Description>"TNF:(TEST) - DarkGrey (99) *maybe TEST Item Placeholder*"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+C03</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111643</ID>
+                          <Description>"TNF:(TEST) - Blue (99) *maybe TEST Item Placeholder*"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+C27</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111644</ID>
+                          <Description>"TNF:(TEST) - Green (99) *maybe TEST Item Placeholder*"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+C4B</Address>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111697</ID>
+                      <Description>"Materials (max Value 99)"</Description>
+                      <Options moHideChildren="1"/>
+                      <GroupHeader>1</GroupHeader>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>1337111694</ID>
+                          <Description>"The Spooky Sphere Core (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+137A</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111532</ID>
+                          <Description>"The Spooky Sphere Frame (99)"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc01+22-c</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111533</ID>
+                          <Description>"The Spooky Sphere Ornaments (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc01+22+19</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111535</ID>
+                          <Description>"The Champion Belt Core (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc01+22+63</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111536</ID>
+                          <Description>"The Champion Belt Frame (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc01+22+88</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111537</ID>
+                          <Description>"The Champion Belt Ornaments (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc01+22+AD</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111539</ID>
+                          <Description>"The Manifesto Belt Core (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc01+22+F7</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111540</ID>
+                          <Description>"The Manifesto Belt Frame (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc01+22+11C</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111541</ID>
+                          <Description>"The Manifesto Belt Ornaments (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc01+22+141</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111543</ID>
+                          <Description>"The Ancient Book Core (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc01+22+18B</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111544</ID>
+                          <Description>"The Ancient Book Frame (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc01+22+1B0</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111545</ID>
+                          <Description>"The Ancient Book Ornaments (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc01+22+1D5</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111662</ID>
+                          <Description>"The Crystal Hedgehog Core (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+EDA</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111663</ID>
+                          <Description>"The Crystal Hedgehog Frame (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+EFF</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111664</ID>
+                          <Description>"The Crystal Hedgehog Ornaments (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+F24</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111666</ID>
+                          <Description>"The Astral Belt Core (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+F6E</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111667</ID>
+                          <Description>"The Astral Belt Frame (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+F93</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111668</ID>
+                          <Description>"The Astral Belt Ornamens (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+FB8</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111670</ID>
+                          <Description>"The Buttery Core (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+1002</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111671</ID>
+                          <Description>"The Buttery Frame (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+1027</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111672</ID>
+                          <Description>"The Buttery Ornaments (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+104C</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111674</ID>
+                          <Description>"The Red Butterfly Core (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+1096</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111675</ID>
+                          <Description>"The Red Butterfly Frame (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+10BB</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111676</ID>
+                          <Description>"The Red Butterfly Ornaments (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+10E0</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111678</ID>
+                          <Description>"The Frozen Statue Core (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+112A</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111679</ID>
+                          <Description>"The Frozen Statue Frame (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+114F</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111680</ID>
+                          <Description>"The Frozen Statue Ornaments (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+1174</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111682</ID>
+                          <Description>"The Ring Of Steel Core (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+11BE</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111683</ID>
+                          <Description>"The Ring Of Steel Frame (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+11E3</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111684</ID>
+                          <Description>"The Ring Of Steel Ornaments (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+1208</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111686</ID>
+                          <Description>"The Ring Of Elements Core (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+1252</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111687</ID>
+                          <Description>"The Ring Of Elements Frame (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+1277</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111688</ID>
+                          <Description>"The Ring Of Elements Ornaments (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+129C</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111690</ID>
+                          <Description>"The Wild Mask Core (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+12E6</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111691</ID>
+                          <Description>"The Wild Mask Frame (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+130B</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111692</ID>
+                          <Description>"The Wild Mask Ornaments (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+1330</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111599</ID>
+                          <Description>"The Shield Core (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+5F7</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111600</ID>
+                          <Description>"The Shield Frame (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+61B</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111601</ID>
+                          <Description>"The Shield Ornaments (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+63F</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111603</ID>
+                          <Description>"The Thunder Hammer Core (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+687</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111604</ID>
+                          <Description>"The Thunder Hammer Frame (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+6AB</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111605</ID>
+                          <Description>"The Thunder Hammer Ornaments (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+6CF</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111607</ID>
+                          <Description>"The Scanner Core (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+717</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111608</ID>
+                          <Description>"The Scanner Frame (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+73B</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111609</ID>
+                          <Description>"The Scanner Ornaments (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+75F</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111611</ID>
+                          <Description>"The Stopwatch Core (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+7A7</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111612</ID>
+                          <Description>"The Stopwatch Frame (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+7CB</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111613</ID>
+                          <Description>"The Stopwatch Ornaments (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+7EF</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111615</ID>
+                          <Description>"The Trash Heart Core (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+837</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111616</ID>
+                          <Description>"The Trash Heart Frame (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+85B</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111617</ID>
+                          <Description>"The Trash Heart Ornaments (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+87F</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111619</ID>
+                          <Description>"The Obsidian Cat Core (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+8C7</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111620</ID>
+                          <Description>"The Obsidian Cat Frame (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+8EB</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111621</ID>
+                          <Description>"The Obsidian Cat Ornaments (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+90F</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111623</ID>
+                          <Description>"The Shell Core (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+957</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111624</ID>
+                          <Description>"The Shell Frame (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+97B</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111625</ID>
+                          <Description>"The Shell Ornaments (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+99F</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111627</ID>
+                          <Description>"The Cross Core (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+9E7</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111628</ID>
+                          <Description>"The Cross Frame (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+A0B</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111629</ID>
+                          <Description>"The Cross Ornaments (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+A2F</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111582</ID>
+                          <Description>"Timelocked Memory (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+393</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111583</ID>
+                          <Description>"Greater Memory (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+3B7</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111584</ID>
+                          <Description>"Acendant Memory (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+3DB</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111585</ID>
+                          <Description>"Basic Dye Kit (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+3FF</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111586</ID>
+                          <Description>"Advanced Dye Kit (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+423</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111587</ID>
+                          <Description>"Legendary Dye Kit (99)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+447</Address>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111700</ID>
+                      <Description>"Materials (max Value 999)"</Description>
+                      <Options moHideChildren="1"/>
+                      <GroupHeader>1</GroupHeader>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>1337111548</ID>
+                          <Description>"Augmentation Modules (999)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc01+22+244</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111549</ID>
+                          <Description>"Set Emblems (999)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc01+22+269</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111550</ID>
+                          <Description>"Exotic Lining (999)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc01+22+28E</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111551</ID>
+                          <Description>"Wishfull Fragment (999)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc01+22+2B3</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111552</ID>
+                          <Description>"Crystallized Time (999)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc01+22+2D8</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111553</ID>
+                          <Description>"Shifting Orb (999)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc01+22+2FD</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111554</ID>
+                          <Description>"Utopical Orb (999)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc01+22+322</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111589</ID>
+                          <Description>"Epic Catalys (999)"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+48f</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111590</ID>
+                          <Description>"Nand Metal (999)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+4B3</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111591</ID>
+                          <Description>"Alien Carapace (999)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+4D7</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111592</ID>
+                          <Description>"Energy Core (999)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+4FB</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111593</ID>
+                          <Description>"Strong God (999)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+51F</Address>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111701</ID>
+                      <Description>"Materials (max Value 99999)"</Description>
+                      <Options moHideChildren="1"/>
+                      <GroupHeader>1</GroupHeader>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>1337111556</ID>
+                          <Description>"Scrap Parts (99999)"</Description>
+                          <ShowAsSigned>0</ShowAsSigned>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22-C</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111557</ID>
+                          <Description>"Cloth Rags (99999)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+17</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111558</ID>
+                          <Description>"Weapon Parts (99999)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+3A</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111559</ID>
+                          <Description>"Chemical Components (99999)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+5D</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111560</ID>
+                          <Description>"Duct Tape (99999)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+80</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111561</ID>
+                          <Description>"Cordboard (99999)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+A3</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111562</ID>
+                          <Description>"Wiring (99999)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+C6</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111563</ID>
+                          <Description>"Biomass (99999)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+E9</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111564</ID>
+                          <Description>"Glue (99999)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+10C</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111565</ID>
+                          <Description>"Plastic (99999)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+12F</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111566</ID>
+                          <Description>"Lether (99999)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+153</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111567</ID>
+                          <Description>"Crystal (99999)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+177</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111568</ID>
+                          <Description>"Chipset (99999)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+19B</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111569</ID>
+                          <Description>"Uncommon Catalyst (99999)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+1BF</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111570</ID>
+                          <Description>"Polyester (99999)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+1E3</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111571</ID>
+                          <Description>"Alloy (99999)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+207</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111572</ID>
+                          <Description>"DNA (99999)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+22B</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111573</ID>
+                          <Description>"Computer Module (99999)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+24F</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111574</ID>
+                          <Description>"Rare Catalyst (99999)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+273</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111575</ID>
+                          <Description>"Timeless Essence (9999)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+297</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111576</ID>
+                          <Description>"Kindness (99999)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+2BB</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111588</ID>
+                          <Description>"Time Crystal (99999)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+46B</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111630</ID>
+                          <Description>"Cartographer Shards (99999)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+A53</Address>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111702</ID>
+                      <Description>"UNKNOWN ITEMS"</Description>
+                      <Options moHideChildren="1"/>
+                      <GroupHeader>1</GroupHeader>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>1337111578</ID>
+                          <Description>"UNKOWN (*****)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+303</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111579</ID>
+                          <Description>"UNKOWN (*****)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+327</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111580</ID>
+                          <Description>"UNKOWN (*****)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+34B</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111581</ID>
+                          <Description>"UNKOWN (*****)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+36F</Address>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1337111645</ID>
+                          <Description>"UNKOWN (*****)"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>matloc02+22+C6F</Address>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1337111337</ID>
+              <Description>"Account Progress"</Description>
+              <Options moHideChildren="1"/>
+              <Color>8000FF</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+aobscan(accountprog,61 63 63 6F 75 6E 74 50 72 6F 67 72 65 73 73 53 74 61 74 73)
+accountprog:
+  db
+registersymbol(accountprog)
+[DISABLE]
+unregistersymbol(*)
+
+</AssemblerScript>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>1337111343</ID>
+                  <Description>"rebelRankProgress"</Description>
+                  <Options moHideChildren="1"/>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>1337111358</ID>
+                      <Description>"*Click and READ INFO* (max RebelRank with all Rewards)"</Description>
+                      <Color>0000FF</Color>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>{$lua}
+if syntaxcheck then return end
+[ENABLE]
+    messageDialog("for example, \n\nIf you have 250 EXP out of 1500 EXP needed, \n\nSet *CURRENT AP* to 1500 and *STORED AP* to 100000. \n\nYou can now increase your Rank to maximum with every click on LevelUP and receive all rewards.")
+--local memrec = memrec or getAddressList().getMemoryRecordByDescription("OPEN - Relic Hunters Legend - SAVEGAME LOCATION")
+local timer = createTimer()
+timer.Interval = 1 * 100
+timer.OnTimer = function(theTimerCallingThisFunction)
+  memrec.Active = false
+  timer.destroy()
+end
+[DISABLE]
+
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111344</ID>
+                      <Description>"rebelRank- (Ignore That)"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>2 Bytes</VariableType>
+                      <Address>accountprog+a0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111345</ID>
+                      <Description>"currentAP"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>accountprog+af</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111346</ID>
+                      <Description>"totalAP"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>accountprog+bc</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111347</ID>
+                      <Description>"storedAP"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>accountprog+ca</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337111364</ID>
+                  <Description>"Misc"</Description>
+                  <Options moHideChildren="1"/>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>1337111338</ID>
+                      <Description>"Current Level Cap (Calculated by RebelRank)"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>Byte</VariableType>
+                      <Address>accountprog+23</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111339</ID>
+                      <Description>"storageSize (dont play with this)"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>accountprog+34</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111341</ID>
+                      <Description>"baseAttributePoints (use ce table)"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>2 Bytes</VariableType>
+                      <Address>accountprog+62</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111340</ID>
+                      <Description>"baseSkillPoints (use ce table)"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>2 Bytes</VariableType>
+                      <Address>accountprog+49</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111342</ID>
+                      <Description>"treasureMapStorageSize"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>2 Bytes</VariableType>
+                      <Address>accountprog+7e</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111348</ID>
+                      <Description>"permissionLevel ?? dunno what this is??"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>2 Bytes</VariableType>
+                      <Address>accountprog+e0</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1337111349</ID>
+                      <Description>"bounty"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>accountprog+13b</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337111355</ID>
+          <Description>"Relic Hunters Legend v1.0.0 Steam RUNE Table"</Description>
+          <Options moHideChildren="1"/>
+          <Color>40FF00</Color>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>149</ID>
+              <Description>"Enable Game Table"</Description>
+              <Color>80FF80</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{$lua}
+if syntaxcheck then return end
+LaunchMonoDataCollector()
+{$asm}
+[ENABLE]
+aobscanRegion(isplayercharacter,CharacterActionController:get_IsPlayer,CharacterActionController:get_IsPlayer+60,0F ?? ?? ?? ?? ?? ?? 85 ?? 75 ?? 0F ?? ?? ?? ?? ?? ??)
+alloc(newmem,$1000,isplayercharacter)
+label(code)
+label(return)
+label(playercheck)
+newmem:
+code:
+  movzx eax,byte ptr [rsi+00000141]
+  mov [playercheck],eax
+  jmp return
+playercheck:
+db
+isplayercharacter:
+  jmp newmem
+  nop 2
+return:
+registersymbol(playercheck)
+registersymbol(isplayercharacter)
+[DISABLE]
+isplayercharacter:
+  db 0F B6 86 41 01 00 00
+unregistersymbol(playercheck)
+unregistersymbol(isplayercharacter)
+dealloc(newmem)
+
+</AssemblerScript>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>187</ID>
+                  <Description>"Max Dodge Projectile Chance"</Description>
+                  <Color>40FF00</Color>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+aobscanRegion(dodge,RuntimeCharacterStats:GetDodgeProjectilesChance,RuntimeCharacterStats:GetDodgeProjectilesChance+160,77 ?? F3 ?? ?? ?? ?? F3 ?? ?? ?? F2)
+dodge:
+  db 90 90
+registersymbol(dodge)
+aobscanRegion(dodgeval,RuntimeCharacterStats:GetDodgeProjectilesChance+50,RuntimeCharacterStats:GetDodgeProjectilesChance+f2,F3 ?? ?? ?? F3 ?? ?? ?? F2 ?? ?? ?? F3 ?? ?? ?? ?? F2 ?? ?? ??)
+alloc(newmem,$1000,dodgeval)
+label(code)
+label(return)
+newmem:
+  mov [rax],(float)1
+code:
+  movss xmm0,[rax]
+  cvtss2sd xmm0,xmm0
+  jmp return
+dodgeval:
+  jmp newmem
+  nop 3
+return:
+registersymbol(dodgeval)
+[DISABLE]
+dodge:
+  db 77 10
+dodgeval:
+  db F3 0F 10 00 F3 0F 5A C0
+unregistersymbol(*)
+dealloc(*)
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>259286</ID>
+                  <Description>"Max Damage Reduction"</Description>
+                  <Color>40FF00</Color>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+aobscanRegion(dmgredu,RuntimeCharacterStats:GetDamageReduction+60,RuntimeCharacterStats:GetDamageReduction+100,77 ?? F3 ?? ?? ?? ?? F3 ?? ?? ?? F2 ?? ?? ?? ?? EB)
+dmgredu:
+  db 90 90
+registersymbol(dmgredu)
+
+aobscanRegion(dmgreduval,RuntimeCharacterStats:GetDamageReduction,RuntimeCharacterStats:GetDamageReduction+80,F3 0F 10 00 F3 0F 5A C0 F2 ?? ?? ?? F3 ?? ?? ?? ?? F2)
+alloc(newmem,$1000,dmgreduval)
+label(code)
+label(return)
+newmem:
+  mov [rax],(float)1
+code:
+  movss xmm0,[rax]
+  cvtss2sd xmm0,xmm0
+  jmp return
+
+dmgreduval:
+  jmp newmem
+  nop 3
+return:
+registersymbol(dmgreduval)
+[DISABLE]
+dmgredu:
+  db 77 10
+dmgreduval:
+  db F3 0F 10 00 F3 0F 5A C0
+unregistersymbol(*)
+dealloc(*)
+
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>259287</ID>
+                  <Description>"Max Damage Resist Cap"</Description>
+                  <Color>40FF00</Color>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+aobscanRegion(dmgres,RuntimeCharacterStats:GetDamageResistTypeCap+50,RuntimeCharacterStats:GetDamageResistTypeCap+100,0F 87 ?? ?? 00 00 F3 ?? ?? ?? ?? F3 ?? ?? ?? F2)
+dmgres:
+nop 6
+registersymbol(dmgres)
+aobscanRegion(dmgresval,RuntimeCharacterStats:GetDamageResistTypeCap,RuntimeCharacterStats:GetDamageResistTypeCap+100,F3 0F 10 00 F3 0F 5A C0 F2 ?? ?? ?? F3 ?? ?? ?? ?? F2)
+alloc(newmem,$1000,dmgresval)
+label(code)
+label(return)
+newmem:
+  mov [rax-4],(float)1
+  mov [rax],(float)1
+code:
+  movss xmm0,[rax]
+  cvtss2sd xmm0,xmm0
+  jmp return
+
+dmgresval:
+  jmp newmem
+  nop 3
+return:
+registersymbol(dmgresval)
+[DISABLE]
+dmgres:
+  db 0F 87 10 00 00 00
+dmgresval:
+  db F3 0F 10 00 F3 0F 5A C0
+unregistersymbol(*)
+dealloc(*)
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>118</ID>
+                  <Description>"High FireRate"</Description>
+                  <Color>4080FF</Color>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+aobscanRegion(firerate,WeaponController:FreeFire,WeaponController:FreeFire+100,F3 0F 5A C0 F2 0F 5A E8 F3 0F 11 69 ??)
+firerate+4:
+  db F2 0F 5A C0
+registersymbol(firerate)
+[DISABLE]
+firerate+4:
+  db F2 0F 5A E8
+unregistersymbol(firerate)
+
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>140</ID>
+                  <Description>"Damage Multiplier"</Description>
+                  <Options moHideChildren="1"/>
+                  <Color>4080FF</Color>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+aobscanregion(multiplierdmg,LootWeaponInstance:GetBaseStatsModifiers+100,LootWeaponInstance:GetBaseStatsModifiers+250,F3 0F 10 40 10 F3 0F 5A C0 F2 0F 5A E8 F3 0F 11 AD ?? ?? ?? ?? F3 0F 10 85 ?? ?? ?? ?? F3 0F 5A C0) // should be unique
+alloc(newmem,$1000,multiplierdmg)
+alloc(multi,4)
+label(code)
+label(return)
+newmem:
+  mulss xmm0,[multi]
+code:
+  cvtss2sd xmm0,xmm0
+  cvtsd2ss xmm5,xmm0
+  jmp return
+multiplierdmg+05:
+  jmp newmem
+  nop 3
+return:
+multi:
+  dd (float)5
+registersymbol(multiplierdmg)
+registersymbol(multi)
+[DISABLE]
+multiplierdmg+05:
+  db F3 0F 5A C0 F2 0F 5A E8
+unregistersymbol(multiplierdmg)
+unregistersymbol(multi)
+dealloc(newmem)
+</AssemblerScript>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>141</ID>
+                      <Description>"Damage Multiplier Value"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>FF00FF</Color>
+                      <VariableType>Float</VariableType>
+                      <Address>multi</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>259310</ID>
+                  <Description>"Set Weapon Range"</Description>
+                  <Options moHideChildren="1"/>
+                  <Color>4080FF</Color>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+aobscanRegion(gunrange,LootWeaponInstance:GetBaseStatsModifiers+200,LootWeaponInstance:GetBaseStatsModifiers+350,48 ?? ?? ?? 48 ?? ?? 83 ?? ?? F3 ?? ?? ?? ?? F3 0F 5A C0 F2 0F 5A E8 F3 ?? ?? ?? ?? ?? ?? ?? F3 ?? ?? ?? ?? ?? ?? ?? F3 ?? ?? ?? F2 ?? ?? ?? F3 ?? ?? ?? ?? ?? ?? ?? F3 ?? ?? ?? ?? ?? ?? ?? F3 ?? ?? ?? C7 ?? ?? ?? ?? ?? ?? ?? ?? ?? C7 ?? ?? ?? ?? ?? ?? ?? ?? ?? C7) // should be unique
+alloc(newmem,$1000,gunrange)
+alloc(rangeval,4)
+label(code)
+label(return)
+newmem:
+  movss xmm0,[rangeval]
+code:
+  cvtss2sd xmm0,xmm0
+  cvtsd2ss xmm5,xmm0
+  jmp return
+gunrange+0F:
+  jmp newmem
+  nop 3
+return:
+rangeval:
+  dd (float)20
+registersymbol(gunrange)
+registersymbol(rangeval)
+[DISABLE]
+gunrange+0F:
+  db F3 0F 5A C0 F2 0F 5A E8
+unregistersymbol(gunrange)
+unregistersymbol(gunrange)
+dealloc(newmem)
+</AssemblerScript>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>259311</ID>
+                      <Description>"Weapon Range Value (overall max range is 7)"</Description>
+                      <ShowAsSigned>0</ShowAsSigned>
+                      <Color>FF00FF</Color>
+                      <VariableType>Float</VariableType>
+                      <Address>rangeval</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>128</ID>
+                  <Description>"Inf Ammo"</Description>
+                  <Color>4080FF</Color>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+aobscanRegion(infammo,WeaponAmmoManagement:ChangeLoad,WeaponAmmoManagement:ChangeLoad+ff,F2 ?? ?? ?? 03 ?? 48 ?? ?? ??)
+infammo+4:
+  db 90 90
+registersymbol(infammo)
+[DISABLE]
+infammo+4:
+  db 03 C8
+unregistersymbol(infammo)
+
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>122</ID>
+                  <Description>"Accuracy 100%"</Description>
+                  <Color>4080FF</Color>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+aobscanRegion(accuracy,Constants:DeviationDegrees,Constants:DeviationDegrees+80,F3 0F 5A D2 F3 0F 10 1D ?? ?? 00 00)
+accuracy+4:
+movss xmm3,xmm0
+nop 4
+registersymbol(accuracy)
+[DISABLE]
+accuracy+4:
+  db F3 0F 10 1D 42 00 00 00
+unregistersymbol(accuracy)
+
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>164</ID>
+                  <Description>"Skills Menu"</Description>
+                  <Options moHideChildren="1"/>
+                  <Color>4080FF</Color>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+aobscanRegion(skillattripoints,SkillTreeLoadout:CloneInto+100,SkillTreeLoadout:CloneInto+2E8,89 ?? ?? ?? ?? ?? 49 ?? ?? ?? 66 ?? ??49 ?? ?? ?? ?? ?? ?? ?? ?? ?? 41 ?? ?? 48 ?? ?? ?? 48)
+alloc(newmem,$1000,skillattripoints)
+label(code)
+label(return)
+label(mypoints)
+newmem:
+code:
+  mov [rdi+00000098],eax
+  mov [mypoints],rdi
+  jmp return
+mypoints:
+db
+skillattripoints:
+  jmp newmem
+  nop
+return:
+registersymbol(skillattripoints mypoints)
+[DISABLE]
+skillattripoints:
+  db 89 87 98 00 00 00
+unregistersymbol(*)
+dealloc(*)
+</AssemblerScript>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>174</ID>
+                      <Description>"Current Attribute Values"</Description>
+                      <Options moHideChildren="1"/>
+                      <GroupHeader>1</GroupHeader>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>170</ID>
+                          <Description>"Might"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>[mypoints]+48</Address>
+                          <Offsets>
+                            <Offset>20</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>171</ID>
+                          <Description>"Vigor"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>[mypoints]+48</Address>
+                          <Offsets>
+                            <Offset>24</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>172</ID>
+                          <Description>"Agility"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>[mypoints]+48</Address>
+                          <Offsets>
+                            <Offset>28</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>173</ID>
+                          <Description>"Spirit"</Description>
+                          <VariableType>4 Bytes</VariableType>
+                          <Address>[mypoints]+48</Address>
+                          <Offsets>
+                            <Offset>2C</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>166</ID>
+                      <Description>"TotalSkillPoints"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[mypoints]+90</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>167</ID>
+                      <Description>"TotalInvestedSkillPoints"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[mypoints]+94</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>168</ID>
+                      <Description>"TotalAttributePoints"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[mypoints]+98</Address>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>169</ID>
+                      <Description>"TotalInvestedAttributePoints"</Description>
+                      <VariableType>4 Bytes</VariableType>
+                      <Address>[mypoints]+9C</Address>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>104269</ID>
+      <Description>"------------------------------------------------------------------------"</Description>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>10326</ID>
+      <Description>"Discord/PayPal-Donation-Link/OCT"</Description>
+      <Options moHideChildren="1"/>
+      <Color>40FF00</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1337111357</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>10324</ID>
+          <Description>"Support/Donations can be Added to my PAYPAL.ME"</Description>
+          <Color>00FF00</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104128</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>41356</ID>
+          <Description>" [&lt;--CHECKBOX] PALPAL.ME Donation/Support Link"</Description>
+          <Color>F8EC07</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://paypal.me/mobiusce')
+{$asm}
+nop
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104152</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104270</ID>
+          <Description>"my Discord-ID:  --&gt;  ScooPaX#8840  &lt;--"</Description>
+          <Options moAlwaysHideChildren="1"/>
+          <Color>8000FF</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104155</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104156</ID>
+          <Description>"[&lt;--CHECKBOX]_OPEN_OCT_TOPIC"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://opencheattables.com/viewtopic.php?t=1536')
+{$asm}
+nop
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104129</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104151</ID>
+          <Description>"[&lt;--CHECKBOX]_OPEN_CHEATENGINE.ORG"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://www.cheatengine.org/')
+{$asm}
+nop
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>10634</ID>
+      <Description>"------------------------------------------------------------------------"</Description>
+      <Options moHideChildren="1"/>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>
