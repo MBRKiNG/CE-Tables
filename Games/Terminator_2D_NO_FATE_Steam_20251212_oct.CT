@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="50">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1337111356</ID>
+      <Description>"------------------------------------------------------------------------"</Description>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1337322035</ID>
+      <Description>"Terminator_2D_NO_FATE_Steam_20251212_MBRKiNG"</Description>
+      <Options moHideChildren="1"/>
+      <Color>4080FF</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+
+[ENABLE]
+openProcess('Terminator 2D: NO FATE')
+synchronize(LaunchMonoDataCollector)
+
+function parseStringSegments(inputStr)
+    local segments = {}
+    for segment in inputStr:gmatch("[A-Za-z0-9_]+") do
+        table.insert(segments, segment)
+    end
+    return segments
+end
+
+function DissectCode(address)
+    if not address then
+        address = inputQuery('Enter Address', 'Address:', '')
+    end
+    if not address or address == '' then
+        return
+    end
+    local structureForm = createStructureForm(string.format('%X', getAddress(address)))
+    structureForm.Definenewstructure1.doClick()
+end
+
+function FetchStaticField(symbolStr)
+    symbolStr = parseStringSegments(symbolStr)
+    local fieldName, className, namespace = symbolStr[#symbolStr], symbolStr[#symbolStr - 1], (symbolStr[#symbolStr - 2] or '')
+    local classRef = mono_findClass(namespace, className)
+    local classFields = mono_class_enumFields(classRef, true)
+    for _, field in pairs(classFields) do
+        if field.isStatic and (field.name == fieldName or field.name == '&lt;' .. fieldName .. '&gt;k__BackingField') then
+            return mono_class_getStaticFieldAddress('', classRef) + field.offset
+        end
+    end
+end
+
+registerSymbol('bossRushModeUnlocked', FetchStaticField('com.bitmapbureau.terminator.game.Game.bossRushModeUnlocked'))
+registerSymbol('cheatsUnlocked', FetchStaticField('com.bitmapbureau.terminator.game.Game.cheatsUnlocked'))
+registerSymbol('infiniteContinues', FetchStaticField('com.bitmapbureau.terminator.game.Game.infiniteContinues'))
+registerSymbol('infiniteHealth', FetchStaticField('com.bitmapbureau.terminator.game.Game.infiniteHealth'))
+registerSymbol('infiniteModeUnlocked', FetchStaticField('com.bitmapbureau.terminator.game.Game.infiniteModeUnlocked'))
+registerSymbol('infinitePipebombs', FetchStaticField('com.bitmapbureau.terminator.game.Game.infinitePipebombs'))
+registerSymbol('infiniteTime', FetchStaticField('com.bitmapbureau.terminator.game.Game.infiniteTime'))
+registerSymbol('motherOfTheFutureModeUnlocked', FetchStaticField('com.bitmapbureau.terminator.game.Game.motherOfTheFutureModeUnlocked'))
+registerSymbol('ultraUnlocked', FetchStaticField('com.bitmapbureau.terminator.game.Game.ultraUnlocked'))
+
+
+[DISABLE]
+if monopipe then
+    monopipe.destroy()
+    monopipe = nil
+end
+deleteAllRegisteredSymbols()
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1337322175</ID>
+          <Description>"Invulnerable (enable in main Menu)"</Description>
+          <Color>FF80FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(invulnerable,GameAssembly.dll,7F ?? 83 ?? ?? ?? ?? ?? ?? 75 ?? E8 ?? ?? ?? ?? 48 8B ?? ?? ?? ?? ?? 48 8B ?? ?? ?? ?? ?? 45 33)
+invulnerable:
+  db EB
+registersymbol(invulnerable)
+[DISABLE]
+invulnerable:
+  db 7F
+unregistersymbol(*)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337322177</ID>
+          <Description>"Inf Air Jumps"</Description>
+          <Color>FF80FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(infairjumps,GameAssembly.dll,0F 84 ?? ?? ?? ?? 48 8B ?? 48 8B ?? 48 8B ?? ?? ?? ?? ?? FF ?? ?? ?? ?? ?? 83 ?? ?? ?? ?? ?? ?? 0F 84)
+infairjumps:
+  nop 6
+registersymbol(infairjumps)
+[DISABLE]
+infairjumps:
+  db 0F 84 B8 11 00 00
+unregistersymbol(*)
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337322181</ID>
+          <Description>"Freeze WeaponTimer"</Description>
+          <Color>FF80FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(weapontimerfreeze,GameAssembly.dll,83 ?? ?? 89 ?? ?? ?? ?? ?? 0F 84 ?? ?? ?? ?? 81)
+weapontimerfreeze+2:
+  db 01
+registersymbol(weapontimerfreeze)
+[DISABLE]
+weapontimerfreeze+2:
+  db 01
+unregistersymbol(*)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337322178</ID>
+          <Description>"Reset totalPlayTime"</Description>
+          <Color>FF80FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(totalplaytimereset,GameAssembly.dll,F2 ?? ?? ?? F2 ?? ?? ?? ?? ?? ?? ?? 48 8B ?? ?? ?? ?? ?? 48 8B ?? ?? ?? ?? ?? 48 8B ?? ?? ?? ?? ?? 83)
+totalplaytimereset+3:
+  db F6
+registersymbol(totalplaytimereset)
+[DISABLE]
+totalplaytimereset+3:
+  db C6
+unregistersymbol(totalplaytimereset)
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337322159</ID>
+          <Description>"infiniteTime (Freeze Countdown)"</Description>
+          <Color>00FF00</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+writeBytes(getAddress("infiniteTime"), 0x01)
+[DISABLE]
+writeBytes(getAddress("infiniteTime"), 0x00)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337322160</ID>
+          <Description>"infinitePipebombs"</Description>
+          <Color>00FF00</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+writeBytes(getAddress("infinitePipebombs"), 0x01)
+[DISABLE]
+writeBytes(getAddress("infinitePipebombs"), 0x00)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337322162</ID>
+          <Description>"infiniteHealth"</Description>
+          <Color>00FF00</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+writeBytes(getAddress("infiniteHealth"), 0x01)
+[DISABLE]
+writeBytes(getAddress("infiniteHealth"), 0x00)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337322163</ID>
+          <Description>"infiniteContinues"</Description>
+          <Color>00FF00</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+writeBytes(getAddress("infiniteContinues"), 0x01)
+[DISABLE]
+writeBytes(getAddress("infiniteContinues"), 0x00)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337322164</ID>
+          <Description>"CheatsUnlocked"</Description>
+          <Color>FFFF80</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+writeBytes(getAddress("cheatsUnlocked"), 0x01)
+[DISABLE]
+writeBytes(getAddress("cheatsUnlocked"), 0x00)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337322043</ID>
+          <Description>"bossRushModeUnlocked"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+writeBytes(getAddress("bossRushModeUnlocked"), 0x01)
+[DISABLE]
+writeBytes(getAddress("bossRushModeUnlocked"), 0x00)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337322161</ID>
+          <Description>"infiniteModeUnlocked"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+writeBytes(getAddress("infiniteModeUnlocked"), 0x01)
+[DISABLE]
+writeBytes(getAddress("infiniteModeUnlocked"), 0x00)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337322167</ID>
+          <Description>"motherOfTheFutureModeUnlocked"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+writeBytes(getAddress("motherOfTheFutureModeUnlocked"), 0x01)
+[DISABLE]
+writeBytes(getAddress("motherOfTheFutureModeUnlocked"), 0x00)
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337322166</ID>
+          <Description>"ultraUnlocked"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+writeBytes(getAddress("ultraUnlocked"), 0x01)
+[DISABLE]
+writeBytes(getAddress("ultraUnlocked"), 0x00)
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>104269</ID>
+      <Description>"------------------------------------------------------------------------"</Description>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>10326</ID>
+      <Description>"Discord/PayPal-Donation-Link/OCT"</Description>
+      <Options moHideChildren="1"/>
+      <Color>40FF00</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1337380679</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337380680</ID>
+          <Description>"[&lt;--CHECKBOX]_OPEN_MY_GITHUB"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://github.com/mbrking/CE-Tables')
+{$asm}
+
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337111357</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>10324</ID>
+          <Description>"Support/Donations can be Added to my PAYPAL.ME"</Description>
+          <Color>00FF00</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104128</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>41356</ID>
+          <Description>" [&lt;--CHECKBOX] PALPAL.ME Donation/Support Link"</Description>
+          <Color>F8EC07</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://paypal.me/mobiusce')
+{$asm}
+
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104152</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104270</ID>
+          <Description>"my Discord-ID:  --&gt;  ScooPaX#8840  &lt;--"</Description>
+          <Options moAlwaysHideChildren="1"/>
+          <Color>8000FF</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104155</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104156</ID>
+          <Description>"[&lt;--CHECKBOX]_OPEN_OCT_TOPIC"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://opencheattables.com/viewtopic.php?t=1716')
+{$asm}
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104129</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104151</ID>
+          <Description>"[&lt;--CHECKBOX]_OPEN_CHEATENGINE.ORG"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://www.cheatengine.org/')
+{$asm}
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>10634</ID>
+      <Description>"------------------------------------------------------------------------"</Description>
+      <Options moHideChildren="1"/>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>
