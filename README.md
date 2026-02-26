@@ -26,6 +26,7 @@
 | Resource | Description |
 |----------|-------------|
 | [Open Cheat Tables](https://opencheattables.com/) | Open source cheat tables database |
+| [UE5CEDumper](https://opencheattables.com/viewtopic.php?t=1797) | A Proper Cheat Engine Integration for Unreal Engine Games |
 | [Cheat Engine](https://cheatengine.org/downloads.php) | Download Cheat Engine |
 | [Runtime Modifier](https://rtmod.cheatengine.org/downloads.php) | Download Runtime Modifier Custom Cheat Engine |
 | [Fling Trainer](https://flingtrainer.com/) | Standalone Trainer Versions |
