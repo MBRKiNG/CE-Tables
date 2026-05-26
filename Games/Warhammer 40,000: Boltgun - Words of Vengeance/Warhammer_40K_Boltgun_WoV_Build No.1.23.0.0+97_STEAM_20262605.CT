@@ -1,0 +1,706 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="51">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>22</ID>
+      <Description>"Warhammer_40K_Boltgun_WoV_Build No.1.23.0.0+97_STEAM_20262605_MBRKiNG"</Description>
+      <Options moHideChildren="1"/>
+      <Color>0080FF</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>21</ID>
+          <Description>"Invulnerable"</Description>
+          <Color>FF00FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>
+[ENABLE]
+aobscanmodule(invulnerable,BoltgunWOV-Win64-Shipping.exe,0F ?? ?? ?? ?? ?? F3 ?? ?? ?? ?? ?? ?? ?? 0F ?? ?? ?? ?? ?? ?? 0F ?? ?? ?? ?? ?? 48 ?? ?? 4C ?? ?? ??)
+invulnerable:
+  db 90 E9
+registersymbol(invulnerable)
+[DISABLE]
+invulnerable:
+  db 0F 85
+unregistersymbol(*)
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>10</ID>
+          <Description>"OHK - First Letter Kills Instants"</Description>
+          <Color>FF00FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(ohk1,BoltgunWOV-Win64-Shipping.exe,39 ?? ?? ?? ?? ?? 0F ?? ?? ?? ?? ?? 44 ?? ?? ?? ?? ?? ?? ?? 48 ?? ?? ?? ?? ?? ?? 48 ?? ?? ??)
+ohk1:
+  nop 6
+registersymbol(ohk1)
+[DISABLE]
+ohk1:
+  db 39 8B 48 01 00 00
+unregistersymbol(*)
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>12</ID>
+          <Description>"1 Key Press = Letters A-Z"</Description>
+          <Color>FF00FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+{$lua}
+local keys = {0x41, 0x42, 0x43, 0x44, 0x45, 0x46, 0x47, 0x48, 0x49, 0x4A, 0x4B, 0x4C, 0x4D,
+              0x4E, 0x4F, 0x50, 0x51, 0x52, 0x53, 0x54, 0x55, 0x56, 0x57, 0x58, 0x59, 0x5A}
+
+function pressAlphabet()
+    for _, key in ipairs(keys) do
+        keyDown(key)
+        --sleep(20)
+        keyUp(key)
+        --sleep(50)
+    end
+end
+
+_G.myHotkey = createHotkey(pressAlphabet, VK_F4) --- change key here VK_?? - "?? is your key"
+
+{$asm}
+
+[DISABLE]
+{$lua}
+if _G.myHotkey then
+    object_destroy(_G.myHotkey)
+    _G.myHotkey = nil
+end
+
+{$asm}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>14</ID>
+          <Description>"1 Key Press = Letters A-Z (set custom Key)"</Description>
+          <Color>FF00FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+{$lua}
+local keys = {0x41, 0x42, 0x43, 0x44, 0x45, 0x46, 0x47, 0x48, 0x49, 0x4A, 0x4B, 0x4C, 0x4D,
+              0x4E, 0x4F, 0x50, 0x51, 0x52, 0x53, 0x54, 0x55, 0x56, 0x57, 0x58, 0x59, 0x5A}
+
+function pressAlphabet()
+    for _, key in ipairs(keys) do
+        keyDown(key)
+        --sleep(20)
+        keyUp(key)
+        --sleep(50)
+    end
+end
+
+
+local input = inputQuery("Alphabet-Chaos", "Which key should trigger the chaos? (e.g. F4, F5, Q, X):", "F4")
+local vkCode = 0x73 -- Default F4
+
+if input and input ~= "" then
+
+    local success, code = pcall(function() return loadstring("return VK_" .. string.upper(input))() end)
+    if success and type(code) == "number" then
+        vkCode = code
+    end
+end
+
+_G.myHotkey = createHotkey(pressAlphabet, vkCode)
+--print("ENABLED " .. string.upper(input or "F4") .. " (Code: " .. string.format("0x%X", vkCode) .. ") is activ.")
+{$asm}
+
+[DISABLE]
+{$lua}
+if _G.myHotkey then
+    object_destroy(_G.myHotkey)
+    _G.myHotkey = nil
+end
+--print("Disabled")
+{$asm}
+
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>19</ID>
+          <Description>"Inf Health + Inf Armor (Faith)"</Description>
+          <Color>FF00FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+aobscanmodule(faith,BoltgunWOV-Win64-Shipping.exe,F3 ?? ?? ?? 48 ?? ?? ?? ?? 0F ?? ?? F3 ?? ?? ?? F3 ?? ?? ?? ?? ?? ?? ?? 48 ?? ?? ?? ?? ?? ?? E8 ?? ?? ?? ?? 48 ?? ?? ?? C3 ?? ?? ?? ?? ?? ?? 48 ?? ?? ??)
+faith:
+  nop 4
+faith+3A:
+  db EB
+registersymbol(faith)
+[DISABLE]
+faith:
+  db F3 0F 5C D1
+faith+3A:
+  db 75
+unregistersymbol(*)
+
+
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>104269</ID>
+      <Description>"------------------------------------------------------------------------"</Description>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>10326</ID>
+      <Description>"Discord/PayPal-Donation-Link/OCT"</Description>
+      <Options moHideChildren="1"/>
+      <Color>40FF00</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1337380715</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337380716</ID>
+          <Description>"[&lt;--CHECKBOX]_OPEN_MY_GITHUB"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://github.com/mbrking/CE-Tables')
+{$asm}
+
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337111357</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>10324</ID>
+          <Description>"Support/Donations can be Added to my PAYPAL.ME"</Description>
+          <Color>00FF00</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104128</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>41356</ID>
+          <Description>" [&lt;--CHECKBOX] PALPAL.ME Donation/Support Link"</Description>
+          <Color>F8EC07</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://paypal.me/mobiusce')
+{$asm}
+
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104152</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104270</ID>
+          <Description>"my Discord-ID:  --&gt;  ScooPaX#8840  &lt;--"</Description>
+          <Options moAlwaysHideChildren="1"/>
+          <Color>8000FF</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104155</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104156</ID>
+          <Description>"[&lt;--CHECKBOX]_OPEN_OCT_TOPIC"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://opencheattables.com/viewtopic.php?t=1946')
+{$asm}
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104129</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>104151</ID>
+          <Description>"[&lt;--CHECKBOX]_OPEN_CHEATENGINE.ORG"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://www.cheatengine.org/')
+{$asm}
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>10634</ID>
+      <Description>"------------------------------------------------------------------------"</Description>
+      <Options moHideChildren="1"/>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>Change of jns "BoltgunWOV-Win64-Shipping.exe"+10816FB</Description>
+      <AddressString>"BoltgunWOV-Win64-Shipping.exe"+10816F4</AddressString>
+      <Before>
+        <Byte>0F</Byte>
+        <Byte>44</Byte>
+        <Byte>FA</Byte>
+        <Byte>85</Byte>
+        <Byte>C0</Byte>
+      </Before>
+      <Actual>
+        <Byte>79</Byte>
+        <Byte>05</Byte>
+      </Actual>
+      <After>
+        <Byte>41</Byte>
+        <Byte>8B</Byte>
+        <Byte>CA</Byte>
+        <Byte>EB</Byte>
+        <Byte>07</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of jmp "BoltgunWOV-Win64-Shipping.exe"+1081702</Description>
+      <AddressString>"BoltgunWOV-Win64-Shipping.exe"+10816F9</AddressString>
+      <Before>
+        <Byte>79</Byte>
+        <Byte>05</Byte>
+        <Byte>41</Byte>
+        <Byte>8B</Byte>
+        <Byte>CA</Byte>
+      </Before>
+      <Actual>
+        <Byte>EB</Byte>
+        <Byte>07</Byte>
+      </Actual>
+      <After>
+        <Byte>3B</Byte>
+        <Byte>C7</Byte>
+        <Byte>8B</Byte>
+        <Byte>CF</Byte>
+        <Byte>0F</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of jnl "BoltgunWOV-Win64-Shipping.exe"+1081712</Description>
+      <AddressString>"BoltgunWOV-Win64-Shipping.exe"+108170C</AddressString>
+      <Before>
+        <Byte>50</Byte>
+        <Byte>01</Byte>
+        <Byte>49</Byte>
+        <Byte>3B</Byte>
+        <Byte>D1</Byte>
+      </Before>
+      <Actual>
+        <Byte>7D</Byte>
+        <Byte>04</Byte>
+      </Actual>
+      <After>
+        <Byte>8B</Byte>
+        <Byte>F9</Byte>
+        <Byte>EB</Byte>
+        <Byte>09</Byte>
+        <Byte>48</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of je "BoltgunWOV-Win64-Shipping.exe"+10816A1</Description>
+      <AddressString>"BoltgunWOV-Win64-Shipping.exe"+108169C</AddressString>
+      <Before>
+        <Byte>45</Byte>
+        <Byte>E0</Byte>
+        <Byte>48</Byte>
+        <Byte>85</Byte>
+        <Byte>C0</Byte>
+      </Before>
+      <Actual>
+        <Byte>74</Byte>
+        <Byte>03</Byte>
+      </Actual>
+      <After>
+        <Byte>FF</Byte>
+        <Byte>40</Byte>
+        <Byte>08</Byte>
+        <Byte>48</Byte>
+        <Byte>89</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of je "BoltgunWOV-Win64-Shipping.exe"+10817A3</Description>
+      <AddressString>"BoltgunWOV-Win64-Shipping.exe"+108174A</AddressString>
+      <Before>
+        <Byte>8B</Byte>
+        <Byte>F2</Byte>
+        <Byte>4D</Byte>
+        <Byte>85</Byte>
+        <Byte>E4</Byte>
+      </Before>
+      <Actual>
+        <Byte>74</Byte>
+        <Byte>57</Byte>
+      </Actual>
+      <After>
+        <Byte>85</Byte>
+        <Byte>FF</Byte>
+        <Byte>7E</Byte>
+        <Byte>53</Byte>
+        <Byte>66</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of jle "BoltgunWOV-Win64-Shipping.exe"+10817A3</Description>
+      <AddressString>"BoltgunWOV-Win64-Shipping.exe"+108174E</AddressString>
+      <Before>
+        <Byte>E4</Byte>
+        <Byte>90</Byte>
+        <Byte>90</Byte>
+        <Byte>85</Byte>
+        <Byte>FF</Byte>
+      </Before>
+      <Actual>
+        <Byte>7E</Byte>
+        <Byte>53</Byte>
+      </Actual>
+      <After>
+        <Byte>66</Byte>
+        <Byte>41</Byte>
+        <Byte>39</Byte>
+        <Byte>1C</Byte>
+        <Byte>24</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of je "BoltgunWOV-Win64-Shipping.exe"+10817A3</Description>
+      <AddressString>"BoltgunWOV-Win64-Shipping.exe"+1081755</AddressString>
+      <Before>
+        <Byte>66</Byte>
+        <Byte>41</Byte>
+        <Byte>39</Byte>
+        <Byte>1C</Byte>
+        <Byte>24</Byte>
+      </Before>
+      <Actual>
+        <Byte>74</Byte>
+        <Byte>4C</Byte>
+      </Actual>
+      <After>
+        <Byte>8D</Byte>
+        <Byte>57</Byte>
+        <Byte>01</Byte>
+        <Byte>48</Byte>
+        <Byte>8D</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of je "BoltgunWOV-Win64-Shipping.exe"+10817C4</Description>
+      <AddressString>"BoltgunWOV-Win64-Shipping.exe"+10817B5</AddressString>
+      <Before>
+        <Byte>48</Byte>
+        <Byte>08</Byte>
+        <Byte>44</Byte>
+        <Byte>3B</Byte>
+        <Byte>F1</Byte>
+      </Before>
+      <Actual>
+        <Byte>74</Byte>
+        <Byte>0D</Byte>
+      </Actual>
+      <After>
+        <Byte>41</Byte>
+        <Byte>8D</Byte>
+        <Byte>04</Byte>
+        <Byte>0E</Byte>
+        <Byte>83</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of jle "BoltgunWOV-Win64-Shipping.exe"+10817DD</Description>
+      <AddressString>"BoltgunWOV-Win64-Shipping.exe"+10817C8</AddressString>
+      <Before>
+        <Byte>1C</Byte>
+        <Byte>41</Byte>
+        <Byte>83</Byte>
+        <Byte>FE</Byte>
+        <Byte>01</Byte>
+      </Before>
+      <Actual>
+        <Byte>7E</Byte>
+        <Byte>13</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>10</Byte>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of je "BoltgunWOV-Win64-Shipping.exe"+1081832</Description>
+      <AddressString>"BoltgunWOV-Win64-Shipping.exe"+10817F1</AddressString>
+      <Before>
+        <Byte>13</Byte>
+        <Byte>00</Byte>
+        <Byte>40</Byte>
+        <Byte>84</Byte>
+        <Byte>FF</Byte>
+      </Before>
+      <Actual>
+        <Byte>74</Byte>
+        <Byte>3F</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>85</Byte>
+        <Byte>DB</Byte>
+        <Byte>74</Byte>
+        <Byte>08</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of jl "BoltgunWOV-Win64-Shipping.exe"+106F408</Description>
+      <AddressString>"BoltgunWOV-Win64-Shipping.exe"+106F2C1</AddressString>
+      <Before>
+        <Byte>8B</Byte>
+        <Byte>48</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>0F</Byte>
+        <Byte>8C</Byte>
+        <Byte>41</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>44</Byte>
+        <Byte>0F</Byte>
+        <Byte>B6</Byte>
+        <Byte>A3</Byte>
+        <Byte>A8</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of je "BoltgunWOV-Win64-Shipping.exe"+106F18F</Description>
+      <AddressString>"BoltgunWOV-Win64-Shipping.exe"+106F070</AddressString>
+      <Before>
+        <Byte>8B</Byte>
+        <Byte>65</Byte>
+        <Byte>C0</Byte>
+        <Byte>84</Byte>
+        <Byte>C0</Byte>
+      </Before>
+      <Actual>
+        <Byte>0F</Byte>
+        <Byte>84</Byte>
+        <Byte>19</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>63</Byte>
+        <Byte>7D</Byte>
+        <Byte>C8</Byte>
+        <Byte>4C</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of jne "BoltgunWOV-Win64-Shipping.exe"+106F1C8</Description>
+      <AddressString>"BoltgunWOV-Win64-Shipping.exe"+106F1B9</AddressString>
+      <Before>
+        <Byte>06</Byte>
+        <Byte>48</Byte>
+        <Byte>3B</Byte>
+        <Byte>45</Byte>
+        <Byte>D8</Byte>
+      </Before>
+      <Actual>
+        <Byte>75</Byte>
+        <Byte>0D</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>CB</Byte>
+        <Byte>E8</Byte>
+        <Byte>2D</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of je "BoltgunWOV-Win64-Shipping.exe"+106F380</Description>
+      <AddressString>"BoltgunWOV-Win64-Shipping.exe"+106F1F1</AddressString>
+      <Before>
+        <Byte>24</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>84</Byte>
+        <Byte>C0</Byte>
+      </Before>
+      <Actual>
+        <Byte>0F</Byte>
+        <Byte>84</Byte>
+        <Byte>89</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>49</Byte>
+        <Byte>8B</Byte>
+        <Byte>06</Byte>
+        <Byte>48</Byte>
+        <Byte>89</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of jne "BoltgunWOV-Win64-Shipping.exe"+106F455</Description>
+      <AddressString>"BoltgunWOV-Win64-Shipping.exe"+106F0AE</AddressString>
+      <Before>
+        <Byte>10</Byte>
+        <Byte>83</Byte>
+        <Byte>6B</Byte>
+        <Byte>0C</Byte>
+        <Byte>01</Byte>
+      </Before>
+      <Actual>
+        <Byte>0F</Byte>
+        <Byte>85</Byte>
+        <Byte>A1</Byte>
+        <Byte>03</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>8B</Byte>
+        <Byte>03</Byte>
+        <Byte>BA</Byte>
+        <Byte>01</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of jne "BoltgunWOV-Win64-Shipping.exe"+106F0CB</Description>
+      <AddressString>"BoltgunWOV-Win64-Shipping.exe"+106F083</AddressString>
+      <Before>
+        <Byte>89</Byte>
+        <Byte>7D</Byte>
+        <Byte>E0</Byte>
+        <Byte>85</Byte>
+        <Byte>FF</Byte>
+      </Before>
+      <Actual>
+        <Byte>75</Byte>
+        <Byte>46</Byte>
+      </Actual>
+      <After>
+        <Byte>44</Byte>
+        <Byte>89</Byte>
+        <Byte>7D</Byte>
+        <Byte>E4</Byte>
+        <Byte>EB</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of je "BoltgunWOV-Win64-Shipping.exe"+106F15D</Description>
+      <AddressString>"BoltgunWOV-Win64-Shipping.exe"+106F127</AddressString>
+      <Before>
+        <Byte>7D</Byte>
+        <Byte>C8</Byte>
+        <Byte>48</Byte>
+        <Byte>3B</Byte>
+        <Byte>C7</Byte>
+      </Before>
+      <Actual>
+        <Byte>74</Byte>
+        <Byte>34</Byte>
+      </Actual>
+      <After>
+        <Byte>4C</Byte>
+        <Byte>63</Byte>
+        <Byte>7F</Byte>
+        <Byte>08</Byte>
+        <Byte>4C</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of je "BoltgunWOV-Win64-Shipping.exe"+106F327</Description>
+      <AddressString>"BoltgunWOV-Win64-Shipping.exe"+106F2F5</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>48</Byte>
+        <Byte>3B</Byte>
+        <Byte>C7</Byte>
+      </Before>
+      <Actual>
+        <Byte>74</Byte>
+        <Byte>30</Byte>
+      </Actual>
+      <After>
+        <Byte>48</Byte>
+        <Byte>63</Byte>
+        <Byte>77</Byte>
+        <Byte>08</Byte>
+        <Byte>4C</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of je "BoltgunWOV-Win64-Shipping.exe"+106F433</Description>
+      <AddressString>"BoltgunWOV-Win64-Shipping.exe"+106F40F</AddressString>
+      <Before>
+        <Byte>5E</Byte>
+        <Byte>10</Byte>
+        <Byte>48</Byte>
+        <Byte>85</Byte>
+        <Byte>DB</Byte>
+      </Before>
+      <Actual>
+        <Byte>74</Byte>
+        <Byte>22</Byte>
+      </Actual>
+      <After>
+        <Byte>83</Byte>
+        <Byte>6B</Byte>
+        <Byte>08</Byte>
+        <Byte>01</Byte>
+        <Byte>75</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+</CheatTable>
