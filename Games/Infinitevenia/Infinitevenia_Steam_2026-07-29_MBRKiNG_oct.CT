@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="52">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>1337380721</ID>
+      <Description>"------------------------------------------------------------------------"</Description>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1337380722</ID>
+      <Description>"Infinitevenia_Steam_2026-07-29_MBRKiNG"</Description>
+      <Options moHideChildren="1"/>
+      <Color>4080FF</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1337322211</ID>
+          <Description>"Enable ---&gt;[CE 7.7 is required]"</Description>
+          <Color>4080FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+
+[ENABLE]
+openProcess('Infinitevania')
+synchronize(LaunchMonoDataCollector)
+
+function parseStringSegments(inputStr)
+    local segments = {}
+    for segment in inputStr:gmatch("[A-Za-z0-9_&lt;&gt;]+") do
+        table.insert(segments, segment)
+    end
+    return segments
+end
+
+function DissectCode(address)
+    if not address then
+        address = inputQuery('Enter Address', 'Address:', '')
+    end
+    if not address or address == '' then
+        return
+    end
+    local structureForm = createStructureForm(string.format('%X', getAddress(address)))
+    structureForm.Definenewstructure1.doClick()
+end
+
+function FetchField(symbolStr)
+    local segments = parseStringSegments(symbolStr)
+    local fieldName = segments[#segments]
+    local className = segments[#segments - 1]
+    local namespace = (#segments &gt; 2) and segments[#segments - 2] or ''
+
+    local classRef = mono_findClass(namespace, className)
+    if not classRef then return nil end
+
+    local staticFields = mono_class_enumFields(classRef, true)
+    if staticFields then
+        for _, field in pairs(staticFields) do
+            if field.isStatic and (field.name == fieldName or field.name == '&lt;' .. fieldName .. '&gt;k__BackingField') then
+                return mono_class_getStaticFieldAddress(namespace, classRef) + field.offset
+            end
+        end
+    end
+
+    local instanceFields = mono_class_enumFields(classRef, false)
+    if instanceFields then
+        local instances = mono_class_enumInstances(classRef)
+        if instances and #instances &gt; 0 then
+            for _, field in pairs(instanceFields) do
+                if field.name == fieldName or field.name == '&lt;' .. fieldName .. '&gt;k__BackingField' then
+                    return instances[1] + field.offset
+                end
+            end
+        end
+    end
+
+    return nil
+end
+
+
+registerSymbol('PlayerInvulnerable', FetchField('DeveloperMenu.PlayerInvulnerable'))
+-- registerSymbol('AnotherField', FetchField('ClassName.FieldName'))
+
+[DISABLE]
+if monopipe then
+    monopipe.destroy()
+    monopipe = nil
+end
+unregisterSymbol('PlayerInvulnerable')
+
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>1337322162</ID>
+              <Description>"Invulnerable"</Description>
+              <Color>FF00FF</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+writeBytes(getAddress("PlayerInvulnerable"), 0x01)
+[DISABLE]
+writeBytes(getAddress("PlayerInvulnerable"), 0x00)
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2</ID>
+              <Description>"Inf Air Jumps"</Description>
+              <Color>FF00FF</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+aobscanfunction(airjumps,PlayerController:DoJump,0F ?? ?? ?? ?? ?? 0F ?? ?? ?? ?? ?? ?? 85 ?? 0F ?? ?? ?? ?? ?? F3 ?? ?? ?? ?? ?? ?? ??)  // should be unique in this function
+airjumps:
+  db 90 E9
+registersymbol(airjumps)
+[DISABLE]
+airjumps:
+  db 0F 84
+unregistersymbol(*)
+
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1337322222</ID>
+              <Description>"Inf Vital Energy"</Description>
+              <Color>FF00FF</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+aobscanfunction(vitalenergy,PlayerController:ConsumePM,F2 ?? ?? ?? F2 ?? ?? ?? F3 ?? ?? ?? ?? ?? ?? ?? 48 ?? ?? ?? 90)
+vitalenergy+3:
+  db C9
+registersymbol(vitalenergy)
+[DISABLE]
+vitalenergy+3:
+  db C1
+unregistersymbol(*)
+
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1337322221</ID>
+              <Description>"&lt;-Enable Developer Menu-&gt;"</Description>
+              <Color>8000FF</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+{$LUA}
+if syntaxcheck then return end
+local timer = createTimer(nil, false)
+timer.Interval = 250
+timer.OnTimer = function(t)
+  t.destroy()
+  if memrec then
+    memrec.Active = false
+  end
+end
+timer.setEnabled(true)
+{$ASM}
+aobscanfunction(devmenu,DeveloperMenu:Update,0F ?? ?? ?? ?? ?? ?? 85 ?? 74 ?? 48 ?? ?? 48 ?? ?? ?? ??)
+devmenu:
+  db C6 86 A0 00 00 00 01
+registersymbol(devmenu)
+[DISABLE]
+devmenu:
+  db 0F B6 86 A0 00 00 00
+unregistersymbol(devmenu)
+
+</AssemblerScript>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Toggle Activation</Action>
+                  <Keys>
+                    <Key>116</Key>
+                  </Keys>
+                  <ID>0</ID>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Toggle Activation</Action>
+                  <Keys>
+                    <Key>22548</Key>
+                    <Key>22544</Key>
+                  </Keys>
+                  <ID>1</ID>
+                </Hotkey>
+              </Hotkeys>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>1337322223</ID>
+                  <Description>"KeyBoard: Press [F5]"</Description>
+                  <Color>8000FF</Color>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1337322224</ID>
+                  <Description>"Controller: [Start]+[DPad-Up]"</Description>
+                  <Color>8000FF</Color>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1337380753</ID>
+      <Description>"------------------------------------------------------------------------"</Description>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1337380754</ID>
+      <Description>"Discord/PayPal-Donation-Link/OCT"</Description>
+      <Options moHideChildren="1"/>
+      <Color>40FF00</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>1337380755</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337380756</ID>
+          <Description>"[&lt;--CHECKBOX]_OPEN_MY_GITHUB"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://github.com/mbrking/CE-Tables')
+{$asm}
+
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337380757</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337380758</ID>
+          <Description>"Support/Donations can be Added to my PAYPAL.ME"</Description>
+          <Color>00FF00</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337380759</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337380760</ID>
+          <Description>" [&lt;--CHECKBOX] PALPAL.ME Donation/Support Link"</Description>
+          <Color>F8EC07</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://paypal.me/mobiusce')
+{$asm}
+
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337380761</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337380762</ID>
+          <Description>"my Discord-ID:  --&gt;  ScooPaX#8840  &lt;--"</Description>
+          <Options moAlwaysHideChildren="1"/>
+          <Color>8000FF</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337380763</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337380764</ID>
+          <Description>"[&lt;--CHECKBOX]_OPEN_OCT_TOPIC"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://opencheattables.com/viewtopic.php?t=2060')
+{$asm}
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337380765</ID>
+          <Description>"---------------------------------------------------------------"</Description>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1337380766</ID>
+          <Description>"[&lt;--CHECKBOX]_OPEN_CHEATENGINE.ORG"</Description>
+          <Color>8000FF</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{$LUA}
+if syntaxcheck then return end
+[ENABLE]
+ShellExecute('https://www.cheatengine.org/')
+{$asm}
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1337380767</ID>
+      <Description>"------------------------------------------------------------------------"</Description>
+      <Options moHideChildren="1"/>
+      <Color>008000</Color>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>
